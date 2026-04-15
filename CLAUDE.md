@@ -25,8 +25,9 @@ CompBioSummer2026/
 ├── Cohort2/               # Deep Divers -- develop top gaps into proposals
 │   ├── agents/            # 6 specialists + orchestrator
 │   └── output/            # Research, proposals, critiques, roundtables
-├── Cohort3/               # (Designed by CohortArchitect -- builds on Cohort2)
-└── ReviewCohort/          # (Designed by CohortArchitect -- final critique)
+├── ReviewCohort/          # Critical evaluation & implementation planning
+│   ├── agents/            # 5 specialist reviewers + orchestrator
+│   └── output/            # Reviews, verification research, deliberations, final plan
 ```
 
 **Shared resources** (at project root): `context/mission-briefing.md`, `templates/`.
@@ -171,6 +172,9 @@ Proposals must account for real constraints:
 - `mlffeng`, `bioval`, `ensfunc`, `pertbio`, `evalstat`, `scopeadv`
 - Orchestrator: `orch`
 
+**ReviewCohort (Critical Evaluation):**
+- `dynrev`, `biomlrev`, `statrev`, `implrev`, `stratrev`
+- Orchestrator: `orch`
+
 **System-wide:**
 - CohortArchitect: `architect`
-- Future cohort short names are assigned by the CohortArchitect
