@@ -22,7 +22,9 @@ CompBioSummer2026/
 ├── CohortArchitect/       # Meta-AI that designs future cohorts
 │   ├── CLAUDE.md          # Architect persona
 │   └── output/            # Cohort designs + rationale
-├── Cohort2/               # (Designed by CohortArchitect -- builds on Cohort1)
+├── Cohort2/               # Deep Divers -- develop top gaps into proposals
+│   ├── agents/            # 6 specialists + orchestrator
+│   └── output/            # Research, proposals, critiques, roundtables
 ├── Cohort3/               # (Designed by CohortArchitect -- builds on Cohort2)
 └── ReviewCohort/          # (Designed by CohortArchitect -- final critique)
 ```
@@ -159,9 +161,16 @@ Proposals must account for real constraints:
 - Projects requiring wet-lab validation to be convincing
 - Projects that have already been done (check preprints carefully!)
 
-### 10. Agent Short Names (Cohort1)
+### 10. Agent Short Names
 
+**Cohort1 (Gap Scouts):**
 - `protdyn`, `genchem`, `multisim`, `reggeno`, `sysnet`, `aiml`, `transmed`
 - Orchestrator: `orch`
+
+**Cohort2 (Deep Divers):**
+- `mlffeng`, `bioval`, `ensfunc`, `pertbio`, `evalstat`, `scopeadv`
+- Orchestrator: `orch`
+
+**System-wide:**
 - CohortArchitect: `architect`
 - Future cohort short names are assigned by the CohortArchitect
