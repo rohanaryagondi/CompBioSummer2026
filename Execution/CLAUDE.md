@@ -24,6 +24,28 @@ planner, not an executor.
 
 ---
 
+## Session Bootstrap (Read This First)
+
+If you are starting a fresh session, you must establish project state before
+responding to ANY trigger phrase. Read these files in order:
+
+1. `dashboards/master-status.md` — current phase, subphase, and next action
+2. `dashboards/active-subphase.md` — details of the active or most recent subphase
+3. `dashboards/gate-tracker.md` — upcoming gates and their status
+4. `dashboards/compute-budget.md` — remaining compute budget
+5. `shared/registry.md` — all agents created so far
+6. All files in `shared/notes/` — cross-agent findings from prior subphases
+7. All files in `shared/help-needed/` — unresolved escalations
+
+This tells you where the project is. Then read the relevant Proposal/ documents
+(see "What You Read" section below) before following the trigger phrase procedure.
+
+**Always read the full Implementation Plan and all four proposal documents before
+planning any phase or subphase.** These contain the detailed technical specifications,
+timelines, compute budgets, and decision criteria that task specs must reference.
+
+---
+
 ## Execution-Era Rules
 
 The ideation pipeline (Cohort1, Cohort2, ReviewCohort) operated under a strict
@@ -93,19 +115,30 @@ SubAgents (one per task -- launched by HeadAI in waves of max 3)
 ## Trigger Phrases
 
 ### "plan the next phase"
-1. Read the Implementation Plan to identify the next unplanned phase
-2. Read all prior completion reports, cross-agent notes, and help-needed docs
-3. Determine how many subphases this phase needs (see Subphase Sizing below)
-4. Write the phase-plan.md in `phases/phase-N/`
-5. Plan ONLY the first subphase (subphase N.1) -- create all its docs
-6. Update dashboards
+1. **Establish state:** Read `dashboards/master-status.md` to confirm which phase just completed
+2. **Read all context:** Implementation Plan (full), all four Proposal docs, mission-briefing.md, all prior completion reports, cross-agent notes, help-needed docs, compute-budget.md
+3. **Identify next phase:** From the Implementation Plan timeline (Phase 0→1→2→3)
+4. **Determine subphases:** How many subphases this phase needs (see Subphase Sizing and Phase-to-Subphase Decomposition Guide below)
+5. **Create directory:** `phases/phase-N/`
+6. **Write phase-plan.md** in `phases/phase-N/` using `templates/phase-plan.md`
+7. **Plan ONLY the first subphase** (subphase N.1) -- create ALL its docs (see Subphase File Creation Checklist below)
+8. **Update dashboards:** master-status.md, active-subphase.md, compute-budget.md (if compute-intensive)
+9. **Update registry:** Add new HeadAI and SubAgents to `shared/registry.md`
+10. **Provide launch instructions:** Give the human the `cd` command, `claude` command, and HeadAI activation prompt
 
 ### "plan next subphase"
-1. Read the completion report from the most recent subphase
-2. Read any new cross-agent notes and help-needed docs
-3. Determine what the next subphase should contain, informed by actual results
-4. Create all docs for the next subphase
-5. Update dashboards
+1. **Establish state:** Read `dashboards/master-status.md` to identify the current phase and most recent subphase
+2. **Check phase boundary:** If the most recent subphase was the LAST subphase in its phase (phase is complete), this is actually a "plan the next phase" action -- follow that procedure instead. You can determine this by checking whether the phase-plan.md lists additional subphases, or whether the completion report recommends moving to the next phase.
+3. **Read completion report:** `phases/phase-N/subphase-N.M/completion-report.md` from the most recent subphase. This is your PRIMARY input -- it contains what worked, what failed, key findings, and recommendations for next steps.
+4. **Read cross-agent notes:** All files in `shared/notes/`
+5. **Read help-needed:** All files in `shared/help-needed/` -- address unresolved escalations
+6. **Read the Implementation Plan:** Identify what the next subphase should contain based on the phase timeline and ACTUAL results from the completed subphase (not just the original plan)
+7. **Read Proposal docs:** For the specific tracks covered by the next subphase, read the relevant proposal documents for technical details needed in task specs
+8. **Design the subphase:** Determine tasks (3-8), waves (max 3 agents per wave), dependencies between tasks, and agent assignments
+9. **Create all files** using the Subphase File Creation Checklist below
+10. **Update dashboards:** master-status.md, active-subphase.md
+11. **Update registry:** Add new HeadAI and SubAgents to `shared/registry.md`
+12. **Provide launch instructions:** Give the human the `cd` command and HeadAI activation prompt
 
 ### "update dashboards"
 1. Read all status reports and completion reports
@@ -320,6 +353,100 @@ Large phase -- break into 3-4 subphases. Natural cuts:
 ### Phase 3 (August 23-November 30): Decision and Manuscripts
 Break into 2-3 subphases. The D6 (Aug 31) combined paper decision is the critical
 breakpoint -- subphase planning after D6 depends entirely on the GO/NO-GO outcome.
+
+---
+
+## Reference Example: Phase 0
+
+Phase 0 (`phases/phase-0/`) is the first completed planning output and serves as
+the **structural reference** for all future phases and subphases. When creating new
+subphases, examine Phase 0's structure to match the level of detail and specificity:
+
+- `phase-plan.md` — phase-level overview with subphase table, resource allocation,
+  risk mitigation, dependencies for future phases
+- `subphase-0.1/subphase-plan.md` — task summary table, wave protocol with partial
+  completion triggers, dependency diagram (ASCII art), cross-subphase dependencies,
+  gate checkpoints, detailed success criteria
+- `subphase-0.1/tasks/task-001-env-setup.md` — task spec with step-by-step technical
+  instructions (exact commands, parameters, expected output), file access tables,
+  output artifacts with paths, zero-compromise success criteria with checkboxes,
+  verification steps, failure protocol
+- `subphase-0.1/CLAUDE.md` — HeadAI persona with wave execution protocol (including
+  partial completion triggers), specific failure scenarios and resolution guidance,
+  cross-agent notes protocol, documentation-first rule
+- `subphase-0.1/agents/env-builder/CLAUDE.md` — SubAgent persona with narrow scope,
+  explicit success criteria, mandatory documentation requirements, common failure modes
+
+**Match this level of detail.** Vague task specs produce vague results. Every task
+spec should have enough detail that a SubAgent can execute without guessing.
+
+---
+
+## Subphase File Creation Checklist
+
+When creating a new subphase, you must create ALL of the following files.
+
+### Directory structure to create
+
+```
+phases/phase-N/subphase-N.M/
+  CLAUDE.md                    # HeadAI persona (template: headai-claude.md)
+  subphase-plan.md             # Task breakdown + wave protocol (template: subphase-plan.md)
+  tasks/
+    task-001-<name>.md         # One per task (template: task-spec.md)
+    task-002-<name>.md
+    ...
+  agents/
+    <agent-short-name>/
+      CLAUDE.md                # One per SubAgent (template: subagent-claude.md)
+    <agent-short-name>/
+      CLAUDE.md
+    ...
+  output/
+    .gitkeep
+  status/
+    .gitkeep
+```
+
+### Naming conventions
+
+- **Task IDs:** `task-001`, `task-002`, etc. Restart numbering at 001 per subphase.
+- **Task file names:** `task-NNN-<short-description>.md` (lowercase, hyphens)
+- **Agent short names:** Descriptive, lowercase, hyphens (e.g., `env-builder`,
+  `mlff-pilot`, `tahoe-loader`). Keep under 20 chars.
+- **HeadAI short name:** `head-N.M` (e.g., `head-0.1`, `head-1.1`)
+
+### Quality checklist (verify before finishing)
+
+- [ ] All files have correct YAML frontmatter matching their template
+- [ ] HeadAI CLAUDE.md lists ALL SubAgents with correct `agents/<name>/CLAUDE.md` paths
+- [ ] Each SubAgent CLAUDE.md references its task spec by correct relative path
+- [ ] File access tables (MUST READ / MAY READ / DO NOT READ) use correct relative paths
+  from the agent's location (count the `../` levels carefully)
+- [ ] Task specs have specific, measurable success criteria in checkbox format
+- [ ] Task specs include step-by-step technical instructions (not just "do X")
+- [ ] Wave dependencies are explicit: which task outputs block which Wave 2+ tasks
+- [ ] Cross-agent note requirements are specified where findings may affect other tracks
+- [ ] Status report and completion report requirements are explicit in HeadAI and SubAgent docs
+- [ ] `output/.gitkeep` and `status/.gitkeep` files created
+- [ ] `dashboards/master-status.md` updated with new subphase
+- [ ] `dashboards/active-subphase.md` updated with task table
+- [ ] `shared/registry.md` updated with all new agents (HeadAI + SubAgents)
+- [ ] Human given the `cd` + `claude` launch command and HeadAI activation prompt
+
+### Launch instructions format
+
+Always end your planning output with instructions like this:
+
+```
+## How to Run HeadAI N.M
+
+cd /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-N/subphase-N.M
+claude
+
+Prompt to give the HeadAI:
+> Execute subphase N.M. Read the subphase plan, then launch Wave 1...
+```
 
 ---
 
