@@ -9,9 +9,9 @@ updated_by: PlannerAI
 
 | Item | Value |
 |------|-------|
-| Current phase | Not started (system scaffolding complete) |
-| Current subphase | None |
-| Next action | PlannerAI: "plan the next phase" to begin Phase 0 |
+| Current phase | Phase 0: Pre-Project Setup |
+| Current subphase | 0.1: Environment Setup & Data Verification |
+| Next action | Human: `cd phases/phase-0/subphase-0.1/` and start Claude to activate head-0.1 |
 
 ---
 
@@ -19,9 +19,9 @@ updated_by: PlannerAI
 
 | Track | Status | Latest Milestone | Next Milestone |
 |-------|--------|-----------------|----------------|
-| Alpha-M | Not started | -- | Phase 0: BMRB verification, BioEmu disulfide test |
-| Gamma | Not started | -- | Phase 0: (no Phase 0 tasks) |
-| Delta | Not started | -- | Phase 0: Tahoe-100M download |
+| Alpha-M | Phase 0 planned | -- | BMRB verification, PDB prep, BioEmu SS test |
+| Gamma | Not started (no Phase 0 tasks) | -- | Phase 1: BioEmu ensemble generation |
+| Delta | Phase 0 planned | -- | Tahoe-100M download |
 | Combined | Decision pending (Aug 31) | -- | Depends on Alpha-M + Gamma progress |
 
 ---
@@ -30,7 +30,7 @@ updated_by: PlannerAI
 
 | Phase | Planned Start | Planned End | Actual Start | Actual End | Status |
 |-------|-------------|------------|-------------|------------|--------|
-| Phase 0 | Apr 15 | Apr 30 | -- | -- | Not started |
+| Phase 0 | Apr 15 | Apr 30 | -- | -- | Planned |
 | Phase 1 | May 1 | Jun 30 | -- | -- | Not started |
 | Phase 2 | Jul 1 | Aug 22 | -- | -- | Not started |
 | Phase 3 | Aug 23 | Nov 30 | -- | -- | Not started |
