@@ -1,0 +1,9 @@
+{
+  "stage": "A",
+  "status": "FAILED",
+  "failure_reason": "NaN in positions after first cycle",
+  "jit_compilation_time_s": 5.825003147125244,
+  "n_atoms": 640,
+  "dt_fs": 0.5,
+  "T_kelvin": 300.0
+}

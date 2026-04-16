@@ -1,0 +1,30 @@
+{
+  "task": "task-001-mace-pilot",
+  "protein": "crambin (1CRN)",
+  "n_residues": 46,
+  "started": "2026-04-16T06:20:58.057246+00:00",
+  "parameters": {
+    "temperature_K": 300.0,
+    "friction_ps": 1.0,
+    "timestep_fs": 1.0,
+    "min_accept_ps": 100,
+    "report_interval_ps": 1.0
+  },
+  "stage_a": {
+    "status": "exception",
+    "error": "Error loading CUDA module: CUDA_ERROR_UNSUPPORTED_PTX_VERSION (222)",
+    "traceback": "Traceback (most recent call last):\n  File \"/home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/scripts/mace_crambin_nvt.py\", line 624, in main\n    stage_a_pass = run_stage_a(results)\n  File \"/home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/scripts/mace_crambin_nvt.py\", line 239, in run_stage_a\n    simulation = Simulation(modeller.topology, system, integrator,\n  File \"/home/rag88/.conda/envs/env-mace/lib/python3.10/site-packages/openmm/app/simulation.py\", line 105, in __init__\n    self.context = mm.Context(self.system, self.integrator, platform, platformProperties)\n  File \"/home/rag88/.conda/envs/env-mace/lib/python3.10/site-packages/openmm/openmm.py\", line 6217, in __init__\n    _openmm.Context_swiginit(self, _openmm.new_Context(*args))\nopenmm.OpenMMException: Error loading CUDA module: CUDA_ERROR_UNSUPPORTED_PTX_VERSION (222)\n"
+  },
+  "stage_b": {
+    "status": "exception",
+    "error": "Error loading CUDA module: CUDA_ERROR_UNSUPPORTED_PTX_VERSION (222)"
+  },
+  "d1_verdict": {
+    "pass": false,
+    "max_stable_ps": 0,
+    "best_stage": "none",
+    "criterion": ">= 100 ps stable NVT",
+    "timestamp": "2026-04-16T06:21:12.326052+00:00"
+  },
+  "completed": "2026-04-16T06:21:12.326071+00:00"
+}

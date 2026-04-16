@@ -1,6 +1,6 @@
 ---
-last_updated: 2026-04-16T18:00:00Z
-updated_by: PlannerAI
+last_updated: 2026-04-16T15:15:00Z
+updated_by: head-1.1
 ---
 
 # Master Status: CompBioSummer2026 Execution
@@ -11,18 +11,19 @@ updated_by: PlannerAI
 |------|-------|
 | Current phase | Phase 1: Pilot Studies and Setup |
 | Current subphase | 1.1: MLFF Software Validation & Early Setup |
-| Subphase status | **PLANNED** (ready for HeadAI launch) |
-| Next action | Human: cd into subphase-1.1 and launch HeadAI |
+| Subphase status | **NEAR-COMPLETE** (BioEmu generation finishing, all other tasks done) |
+| Next action | Wait for BioEmu retry jobs (~4-5h), then plan subphase 1.2 |
 
 ---
 
-## Phase 0 Decision Log
+## Decision Log
 
 | Decision | Resolution | Date | Impact |
 |----------|-----------|------|--------|
 | BPTI benchmark drop | **DROP.** AK3 triggered at all cutoffs (56.1-72.4%) | 2026-04-16 | 14 -> 13 proteins. T5 still met. |
-| HEWL cutoff interpretation | **CONDITIONAL KEEP.** Sidechain reconstruction test in Sub 1.1 | 2026-04-16 | Final decision after SG-SG data |
+| HEWL benchmark drop | **DROP.** SG-SG integrity 40.2% (AK3 triggered at ALL cutoffs) | 2026-04-16 | 13 -> 12 proteins. T5 at boundary. |
 | Phase 1 start date | **IMMEDIATE** (April 17). Extra buffer before D1. | 2026-04-16 | 3 weeks before D1 instead of 1 |
+| D1 MLFF gate | **BOTH PASS.** MACE + SO3LR stable NVT on crambin | 2026-04-16 | Both MLFFs viable for pilots |
 
 ---
 
@@ -30,10 +31,10 @@ updated_by: PlannerAI
 
 | Track | Status | Latest Milestone | Next Milestone |
 |-------|--------|-----------------|----------------|
-| Alpha-M | Phase 1 ready | Envs built, BMRB verified, BioEmu tested | MACE + SO3LR crambin NVT (D1 gate May 9) |
-| Gamma | Phase 1 ready | env-bioemu working, API characterized | BioEmu batch 1 (50 proteins) |
-| Delta | Phase 1 ready | Tahoe-100M downloaded (428.89 GB) | GEARS + scGPT + CPA setup |
-| Combined | Decision pending (Aug 31) | T3 NOT MET (CB-CB), T5 MET | Depends on Alpha-M + Gamma progress |
+| Alpha-M | D1 evidence collected | MACE D1 PASS, SO3LR D1 PASS, HEWL DROP | MLFF pilot on Tier 1 proteins |
+| Gamma | BioEmu generating | 28/47 proteins usable, 19 running/retrying | Batch 1 completion, feature extraction |
+| Delta | 3/5 methods installed | GEARS + scGPT + CPA verified on Tahoe | scFoundation + Tahoe-x1 setup |
+| Combined | HEWL dropped, 12 proteins | T3 resolved (DROP), T5 at boundary | Depends on Alpha-M + Gamma progress |
 
 ---
 
@@ -42,7 +43,7 @@ updated_by: PlannerAI
 | Phase | Planned Start | Planned End | Actual Start | Actual End | Status |
 |-------|-------------|------------|-------------|------------|--------|
 | Phase 0 | Apr 15 | Apr 30 | Apr 15 | Apr 16 | **Complete** |
-| Phase 1 | Apr 17 | Jun 30 | — | — | **Ready to launch** |
+| Phase 1 | Apr 17 | Jun 30 | Apr 16 | — | **In progress (sub 1.1 near-complete)** |
 | Phase 2 | Jul 1 | Aug 22 | — | — | Not started |
 | Phase 3 | Aug 23 | Nov 30 | — | — | Not started |
 

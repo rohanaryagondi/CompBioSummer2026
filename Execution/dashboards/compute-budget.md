@@ -1,6 +1,6 @@
 ---
-last_updated: 2026-04-16T18:00:00Z
-updated_by: PlannerAI
+last_updated: 2026-04-16T15:15:00Z
+updated_by: head-1.1
 ---
 
 # Compute Budget Tracker
@@ -10,13 +10,27 @@ updated_by: PlannerAI
 | Track | Phase | Allocated GPU-hrs | Used GPU-hrs | Remaining | GPU Type |
 |-------|-------|-------------------|-------------|-----------|----------|
 | Alpha-M | Phase 0 | <2 | 0.5 | — | Any |
-| Alpha-M | Phase 1 (pilot) | 3,000 | 0 | 3,000 | H200 |
+| Alpha-M | Phase 1 (pilot) | 3,000 | ~4.3 | ~2,996 | H200 |
 | Alpha-M | Phase 2 (production) | 33,800 | 0 | 33,800 | H200 / any |
 | Alpha-M | Phase 3 (replicas) | 87,792 | 0 | 87,792 | H200 / any |
 | Alpha-M | Contingency (20%) | 22,800 | 0 | 22,800 | H200 |
-| Gamma | All phases | 2,000 | 0 | 2,000 | Any |
-| Delta | All phases | 20,000 | 0 | 20,000 | RTX 5090 |
-| **Total** | | **~169,392** | **0.5** | **~169,392** | |
+| Gamma | All phases | 2,000 | ~15 | ~1,985 | Any |
+| Delta | All phases | 20,000 | ~0.5 | ~19,999 | RTX 5000 Ada |
+| **Total** | | **~169,392** | **~20** | **~169,372** | |
+
+## SU Rate Reference
+
+| GPU | SU/hr | Relative Cost |
+|-----|-------|--------------|
+| RTX 5000 Ada | 15 | 1x (baseline) |
+| RTX Pro 6000 Blackwell | 65 | 4.3x |
+| A100 | 100 | 6.7x |
+| H200 | 300 | 20x |
+| B200 | 370 | 24.7x |
+
+**Policy:** Prefer RTX 5000 Ada for workloads that fit in 32 GB VRAM. Use H200/B200
+only when queue wait >1h or workload needs >32 GB. BioEmu, GEARS, scGPT, CPA all
+fit on RTX 5000 Ada.
 
 ---
 
@@ -50,13 +64,29 @@ updated_by: PlannerAI
 
 ## Burn Rate
 
-| Period | GPU-hrs Used | Cumulative | Budget Remaining | Notes |
-|--------|-------------|-----------|-----------------|-------|
-| Phase 0 (Apr 15-16) | 0.5 | 0.5 | ~169,392 | BioEmu SS test only |
-| Sub 1.1 (est.) | ~26-65 | ~27-66 | ~169,326 | MLFF + BioEmu + Delta tests |
+| Period | GPU-hrs Used | SU Consumed | Cumulative GPU-hrs | Notes |
+|--------|-------------|-------------|-------------------|-------|
+| Phase 0 (Apr 15-16) | 0.5 | ~8 | 0.5 | BioEmu SS test only |
+| Sub 1.1 (Apr 16, ongoing) | ~20 | ~3,930 | ~20.5 | MLFF + BioEmu + Delta |
+
+### Sub 1.1 SU Breakdown
+
+| Task | GPU-hrs | GPU Type | SU |
+|------|---------|----------|-----|
+| MACE crambin NVT | ~2.5 | H200 | ~750 |
+| SO3LR crambin NVT | ~1.8 | RTX 5000 Ada | ~27 |
+| BioEmu batch (ongoing) | ~15 | Mixed gpu/H200 | ~3,000 |
+| GEARS setup | ~0.5 | H200 | ~150 |
+| scGPT+CPA test | ~0.01 | H200 | ~3 |
+
+**Observation:** BioEmu on H200 consumed ~3000 SU for ~15 GPU-hrs. On RTX 5000 Ada
+the same work would have been ~225 SU (13x cheaper). Future BioEmu batches should
+use RTX 5000 Ada.
 
 ---
 
 ## Alerts
 
-- None. Budget is barely touched. Phase 1 pilot is within expected range.
+- **SU efficiency:** BioEmu batch 1 used H200 extensively due to gpu queue congestion.
+  Future batches should prefer RTX 5000 Ada (15 vs 300 SU/hr). Budget in GPU-hours
+  is fine; SU consumption is the concern for fairshare priority.

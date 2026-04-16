@@ -1,0 +1,51 @@
+protein_name,uniprot_id,assay_id,assay_type,sequence_length,num_variants,selection_reason
+KRAS,RASK_HUMAN,RASK_HUMAN_Weng_2022_binding-DARPin_K55,Binding,188,3084,"KRAS binding to DARPin K55; oncogene, dynamics-rich switch regions"
+BCL2L11,B2L11_HUMAN,B2L11_HUMAN_Dutta_2010_binding-Mcl-1,Binding,198,170,"BCL2L11 binding to Mcl-1; apoptosis regulator, BH3-only protein"
+CCR5,CCR5_HUMAN,CCR5_HUMAN_Gill_2023,Binding,352,6137,"CCR5 GPCR binding; HIV co-receptor, membrane protein dynamics"
+HLA-A,Q53Z42_HUMAN,Q53Z42_HUMAN_McShan_2019_binding-TAPBPR,Binding,365,3344,"HLA-A binding to TAPBPR; immune peptide loading, conformational selection"
+GB1,SPG1_STRSG,SPG1_STRSG_Olson_2014,Binding,448,1045,"GB1 binding; classic model protein, extensive DMS data"
+Cytochrome P450 2C9,CP2C9_HUMAN,CP2C9_HUMAN_Amorosi_2021_activity,Binding,490,6142,"CYP2C9; drug metabolism enzyme, binding/catalysis coupled to dynamics"
+YAP1,YAP1_HUMAN,YAP1_HUMAN_Araya_2012,Binding,504,362,"YAP1 WW domain binding; Hippo pathway, signal transduction"
+EnvZ kinase,ENVZ_ECOLI,ENVZ_ECOLI_Ghose_2023,Activity,60,1121,"EnvZ histidine kinase; two-component signaling, shortest activity assay"
+Anti-CRISPR protein AcrIIA4,A0A247D711_LISMN,A0A247D711_LISMN_Stadelmann_2021,Activity,87,1653,"Anti-CRISPR AcrIIA4; CRISPR inhibition, compact domain"
+Toxin CcdB,CCDB_ECOLI,CCDB_ECOLI_Adkar_2012,Activity,101,1176,"Toxin CcdB; DNA gyrase inhibitor, small protein"
+Phototropin,PHOT_CHLRE,PHOT_CHLRE_Chen_2023,Activity,118,2122,"Phototropin LOV domain; light-sensing, conformational switch"
+Ubiquitin,RL40A_YEAST,RL40A_YEAST_Roscoe_2014,Activity,128,1380,Ubiquitin activity; extensively studied dynamics benchmark
+KCNE1,KCNE1_HUMAN,KCNE1_HUMAN_Muhammad_2023_function,Activity,129,2315,KCNE1 ion channel function; cardiac arrhythmia link
+VKORC1,VKOR1_HUMAN,VKOR1_HUMAN_Chiasson_2020_activity,Activity,163,697,"VKORC1 activity; warfarin target, membrane protein"
+HRAS,RASH_HUMAN,RASH_HUMAN_Bandaru_2017,Activity,189,3134,"HRAS GTPase activity; Ras superfamily, allosteric regulation"
+Green fluorescent protein ppluGFP2,Q6WV12_9MAXI,Q6WV12_9MAXI_Somermeyer_2022,Activity,222,1141,ppluGFP2 fluorescence; chromophore dynamics
+RNase III,RNC_ECOLI,RNC_ECOLI_Weeks_2023,Activity,226,4277,"RNase III; RNA processing enzyme, large mutant count"
+GFP,GFP_AEQVI,GFP_AEQVI_Sarkisyan_2016,Activity,238,1084,GFP fluorescence; canonical fitness landscape
+CASP3,CASP3_HUMAN,CASP3_HUMAN_Roychowdhury_2020,Activity,258,1567,"Caspase-3; apoptosis executioner, active site dynamics"
+CASP7,CASP7_HUMAN,CASP7_HUMAN_Roychowdhury_2020,Activity,281,1680,Caspase-7; caspase family comparison with CASP3
+MET RTK,MET_HUMAN,MET_HUMAN_Estevam_2023,Activity,287,5393,"MET receptor kinase; 5393 mutants, cancer driver"
+Aliphatic amidase,AMIE_PSEAE,AMIE_PSEAE_Wrenbeck_2017,Activity,346,6227,Amidase; largest activity DMS at this length range
+"PAI-1, SERPINE1",PAI1_HUMAN,PAI1_HUMAN_Huttinger_2021,Activity,402,5345,PAI-1/SERPINE1; serpin with dramatic conformational change
+PTEN,PTEN_HUMAN,PTEN_HUMAN_Mighell_2018,Activity,403,7260,"PTEN tumor suppressor; cancer gene, phosphatase activity"
+ADRB2,ADRB2_HUMAN,ADRB2_HUMAN_Jones_2020,Activity,413,7800,"Beta-2 adrenergic receptor; GPCR, dynamics-critical"
+KCNE1,KCNE1_HUMAN,KCNE1_HUMAN_Muhammad_2023_expression,Expression,129,2339,KCNE1 expression; paired with function assay
+Glycophorin A membrane domain,GLPA_HUMAN,GLPA_HUMAN_Elazar_2016,Expression,150,245,Glycophorin A; membrane protein expression
+VKORC1,VKOR1_HUMAN,VKOR1_HUMAN_Chiasson_2020_abundance,Expression,163,2695,VKORC1 abundance; paired with activity assay
+NUDT15,NUD15_HUMAN,NUD15_HUMAN_Suiter_2020,Expression,164,2844,"NUDT15; pharmacogenomic variant, thiopurine metabolism"
+KRAS,RASK_HUMAN,RASK_HUMAN_Weng_2022_abundance,Expression,188,3066,KRAS abundance; paired with binding assay
+Thiopurine S-methyltransferase,TPMT_HUMAN,TPMT_HUMAN_Matreyek_2018,Expression,245,3648,"TPMT; thiopurine methyltransferase, drug metabolism"
+Rhodopsin,OPSD_HUMAN,OPSD_HUMAN_Wan_2019,Expression,348,165,"Rhodopsin; GPCR expression, conformational dynamics"
+GCK,HXK4_HUMAN,HXK4_HUMAN_Gersing_2023_abundance,Expression,465,8396,"Glucokinase GCK; diabetes gene, large mutant set"
+estA,ESTA_BACSU,ESTA_BACSU_Nutschel_2020,Stability,212,2172,estA esterase stability; largest stability at this length
+Carboxypeptidase A2,CBPA2_HUMAN,CBPA2_HUMAN_Tsuboyama_2023_1O6X,Stability,72,1357,Carboxypeptidase A2; megascale stability data
+Ephrin type-B receptor 2,EPHB2_HUMAN,EPHB2_HUMAN_Tsuboyama_2023_1F0M,Stability,66,1239,EphB2 SAM domain; receptor tyrosine kinase
+Regulatory protein cro,RCRO_LAMBD,RCRO_LAMBD_Tsuboyama_2023_1ORC,Stability,63,1195,Lambda Cro; classic DNA-binding domain
+Immunoglobulin G-binding protein A,SPA_STAAU,SPA_STAAU_Tsuboyama_2023_1LP1,Stability,55,1035,"Protein A; IgG-binding, well-studied fold"
+Immunoglobulin G-binding protein G,SPG2_STRSG,SPG2_STRSG_Tsuboyama_2023_5UBS,Stability,56,1029,"Protein G; IgG-binding, classic benchmark"
+Staphylococcal complement inhibitor,SCIN_STAAR,SCIN_STAAR_Tsuboyama_2023_2QFF,Stability,70,1212,"SCIN; complement inhibitor, immune evasion"
+Beta-lactamase TEM,BLAT_ECOLX,BLAT_ECOLX_Stiffler_2015,OrganismalFitness,286,4996,"TEM beta-lactamase; antibiotic resistance, huge DMS"
+"APH(3’)II, neo",KKA2_KLEPN,KKA2_KLEPN_Melnikov_2014,OrganismalFitness,264,4960,APH(3')II aminoglycoside resistance; diverse family
+MlaC lipid transporter,MLAC_ECOLI,MLAC_ECOLI_MacRae_2023,OrganismalFitness,211,4007,MlaC lipid transporter; lipid trafficking dynamics
+DHFR,DYR_ECOLI,DYR_ECOLI_Nguyen_2023,OrganismalFitness,159,2916,"DHFR; classic enzyme, well-characterized dynamics"
+SUMO-conjugating enzyme UBC9,UBC9_HUMAN,UBC9_HUMAN_Weile_2017,OrganismalFitness,159,2563,UBC9 SUMO conjugase; post-translational modification
+Small ubiquitin-related modifier 1,SUMO1_HUMAN,SUMO1_HUMAN_Weile_2017,OrganismalFitness,101,1700,SUMO1; ubiquitin-like modifier
+GRB2-SH3,GRB2_HUMAN,GRB2_HUMAN_Faure_2021,OrganismalFitness,217,1034,"GRB2-SH3; adapter protein, signal transduction"
+Beta-lactamase VIM-2,A4GRB6_PSEAI,A4GRB6_PSEAI_Chen_2020,OrganismalFitness,266,5004,VIM-2 metallo-beta-lactamase; different class from TEM
+alpha-synuclein,SYUA_HUMAN,SYUA_HUMAN_Newberry_2020,OrganismalFitness,140,2497,"Alpha-synuclein; intrinsically disordered protein, Parkinson's"
+CALM1,CALM1_HUMAN,CALM1_HUMAN_Weile_2017,OrganismalFitness,149,1813,"Calmodulin; calcium signaling, major conformational change"

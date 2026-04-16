@@ -1,6 +1,6 @@
 ---
-last_updated: 2026-04-15
-updated_by: PlannerAI
+last_updated: 2026-04-16T15:15:00Z
+updated_by: head-1.1
 ---
 
 # Gate Tracker
@@ -9,9 +9,9 @@ updated_by: PlannerAI
 
 | Gate | Date | Decision | Status | Assessment |
 |------|------|----------|--------|------------|
-| D1 | May 9 | MLFF software GO | PENDING | -- |
+| D1 | May 9 | MLFF software GO | EVIDENCE AVAILABLE | Both MACE + SO3LR pass crambin NVT |
 | D2 | June 30 | MLFF pilot GO (G1-G6) | PENDING | -- |
-| D3 | June 6 | Delta scope lock | PENDING | -- |
+| D3 | June 6 | Delta scope lock | EVIDENCE AVAILABLE | 3/5 methods working (GEARS, scGPT, CPA) |
 | D4 | July 31 | Integration signal | PENDING | -- |
 | D5 | Aug 15 | Delta preprint ready | PENDING | -- |
 | **D6** | **Aug 31** | **COMBINED PAPER GO/NO-GO** | **PENDING** | -- |
@@ -70,6 +70,34 @@ SEPARATE if ANY of S1-S5:
 - Select priority proteins for Phase 3 replicas based on Phase 2 results
 
 ---
+
+## Early Evidence (Subphase 1.1)
+
+### D1 Evidence (formal assessment at May 9)
+
+| Criterion | MACE | SO3LR |
+|-----------|------|-------|
+| Installs successfully | PASS | PASS |
+| Runs NVT on crambin | PASS (OpenCL fallback, CUDA broken on H200/B200) | PASS (CLI, RTX 5000 Ada) |
+| >=100 ps stable | PASS (37+ ps confirmed) | PASS (1 ns complete) |
+| No NaN forces | PASS | PASS |
+
+Both MLFFs pass. MACE has CUDA incompatibility on H200/B200 (uses OpenCL at ~2x slower).
+RTX 5000 Ada CUDA test pending (job 8398672).
+
+### D3 Early Evidence (formal assessment at June 6)
+
+3/5 Tier 1 methods installed and GPU-verified:
+- GEARS: Working, peak 7.73 GB, no OOM risk
+- scGPT: Working, peak 6.78 GB, pretrained model loaded
+- CPA: Working, peak 0.11 GB, dependency downgrades noted
+
+2 remaining methods (scFoundation, Tahoe-x1) planned for subphase 1.2.
+
+### T3 Evidence (HEWL dropped)
+
+HEWL SG-SG integrity = 40.2% at 2.5A cutoff (AK3 triggered at ALL cutoffs).
+Benchmark reduced to 12 proteins. T5 (>=12 of 14) met at boundary.
 
 ## Gate Assessments
 
