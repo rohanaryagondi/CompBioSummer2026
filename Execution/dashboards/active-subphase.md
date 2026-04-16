@@ -19,7 +19,7 @@ updated_by: head-0.1
 | Task ID | Title | Wave | Status | Agent |
 |---------|-------|------|--------|-------|
 | task-001 | Create 9 conda environments + export pinned YAMLs | 1 | **completed** | env-builder |
-| task-002 | Download + preprocess Tahoe-100M via scDataset | 1 | **in_progress** (SLURM 8346038, PENDING) | tahoe-loader |
+| task-002 | Download + preprocess Tahoe-100M via scDataset | 1 | **completed** (428.89 GB, 8852 files) | tahoe-loader |
 | task-003 | Verify BMRB S2 data + prepare PDB structures for 14 proteins | 1 | **completed** | alpha-scout |
 | task-004 | BioEmu v1.3.1 disulfide bond test on BPTI + HEWL | 2 | **completed** (SLURM 8371740) | bioemu-test |
 

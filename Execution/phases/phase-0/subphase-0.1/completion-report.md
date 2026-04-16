@@ -4,21 +4,20 @@ title: "Environment Setup & Data Verification"
 headai: "head-0.1"
 status: complete
 started: 2026-04-15T15:00:00Z
-reported: 2026-04-16T02:30:00Z
+reported: 2026-04-16T03:00:00Z
 ---
 
 # Subphase 0.1 Completion Report
 
 ## 1. Summary
 
-Subphase 0.1 is **complete** (except for the long-running Tahoe download, which
-is expected to extend into Phase 1).
+Subphase 0.1 is **fully complete**. All 4 tasks finished successfully.
 
 - **Task-001 (env-builder):** COMPLETED. All 9 conda environments built, smoke-tested,
   and exported as pinned YAML files. HPC access verified.
-- **Task-002 (tahoe-loader):** IN PROGRESS. Tahoe-100M download submitted as SLURM job
-  8346038 (partition: week, 5-day limit). Still PENDING as of 2026-04-16. DK1 deadline
-  is May 31 — ample buffer.
+- **Task-002 (tahoe-loader):** COMPLETED. Tahoe-100M fully downloaded (428.89 GB,
+  8852 files). Expression data (337.64 GB, 3388 parquet) + all metadata (91.16 GB,
+  1033 files). Streaming loader verified with pyarrow.
 - **Task-003 (alpha-scout):** COMPLETED. BMRB S2 verified for all 14 proteins, 13/14
   confirmed with usable S2 data. 14 PDB files downloaded and verified. Manifest created.
 - **Task-004 (bioemu-test):** COMPLETED. 100 BioEmu conformations generated for both
@@ -68,14 +67,16 @@ Implementation Plan estimated 15-20% failure probability for env-mace and env-so
 - Scratch: `/nfs/roberts/scratch/pi_mg269/rag88/` — 9.2 TB available of 10 TB
 - QOS limit: max 2 pending jobs per user
 
-### Task 002: Tahoe-100M Download (IN PROGRESS)
+### Task 002: Tahoe-100M Download (COMPLETED)
 
-- **SLURM job:** 8346038, partition: week, 5-day time limit
 - **Target:** `/nfs/roberts/scratch/pi_mg269/rag88/tahoe-100m/`
-- **Download script:** Uses `huggingface_hub.snapshot_download` with resume support
-- **Priority order:** metadata subsets first (small), expression_data last (~337 GB)
-- **Status:** Still PENDING as of 2026-04-16 (Priority queue on `week` partition)
-- **DK1 deadline:** May 31 — ample buffer even if download takes 7+ days
+- **Total size:** 428.89 GB across 8852 files
+- **Expression data:** 3388 parquet files, 337.64 GB (downloaded in ~39 min)
+- **Metadata:** 1033 files, 91.16 GB (downloaded in ~8 min)
+- **Method:** Direct login-node download via `nohup` + `hf_transfer` acceleration
+  (SLURM job 8346038 never started due to `week` partition priority; cancelled)
+- **Streaming loader:** Verified with pyarrow (10 columns, reads correctly)
+- **DK1 deadline:** May 31 — completed well ahead of schedule
 
 ### Task 003: BMRB S2 Verification + PDB Prep (COMPLETED)
 
@@ -212,10 +213,8 @@ None. All issues were resolved during execution.
 
 ### Phase 0 Status
 
-Phase 0 is **effectively complete**. All tasks that can be completed have been
-completed. The Tahoe download (task-002) is the only remaining item, and it is
-an asynchronous multi-day download that will complete during Phase 1 (DK1 deadline:
-May 31). There is no value in waiting for it before planning Phase 1.
+Phase 0 is **fully complete**. All 4 tasks finished successfully. All 13
+success criteria are MET.
 
 ### Immediate Decisions Needed
 
@@ -239,6 +238,7 @@ All Phase 1 prerequisites are in place:
 - 14 PDB files prepared with manifest
 - BMRB S2 data verified for 13 proteins
 - BioEmu API and performance characterized
+- Tahoe-100M fully downloaded (428.89 GB, streaming loader verified)
 - HPC access verified (GPU partitions, scratch, SLURM)
 
 **Recommend: Plan Phase 1 now.**
@@ -251,7 +251,7 @@ All Phase 1 prerequisites are in place:
 |----------|-----------|--------|-------|
 | Interactive time | 2-3 days | ~12 hours | Direct execution across 2 sessions |
 | GPU hours | 4 hours | ~0.5 hours | BPTI 4.4 min + HEWL 9.5 min + failed job overhead |
-| Scratch storage | ~500 GB | ~429 GB expected | Tahoe download still pending |
+| Scratch storage | ~500 GB | 428.89 GB | Tahoe-100M download complete |
 | CPU hours | Minimal | ~1 hour | Environment builds, PDB downloads, BMRB verification |
 | SLURM jobs submitted | 2 | 8 | 6 for task-004 (debugging), 1 for task-002, 1 test job |
 
