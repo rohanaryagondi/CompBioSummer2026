@@ -85,6 +85,47 @@ use RTX 5000 Ada.
 
 ---
 
+## SU Breakdown by Partition (Subphase 1.1)
+
+| Partition | SU Consumed | % of Total |
+|-----------|-------------|------------|
+| gpu_h200 | 6,316 | 72.7% |
+| gpu_b200 | 2,118 | 24.4% |
+| gpu_devel | 205 | 2.4% |
+| gpu | 49 | 0.6% |
+| **Total** | **8,689** | **100%** |
+
+All jobs used Standard Tier (`pi_mg269`). No Priority Tier usage to date.
+
+---
+
+## Priority Tier
+
+| Item | Value |
+|------|-------|
+| Account | `prio_gerstein` |
+| CPU partition | `priority` |
+| GPU partition | `priority_gpu` |
+| GPU types | rtx_5000_ada, rtx_pro_6000_blackwell, h200, b200 |
+| Rate | $0.004 / SU |
+| Fairshare | Separate pool from Standard Tier |
+
+**Policy:** Use Priority Tier for small jobs (<400 SU total). Always confirm with
+user before submitting. Priority and Standard Tier have separate fairshare pools,
+so priority usage does not affect standard queue position.
+
+**Example:** `sbatch -A prio_gerstein -p priority_gpu --gres=gpu:rtx_5000_ada:1 script.sbatch`
+
+### Money Spent
+
+| Tier | SU Consumed | Cost |
+|------|-------------|------|
+| Standard (pi_mg269) | 8,689 | $0.00 (free) |
+| Priority (prio_gerstein) | 0 | $0.00 |
+| **Total** | **8,689** | **$0.00** |
+
+---
+
 ## Alerts
 
 - **SU efficiency:** BioEmu batch 1 used H200 extensively due to gpu queue congestion.
