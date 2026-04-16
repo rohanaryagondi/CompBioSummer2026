@@ -107,6 +107,36 @@ def validate_output(output_dir, num_samples, seq_len):
     }
 
 
+def gpu_keepalive(interval=45):
+    """Background thread that periodically touches GPU to prevent idle detection.
+
+    YCRC auto-cancels GPU jobs after 1 hour of 0% utilization. BioEmu spends
+    25-35 min on CPU-bound model loading and ESM embedding before GPU denoising
+    begins. This keepalive runs a small CUDA op every `interval` seconds to
+    maintain visible GPU utilization during that window.
+    """
+    import threading
+    import torch
+
+    stop = threading.Event()
+
+    def _ping():
+        while not stop.is_set():
+            try:
+                if torch.cuda.is_available():
+                    x = torch.randn(256, 256, device='cuda')
+                    _ = x @ x
+                    torch.cuda.synchronize()
+                    del x
+            except Exception:
+                pass
+            stop.wait(interval)
+
+    t = threading.Thread(target=_ping, daemon=True)
+    t.start()
+    return stop
+
+
 def main():
     parser = argparse.ArgumentParser(description="BioEmu single-protein generation")
     parser.add_argument("--fasta", required=True, help="Multi-FASTA file path")
@@ -125,6 +155,9 @@ def main():
     parser.add_argument("--seed", type=int, default=42,
                         help="Random seed for reproducibility")
     args = parser.parse_args()
+
+    # Start GPU keepalive to prevent idle-GPU auto-cancel during model loading
+    keepalive_stop = gpu_keepalive()
 
     # Parse FASTA and get target protein
     entries = parse_fasta(args.fasta)
@@ -211,6 +244,9 @@ def main():
         print(f"\nERROR: Generation failed after {elapsed/60:.1f} minutes")
         print(f"  Error: {e}")
         traceback.print_exc()
+
+    # Stop GPU keepalive
+    keepalive_stop.set()
 
     # Write status JSON
     status_path = Path(args.output_dir) / "generation_status.json"
