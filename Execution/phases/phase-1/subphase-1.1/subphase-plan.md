@@ -6,7 +6,7 @@ date_range: "2026-04-17 to 2026-05-02"
 tracks: [alpha-m, gamma, delta]
 status: planned
 created: 2026-04-16
-task_count: 5
+task_count: 6
 wave_count: 2
 ---
 
@@ -32,8 +32,9 @@ planned 1 week.
 | task-001 | MACE-OFF24 crambin 1 ns NVT | Alpha-M | 1 | None | 3-5 days | planned |
 | task-002 | SO3LR crambin 1 ns NVT | Alpha-M | 1 | None | 3-5 days | planned |
 | task-003 | BioEmu batch generation (50 proteins) | Gamma | 1 | None | 5-8 days | planned |
-| task-004 | Delta method setup (GEARS, scGPT, CPA) | Delta | 2 | None (wave ordering only) | 3-5 days | planned |
+| task-004 | GEARS setup on Tahoe-100M | Delta | 2 | None (wave ordering only) | 2-3 days | planned |
 | task-005 | Sidechain reconstruction test (HEWL) | Alpha-M | 2 | None (wave ordering only) | 1-2 days | planned |
+| task-006 | scGPT and CPA setup on Tahoe-100M | Delta | 2 | None (wave ordering only) | 2-3 days | planned |
 
 ---
 
@@ -52,11 +53,15 @@ generation), which is a multi-day GPU task that runs independently.
 
 ### Wave 2: Delta Setup + HEWL Resolution
 
-**Agents (parallel, 2):** task-004 (delta-setup), task-005 (sc-recon)
-**Dependencies:** Neither task depends on Wave 1 output. They are in Wave 2 purely
+**Agents (parallel, 3):** task-004 (gears-setup), task-005 (sc-recon), task-006 (scgpt-cpa-setup)
+**Dependencies:** No task depends on Wave 1 output. They are in Wave 2 purely
 for the 3-agent concurrency limit (token cost control).
 **Completion criteria:** All Wave 2 tasks complete. Then wait for any remaining
 Wave 1 tasks (task-003 BioEmu generation if still running).
+
+**Why GEARS is separate from scGPT+CPA:** GEARS has a 30% OOM risk that may
+require extensive memory profiling and debugging. Giving it a dedicated agent
+prevents OOM investigation from consuming context needed for the other two methods.
 
 ---
 
@@ -67,14 +72,15 @@ Wave 1 (parallel, 3 agents):
   task-001 (mace-pilot) ────┐
   task-002 (so3lr-pilot) ───┼──> [partial trigger: both MLFF tasks done]
   task-003 (bioemu-gen) ────┘    task-003 may still be running
-                                 │
+                                 |
                                  v
-Wave 2 (parallel, 2 agents):
-  task-004 (delta-setup) ───┐
-  task-005 (sc-recon) ──────┴──> Wave 2 complete
-                                 │
+Wave 2 (parallel, 3 agents):
+  task-004 (gears-setup) ──────┐
+  task-005 (sc-recon) ─────────┼──> Wave 2 complete
+  task-006 (scgpt-cpa-setup) ──┘
+                                 |
                      [wait for task-003 if still running]
-                                 │
+                                 |
                                  v
                       Subphase 1.1 complete
 ```
@@ -122,6 +128,6 @@ This subphase succeeds ONLY if ALL of the following are true:
 5. >=2 of 3 Delta methods (GEARS, scGPT, CPA) installed, verified with Tahoe-100M test
 6. HEWL SG-SG integrity measured via sidechain reconstruction; keep/drop recommendation documented
 7. Cross-agent notes written for D1-relevant findings and HEWL SG-SG results
-8. All 5 task status reports written to `status/`
+8. All 6 task status reports written to `status/`
 9. Completion report written to `completion-report.md`
 10. Any cross-track findings written to `shared/notes/`

@@ -27,9 +27,10 @@ updated_by: PlannerAI
 | task-001 MACE crambin NVT | Alpha-M | 5-20 | H200 | 1 ns NVT, staged approach |
 | task-002 SO3LR crambin NVT | Alpha-M | 5-20 | H200 | 1 ns NVT, JAX JIT overhead |
 | task-003 BioEmu 50 proteins | Gamma | 15-20 | H200/Any | ~20 min/protein x 50 |
-| task-004 Delta method setup | Delta | 1-5 | RTX 5090 | Short test runs only |
+| task-004 GEARS setup | Delta | 1-3 | RTX 5090 | OOM profiling may need multiple runs |
 | task-005 HEWL sidechain recon | Alpha-M | 0 | CPU only | SCWRL4 is CPU |
-| **Subphase 1.1 total** | | **~26-65** | | |
+| task-006 scGPT + CPA setup | Delta | 1-3 | RTX 5090 | Short test runs only |
+| **Subphase 1.1 total** | | **~27-66** | | |
 
 ---
 

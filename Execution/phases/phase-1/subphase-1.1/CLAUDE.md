@@ -59,8 +59,9 @@ the completion report when done.
 | 1 | task-001 | mace-pilot | MACE-OFF24 crambin 1 ns NVT simulation | `agents/mace-pilot/CLAUDE.md` |
 | 1 | task-002 | so3lr-pilot | SO3LR crambin 1 ns NVT simulation | `agents/so3lr-pilot/CLAUDE.md` |
 | 1 | task-003 | bioemu-gen | BioEmu batch generation (50 ProteinGym proteins) | `agents/bioemu-gen/CLAUDE.md` |
-| 2 | task-004 | delta-setup | Delta method setup (GEARS, scGPT, CPA) | `agents/delta-setup/CLAUDE.md` |
+| 2 | task-004 | gears-setup | GEARS setup on Tahoe-100M | `agents/gears-setup/CLAUDE.md` |
 | 2 | task-005 | sc-recon | Sidechain reconstruction test (HEWL SS bonds) | `agents/sc-recon/CLAUDE.md` |
+| 2 | task-006 | scgpt-cpa-setup | scGPT and CPA setup on Tahoe-100M | `agents/scgpt-cpa-setup/CLAUDE.md` |
 
 ---
 
@@ -98,18 +99,26 @@ for it.
 
 ### Wave 2: Delta Setup + HEWL Resolution
 
-**Launch:** task-004 (delta-setup), task-005 (sc-recon) -- both in parallel
-**Dependencies:** Neither task depends on Wave 1 output. They are in Wave 2 purely
+**Launch:** task-004 (gears-setup), task-005 (sc-recon), task-006 (scgpt-cpa-setup) -- all 3 in parallel
+**Dependencies:** No task depends on Wave 1 output. They are in Wave 2 purely
 for the 3-agent concurrency limit.
-**Completion criteria:** Both tasks report status.
+**Completion criteria:** All 3 tasks report status.
+
+**Why GEARS is separate from scGPT+CPA:** GEARS has a 30% OOM risk that may
+require extensive memory profiling and cell-count ceiling testing. Giving it a
+dedicated agent prevents OOM debugging from consuming context needed for scGPT and
+CPA installation. scGPT and CPA share similar data patterns (both use AnnData)
+and have moderate risk profiles, making them suitable for a single agent session.
 
 **After Wave 2 completes:**
-1. Read status reports from `status/task-004-status.md` and `status/task-005-status.md`
+1. Read status reports from `status/task-004-status.md`, `status/task-005-status.md`,
+   and `status/task-006-status.md`
 2. Read the HEWL integrity report from `output/task-005-hewl-integrity-report.md`
-3. Write cross-agent note for HEWL SG-SG results (if not written by sc-recon):
+3. Assess Delta method status: how many of GEARS/scGPT/CPA are working?
+4. Write cross-agent note for HEWL SG-SG results (if not written by sc-recon):
    `shared/notes/1.1-hewl-sgsg.md`
-4. Wait for task-003 (BioEmu generation) if still running
-5. Read `status/task-003-status.md` when available
+5. Wait for task-003 (BioEmu generation) if still running
+6. Read `status/task-003-status.md` when available
 
 ---
 
@@ -124,7 +133,7 @@ This subphase succeeds ONLY if ALL of the following are true:
 5. >=2 of 3 Delta methods (GEARS, scGPT, CPA) installed and verified with Tahoe-100M
 6. HEWL SG-SG integrity measured and keep/drop recommendation documented
 7. Cross-agent notes written for all findings affecting other tracks
-8. All 5 task status reports exist in `status/`
+8. All 6 task status reports exist in `status/`
 9. Completion report written to `completion-report.md`
 
 ---
@@ -162,8 +171,13 @@ If a SubAgent reports status `failed` or `blocked`:
   QOS limits (max 2 pending). If stuck, try smaller batch. If MSA server unreachable,
   try login node for embedding caching. DK1 is already met (Tahoe download done).
 
-- **task-004 GEARS OOM:** Expected 30% risk. Try capping loaded cells at 10K, 50K.
-  Use scDataset streaming. If still OOM, document memory requirements for Subphase 1.3.
+- **task-004 GEARS OOM:** Expected 30% risk. gears-setup agent will profile memory
+  at 10K/20K/50K/100K cell thresholds. If still OOM after profiling, document the
+  ceiling for Subphase 1.3 baselines planning.
+
+- **task-006 CPA compat issues:** Expected 25% risk (2023 release). scgpt-cpa-setup
+  agent will try `--no-deps` install if needed. If CPA fails, scGPT alone is
+  sufficient — D3 needs 3 of 5 methods total across Subphases 1.1 and 1.2.
 
 - **task-005 no sidechain tool available:** Try all 4 options (SCWRL4, Rosetta,
   PDBFixer, MDAnalysis). If none work, recommend human install SCWRL4. The HEWL
@@ -185,7 +199,7 @@ When you or a SubAgent discover something that affects OTHER subphases or tracks
 - `1.1-mace-crambin.md` -- MACE D1 result (affects: alpha-m, D1 gate)
 - `1.1-so3lr-crambin.md` -- SO3LR D1 result (affects: alpha-m, D1 gate)
 - `1.1-hewl-sgsg.md` -- HEWL SG-SG results (affects: alpha-m, combined, T3)
-- Optional: `1.1-delta-memory.md` -- if GEARS/scGPT memory issues found (affects: delta)
+- Optional: `1.1-delta-memory.md` -- if GEARS/scGPT/CPA memory or compat issues found (affects: delta)
 
 ---
 
@@ -200,7 +214,8 @@ is the primary input for PlannerAI when planning Subphase 1.2. It must include:
 4. D1 gate evidence summary (MACE pass/fail, SO3LR pass/fail, combined assessment)
 5. HEWL disposition (keep/drop based on SG-SG data)
 6. BioEmu generation progress (how many of 50 proteins done, timing data)
-7. Delta method status (which of GEARS/scGPT/CPA work, memory requirements)
+7. Delta method status: GEARS (task-004) and scGPT+CPA (task-006) results,
+   which methods work, memory requirements, OOM ceilings if any
 8. Cross-agent notes generated (list with paths)
 9. Help-needed docs generated (list with paths)
 10. Recommendation for PlannerAI on what to plan next in Subphase 1.2

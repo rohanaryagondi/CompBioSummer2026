@@ -29,8 +29,9 @@ last_updated: 2026-04-16
 | mace-pilot | task-001 | 1.1 | Alpha-M | `Execution/phases/phase-1/subphase-1.1/agents/mace-pilot/CLAUDE.md` | Active |
 | so3lr-pilot | task-002 | 1.1 | Alpha-M | `Execution/phases/phase-1/subphase-1.1/agents/so3lr-pilot/CLAUDE.md` | Active |
 | bioemu-gen | task-003 | 1.1 | Gamma | `Execution/phases/phase-1/subphase-1.1/agents/bioemu-gen/CLAUDE.md` | Active |
-| delta-setup | task-004 | 1.1 | Delta | `Execution/phases/phase-1/subphase-1.1/agents/delta-setup/CLAUDE.md` | Active |
+| gears-setup | task-004 | 1.1 | Delta | `Execution/phases/phase-1/subphase-1.1/agents/gears-setup/CLAUDE.md` | Active |
 | sc-recon | task-005 | 1.1 | Alpha-M | `Execution/phases/phase-1/subphase-1.1/agents/sc-recon/CLAUDE.md` | Active |
+| scgpt-cpa-setup | task-006 | 1.1 | Delta | `Execution/phases/phase-1/subphase-1.1/agents/scgpt-cpa-setup/CLAUDE.md` | Active |
 
 ---
 

@@ -21,8 +21,9 @@ updated_by: PlannerAI
 | task-001 | MACE-OFF24 crambin 1 ns NVT | 1 | planned | mace-pilot |
 | task-002 | SO3LR crambin 1 ns NVT | 1 | planned | so3lr-pilot |
 | task-003 | BioEmu batch generation (50 proteins) | 1 | planned | bioemu-gen |
-| task-004 | Delta method setup (GEARS, scGPT, CPA) | 2 | planned | delta-setup |
+| task-004 | GEARS setup on Tahoe-100M | 2 | planned | gears-setup |
 | task-005 | Sidechain reconstruction test (HEWL) | 2 | planned | sc-recon |
+| task-006 | scGPT and CPA setup on Tahoe-100M | 2 | planned | scgpt-cpa-setup |
 
 ### Key Dependencies
 
