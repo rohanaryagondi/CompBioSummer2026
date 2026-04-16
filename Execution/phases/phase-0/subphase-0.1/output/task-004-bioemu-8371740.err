@@ -1,0 +1,781 @@
+The following modules were not unloaded:
+  (Use "module --force purge" to unload all):
+
+  1) StdEnv
+Sampling batches...:   0%|          | 0/4 [00:00<?, ?it/s]
+  0%|          | 0/150 [elapsed: 00:00 remaining: ?][A
+SUBMIT:   0%|          | 0/150 [elapsed: 00:00 remaining: ?][A
+COMPLETE:   0%|          | 0/150 [elapsed: 00:00 remaining: ?][A
+COMPLETE: 100%|██████████| 150/150 [elapsed: 00:00 remaining: 00:00][ACOMPLETE: 100%|██████████| 150/150 [elapsed: 00:02 remaining: 00:00]
+2026-04-15 21:12:54.446041: I tensorflow/core/util/port.cc:113] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-04-15 21:12:54.694535: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI AVX512_BF16 AVX_VNNI AMX_TILE AMX_INT8 AMX_BF16 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+
+Downloading AF2 weights:   0%|          | 0/3722752000 [00:00<?, ?it/s][A
+Downloading AF2 weights:   0%|          | 4.00M/3.47G [00:00<01:39, 37.5MB/s][A
+Downloading AF2 weights:   0%|          | 8.01M/3.47G [00:00<01:43, 35.9MB/s][A
+Downloading AF2 weights:   0%|          | 16.0M/3.47G [00:00<01:07, 54.8MB/s][A
+Downloading AF2 weights:   1%|          | 26.1M/3.47G [00:00<00:50, 73.6MB/s][A
+Downloading AF2 weights:   1%|          | 38.0M/3.47G [00:00<00:46, 79.1MB/s][A
+Downloading AF2 weights:   1%|▏         | 47.5M/3.47G [00:00<00:43, 85.1MB/s][A
+Downloading AF2 weights:   2%|▏         | 58.3M/3.47G [00:00<00:39, 93.7MB/s][A
+Downloading AF2 weights:   2%|▏         | 70.0M/3.47G [00:00<00:45, 80.4MB/s][A
+Downloading AF2 weights:   2%|▏         | 82.0M/3.47G [00:01<00:52, 69.8MB/s][A
+Downloading AF2 weights:   3%|▎         | 98.0M/3.47G [00:01<00:40, 89.8MB/s][A
+Downloading AF2 weights:   3%|▎         | 108M/3.47G [00:01<00:39, 91.0MB/s] [A
+Downloading AF2 weights:   3%|▎         | 122M/3.47G [00:01<00:41, 87.3MB/s][A
+Downloading AF2 weights:   4%|▍         | 140M/3.47G [00:01<00:35, 101MB/s] [A
+Downloading AF2 weights:   4%|▍         | 152M/3.47G [00:01<00:33, 106MB/s][A
+Downloading AF2 weights:   5%|▍         | 162M/3.47G [00:01<00:35, 99.1MB/s][A
+Downloading AF2 weights:   5%|▌         | 180M/3.47G [00:02<00:29, 119MB/s] [A
+Downloading AF2 weights:   6%|▌         | 196M/3.47G [00:02<00:26, 132MB/s][A
+Downloading AF2 weights:   6%|▌         | 209M/3.47G [00:02<00:29, 118MB/s][A
+Downloading AF2 weights:   6%|▋         | 229M/3.47G [00:02<00:24, 140MB/s][A
+Downloading AF2 weights:   7%|▋         | 244M/3.47G [00:02<00:23, 146MB/s][A
+Downloading AF2 weights:   7%|▋         | 259M/3.47G [00:02<00:40, 84.8MB/s][A
+Downloading AF2 weights:   8%|▊         | 273M/3.47G [00:02<00:35, 96.1MB/s][A
+Downloading AF2 weights:   8%|▊         | 289M/3.47G [00:03<00:30, 111MB/s] [A
+Downloading AF2 weights:   9%|▊         | 303M/3.47G [00:03<00:31, 106MB/s][A
+Downloading AF2 weights:   9%|▉         | 321M/3.47G [00:03<00:26, 127MB/s][A
+Downloading AF2 weights:  10%|▉         | 339M/3.47G [00:03<00:23, 141MB/s][A
+Downloading AF2 weights:  10%|█         | 356M/3.47G [00:03<00:33, 101MB/s][A
+Downloading AF2 weights:  11%|█         | 388M/3.47G [00:03<00:22, 148MB/s][A
+Downloading AF2 weights:  11%|█▏        | 406M/3.47G [00:03<00:21, 151MB/s][A
+Downloading AF2 weights:  12%|█▏        | 424M/3.47G [00:04<00:20, 157MB/s][A
+Downloading AF2 weights:  12%|█▏        | 441M/3.47G [00:04<00:22, 144MB/s][A
+Downloading AF2 weights:  13%|█▎        | 457M/3.47G [00:04<00:21, 151MB/s][A
+Downloading AF2 weights:  13%|█▎        | 475M/3.47G [00:04<00:20, 158MB/s][A
+Downloading AF2 weights:  14%|█▍        | 491M/3.47G [00:04<00:24, 132MB/s][A
+Downloading AF2 weights:  14%|█▍        | 510M/3.47G [00:04<00:21, 149MB/s][A
+Downloading AF2 weights:  15%|█▍        | 526M/3.47G [00:04<00:29, 107MB/s][A
+Downloading AF2 weights:  15%|█▌        | 544M/3.47G [00:05<00:25, 125MB/s][A
+Downloading AF2 weights:  16%|█▌        | 559M/3.47G [00:05<00:25, 123MB/s][A
+Downloading AF2 weights:  16%|█▌        | 575M/3.47G [00:05<00:23, 134MB/s][A
+Downloading AF2 weights:  17%|█▋        | 592M/3.47G [00:05<00:21, 145MB/s][A
+Downloading AF2 weights:  17%|█▋        | 609M/3.47G [00:05<00:20, 152MB/s][A
+Downloading AF2 weights:  18%|█▊        | 624M/3.47G [00:05<00:19, 155MB/s][A
+Downloading AF2 weights:  18%|█▊        | 640M/3.47G [00:05<00:21, 143MB/s][A
+Downloading AF2 weights:  18%|█▊        | 657M/3.47G [00:05<00:19, 152MB/s][A
+Downloading AF2 weights:  19%|█▉        | 673M/3.47G [00:05<00:19, 155MB/s][A
+Downloading AF2 weights:  19%|█▉        | 688M/3.47G [00:06<00:24, 124MB/s][A
+Downloading AF2 weights:  20%|█▉        | 703M/3.47G [00:06<00:22, 132MB/s][A
+Downloading AF2 weights:  20%|██        | 716M/3.47G [00:06<00:30, 96.6MB/s][A
+Downloading AF2 weights:  21%|██        | 734M/3.47G [00:06<00:25, 115MB/s] [A
+Downloading AF2 weights:  21%|██        | 750M/3.47G [00:06<00:23, 127MB/s][A
+Downloading AF2 weights:  22%|██▏       | 764M/3.47G [00:06<00:22, 132MB/s][A
+Downloading AF2 weights:  22%|██▏       | 779M/3.47G [00:06<00:21, 137MB/s][A
+Downloading AF2 weights:  22%|██▏       | 794M/3.47G [00:06<00:20, 144MB/s][A
+Downloading AF2 weights:  23%|██▎       | 812M/3.47G [00:07<00:18, 155MB/s][A
+Downloading AF2 weights:  23%|██▎       | 828M/3.47G [00:07<00:18, 156MB/s][A
+Downloading AF2 weights:  24%|██▍       | 846M/3.47G [00:07<00:17, 165MB/s][A
+Downloading AF2 weights:  24%|██▍       | 862M/3.47G [00:07<00:19, 148MB/s][A
+Downloading AF2 weights:  25%|██▍       | 877M/3.47G [00:07<00:21, 133MB/s][A
+Downloading AF2 weights:  25%|██▌       | 892M/3.47G [00:07<00:21, 131MB/s][A
+Downloading AF2 weights:  26%|██▌       | 909M/3.47G [00:07<00:19, 143MB/s][A
+Downloading AF2 weights:  26%|██▌       | 924M/3.47G [00:07<00:18, 145MB/s][A
+Downloading AF2 weights:  27%|██▋       | 941M/3.47G [00:08<00:17, 157MB/s][A
+Downloading AF2 weights:  27%|██▋       | 957M/3.47G [00:08<00:17, 152MB/s][A
+Downloading AF2 weights:  27%|██▋       | 972M/3.47G [00:08<00:26, 101MB/s][A
+Downloading AF2 weights:  28%|██▊       | 988M/3.47G [00:08<00:23, 116MB/s][A
+Downloading AF2 weights:  28%|██▊       | 0.98G/3.47G [00:08<00:23, 115MB/s][A
+Downloading AF2 weights:  29%|██▉       | 1.00G/3.47G [00:08<00:20, 131MB/s][A
+Downloading AF2 weights:  29%|██▉       | 1.01G/3.47G [00:08<00:19, 133MB/s][A
+Downloading AF2 weights:  30%|██▉       | 1.02G/3.47G [00:08<00:19, 134MB/s][A
+Downloading AF2 weights:  30%|██▉       | 1.04G/3.47G [00:09<00:28, 91.0MB/s][A
+Downloading AF2 weights:  31%|███       | 1.06G/3.47G [00:09<00:20, 126MB/s] [A
+Downloading AF2 weights:  31%|███       | 1.08G/3.47G [00:09<00:20, 122MB/s][A
+Downloading AF2 weights:  32%|███▏      | 1.09G/3.47G [00:09<00:19, 130MB/s][A
+Downloading AF2 weights:  32%|███▏      | 1.11G/3.47G [00:09<00:18, 139MB/s][A
+Downloading AF2 weights:  32%|███▏      | 1.12G/3.47G [00:09<00:17, 145MB/s][A
+Downloading AF2 weights:  33%|███▎      | 1.14G/3.47G [00:09<00:16, 152MB/s][A
+Downloading AF2 weights:  33%|███▎      | 1.16G/3.47G [00:10<00:17, 144MB/s][A
+Downloading AF2 weights:  34%|███▍      | 1.17G/3.47G [00:10<00:16, 152MB/s][A
+Downloading AF2 weights:  34%|███▍      | 1.19G/3.47G [00:10<00:16, 146MB/s][A
+Downloading AF2 weights:  35%|███▍      | 1.20G/3.47G [00:10<00:17, 140MB/s][A
+Downloading AF2 weights:  35%|███▌      | 1.21G/3.47G [00:10<00:17, 135MB/s][A
+Downloading AF2 weights:  35%|███▌      | 1.23G/3.47G [00:10<00:23, 101MB/s][A
+Downloading AF2 weights:  36%|███▌      | 1.24G/3.47G [00:10<00:21, 111MB/s][A
+Downloading AF2 weights:  36%|███▌      | 1.25G/3.47G [00:10<00:20, 114MB/s][A
+Downloading AF2 weights:  37%|███▋      | 1.27G/3.47G [00:11<00:18, 130MB/s][A
+Downloading AF2 weights:  37%|███▋      | 1.28G/3.47G [00:11<00:17, 134MB/s][A
+Downloading AF2 weights:  37%|███▋      | 1.30G/3.47G [00:11<00:18, 127MB/s][A
+Downloading AF2 weights:  38%|███▊      | 1.31G/3.47G [00:11<00:16, 140MB/s][A
+Downloading AF2 weights:  38%|███▊      | 1.33G/3.47G [00:11<00:16, 138MB/s][A
+Downloading AF2 weights:  39%|███▊      | 1.34G/3.47G [00:11<00:15, 149MB/s][A
+Downloading AF2 weights:  39%|███▉      | 1.36G/3.47G [00:11<00:14, 156MB/s][A
+Downloading AF2 weights:  40%|███▉      | 1.37G/3.47G [00:11<00:14, 156MB/s][A
+Downloading AF2 weights:  40%|████      | 1.39G/3.47G [00:12<00:22, 97.9MB/s][A
+Downloading AF2 weights:  41%|████      | 1.42G/3.47G [00:12<00:15, 139MB/s] [A
+Downloading AF2 weights:  41%|████▏     | 1.43G/3.47G [00:12<00:16, 131MB/s][A
+Downloading AF2 weights:  42%|████▏     | 1.45G/3.47G [00:12<00:15, 136MB/s][A
+Downloading AF2 weights:  42%|████▏     | 1.46G/3.47G [00:12<00:16, 130MB/s][A
+Downloading AF2 weights:  43%|████▎     | 1.48G/3.47G [00:12<00:18, 118MB/s][A
+Downloading AF2 weights:  43%|████▎     | 1.49G/3.47G [00:12<00:18, 114MB/s][A
+Downloading AF2 weights:  43%|████▎     | 1.50G/3.47G [00:12<00:18, 116MB/s][A
+Downloading AF2 weights:  44%|████▎     | 1.51G/3.47G [00:13<00:20, 101MB/s][A
+Downloading AF2 weights:  44%|████▍     | 1.53G/3.47G [00:13<00:17, 116MB/s][A
+Downloading AF2 weights:  44%|████▍     | 1.54G/3.47G [00:13<00:16, 128MB/s][A
+Downloading AF2 weights:  45%|████▍     | 1.55G/3.47G [00:13<00:17, 117MB/s][A
+Downloading AF2 weights:  45%|████▌     | 1.57G/3.47G [00:13<00:15, 133MB/s][A
+Downloading AF2 weights:  46%|████▌     | 1.58G/3.47G [00:13<00:15, 134MB/s][A
+Downloading AF2 weights:  46%|████▌     | 1.60G/3.47G [00:13<00:15, 130MB/s][A
+Downloading AF2 weights:  46%|████▋     | 1.61G/3.47G [00:13<00:16, 122MB/s][A
+Downloading AF2 weights:  47%|████▋     | 1.63G/3.47G [00:13<00:14, 139MB/s][A
+Downloading AF2 weights:  47%|████▋     | 1.64G/3.47G [00:14<00:16, 119MB/s][A
+Downloading AF2 weights:  48%|████▊     | 1.66G/3.47G [00:14<00:14, 133MB/s][A
+Downloading AF2 weights:  48%|████▊     | 1.67G/3.47G [00:14<00:13, 147MB/s][A
+Downloading AF2 weights:  49%|████▊     | 1.69G/3.47G [00:14<00:12, 151MB/s][A
+Downloading AF2 weights:  49%|████▉     | 1.71G/3.47G [00:14<00:11, 161MB/s][A
+Downloading AF2 weights:  50%|████▉     | 1.72G/3.47G [00:14<00:11, 166MB/s][A
+Downloading AF2 weights:  50%|█████     | 1.74G/3.47G [00:14<00:14, 128MB/s][A
+Downloading AF2 weights:  51%|█████     | 1.76G/3.47G [00:14<00:11, 160MB/s][A
+Downloading AF2 weights:  51%|█████▏    | 1.78G/3.47G [00:15<00:11, 153MB/s][A
+Downloading AF2 weights:  52%|█████▏    | 1.79G/3.47G [00:15<00:11, 155MB/s][A
+Downloading AF2 weights:  52%|█████▏    | 1.81G/3.47G [00:15<00:10, 163MB/s][A
+Downloading AF2 weights:  53%|█████▎    | 1.83G/3.47G [00:15<00:11, 157MB/s][A
+Downloading AF2 weights:  53%|█████▎    | 1.84G/3.47G [00:15<00:10, 163MB/s][A
+Downloading AF2 weights:  54%|█████▎    | 1.86G/3.47G [00:15<00:11, 147MB/s][A
+Downloading AF2 weights:  54%|█████▍    | 1.88G/3.47G [00:15<00:10, 158MB/s][A
+Downloading AF2 weights:  55%|█████▍    | 1.90G/3.47G [00:15<00:09, 169MB/s][A
+Downloading AF2 weights:  55%|█████▌    | 1.91G/3.47G [00:15<00:10, 158MB/s][A
+Downloading AF2 weights:  56%|█████▌    | 1.93G/3.47G [00:16<00:10, 164MB/s][A
+Downloading AF2 weights:  56%|█████▌    | 1.94G/3.47G [00:16<00:10, 163MB/s][A
+Downloading AF2 weights:  57%|█████▋    | 1.96G/3.47G [00:16<00:09, 171MB/s][A
+Downloading AF2 weights:  57%|█████▋    | 1.98G/3.47G [00:16<00:10, 154MB/s][A
+Downloading AF2 weights:  57%|█████▋    | 1.99G/3.47G [00:16<00:10, 156MB/s][A
+Downloading AF2 weights:  58%|█████▊    | 2.01G/3.47G [00:16<00:12, 123MB/s][A
+Downloading AF2 weights:  58%|█████▊    | 2.02G/3.47G [00:16<00:11, 133MB/s][A
+Downloading AF2 weights:  59%|█████▉    | 2.04G/3.47G [00:16<00:10, 140MB/s][A
+Downloading AF2 weights:  59%|█████▉    | 2.06G/3.47G [00:17<00:09, 152MB/s][A
+Downloading AF2 weights:  60%|█████▉    | 2.07G/3.47G [00:17<00:10, 143MB/s][A
+Downloading AF2 weights:  60%|██████    | 2.08G/3.47G [00:17<00:13, 107MB/s][A
+Downloading AF2 weights:  61%|██████    | 2.11G/3.47G [00:17<00:10, 141MB/s][A
+Downloading AF2 weights:  61%|██████▏   | 2.13G/3.47G [00:17<00:09, 151MB/s][A
+Downloading AF2 weights:  62%|██████▏   | 2.14G/3.47G [00:17<00:08, 160MB/s][A
+Downloading AF2 weights:  62%|██████▏   | 2.16G/3.47G [00:17<00:09, 149MB/s][A
+Downloading AF2 weights:  63%|██████▎   | 2.18G/3.47G [00:17<00:08, 159MB/s][A
+Downloading AF2 weights:  63%|██████▎   | 2.19G/3.47G [00:18<00:08, 166MB/s][A
+Downloading AF2 weights:  64%|██████▍   | 2.21G/3.47G [00:18<00:08, 153MB/s][A
+Downloading AF2 weights:  64%|██████▍   | 2.23G/3.47G [00:18<00:08, 156MB/s][A
+Downloading AF2 weights:  65%|██████▍   | 2.24G/3.47G [00:18<00:08, 154MB/s][A
+Downloading AF2 weights:  65%|██████▌   | 2.26G/3.47G [00:18<00:08, 155MB/s][A
+Downloading AF2 weights:  65%|██████▌   | 2.27G/3.47G [00:18<00:08, 151MB/s][A
+Downloading AF2 weights:  66%|██████▌   | 2.29G/3.47G [00:18<00:08, 154MB/s][A
+Downloading AF2 weights:  66%|██████▋   | 2.30G/3.47G [00:18<00:08, 154MB/s][A
+Downloading AF2 weights:  67%|██████▋   | 2.32G/3.47G [00:18<00:07, 160MB/s][A
+Downloading AF2 weights:  67%|██████▋   | 2.33G/3.47G [00:19<00:07, 154MB/s][A
+Downloading AF2 weights:  68%|██████▊   | 2.35G/3.47G [00:19<00:07, 160MB/s][A
+Downloading AF2 weights:  68%|██████▊   | 2.36G/3.47G [00:19<00:07, 160MB/s][A
+Downloading AF2 weights:  69%|██████▊   | 2.38G/3.47G [00:19<00:07, 163MB/s][A
+Downloading AF2 weights:  69%|██████▉   | 2.39G/3.47G [00:19<00:07, 160MB/s][A
+Downloading AF2 weights:  70%|██████▉   | 2.41G/3.47G [00:19<00:06, 166MB/s][A
+Downloading AF2 weights:  70%|██████▉   | 2.43G/3.47G [00:19<00:11, 101MB/s][A
+Downloading AF2 weights:  71%|███████   | 2.45G/3.47G [00:19<00:07, 141MB/s][A
+Downloading AF2 weights:  71%|███████▏  | 2.47G/3.47G [00:20<00:07, 149MB/s][A
+Downloading AF2 weights:  72%|███████▏  | 2.49G/3.47G [00:20<00:07, 145MB/s][A
+Downloading AF2 weights:  72%|███████▏  | 2.50G/3.47G [00:20<00:06, 155MB/s][A
+Downloading AF2 weights:  73%|███████▎  | 2.52G/3.47G [00:20<00:07, 143MB/s][A
+Downloading AF2 weights:  73%|███████▎  | 2.54G/3.47G [00:20<00:06, 154MB/s][A
+Downloading AF2 weights:  74%|███████▎  | 2.55G/3.47G [00:20<00:06, 149MB/s][A
+Downloading AF2 weights:  74%|███████▍  | 2.57G/3.47G [00:20<00:06, 149MB/s][A
+Downloading AF2 weights:  74%|███████▍  | 2.58G/3.47G [00:20<00:06, 146MB/s][A
+Downloading AF2 weights:  75%|███████▍  | 2.60G/3.47G [00:20<00:06, 154MB/s][A
+Downloading AF2 weights:  75%|███████▌  | 2.62G/3.47G [00:21<00:06, 148MB/s][A
+Downloading AF2 weights:  76%|███████▌  | 2.63G/3.47G [00:21<00:05, 153MB/s][A
+Downloading AF2 weights:  76%|███████▋  | 2.65G/3.47G [00:21<00:05, 162MB/s][A
+Downloading AF2 weights:  77%|███████▋  | 2.66G/3.47G [00:21<00:05, 164MB/s][A
+Downloading AF2 weights:  77%|███████▋  | 2.68G/3.47G [00:21<00:05, 153MB/s][A
+Downloading AF2 weights:  78%|███████▊  | 2.70G/3.47G [00:21<00:05, 157MB/s][A
+Downloading AF2 weights:  78%|███████▊  | 2.71G/3.47G [00:21<00:05, 158MB/s][A
+Downloading AF2 weights:  79%|███████▊  | 2.73G/3.47G [00:21<00:05, 149MB/s][A
+Downloading AF2 weights:  79%|███████▉  | 2.74G/3.47G [00:21<00:05, 154MB/s][A
+Downloading AF2 weights:  79%|███████▉  | 2.76G/3.47G [00:22<00:04, 158MB/s][A
+Downloading AF2 weights:  80%|███████▉  | 2.77G/3.47G [00:22<00:05, 147MB/s][A
+Downloading AF2 weights:  80%|████████  | 2.79G/3.47G [00:22<00:05, 136MB/s][A
+Downloading AF2 weights:  81%|████████  | 2.80G/3.47G [00:22<00:04, 144MB/s][A
+Downloading AF2 weights:  81%|████████  | 2.81G/3.47G [00:22<00:05, 139MB/s][A
+Downloading AF2 weights:  82%|████████▏ | 2.83G/3.47G [00:22<00:04, 138MB/s][A
+Downloading AF2 weights:  82%|████████▏ | 2.84G/3.47G [00:22<00:04, 137MB/s][A
+Downloading AF2 weights:  82%|████████▏ | 2.86G/3.47G [00:22<00:04, 149MB/s][A
+Downloading AF2 weights:  83%|████████▎ | 2.87G/3.47G [00:22<00:04, 155MB/s][A
+Downloading AF2 weights:  83%|████████▎ | 2.89G/3.47G [00:23<00:04, 154MB/s][A
+Downloading AF2 weights:  84%|████████▎ | 2.90G/3.47G [00:23<00:03, 155MB/s][A
+Downloading AF2 weights:  84%|████████▍ | 2.92G/3.47G [00:23<00:03, 152MB/s][A
+Downloading AF2 weights:  85%|████████▍ | 2.93G/3.47G [00:23<00:04, 141MB/s][A
+Downloading AF2 weights:  85%|████████▍ | 2.94G/3.47G [00:23<00:04, 124MB/s][A
+Downloading AF2 weights:  85%|████████▌ | 2.96G/3.47G [00:23<00:04, 121MB/s][A
+Downloading AF2 weights:  86%|████████▌ | 2.97G/3.47G [00:23<00:03, 137MB/s][A
+Downloading AF2 weights:  86%|████████▌ | 2.99G/3.47G [00:23<00:03, 133MB/s][A
+Downloading AF2 weights:  87%|████████▋ | 3.00G/3.47G [00:23<00:03, 135MB/s][A
+Downloading AF2 weights:  87%|████████▋ | 3.01G/3.47G [00:24<00:03, 123MB/s][A
+Downloading AF2 weights:  87%|████████▋ | 3.03G/3.47G [00:24<00:03, 128MB/s][A
+Downloading AF2 weights:  88%|████████▊ | 3.04G/3.47G [00:24<00:03, 141MB/s][A
+Downloading AF2 weights:  88%|████████▊ | 3.06G/3.47G [00:24<00:03, 143MB/s][A
+Downloading AF2 weights:  89%|████████▊ | 3.07G/3.47G [00:24<00:03, 121MB/s][A
+Downloading AF2 weights:  89%|████████▉ | 3.09G/3.47G [00:24<00:03, 128MB/s][A
+Downloading AF2 weights:  90%|████████▉ | 3.10G/3.47G [00:24<00:02, 142MB/s][A
+Downloading AF2 weights:  90%|████████▉ | 3.12G/3.47G [00:24<00:03, 125MB/s][A
+Downloading AF2 weights:  90%|█████████ | 3.13G/3.47G [00:25<00:03, 113MB/s][A
+Downloading AF2 weights:  91%|█████████ | 3.15G/3.47G [00:25<00:02, 137MB/s][A
+Downloading AF2 weights:  91%|█████████▏| 3.17G/3.47G [00:25<00:02, 150MB/s][A
+Downloading AF2 weights:  92%|█████████▏| 3.18G/3.47G [00:25<00:02, 147MB/s][A
+Downloading AF2 weights:  92%|█████████▏| 3.20G/3.47G [00:25<00:01, 155MB/s][A
+Downloading AF2 weights:  93%|█████████▎| 3.21G/3.47G [00:25<00:01, 156MB/s][A
+Downloading AF2 weights:  93%|█████████▎| 3.23G/3.47G [00:25<00:01, 155MB/s][A
+Downloading AF2 weights:  94%|█████████▎| 3.24G/3.47G [00:25<00:01, 159MB/s][A
+Downloading AF2 weights:  94%|█████████▍| 3.26G/3.47G [00:25<00:01, 162MB/s][A
+Downloading AF2 weights:  94%|█████████▍| 3.28G/3.47G [00:25<00:01, 164MB/s][A
+Downloading AF2 weights:  95%|█████████▍| 3.29G/3.47G [00:26<00:01, 161MB/s][A
+Downloading AF2 weights:  95%|█████████▌| 3.31G/3.47G [00:26<00:01, 166MB/s][A
+Downloading AF2 weights:  96%|█████████▌| 3.33G/3.47G [00:26<00:00, 173MB/s][A
+Downloading AF2 weights:  96%|█████████▋| 3.34G/3.47G [00:26<00:00, 159MB/s][A
+Downloading AF2 weights:  97%|█████████▋| 3.36G/3.47G [00:26<00:00, 163MB/s][A
+Downloading AF2 weights:  97%|█████████▋| 3.37G/3.47G [00:26<00:00, 158MB/s][A
+Downloading AF2 weights:  98%|█████████▊| 3.39G/3.47G [00:26<00:00, 165MB/s][A
+Downloading AF2 weights:  98%|█████████▊| 3.41G/3.47G [00:26<00:00, 159MB/s][A
+Downloading AF2 weights:  99%|█████████▊| 3.42G/3.47G [00:26<00:00, 159MB/s][A
+Downloading AF2 weights:  99%|█████████▉| 3.44G/3.47G [00:27<00:00, 158MB/s][A
+Downloading AF2 weights: 100%|█████████▉| 3.46G/3.47G [00:27<00:00, 160MB/s][ADownloading AF2 weights: 100%|██████████| 3.47G/3.47G [00:27<00:00, 136MB/s]
+2026-04-15 21:13:32.467944: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:388] MLIR V1 optimization pass is not enabled
+
+Denoising:   0% 0/49 [00:00<?, ?it/s][A
+Denoising:   2% 1/49 [00:00<00:29,  1.65it/s][A
+Denoising:   6% 3/49 [00:00<00:10,  4.44it/s][A
+Denoising:  10% 5/49 [00:00<00:06,  6.39it/s][A
+Denoising:  14% 7/49 [00:01<00:05,  7.75it/s][A
+Denoising:  18% 9/49 [00:01<00:04,  8.71it/s][A
+Denoising:  22% 11/49 [00:01<00:04,  9.37it/s][A
+Denoising:  27% 13/49 [00:01<00:03,  9.84it/s][A
+Denoising:  31% 15/49 [00:01<00:03, 10.16it/s][A
+Denoising:  35% 17/49 [00:02<00:03, 10.39it/s][A
+Denoising:  39% 19/49 [00:02<00:02, 10.55it/s][A
+Denoising:  43% 21/49 [00:02<00:02, 10.66it/s][A
+Denoising:  47% 23/49 [00:02<00:02, 10.73it/s][A
+Denoising:  51% 25/49 [00:02<00:02, 10.78it/s][A
+Denoising:  55% 27/49 [00:02<00:02, 10.82it/s][A
+Denoising:  59% 29/49 [00:03<00:01, 10.85it/s][A
+Denoising:  63% 31/49 [00:03<00:01, 10.87it/s][A
+Denoising:  67% 33/49 [00:03<00:01, 10.88it/s][A
+Denoising:  71% 35/49 [00:03<00:01, 10.89it/s][A
+Denoising:  76% 37/49 [00:03<00:01, 10.90it/s][A
+Denoising:  80% 39/49 [00:04<00:00, 10.90it/s][A
+Denoising:  84% 41/49 [00:04<00:00, 10.91it/s][A
+Denoising:  88% 43/49 [00:04<00:00, 10.90it/s][A
+Denoising:  92% 45/49 [00:04<00:00, 10.91it/s][A
+Denoising:  96% 47/49 [00:04<00:00, 10.91it/s][A
+Denoising: 100% 49/49 [00:05<00:00, 10.91it/s][A
+                                              [ASampling batches...:  25%|██▌       | 1/4 [04:14<12:43, 254.62s/it]
+Denoising:   0% 0/49 [00:00<?, ?it/s][A
+Denoising:   4% 2/49 [00:00<00:04, 10.93it/s][A
+Denoising:   8% 4/49 [00:00<00:04, 10.91it/s][A
+Denoising:  12% 6/49 [00:00<00:03, 10.90it/s][A
+Denoising:  16% 8/49 [00:00<00:03, 10.90it/s][A
+Denoising:  20% 10/49 [00:00<00:03, 10.89it/s][A
+Denoising:  24% 12/49 [00:01<00:03, 10.89it/s][A
+Denoising:  29% 14/49 [00:01<00:03, 10.89it/s][A
+Denoising:  33% 16/49 [00:01<00:03, 10.89it/s][A
+Denoising:  37% 18/49 [00:01<00:02, 10.89it/s][A
+Denoising:  41% 20/49 [00:01<00:02, 10.89it/s][A
+Denoising:  45% 22/49 [00:02<00:02, 10.89it/s][A
+Denoising:  49% 24/49 [00:02<00:02, 10.89it/s][A
+Denoising:  53% 26/49 [00:02<00:02, 10.88it/s][A
+Denoising:  57% 28/49 [00:02<00:01, 10.88it/s][A
+Denoising:  61% 30/49 [00:02<00:01, 10.88it/s][A
+Denoising:  65% 32/49 [00:02<00:01, 10.88it/s][A
+Denoising:  69% 34/49 [00:03<00:01, 10.88it/s][A
+Denoising:  73% 36/49 [00:03<00:01, 10.88it/s][A
+Denoising:  78% 38/49 [00:03<00:01, 10.88it/s][A
+Denoising:  82% 40/49 [00:03<00:00, 10.88it/s][A
+Denoising:  86% 42/49 [00:03<00:00, 10.88it/s][A
+Denoising:  90% 44/49 [00:04<00:00, 10.88it/s][A
+Denoising:  94% 46/49 [00:04<00:00, 10.88it/s][A
+Denoising:  98% 48/49 [00:04<00:00, 10.88it/s][A
+                                              [ASampling batches...:  50%|█████     | 2/4 [04:19<03:35, 107.51s/it]
+Denoising:   0% 0/49 [00:00<?, ?it/s][A
+Denoising:   4% 2/49 [00:00<00:04, 10.91it/s][A
+Denoising:   8% 4/49 [00:00<00:04, 10.89it/s][A
+Denoising:  12% 6/49 [00:00<00:03, 10.88it/s][A
+Denoising:  16% 8/49 [00:00<00:03, 10.87it/s][A
+Denoising:  20% 10/49 [00:00<00:03, 10.87it/s][A
+Denoising:  24% 12/49 [00:01<00:03, 10.87it/s][A
+Denoising:  29% 14/49 [00:01<00:03, 10.87it/s][A
+Denoising:  33% 16/49 [00:01<00:03, 10.87it/s][A
+Denoising:  37% 18/49 [00:01<00:02, 10.87it/s][A
+Denoising:  41% 20/49 [00:01<00:02, 10.87it/s][A
+Denoising:  45% 22/49 [00:02<00:02, 10.87it/s][A
+Denoising:  49% 24/49 [00:02<00:02, 10.86it/s][A
+Denoising:  53% 26/49 [00:02<00:02, 10.87it/s][A
+Denoising:  57% 28/49 [00:02<00:01, 10.86it/s][A
+Denoising:  61% 30/49 [00:02<00:01, 10.86it/s][A
+Denoising:  65% 32/49 [00:02<00:01, 10.86it/s][A
+Denoising:  69% 34/49 [00:03<00:01, 10.86it/s][A
+Denoising:  73% 36/49 [00:03<00:01, 10.86it/s][A
+Denoising:  78% 38/49 [00:03<00:01, 10.86it/s][A
+Denoising:  82% 40/49 [00:03<00:00, 10.86it/s][A
+Denoising:  86% 42/49 [00:03<00:00, 10.86it/s][A
+Denoising:  90% 44/49 [00:04<00:00, 10.86it/s][A
+Denoising:  94% 46/49 [00:04<00:00, 10.86it/s][A
+Denoising:  98% 48/49 [00:04<00:00, 10.86it/s][A
+                                              [ASampling batches...:  75%|███████▌  | 3/4 [04:23<01:00, 60.49s/it] 
+Denoising:   0% 0/49 [00:00<?, ?it/s][A
+Denoising:   8% 4/49 [00:00<00:01, 30.16it/s][A
+Denoising:  16% 8/49 [00:00<00:01, 30.19it/s][A
+Denoising:  24% 12/49 [00:00<00:01, 30.20it/s][A
+Denoising:  33% 16/49 [00:00<00:01, 30.20it/s][A
+Denoising:  41% 20/49 [00:00<00:00, 30.21it/s][A
+Denoising:  49% 24/49 [00:00<00:00, 30.18it/s][A
+Denoising:  57% 28/49 [00:00<00:00, 30.18it/s][A
+Denoising:  65% 32/49 [00:01<00:00, 30.18it/s][A
+Denoising:  73% 36/49 [00:01<00:00, 30.17it/s][A
+Denoising:  82% 40/49 [00:01<00:00, 30.18it/s][A
+Denoising:  90% 44/49 [00:01<00:00, 30.18it/s][A
+Denoising:  98% 48/49 [00:01<00:00, 30.18it/s][A
+                                              [ASampling batches...: 100%|██████████| 4/4 [04:25<00:00, 37.25s/it]Sampling batches...: 100%|██████████| 4/4 [04:25<00:00, 66.33s/it]
+Sampling batches...:   0%|          | 0/17 [00:00<?, ?it/s]
+  0%|          | 0/150 [elapsed: 00:00 remaining: ?][A
+SUBMIT:   0%|          | 0/150 [elapsed: 00:00 remaining: ?][A
+COMPLETE:   0%|          | 0/150 [elapsed: 00:00 remaining: ?][A
+COMPLETE: 100%|██████████| 150/150 [elapsed: 00:00 remaining: 00:00][ACOMPLETE: 100%|██████████| 150/150 [elapsed: 00:02 remaining: 00:00]
+
+Denoising:   0% 0/49 [00:00<?, ?it/s][A
+Denoising:   4% 2/49 [00:00<00:03, 12.65it/s][A
+Denoising:   8% 4/49 [00:00<00:03, 12.68it/s][A
+Denoising:  12% 6/49 [00:00<00:03, 12.71it/s][A
+Denoising:  16% 8/49 [00:00<00:03, 12.72it/s][A
+Denoising:  20% 10/49 [00:00<00:03, 12.73it/s][A
+Denoising:  24% 12/49 [00:00<00:02, 12.74it/s][A
+Denoising:  29% 14/49 [00:01<00:02, 12.74it/s][A
+Denoising:  33% 16/49 [00:01<00:02, 12.74it/s][A
+Denoising:  37% 18/49 [00:01<00:02, 12.73it/s][A
+Denoising:  41% 20/49 [00:01<00:02, 12.73it/s][A
+Denoising:  45% 22/49 [00:01<00:02, 12.73it/s][A
+Denoising:  49% 24/49 [00:01<00:01, 12.73it/s][A
+Denoising:  53% 26/49 [00:02<00:01, 12.73it/s][A
+Denoising:  57% 28/49 [00:02<00:01, 12.74it/s][A
+Denoising:  61% 30/49 [00:02<00:01, 12.74it/s][A
+Denoising:  65% 32/49 [00:02<00:01, 12.73it/s][A
+Denoising:  69% 34/49 [00:02<00:01, 12.73it/s][A
+Denoising:  73% 36/49 [00:02<00:01, 12.73it/s][A
+Denoising:  78% 38/49 [00:02<00:00, 12.73it/s][A
+Denoising:  82% 40/49 [00:03<00:00, 12.73it/s][A
+Denoising:  86% 42/49 [00:03<00:00, 12.73it/s][A
+Denoising:  90% 44/49 [00:03<00:00, 12.73it/s][A
+Denoising:  94% 46/49 [00:03<00:00, 12.73it/s][A
+Denoising:  98% 48/49 [00:03<00:00, 12.73it/s][A
+                                              [ASampling batches...:   6%|▌         | 1/17 [08:27<2:15:24, 507.80s/it]
+Denoising:   0% 0/49 [00:00<?, ?it/s][A
+Denoising:   4% 2/49 [00:00<00:03, 12.74it/s][A
+Denoising:   8% 4/49 [00:00<00:03, 12.75it/s][A
+Denoising:  12% 6/49 [00:00<00:03, 12.74it/s][A
+Denoising:  16% 8/49 [00:00<00:03, 12.73it/s][A
+Denoising:  20% 10/49 [00:00<00:03, 12.72it/s][A
+Denoising:  24% 12/49 [00:00<00:02, 12.72it/s][A
+Denoising:  29% 14/49 [00:01<00:02, 12.72it/s][A
+Denoising:  33% 16/49 [00:01<00:02, 12.72it/s][A
+Denoising:  37% 18/49 [00:01<00:02, 12.72it/s][A
+Denoising:  41% 20/49 [00:01<00:02, 12.72it/s][A
+Denoising:  45% 22/49 [00:01<00:02, 12.72it/s][A
+Denoising:  49% 24/49 [00:01<00:01, 12.72it/s][A
+Denoising:  53% 26/49 [00:02<00:01, 12.72it/s][A
+Denoising:  57% 28/49 [00:02<00:01, 12.71it/s][A
+Denoising:  61% 30/49 [00:02<00:01, 12.71it/s][A
+Denoising:  65% 32/49 [00:02<00:01, 12.71it/s][A
+Denoising:  69% 34/49 [00:02<00:01, 12.72it/s][A
+Denoising:  73% 36/49 [00:02<00:01, 12.71it/s][A
+Denoising:  78% 38/49 [00:02<00:00, 12.71it/s][A
+Denoising:  82% 40/49 [00:03<00:00, 12.71it/s][A
+Denoising:  86% 42/49 [00:03<00:00, 12.71it/s][A
+Denoising:  90% 44/49 [00:03<00:00, 12.70it/s][A
+Denoising:  94% 46/49 [00:03<00:00, 12.71it/s][A
+Denoising:  98% 48/49 [00:03<00:00, 12.71it/s][A
+                                              [ASampling batches...:  12%|█▏        | 2/17 [08:31<52:50, 211.37s/it]  
+Denoising:   0% 0/49 [00:00<?, ?it/s][A
+Denoising:   4% 2/49 [00:00<00:03, 12.74it/s][A
+Denoising:   8% 4/49 [00:00<00:03, 12.71it/s][A
+Denoising:  12% 6/49 [00:00<00:03, 12.71it/s][A
+Denoising:  16% 8/49 [00:00<00:03, 12.71it/s][A
+Denoising:  20% 10/49 [00:00<00:03, 12.71it/s][A
+Denoising:  24% 12/49 [00:00<00:02, 12.70it/s][A
+Denoising:  29% 14/49 [00:01<00:02, 12.71it/s][A
+Denoising:  33% 16/49 [00:01<00:02, 12.71it/s][A
+Denoising:  37% 18/49 [00:01<00:02, 12.70it/s][A
+Denoising:  41% 20/49 [00:01<00:02, 12.70it/s][A
+Denoising:  45% 22/49 [00:01<00:02, 12.70it/s][A
+Denoising:  49% 24/49 [00:01<00:01, 12.70it/s][A
+Denoising:  53% 26/49 [00:02<00:01, 12.71it/s][A
+Denoising:  57% 28/49 [00:02<00:01, 12.70it/s][A
+Denoising:  61% 30/49 [00:02<00:01, 12.70it/s][A
+Denoising:  65% 32/49 [00:02<00:01, 12.70it/s][A
+Denoising:  69% 34/49 [00:02<00:01, 12.70it/s][A
+Denoising:  73% 36/49 [00:02<00:01, 12.69it/s][A
+Denoising:  78% 38/49 [00:02<00:00, 12.69it/s][A
+Denoising:  82% 40/49 [00:03<00:00, 12.69it/s][A
+Denoising:  86% 42/49 [00:03<00:00, 12.70it/s][A
+Denoising:  90% 44/49 [00:03<00:00, 12.69it/s][A
+Denoising:  94% 46/49 [00:03<00:00, 12.69it/s][A
+Denoising:  98% 48/49 [00:03<00:00, 12.69it/s][A
+                                              [ASampling batches...:  18%|█▊        | 3/17 [08:35<27:12, 116.62s/it]
+Denoising:   0% 0/49 [00:00<?, ?it/s][A
+Denoising:   4% 2/49 [00:00<00:03, 12.72it/s][A
+Denoising:   8% 4/49 [00:00<00:03, 12.70it/s][A
+Denoising:  12% 6/49 [00:00<00:03, 12.69it/s][A
+Denoising:  16% 8/49 [00:00<00:03, 12.70it/s][A
+Denoising:  20% 10/49 [00:00<00:03, 12.69it/s][A
+Denoising:  24% 12/49 [00:00<00:02, 12.69it/s][A
+Denoising:  29% 14/49 [00:01<00:02, 12.69it/s][A
+Denoising:  33% 16/49 [00:01<00:02, 12.69it/s][A
+Denoising:  37% 18/49 [00:01<00:02, 12.68it/s][A
+Denoising:  41% 20/49 [00:01<00:02, 12.68it/s][A
+Denoising:  45% 22/49 [00:01<00:02, 12.68it/s][A
+Denoising:  49% 24/49 [00:01<00:01, 12.68it/s][A
+Denoising:  53% 26/49 [00:02<00:01, 12.69it/s][A
+Denoising:  57% 28/49 [00:02<00:01, 12.69it/s][A
+Denoising:  61% 30/49 [00:02<00:01, 12.69it/s][A
+Denoising:  65% 32/49 [00:02<00:01, 12.68it/s][A
+Denoising:  69% 34/49 [00:02<00:01, 12.68it/s][A
+Denoising:  73% 36/49 [00:02<00:01, 12.68it/s][A
+Denoising:  78% 38/49 [00:02<00:00, 12.68it/s][A
+Denoising:  82% 40/49 [00:03<00:00, 12.67it/s][A
+Denoising:  86% 42/49 [00:03<00:00, 12.68it/s][A
+Denoising:  90% 44/49 [00:03<00:00, 12.68it/s][A
+Denoising:  94% 46/49 [00:03<00:00, 12.68it/s][A
+Denoising:  98% 48/49 [00:03<00:00, 12.68it/s][A
+                                              [ASampling batches...:  24%|██▎       | 4/17 [08:39<15:37, 72.11s/it] 
+Denoising:   0% 0/49 [00:00<?, ?it/s][A
+Denoising:   4% 2/49 [00:00<00:03, 12.71it/s][A
+Denoising:   8% 4/49 [00:00<00:03, 12.67it/s][A
+Denoising:  12% 6/49 [00:00<00:03, 12.67it/s][A
+Denoising:  16% 8/49 [00:00<00:03, 12.66it/s][A
+Denoising:  20% 10/49 [00:00<00:03, 12.66it/s][A
+Denoising:  24% 12/49 [00:00<00:02, 12.67it/s][A
+Denoising:  29% 14/49 [00:01<00:02, 12.67it/s][A
+Denoising:  33% 16/49 [00:01<00:02, 12.66it/s][A
+Denoising:  37% 18/49 [00:01<00:02, 12.67it/s][A
+Denoising:  41% 20/49 [00:01<00:02, 12.66it/s][A
+Denoising:  45% 22/49 [00:01<00:02, 12.66it/s][A
+Denoising:  49% 24/49 [00:01<00:01, 12.65it/s][A
+Denoising:  53% 26/49 [00:02<00:01, 12.65it/s][A
+Denoising:  57% 28/49 [00:02<00:01, 12.65it/s][A
+Denoising:  61% 30/49 [00:02<00:01, 12.65it/s][A
+Denoising:  65% 32/49 [00:02<00:01, 12.66it/s][A
+Denoising:  69% 34/49 [00:02<00:01, 12.66it/s][A
+Denoising:  73% 36/49 [00:02<00:01, 12.65it/s][A
+Denoising:  78% 38/49 [00:03<00:00, 12.66it/s][A
+Denoising:  82% 40/49 [00:03<00:00, 12.65it/s][A
+Denoising:  86% 42/49 [00:03<00:00, 12.65it/s][A
+Denoising:  90% 44/49 [00:03<00:00, 12.65it/s][A
+Denoising:  94% 46/49 [00:03<00:00, 12.65it/s][A
+Denoising:  98% 48/49 [00:03<00:00, 12.65it/s][A
+                                              [ASampling batches...:  29%|██▉       | 5/17 [08:43<09:30, 47.51s/it]
+Denoising:   0% 0/49 [00:00<?, ?it/s][A
+Denoising:   4% 2/49 [00:00<00:03, 12.67it/s][A
+Denoising:   8% 4/49 [00:00<00:03, 12.65it/s][A
+Denoising:  12% 6/49 [00:00<00:03, 12.65it/s][A
+Denoising:  16% 8/49 [00:00<00:03, 12.65it/s][A
+Denoising:  20% 10/49 [00:00<00:03, 12.64it/s][A
+Denoising:  24% 12/49 [00:00<00:02, 12.64it/s][A
+Denoising:  29% 14/49 [00:01<00:02, 12.64it/s][A
+Denoising:  33% 16/49 [00:01<00:02, 12.63it/s][A
+Denoising:  37% 18/49 [00:01<00:02, 12.65it/s][A
+Denoising:  41% 20/49 [00:01<00:02, 12.65it/s][A
+Denoising:  45% 22/49 [00:01<00:02, 12.64it/s][A
+Denoising:  49% 24/49 [00:01<00:01, 12.64it/s][A
+Denoising:  53% 26/49 [00:02<00:01, 12.64it/s][A
+Denoising:  57% 28/49 [00:02<00:01, 12.64it/s][A
+Denoising:  61% 30/49 [00:02<00:01, 12.64it/s][A
+Denoising:  65% 32/49 [00:02<00:01, 12.64it/s][A
+Denoising:  69% 34/49 [00:02<00:01, 12.63it/s][A
+Denoising:  73% 36/49 [00:02<00:01, 12.63it/s][A
+Denoising:  78% 38/49 [00:03<00:00, 12.63it/s][A
+Denoising:  82% 40/49 [00:03<00:00, 12.63it/s][A
+Denoising:  86% 42/49 [00:03<00:00, 12.64it/s][A
+Denoising:  90% 44/49 [00:03<00:00, 12.64it/s][A
+Denoising:  94% 46/49 [00:03<00:00, 12.64it/s][A
+Denoising:  98% 48/49 [00:03<00:00, 12.64it/s][A
+                                              [ASampling batches...:  35%|███▌      | 6/17 [08:47<05:59, 32.68s/it]
+Denoising:   0% 0/49 [00:00<?, ?it/s][A
+Denoising:   4% 2/49 [00:00<00:03, 12.68it/s][A
+Denoising:   8% 4/49 [00:00<00:03, 12.65it/s][A
+Denoising:  12% 6/49 [00:00<00:03, 12.63it/s][A
+Denoising:  16% 8/49 [00:00<00:03, 12.64it/s][A
+Denoising:  20% 10/49 [00:00<00:03, 12.64it/s][A
+Denoising:  24% 12/49 [00:00<00:02, 12.63it/s][A
+Denoising:  29% 14/49 [00:01<00:02, 12.63it/s][A
+Denoising:  33% 16/49 [00:01<00:02, 12.63it/s][A
+Denoising:  37% 18/49 [00:01<00:02, 12.63it/s][A
+Denoising:  41% 20/49 [00:01<00:02, 12.62it/s][A
+Denoising:  45% 22/49 [00:01<00:02, 12.62it/s][A
+Denoising:  49% 24/49 [00:01<00:01, 12.62it/s][A
+Denoising:  53% 26/49 [00:02<00:01, 12.61it/s][A
+Denoising:  57% 28/49 [00:02<00:01, 12.61it/s][A
+Denoising:  61% 30/49 [00:02<00:01, 12.62it/s][A
+Denoising:  65% 32/49 [00:02<00:01, 12.61it/s][A
+Denoising:  69% 34/49 [00:02<00:01, 12.61it/s][A
+Denoising:  73% 36/49 [00:02<00:01, 12.62it/s][A
+Denoising:  78% 38/49 [00:03<00:00, 12.62it/s][A
+Denoising:  82% 40/49 [00:03<00:00, 12.62it/s][A
+Denoising:  86% 42/49 [00:03<00:00, 12.61it/s][A
+Denoising:  90% 44/49 [00:03<00:00, 12.62it/s][A
+Denoising:  94% 46/49 [00:03<00:00, 12.62it/s][A
+Denoising:  98% 48/49 [00:03<00:00, 12.61it/s][A
+                                              [ASampling batches...:  41%|████      | 7/17 [08:51<03:52, 23.27s/it]
+Denoising:   0% 0/49 [00:00<?, ?it/s][A
+Denoising:   4% 2/49 [00:00<00:03, 12.65it/s][A
+Denoising:   8% 4/49 [00:00<00:03, 12.62it/s][A
+Denoising:  12% 6/49 [00:00<00:03, 12.63it/s][A
+Denoising:  16% 8/49 [00:00<00:03, 12.61it/s][A
+Denoising:  20% 10/49 [00:00<00:03, 12.60it/s][A
+Denoising:  24% 12/49 [00:00<00:02, 12.62it/s][A
+Denoising:  29% 14/49 [00:01<00:02, 12.62it/s][A
+Denoising:  33% 16/49 [00:01<00:02, 12.62it/s][A
+Denoising:  37% 18/49 [00:01<00:02, 12.62it/s][A
+Denoising:  41% 20/49 [00:01<00:02, 12.61it/s][A
+Denoising:  45% 22/49 [00:01<00:02, 12.62it/s][A
+Denoising:  49% 24/49 [00:01<00:01, 12.61it/s][A
+Denoising:  53% 26/49 [00:02<00:01, 12.61it/s][A
+Denoising:  57% 28/49 [00:02<00:01, 12.62it/s][A
+Denoising:  61% 30/49 [00:02<00:01, 12.61it/s][A
+Denoising:  65% 32/49 [00:02<00:01, 12.60it/s][A
+Denoising:  69% 34/49 [00:02<00:01, 12.61it/s][A
+Denoising:  73% 36/49 [00:02<00:01, 12.61it/s][A
+Denoising:  78% 38/49 [00:03<00:00, 12.60it/s][A
+Denoising:  82% 40/49 [00:03<00:00, 12.59it/s][A
+Denoising:  86% 42/49 [00:03<00:00, 12.60it/s][A
+Denoising:  90% 44/49 [00:03<00:00, 12.61it/s][A
+Denoising:  94% 46/49 [00:03<00:00, 12.61it/s][A
+Denoising:  98% 48/49 [00:03<00:00, 12.61it/s][A
+                                              [ASampling batches...:  47%|████▋     | 8/17 [08:55<02:33, 17.11s/it]
+Denoising:   0% 0/49 [00:00<?, ?it/s][A
+Denoising:   4% 2/49 [00:00<00:03, 12.63it/s][A
+Denoising:   8% 4/49 [00:00<00:03, 12.60it/s][A
+Denoising:  12% 6/49 [00:00<00:03, 12.59it/s][A
+Denoising:  16% 8/49 [00:00<00:03, 12.60it/s][A
+Denoising:  20% 10/49 [00:00<00:03, 12.60it/s][A
+Denoising:  24% 12/49 [00:00<00:02, 12.60it/s][A
+Denoising:  29% 14/49 [00:01<00:02, 12.60it/s][A
+Denoising:  33% 16/49 [00:01<00:02, 12.60it/s][A
+Denoising:  37% 18/49 [00:01<00:02, 12.59it/s][A
+Denoising:  41% 20/49 [00:01<00:02, 12.58it/s][A
+Denoising:  45% 22/49 [00:01<00:02, 12.58it/s][A
+Denoising:  49% 24/49 [00:01<00:01, 12.59it/s][A
+Denoising:  53% 26/49 [00:02<00:01, 12.60it/s][A
+Denoising:  57% 28/49 [00:02<00:01, 12.61it/s][A
+Denoising:  61% 30/49 [00:02<00:01, 12.60it/s][A
+Denoising:  65% 32/49 [00:02<00:01, 12.59it/s][A
+Denoising:  69% 34/49 [00:02<00:01, 12.60it/s][A
+Denoising:  73% 36/49 [00:02<00:01, 12.60it/s][A
+Denoising:  78% 38/49 [00:03<00:00, 12.59it/s][A
+Denoising:  82% 40/49 [00:03<00:00, 12.59it/s][A
+Denoising:  86% 42/49 [00:03<00:00, 12.59it/s][A
+Denoising:  90% 44/49 [00:03<00:00, 12.59it/s][A
+Denoising:  94% 46/49 [00:03<00:00, 12.59it/s][A
+Denoising:  98% 48/49 [00:03<00:00, 12.58it/s][A
+                                              [ASampling batches...:  53%|█████▎    | 9/17 [08:58<01:43, 12.98s/it]
+Denoising:   0% 0/49 [00:00<?, ?it/s][A
+Denoising:   4% 2/49 [00:00<00:03, 12.59it/s][A
+Denoising:   8% 4/49 [00:00<00:03, 12.58it/s][A
+Denoising:  12% 6/49 [00:00<00:03, 12.59it/s][A
+Denoising:  16% 8/49 [00:00<00:03, 12.60it/s][A
+Denoising:  20% 10/49 [00:00<00:03, 12.59it/s][A
+Denoising:  24% 12/49 [00:00<00:02, 12.58it/s][A
+Denoising:  29% 14/49 [00:01<00:02, 12.58it/s][A
+Denoising:  33% 16/49 [00:01<00:02, 12.59it/s][A
+Denoising:  37% 18/49 [00:01<00:02, 12.59it/s][A
+Denoising:  41% 20/49 [00:01<00:02, 12.58it/s][A
+Denoising:  45% 22/49 [00:01<00:02, 12.58it/s][A
+Denoising:  49% 24/49 [00:01<00:01, 12.58it/s][A
+Denoising:  53% 26/49 [00:02<00:01, 12.59it/s][A
+Denoising:  57% 28/49 [00:02<00:01, 12.58it/s][A
+Denoising:  61% 30/49 [00:02<00:01, 12.57it/s][A
+Denoising:  65% 32/49 [00:02<00:01, 12.56it/s][A
+Denoising:  69% 34/49 [00:02<00:01, 12.56it/s][A
+Denoising:  73% 36/49 [00:02<00:01, 12.58it/s][A
+Denoising:  78% 38/49 [00:03<00:00, 12.59it/s][A
+Denoising:  82% 40/49 [00:03<00:00, 12.59it/s][A
+Denoising:  86% 42/49 [00:03<00:00, 12.58it/s][A
+Denoising:  90% 44/49 [00:03<00:00, 12.58it/s][A
+Denoising:  94% 46/49 [00:03<00:00, 12.57it/s][A
+Denoising:  98% 48/49 [00:03<00:00, 12.57it/s][A
+                                              [ASampling batches...:  59%|█████▉    | 10/17 [09:02<01:11, 10.18s/it]
+Denoising:   0% 0/49 [00:00<?, ?it/s][A
+Denoising:   4% 2/49 [00:00<00:03, 12.60it/s][A
+Denoising:   8% 4/49 [00:00<00:03, 12.58it/s][A
+Denoising:  12% 6/49 [00:00<00:03, 12.59it/s][A
+Denoising:  16% 8/49 [00:00<00:03, 12.58it/s][A
+Denoising:  20% 10/49 [00:00<00:03, 12.57it/s][A
+Denoising:  24% 12/49 [00:00<00:02, 12.57it/s][A
+Denoising:  29% 14/49 [00:01<00:02, 12.57it/s][A
+Denoising:  33% 16/49 [00:01<00:02, 12.57it/s][A
+Denoising:  37% 18/49 [00:01<00:02, 12.58it/s][A
+Denoising:  41% 20/49 [00:01<00:02, 12.57it/s][A
+Denoising:  45% 22/49 [00:01<00:02, 12.57it/s][A
+Denoising:  49% 24/49 [00:01<00:01, 12.57it/s][A
+Denoising:  53% 26/49 [00:02<00:01, 12.57it/s][A
+Denoising:  57% 28/49 [00:02<00:01, 12.58it/s][A
+Denoising:  61% 30/49 [00:02<00:01, 12.57it/s][A
+Denoising:  65% 32/49 [00:02<00:01, 12.56it/s][A
+Denoising:  69% 34/49 [00:02<00:01, 12.56it/s][A
+Denoising:  73% 36/49 [00:02<00:01, 12.56it/s][A
+Denoising:  78% 38/49 [00:03<00:00, 12.57it/s][A
+Denoising:  82% 40/49 [00:03<00:00, 12.58it/s][A
+Denoising:  86% 42/49 [00:03<00:00, 12.58it/s][A
+Denoising:  90% 44/49 [00:03<00:00, 12.58it/s][A
+Denoising:  94% 46/49 [00:03<00:00, 12.57it/s][A
+Denoising:  98% 48/49 [00:03<00:00, 12.57it/s][A
+                                              [ASampling batches...:  65%|██████▍   | 11/17 [09:06<00:49,  8.26s/it]
+Denoising:   0% 0/49 [00:00<?, ?it/s][A
+Denoising:   4% 2/49 [00:00<00:03, 12.61it/s][A
+Denoising:   8% 4/49 [00:00<00:03, 12.59it/s][A
+Denoising:  12% 6/49 [00:00<00:03, 12.58it/s][A
+Denoising:  16% 8/49 [00:00<00:03, 12.56it/s][A
+Denoising:  20% 10/49 [00:00<00:03, 12.56it/s][A
+Denoising:  24% 12/49 [00:00<00:02, 12.56it/s][A
+Denoising:  29% 14/49 [00:01<00:02, 12.56it/s][A
+Denoising:  33% 16/49 [00:01<00:02, 12.58it/s][A
+Denoising:  37% 18/49 [00:01<00:02, 12.58it/s][A
+Denoising:  41% 20/49 [00:01<00:02, 12.58it/s][A
+Denoising:  45% 22/49 [00:01<00:02, 12.57it/s][A
+Denoising:  49% 24/49 [00:01<00:01, 12.57it/s][A
+Denoising:  53% 26/49 [00:02<00:01, 12.56it/s][A
+Denoising:  57% 28/49 [00:02<00:01, 12.56it/s][A
+Denoising:  61% 30/49 [00:02<00:01, 12.57it/s][A
+Denoising:  65% 32/49 [00:02<00:01, 12.57it/s][A
+Denoising:  69% 34/49 [00:02<00:01, 12.57it/s][A
+Denoising:  73% 36/49 [00:02<00:01, 12.56it/s][A
+Denoising:  78% 38/49 [00:03<00:00, 12.55it/s][A
+Denoising:  82% 40/49 [00:03<00:00, 12.55it/s][A
+Denoising:  86% 42/49 [00:03<00:00, 12.55it/s][A
+Denoising:  90% 44/49 [00:03<00:00, 12.56it/s][A
+Denoising:  94% 46/49 [00:03<00:00, 12.56it/s][A
+Denoising:  98% 48/49 [00:03<00:00, 12.56it/s][A
+                                              [ASampling batches...:  71%|███████   | 12/17 [09:10<00:34,  6.94s/it]
+Denoising:   0% 0/49 [00:00<?, ?it/s][A
+Denoising:   4% 2/49 [00:00<00:03, 12.59it/s][A
+Denoising:   8% 4/49 [00:00<00:03, 12.57it/s][A
+Denoising:  12% 6/49 [00:00<00:03, 12.57it/s][A
+Denoising:  16% 8/49 [00:00<00:03, 12.56it/s][A
+Denoising:  20% 10/49 [00:00<00:03, 12.55it/s][A
+Denoising:  24% 12/49 [00:00<00:02, 12.54it/s][A
+Denoising:  29% 14/49 [00:01<00:02, 12.54it/s][A
+Denoising:  33% 16/49 [00:01<00:02, 12.54it/s][A
+Denoising:  37% 18/49 [00:01<00:02, 12.53it/s][A
+Denoising:  41% 20/49 [00:01<00:02, 12.54it/s][A
+Denoising:  45% 22/49 [00:01<00:02, 12.54it/s][A
+Denoising:  49% 24/49 [00:01<00:01, 12.56it/s][A
+Denoising:  53% 26/49 [00:02<00:01, 12.57it/s][A
+Denoising:  57% 28/49 [00:02<00:01, 12.58it/s][A
+Denoising:  61% 30/49 [00:02<00:01, 12.58it/s][A
+Denoising:  65% 32/49 [00:02<00:01, 12.57it/s][A
+Denoising:  69% 34/49 [00:02<00:01, 12.57it/s][A
+Denoising:  73% 36/49 [00:02<00:01, 12.58it/s][A
+Denoising:  78% 38/49 [00:03<00:00, 12.58it/s][A
+Denoising:  82% 40/49 [00:03<00:00, 12.58it/s][A
+Denoising:  86% 42/49 [00:03<00:00, 12.57it/s][A
+Denoising:  90% 44/49 [00:03<00:00, 12.57it/s][A
+Denoising:  94% 46/49 [00:03<00:00, 12.58it/s][A
+Denoising:  98% 48/49 [00:03<00:00, 12.58it/s][A
+                                              [ASampling batches...:  76%|███████▋  | 13/17 [09:14<00:24,  6.02s/it]
+Denoising:   0% 0/49 [00:00<?, ?it/s][A
+Denoising:   4% 2/49 [00:00<00:03, 12.61it/s][A
+Denoising:   8% 4/49 [00:00<00:03, 12.60it/s][A
+Denoising:  12% 6/49 [00:00<00:03, 12.59it/s][A
+Denoising:  16% 8/49 [00:00<00:03, 12.58it/s][A
+Denoising:  20% 10/49 [00:00<00:03, 12.57it/s][A
+Denoising:  24% 12/49 [00:00<00:02, 12.57it/s][A
+Denoising:  29% 14/49 [00:01<00:02, 12.58it/s][A
+Denoising:  33% 16/49 [00:01<00:02, 12.58it/s][A
+Denoising:  37% 18/49 [00:01<00:02, 12.57it/s][A
+Denoising:  41% 20/49 [00:01<00:02, 12.57it/s][A
+Denoising:  45% 22/49 [00:01<00:02, 12.57it/s][A
+Denoising:  49% 24/49 [00:01<00:01, 12.57it/s][A
+Denoising:  53% 26/49 [00:02<00:01, 12.58it/s][A
+Denoising:  57% 28/49 [00:02<00:01, 12.57it/s][A
+Denoising:  61% 30/49 [00:02<00:01, 12.56it/s][A
+Denoising:  65% 32/49 [00:02<00:01, 12.56it/s][A
+Denoising:  69% 34/49 [00:02<00:01, 12.56it/s][A
+Denoising:  73% 36/49 [00:02<00:01, 12.57it/s][A
+Denoising:  78% 38/49 [00:03<00:00, 12.57it/s][A
+Denoising:  82% 40/49 [00:03<00:00, 12.56it/s][A
+Denoising:  86% 42/49 [00:03<00:00, 12.56it/s][A
+Denoising:  90% 44/49 [00:03<00:00, 12.55it/s][A
+Denoising:  94% 46/49 [00:03<00:00, 12.55it/s][A
+Denoising:  98% 48/49 [00:03<00:00, 12.55it/s][A
+                                              [ASampling batches...:  82%|████████▏ | 14/17 [09:18<00:16,  5.39s/it]
+Denoising:   0% 0/49 [00:00<?, ?it/s][A
+Denoising:   4% 2/49 [00:00<00:03, 12.63it/s][A
+Denoising:   8% 4/49 [00:00<00:03, 12.60it/s][A
+Denoising:  12% 6/49 [00:00<00:03, 12.59it/s][A
+Denoising:  16% 8/49 [00:00<00:03, 12.57it/s][A
+Denoising:  20% 10/49 [00:00<00:03, 12.57it/s][A
+Denoising:  24% 12/49 [00:00<00:02, 12.56it/s][A
+Denoising:  29% 14/49 [00:01<00:02, 12.56it/s][A
+Denoising:  33% 16/49 [00:01<00:02, 12.57it/s][A
+Denoising:  37% 18/49 [00:01<00:02, 12.57it/s][A
+Denoising:  41% 20/49 [00:01<00:02, 12.56it/s][A
+Denoising:  45% 22/49 [00:01<00:02, 12.56it/s][A
+Denoising:  49% 24/49 [00:01<00:01, 12.55it/s][A
+Denoising:  53% 26/49 [00:02<00:01, 12.56it/s][A
+Denoising:  57% 28/49 [00:02<00:01, 12.56it/s][A
+Denoising:  61% 30/49 [00:02<00:01, 12.57it/s][A
+Denoising:  65% 32/49 [00:02<00:01, 12.57it/s][A
+Denoising:  69% 34/49 [00:02<00:01, 12.56it/s][A
+Denoising:  73% 36/49 [00:02<00:01, 12.56it/s][A
+Denoising:  78% 38/49 [00:03<00:00, 12.55it/s][A
+Denoising:  82% 40/49 [00:03<00:00, 12.55it/s][A
+Denoising:  86% 42/49 [00:03<00:00, 12.56it/s][A
+Denoising:  90% 44/49 [00:03<00:00, 12.56it/s][A
+Denoising:  94% 46/49 [00:03<00:00, 12.56it/s][A
+Denoising:  98% 48/49 [00:03<00:00, 12.55it/s][A
+                                              [ASampling batches...:  88%|████████▊ | 15/17 [09:22<00:09,  4.94s/it]
+Denoising:   0% 0/49 [00:00<?, ?it/s][A
+Denoising:   4% 2/49 [00:00<00:03, 12.58it/s][A
+Denoising:   8% 4/49 [00:00<00:03, 12.56it/s][A
+Denoising:  12% 6/49 [00:00<00:03, 12.55it/s][A
+Denoising:  16% 8/49 [00:00<00:03, 12.55it/s][A
+Denoising:  20% 10/49 [00:00<00:03, 12.54it/s][A
+Denoising:  24% 12/49 [00:00<00:02, 12.55it/s][A
+Denoising:  29% 14/49 [00:01<00:02, 12.55it/s][A
+Denoising:  33% 16/49 [00:01<00:02, 12.56it/s][A
+Denoising:  37% 18/49 [00:01<00:02, 12.56it/s][A
+Denoising:  41% 20/49 [00:01<00:02, 12.55it/s][A
+Denoising:  45% 22/49 [00:01<00:02, 12.55it/s][A
+Denoising:  49% 24/49 [00:01<00:01, 12.54it/s][A
+Denoising:  53% 26/49 [00:02<00:01, 12.54it/s][A
+Denoising:  57% 28/49 [00:02<00:01, 12.54it/s][A
+Denoising:  61% 30/49 [00:02<00:01, 12.55it/s][A
+Denoising:  65% 32/49 [00:02<00:01, 12.55it/s][A
+Denoising:  69% 34/49 [00:02<00:01, 12.55it/s][A
+Denoising:  73% 36/49 [00:02<00:01, 12.55it/s][A
+Denoising:  78% 38/49 [00:03<00:00, 12.54it/s][A
+Denoising:  82% 40/49 [00:03<00:00, 12.53it/s][A
+Denoising:  86% 42/49 [00:03<00:00, 12.53it/s][A
+Denoising:  90% 44/49 [00:03<00:00, 12.52it/s][A
+Denoising:  94% 46/49 [00:03<00:00, 12.52it/s][A
+Denoising:  98% 48/49 [00:03<00:00, 12.52it/s][A
+                                              [ASampling batches...:  94%|█████████▍| 16/17 [09:26<00:04,  4.64s/it]
+Denoising:   0% 0/49 [00:00<?, ?it/s][A
+Denoising:   4% 2/49 [00:00<00:02, 18.12it/s][A
+Denoising:   8% 4/49 [00:00<00:02, 18.11it/s][A
+Denoising:  12% 6/49 [00:00<00:02, 18.12it/s][A
+Denoising:  16% 8/49 [00:00<00:02, 18.11it/s][A
+Denoising:  20% 10/49 [00:00<00:02, 18.13it/s][A
+Denoising:  24% 12/49 [00:00<00:02, 18.11it/s][A
+Denoising:  29% 14/49 [00:00<00:01, 18.12it/s][A
+Denoising:  33% 16/49 [00:00<00:01, 18.12it/s][A
+Denoising:  37% 18/49 [00:00<00:01, 18.12it/s][A
+Denoising:  41% 20/49 [00:01<00:01, 18.12it/s][A
+Denoising:  45% 22/49 [00:01<00:01, 18.12it/s][A
+Denoising:  49% 24/49 [00:01<00:01, 18.11it/s][A
+Denoising:  53% 26/49 [00:01<00:01, 18.12it/s][A
+Denoising:  57% 28/49 [00:01<00:01, 18.12it/s][A
+Denoising:  61% 30/49 [00:01<00:01, 18.12it/s][A
+Denoising:  65% 32/49 [00:01<00:00, 18.12it/s][A
+Denoising:  69% 34/49 [00:01<00:00, 18.13it/s][A
+Denoising:  73% 36/49 [00:01<00:00, 18.13it/s][A
+Denoising:  78% 38/49 [00:02<00:00, 18.11it/s][A
+Denoising:  82% 40/49 [00:02<00:00, 18.13it/s][A
+Denoising:  86% 42/49 [00:02<00:00, 18.12it/s][A
+Denoising:  90% 44/49 [00:02<00:00, 18.13it/s][A
+Denoising:  94% 46/49 [00:02<00:00, 18.12it/s][A
+Denoising:  98% 48/49 [00:02<00:00, 18.12it/s][A
+                                              [ASampling batches...: 100%|██████████| 17/17 [09:29<00:00,  4.06s/it]Sampling batches...: 100%|██████████| 17/17 [09:29<00:00, 33.47s/it]

@@ -1,0 +1,199 @@
+============================================================
+BioEmu Disulfide Bond Test (Task 004)
+  Job ID:    8371740
+  Node:      a1128u05n01.mghpcc.ycrc.yale.edu
+  Start:     2026-04-16T01:12:41Z
+  Partition:  gpu_devel
+  GPUs:       1
+============================================================
+Wed Apr 15 21:12:41 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.195.03             Driver Version: 570.195.03     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX 5000 Ada Gene...    On  |   00000000:BD:00.0 Off |                  Off |
+| 30%   36C    P8             16W /  250W |       2MiB /  32760MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+
+Environment check:
+Python 3.10.20
+  bioemu: 1.3.1
+  torch: 2.7.1+cu128
+  CUDA available: True
+  mdtraj: 1.10.3
+
+2026-04-15 21:12:45,664 [INFO] ========================================================================
+2026-04-15 21:12:45,664 [INFO] BioEmu Disulfide Bond Integrity Analysis
+2026-04-15 21:12:45,664 [INFO]   Start time: 2026-04-16T01:12:45.664307+00:00
+2026-04-15 21:12:45,664 [INFO] ========================================================================
+2026-04-15 21:12:45,664 [INFO] BPTI: All cysteine positions verified.
+2026-04-15 21:12:45,664 [INFO] HEWL: All cysteine positions verified.
+2026-04-15 21:12:45,664 [INFO] 
+========================================
+2026-04-15 21:12:45,664 [INFO] PHASE 1: BPTI Conformation Generation
+2026-04-15 21:12:45,664 [INFO] ========================================
+2026-04-15 21:12:50,381 [INFO] Generating 100 BioEmu conformations for BPTI (57 residues)...
+2026-04-15 21:12:50,382 [INFO]   Model: bioemu-v1.1
+2026-04-15 21:12:50,382 [INFO]   Output: /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/output/task-004-bpti
+2026-04-15 21:12:50,407 [INFO]   GPU: NVIDIA RTX 5000 Ada Generation
+2026-04-15 21:12:50,407 [INFO]   GPU memory: 33.8 GB
+2026-04-15 21:12:50,499 [INFO] HTTP Request: HEAD https://huggingface.co/microsoft/bioemu/resolve/main/checkpoints/bioemu-v1.1/checkpoint.ckpt "HTTP/1.1 302 Found"
+2026-04-15 21:12:50,559 [INFO] HTTP Request: HEAD https://huggingface.co/microsoft/bioemu/resolve/main/checkpoints/bioemu-v1.1/config.yaml "HTTP/1.1 307 Temporary Redirect"
+2026-04-15 21:12:50,574 [INFO] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/bioemu/1fec9d4473a9da04f5e60026a70d7a93fb893e9e/checkpoints%2Fbioemu-v1.1%2Fconfig.yaml "HTTP/1.1 200 OK"
+2026-04-15 21:12:50,940 [INFO] Data loaded from /home/rag88/sampling_so3_cache/cache_igso3_s0.020-2.330-1000_l2000_o2000-3.npz
+2026-04-15 21:12:50,943 [INFO] Data loaded from /home/rag88/sampling_so3_cache/cache_uso3_s0.020-2.330-1000_o2000-3.npz
+2026-04-15 21:12:50,945 [INFO] Data loaded from /home/rag88/sampling_so3_cache/cache_score-scaling_s0.020-2.330-1000_l2001_o2000-3.npz
+2026-04-15 21:12:50,953 [INFO] Sampling 100 structures for sequence of length 57 residues...
+2026-04-15 21:12:50,953 [INFO] Using batch size 30
+2026-04-15 21:12:50,954 [INFO] Found 0 previous samples in /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/output/task-004-bpti.
+2026-04-15 21:12:50,957 [INFO] Sampling with seed=42 (base_seed=42)
+2026-04-15 21:13:03,406 [INFO] Downloading AlphaFold2 weights to /home/rag88/.cache/colabfold ...
+2026-04-15 21:13:31,002 [INFO] Download complete.
+2026-04-15 21:13:31,057 [INFO] Unable to initialize backend 'cuda': 
+2026-04-15 21:13:31,057 [INFO] Unable to initialize backend 'rocm': module 'jaxlib.xla_extension' has no attribute 'GpuAllocatorConfig'
+2026-04-15 21:13:31,068 [INFO] Unable to initialize backend 'tpu': INTERNAL: Failed to open libtpu.so: libtpu.so: cannot open shared object file: No such file or directory
+2026-04-15 21:13:31,068 [WARNING] An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu.
+2026-04-15 21:13:32,733 [INFO] Padded input to 64 residues
+2026-04-15 21:13:32,733 [INFO] Running predict with shape(feat) = {'aatype': (1, 64), 'residue_index': (1, 64), 'seq_length': (1,), 'is_distillation': (1,), 'seq_mask': (1, 64), 'msa_mask': (1, 512, 64), 'msa_row_mask': (1, 512), 'random_crop_to_size_seed': (1, 2), 'atom14_atom_exists': (1, 64, 14), 'residx_atom14_to_atom37': (1, 64, 14), 'residx_atom37_to_atom14': (1, 64, 37), 'atom37_atom_exists': (1, 64, 37), 'extra_msa': (1, 5120, 64), 'extra_msa_mask': (1, 5120, 64), 'extra_msa_row_mask': (1, 5120), 'bert_mask': (1, 512, 64), 'true_msa': (1, 512, 64), 'extra_has_deletion': (1, 5120, 64), 'extra_deletion_value': (1, 5120, 64), 'msa_feat': (1, 512, 64, 49), 'target_feat': (1, 64, 22)}
+2026-04-15 21:17:00,373 [INFO] Output shape was {'representations_evo': {'msa': (512, 64, 256), 'msa_first_row': (64, 256), 'pair': (64, 64, 128), 'single': (64, 384)}, 'representations': {'pair': (64, 64, 128), 'single': (64, 256)}}
+2026-04-15 21:17:00,374 [INFO] Embeddings computed: single=(57, 384), pair=(57, 57, 128)
+2026-04-15 21:17:05,579 [INFO] Sampling with seed=72 (base_seed=42)
+2026-04-15 21:17:05,582 [INFO] Using cached embeddings in /nfs/roberts/scratch/pi_mg269/rag88/.bioemu_embeds_cache.
+2026-04-15 21:17:10,115 [INFO] Sampling with seed=102 (base_seed=42)
+2026-04-15 21:17:10,116 [INFO] Using cached embeddings in /nfs/roberts/scratch/pi_mg269/rag88/.bioemu_embeds_cache.
+2026-04-15 21:17:14,640 [INFO] Sampling with seed=132 (base_seed=42)
+2026-04-15 21:17:14,641 [INFO] Using cached embeddings in /nfs/roberts/scratch/pi_mg269/rag88/.bioemu_embeds_cache.
+2026-04-15 21:17:16,280 [INFO] Converting samples to .pdb and .xtc...
+2026-04-15 21:17:16,292 [INFO] physicality/ca_break_mean: 0.0
+2026-04-15 21:17:16,292 [INFO] physicality/ca_clash_mean: 17.0
+2026-04-15 21:17:16,292 [INFO] physicality/ca_ca_dist_mean: 3.8462488651275635
+2026-04-15 21:17:16,292 [INFO] physicality/clash_distances_mean: 15.233546257019043
+2026-04-15 21:17:16,520 [INFO] Filtering samples ...
+2026-04-15 21:17:16,563 [INFO] Filtered 100 samples down to 98 based on structure criteria. Filtering can be disabled with `--filter_samples=False`.
+2026-04-15 21:17:16,575 [INFO] Completed. Your samples are in /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/output/task-004-bpti.
+2026-04-15 21:17:16,575 [INFO]   Generation completed in 266.2s (4.4 min)
+2026-04-15 21:17:16,575 [INFO] 
+Measuring BPTI disulfide distances...
+2026-04-15 21:17:16,575 [INFO] Loading trajectory for BPTI...
+2026-04-15 21:17:16,580 [INFO]   Loaded 98 frames, 279 atoms
+2026-04-15 21:17:16,849 [WARNING]   Cys5-Cys55: SG atom not found, trying CB as proxy
+2026-04-15 21:17:16,860 [INFO]   Cys5-Cys55: mean=6.37 +/- 7.97 A, range=[2.98, 44.47] A
+2026-04-15 21:17:16,870 [WARNING]   Cys14-Cys38: SG atom not found, trying CB as proxy
+2026-04-15 21:17:16,879 [INFO]   Cys14-Cys38: mean=6.44 +/- 4.63 A, range=[3.26, 24.59] A
+2026-04-15 21:17:16,889 [WARNING]   Cys30-Cys51: SG atom not found, trying CB as proxy
+2026-04-15 21:17:16,899 [INFO]   Cys30-Cys51: mean=5.00 +/- 4.37 A, range=[3.13, 29.50] A
+2026-04-15 21:17:16,900 [INFO] BPTI overall integrity: 0.0% (0/98)
+2026-04-15 21:17:16,903 [INFO]   Saved distances to /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/output/task-004-bpti-ss-distances.csv
+2026-04-15 21:17:17,126 [INFO]   Saved plot to /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/output/task-004-bpti-ss-plot.png
+2026-04-15 21:17:17,126 [INFO] 
+========================================
+2026-04-15 21:17:17,126 [INFO] PHASE 2: HEWL Conformation Generation
+2026-04-15 21:17:17,126 [INFO] ========================================
+2026-04-15 21:17:17,129 [INFO] Generating 100 BioEmu conformations for HEWL (129 residues)...
+2026-04-15 21:17:17,129 [INFO]   Model: bioemu-v1.1
+2026-04-15 21:17:17,129 [INFO]   Output: /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/output/task-004-hewl
+2026-04-15 21:17:17,129 [INFO]   GPU: NVIDIA RTX 5000 Ada Generation
+2026-04-15 21:17:17,129 [INFO]   GPU memory: 33.8 GB
+2026-04-15 21:17:17,208 [INFO] HTTP Request: HEAD https://huggingface.co/microsoft/bioemu/resolve/main/checkpoints/bioemu-v1.1/checkpoint.ckpt "HTTP/1.1 302 Found"
+2026-04-15 21:17:17,245 [INFO] HTTP Request: HEAD https://huggingface.co/microsoft/bioemu/resolve/main/checkpoints/bioemu-v1.1/config.yaml "HTTP/1.1 307 Temporary Redirect"
+2026-04-15 21:17:17,258 [INFO] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/bioemu/1fec9d4473a9da04f5e60026a70d7a93fb893e9e/checkpoints%2Fbioemu-v1.1%2Fconfig.yaml "HTTP/1.1 200 OK"
+2026-04-15 21:17:17,477 [INFO] Data loaded from /home/rag88/sampling_so3_cache/cache_igso3_s0.020-2.330-1000_l2000_o2000-3.npz
+2026-04-15 21:17:17,478 [INFO] Data loaded from /home/rag88/sampling_so3_cache/cache_uso3_s0.020-2.330-1000_o2000-3.npz
+2026-04-15 21:17:17,478 [INFO] Data loaded from /home/rag88/sampling_so3_cache/cache_score-scaling_s0.020-2.330-1000_l2001_o2000-3.npz
+2026-04-15 21:17:17,485 [INFO] Sampling 100 structures for sequence of length 129 residues...
+2026-04-15 21:17:17,485 [INFO] Using batch size 6
+2026-04-15 21:17:17,485 [INFO] Found 0 previous samples in /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/output/task-004-hewl.
+2026-04-15 21:17:17,486 [INFO] Sampling with seed=42 (base_seed=42)
+2026-04-15 21:17:19,705 [INFO] AlphaFold2 params already downloaded at /home/rag88/.cache/colabfold/params
+2026-04-15 21:17:20,525 [INFO] Padded input to 144 residues
+2026-04-15 21:17:20,526 [INFO] Running predict with shape(feat) = {'aatype': (1, 144), 'residue_index': (1, 144), 'seq_length': (1,), 'is_distillation': (1,), 'seq_mask': (1, 144), 'msa_mask': (1, 512, 144), 'msa_row_mask': (1, 512), 'random_crop_to_size_seed': (1, 2), 'atom14_atom_exists': (1, 144, 14), 'residx_atom14_to_atom37': (1, 144, 14), 'residx_atom37_to_atom14': (1, 144, 37), 'atom37_atom_exists': (1, 144, 37), 'extra_msa': (1, 5120, 144), 'extra_msa_mask': (1, 5120, 144), 'extra_msa_row_mask': (1, 5120), 'bert_mask': (1, 512, 144), 'true_msa': (1, 512, 144), 'extra_has_deletion': (1, 5120, 144), 'extra_deletion_value': (1, 5120, 144), 'msa_feat': (1, 512, 144, 49), 'target_feat': (1, 144, 22)}
+2026-04-15 21:25:41,367 [INFO] Output shape was {'representations_evo': {'msa': (512, 144, 256), 'msa_first_row': (144, 256), 'pair': (144, 144, 128), 'single': (144, 384)}, 'representations': {'pair': (144, 144, 128), 'single': (144, 256)}}
+2026-04-15 21:25:41,369 [INFO] Embeddings computed: single=(129, 384), pair=(129, 129, 128)
+2026-04-15 21:25:45,288 [INFO] Sampling with seed=48 (base_seed=42)
+2026-04-15 21:25:45,292 [INFO] Using cached embeddings in /nfs/roberts/scratch/pi_mg269/rag88/.bioemu_embeds_cache.
+2026-04-15 21:25:49,158 [INFO] Sampling with seed=54 (base_seed=42)
+2026-04-15 21:25:49,158 [INFO] Using cached embeddings in /nfs/roberts/scratch/pi_mg269/rag88/.bioemu_embeds_cache.
+2026-04-15 21:25:53,027 [INFO] Sampling with seed=60 (base_seed=42)
+2026-04-15 21:25:53,035 [INFO] Using cached embeddings in /nfs/roberts/scratch/pi_mg269/rag88/.bioemu_embeds_cache.
+2026-04-15 21:25:56,909 [INFO] Sampling with seed=66 (base_seed=42)
+2026-04-15 21:25:56,917 [INFO] Using cached embeddings in /nfs/roberts/scratch/pi_mg269/rag88/.bioemu_embeds_cache.
+2026-04-15 21:26:00,799 [INFO] Sampling with seed=72 (base_seed=42)
+2026-04-15 21:26:00,800 [INFO] Using cached embeddings in /nfs/roberts/scratch/pi_mg269/rag88/.bioemu_embeds_cache.
+2026-04-15 21:26:04,689 [INFO] Sampling with seed=78 (base_seed=42)
+2026-04-15 21:26:04,689 [INFO] Using cached embeddings in /nfs/roberts/scratch/pi_mg269/rag88/.bioemu_embeds_cache.
+2026-04-15 21:26:08,583 [INFO] Sampling with seed=84 (base_seed=42)
+2026-04-15 21:26:08,590 [INFO] Using cached embeddings in /nfs/roberts/scratch/pi_mg269/rag88/.bioemu_embeds_cache.
+2026-04-15 21:26:12,494 [INFO] Sampling with seed=90 (base_seed=42)
+2026-04-15 21:26:12,495 [INFO] Using cached embeddings in /nfs/roberts/scratch/pi_mg269/rag88/.bioemu_embeds_cache.
+2026-04-15 21:26:16,396 [INFO] Sampling with seed=96 (base_seed=42)
+2026-04-15 21:26:16,397 [INFO] Using cached embeddings in /nfs/roberts/scratch/pi_mg269/rag88/.bioemu_embeds_cache.
+2026-04-15 21:26:20,308 [INFO] Sampling with seed=102 (base_seed=42)
+2026-04-15 21:26:20,315 [INFO] Using cached embeddings in /nfs/roberts/scratch/pi_mg269/rag88/.bioemu_embeds_cache.
+2026-04-15 21:26:24,223 [INFO] Sampling with seed=108 (base_seed=42)
+2026-04-15 21:26:24,224 [INFO] Using cached embeddings in /nfs/roberts/scratch/pi_mg269/rag88/.bioemu_embeds_cache.
+2026-04-15 21:26:28,135 [INFO] Sampling with seed=114 (base_seed=42)
+2026-04-15 21:26:28,143 [INFO] Using cached embeddings in /nfs/roberts/scratch/pi_mg269/rag88/.bioemu_embeds_cache.
+2026-04-15 21:26:32,054 [INFO] Sampling with seed=120 (base_seed=42)
+2026-04-15 21:26:32,055 [INFO] Using cached embeddings in /nfs/roberts/scratch/pi_mg269/rag88/.bioemu_embeds_cache.
+2026-04-15 21:26:35,965 [INFO] Sampling with seed=126 (base_seed=42)
+2026-04-15 21:26:35,974 [INFO] Using cached embeddings in /nfs/roberts/scratch/pi_mg269/rag88/.bioemu_embeds_cache.
+2026-04-15 21:26:39,886 [INFO] Sampling with seed=132 (base_seed=42)
+2026-04-15 21:26:39,886 [INFO] Using cached embeddings in /nfs/roberts/scratch/pi_mg269/rag88/.bioemu_embeds_cache.
+2026-04-15 21:26:43,805 [INFO] Sampling with seed=138 (base_seed=42)
+2026-04-15 21:26:43,806 [INFO] Using cached embeddings in /nfs/roberts/scratch/pi_mg269/rag88/.bioemu_embeds_cache.
+2026-04-15 21:26:46,537 [INFO] Converting samples to .pdb and .xtc...
+2026-04-15 21:26:46,587 [INFO] physicality/ca_break_mean: 0.0
+2026-04-15 21:26:46,587 [INFO] physicality/ca_clash_mean: 4.0
+2026-04-15 21:26:46,587 [INFO] physicality/ca_ca_dist_mean: 3.8500452041625977
+2026-04-15 21:26:46,587 [INFO] physicality/clash_distances_mean: 18.800142288208008
+2026-04-15 21:26:46,848 [INFO] Filtering samples ...
+2026-04-15 21:26:46,878 [INFO] Filtered 100 samples down to 99 based on structure criteria. Filtering can be disabled with `--filter_samples=False`.
+2026-04-15 21:26:46,899 [INFO] Completed. Your samples are in /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/output/task-004-hewl.
+2026-04-15 21:26:46,899 [INFO]   Generation completed in 569.8s (9.5 min)
+2026-04-15 21:26:46,899 [INFO] 
+Measuring HEWL disulfide distances...
+2026-04-15 21:26:46,899 [INFO] Loading trajectory for HEWL...
+2026-04-15 21:26:46,910 [INFO]   Loaded 99 frames, 633 atoms
+2026-04-15 21:26:46,921 [WARNING]   Cys6-Cys127: SG atom not found, trying CB as proxy
+2026-04-15 21:26:46,931 [INFO]   Cys6-Cys127: mean=4.11 +/- 1.04 A, range=[3.03, 12.96] A
+2026-04-15 21:26:46,942 [WARNING]   Cys30-Cys115: SG atom not found, trying CB as proxy
+2026-04-15 21:26:46,952 [INFO]   Cys30-Cys115: mean=3.90 +/- 1.10 A, range=[3.16, 12.91] A
+2026-04-15 21:26:46,963 [WARNING]   Cys64-Cys80: SG atom not found, trying CB as proxy
+2026-04-15 21:26:46,973 [INFO]   Cys64-Cys80: mean=4.04 +/- 0.33 A, range=[3.33, 4.90] A
+2026-04-15 21:26:46,983 [WARNING]   Cys76-Cys94: SG atom not found, trying CB as proxy
+2026-04-15 21:26:46,993 [INFO]   Cys76-Cys94: mean=4.12 +/- 0.56 A, range=[3.31, 8.54] A
+2026-04-15 21:26:46,993 [INFO] HEWL overall integrity: 0.0% (0/99)
+2026-04-15 21:26:46,997 [INFO]   Saved distances to /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/output/task-004-hewl-ss-distances.csv
+2026-04-15 21:26:47,188 [INFO]   Saved plot to /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/output/task-004-hewl-ss-plot.png
+2026-04-15 21:26:47,189 [INFO] 
+Generating combined histogram...
+2026-04-15 21:26:47,359 [INFO] 
+Writing threshold assessment report...
+2026-04-15 21:26:47,363 [INFO] Threshold report written to /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/output/task-004-ss-integrity-report.md
+2026-04-15 21:26:47,367 [INFO] 
+========================================================================
+2026-04-15 21:26:47,367 [INFO] ANALYSIS COMPLETE
+2026-04-15 21:26:47,367 [INFO]   BPTI integrity: 0.0%
+2026-04-15 21:26:47,367 [INFO]   HEWL integrity: 0.0%
+2026-04-15 21:26:47,367 [INFO]   T3 (>95%): BPTI=NOT MET, HEWL=NOT MET
+2026-04-15 21:26:47,367 [INFO]   AK3 (<80%): BPTI=TRIGGERED, HEWL=TRIGGERED
+2026-04-15 21:26:47,367 [INFO]   End time: 2026-04-16T01:26:47.367710+00:00
+2026-04-15 21:26:47,367 [INFO] ========================================================================
+
+============================================================
+BioEmu test finished
+  Exit code: 0
+  End time:  2026-04-16T01:26:48Z
+============================================================

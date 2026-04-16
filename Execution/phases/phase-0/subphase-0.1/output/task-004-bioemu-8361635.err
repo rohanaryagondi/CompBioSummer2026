@@ -1,0 +1,527 @@
+The following modules were not unloaded:
+  (Use "module --force purge" to unload all):
+
+  1) StdEnv
+Sampling batches...:   0%|          | 0/4 [00:00<?, ?it/s]
+  0%|          | 0/150 [elapsed: 00:00 remaining: ?][A
+SUBMIT:   0%|          | 0/150 [elapsed: 00:00 remaining: ?][A
+COMPLETE:   0%|          | 0/150 [elapsed: 00:00 remaining: ?][A
+COMPLETE: 100%|██████████| 150/150 [elapsed: 00:00 remaining: 00:00][ACOMPLETE: 100%|██████████| 150/150 [elapsed: 00:03 remaining: 00:00]
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1776298689.868757 4058347 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+I0000 00:00:1776298690.171593 4058347 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI AVX512_BF16 AVX512_FP16 AVX_VNNI AMX_TILE AMX_INT8 AMX_BF16 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+Sampling batches...:   0%|          | 0/4 [00:04<?, ?it/s]
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/bioemu/utils.py", line 59, in with_stackprint
+    56   @functools.wraps(func)
+    57   def with_stackprint(*args: P.args, **kwargs: P.kwargs) -> T:
+    58       try:
+--> 59           return func(*args, **kwargs)
+    60       except:
+    ..................................................
+     functools.wraps = <function 'wraps' functools.py:65>
+     func = <function 'main' _contextlib.py:113>
+     args = ()
+     P.args = P.args
+     kwargs = {'sequence': 'RPDFCLEPPYTGPCKARIIRYFYNAKAGLCQTFVYGGCRAKRNNFK
+               SAEDCMRTCGG',
+               'num_samples': 100,
+               'output_dir': '/home/rag88/projects/CompBioSummer2026/Execu
+               tion/phases/phase-0/subphase-0.1/output/task-004-bpti',
+               'batch_size_100': 10,
+               'model_name': 'bioemu-v1.1',
+               'base_seed': 42,
+               'cache_embeds_dir': '/nfs/roberts/scratch/pi_mg269/rag88/.b
+               ioemu_embeds_cache'}
+     P.kwargs = P.kwargs
+     T = ~T
+    ..................................................
+
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    113  @functools.wraps(func)
+    114  def decorate_context(*args, **kwargs):
+    115      with ctx_factory():
+--> 116          return func(*args, **kwargs)
+    ..................................................
+     functools.wraps = <function 'wraps' functools.py:65>
+     func = <function 'main' sample.py:70>
+     args = ()
+     kwargs = {'sequence': 'RPDFCLEPPYTGPCKARIIRYFYNAKAGLCQTFVYGGCRAKRNNFK
+               SAEDCMRTCGG',
+               'num_samples': 100,
+               'output_dir': '/home/rag88/projects/CompBioSummer2026/Execu
+               tion/phases/phase-0/subphase-0.1/output/task-004-bpti',
+               'batch_size_100': 10,
+               'model_name': 'bioemu-v1.1',
+               'base_seed': 42,
+               'cache_embeds_dir': '/nfs/roberts/scratch/pi_mg269/rag88/.b
+               ioemu_embeds_cache'}
+     ctx_factory = <method '_DecoratorContextManager.clone' of <torch.autograd.
+                    grad_mode.no_grad object at 0x1523506156c0> _contextlib.py:1
+                    46>
+    ..................................................
+
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/bioemu/sample.py", line 258, in main
+    72   def main(
+    73       sequence: str | Path,
+    74       num_samples: int,
+    75       output_dir: str | Path,
+    76       batch_size_100: int = 10,
+    77       model_name: Literal["bioemu-v1.0", "bioemu-v1.1", "bioemu-v1.2"] | None = "bioemu-v1.1",
+    78       ckpt_path: str | Path | None = None,
+    79       model_config_path: str | Path | None = None,
+    80       denoiser_type: SupportedDenoisersLiteral | None = "dpm",
+    81       denoiser_config: str | Path | dict | None = None,
+    82       cache_embeds_dir: str | Path | None = None,
+    83       cache_so3_dir: str | Path | None = None,
+    84       msa_host_url: str | None = None,
+    85       filter_samples: bool = True,
+    86       steering_config: str | Path | dict | None = None,
+    87       base_seed: int | None = None,
+    88   ) -> None:
+ (...)
+    254                  f"{existing_num_samples} samples have been generated."
+    255              )
+    256          seed = base_seed + start_idx
+    257          logger.info(f"Sampling with {seed=} ({base_seed=})")
+--> 258          batch = generate_batch(
+    259              score_model=score_model,
+    ..................................................
+     sequence = 'RPDFCLEPPYTGPCKARIIRYFYNAKAGLCQTFVYGGCRAKRNNFKSAEDCMRTCGG'
+     num_samples = 100
+     output_dir = PosixPath('/home/rag88/projects/CompBioSummer2026/Execution/
+                   phases/phase-0/subphase-0.1/output/task-004-bpti')
+     batch_size_100 = 10
+     model_name = 'bioemu-v1.1'
+     ckpt_path = '/nfs/roberts/scratch/pi_mg269/rag88/.hf_cache/hub/models--m
+                  icrosoft--bioemu/snapshots/1fec9d4473a9da04f5e60026a70d7a93f
+                  b893e9e/checkpoints/bioemu-v1.1/checkpoint.ckpt'
+     model_config_path = '/nfs/roberts/scratch/pi_mg269/rag88/.hf_cache/hub/models--m
+                          icrosoft--bioemu/snapshots/1fec9d4473a9da04f5e60026a70d7a93f
+                          b893e9e/checkpoints/bioemu-v1.1/config.yaml'
+     denoiser_type = 'dpm'
+     denoiser_config = {'_target_': 'bioemu.shortcuts.dpm_solver',
+                        '_partial_': True,
+                        'eps_t': 0.001,
+                        'max_t': 0.99,
+                        'N': 50,
+                        'noise': 0.0}
+     cache_embeds_dir = '/nfs/roberts/scratch/pi_mg269/rag88/.bioemu_embeds_cache'
+     cache_so3_dir = None
+     msa_host_url = None
+     filter_samples = True
+     steering_config = None
+     base_seed = 42
+     seed = 42
+     start_idx = 0
+     logger.info = <method 'Logger.info' of <Logger bioemu.sample (INFO)> __ini
+                    t__.py:1467>
+    ..................................................
+
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/bioemu/sample.py", line 371, in generate_batch
+    343  def generate_batch(
+    344      score_model: torch.nn.Module,
+    345      sequence: str,
+    346      sdes: dict[str, SDE],
+    347      batch_size: int,
+    348      seed: int,
+    349      denoiser: Callable,
+    350      cache_embeds_dir: str | Path | None,
+    351      msa_file: str | Path | None = None,
+    352      msa_host_url: str | None = None,
+    353      fk_potentials: list[Callable] | None = None,
+    354      steering_config: dict | None = None,
+    355  ) -> dict[str, torch.Tensor]:
+ (...)
+    367      """
+    368  
+    369      torch.manual_seed(seed)
+    370  
+--> 371      context_chemgraph = get_context_chemgraph(
+    372          sequence=sequence,
+    ..................................................
+     sequence = 'RPDFCLEPPYTGPCKARIIRYFYNAKAGLCQTFVYGGCRAKRNNFKSAEDCMRTCGG'
+     sdes = {'node_orientations': DiGSO3SDE(
+              (igso3): SampleIGSO3()
+              (uso3): SampleUSO3()
+              (score_function): ScoreSO3()
+            ), 'pos': <bioemu.sde_lib.CosineVPSDE object at 0x152237439c
+             f0>}
+     batch_size = 30
+     seed = 42
+     cache_embeds_dir = '/nfs/roberts/scratch/pi_mg269/rag88/.bioemu_embeds_cache'
+     msa_file = None
+     msa_host_url = None
+     fk_potentials = None
+     steering_config = None
+     torch.manual_seed = <function 'manual_seed' _compile.py:41>
+    ..................................................
+
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/bioemu/sample.py", line 305, in get_context_chemgraph
+    297  def get_context_chemgraph(
+    298      sequence: str,
+    299      cache_embeds_dir: str | Path | None = None,
+    300      msa_file: str | Path | None = None,
+    301      msa_host_url: str | None = None,
+    302  ) -> ChemGraph:
+    303      n = len(sequence)
+    304  
+--> 305      single_embeds_file, pair_embeds_file = get_colabfold_embeds(
+    306          seq=sequence,
+    ..................................................
+     sequence = 'RPDFCLEPPYTGPCKARIIRYFYNAKAGLCQTFVYGGCRAKRNNFKSAEDCMRTCGG'
+     cache_embeds_dir = '/nfs/roberts/scratch/pi_mg269/rag88/.bioemu_embeds_cache'
+     msa_file = None
+     msa_host_url = None
+     n = 57
+    ..................................................
+
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/bioemu/get_embeds.py", line 130, in get_colabfold_embeds
+    85   def get_colabfold_embeds(
+    86       seq: str,
+    87       cache_embeds_dir: StrPath | None,
+    88       msa_file: StrPath | None = None,
+    89       msa_host_url: str | None = None,
+    90   ) -> tuple[StrPath, StrPath]:
+ (...)
+    126  
+    127      # Run AF2 forward pass
+    128      from bioemu.colabfold_inline.model_runner import get_embeddings
+    129  
+--> 130      single_repr, pair_repr = get_embeddings(seq, a3m_string)
+    131  
+    ..................................................
+     seq = 'RPDFCLEPPYTGPCKARIIRYFYNAKAGLCQTFVYGGCRAKRNNFKSAEDCMRTCGG'
+     cache_embeds_dir = '/nfs/roberts/scratch/pi_mg269/rag88/.bioemu_embeds_cache'
+     StrPath = str | os.PathLike
+     msa_file = None
+     msa_host_url = None
+     a3m_string = '>101\nRPDFCLEPPYTGPCKARIIRYFYNAKAGLCQTFVYGGCRAKRNNFKSAEDCMR
+                   TCGG\n>UniRef100_A0A8D2KZ06\t93\t0.526\t7.259E-20\t0\t56\t57
+                   \t28\t84\t224\nRPDICDLPVDPGHCKAYIVRYYYNRATNRCQKFIYGGCKGNGNNF
+                   KTLEQCQKTCVG\n>UniRef100_UPI000EAA2393\t90\t0.438\t4.879E-19
+                   \t0\t56\t57\t26\t82\t98\nRPKYCYLPPDPGRCKGYFPRFYYNPASNQCLVFIY
+                   GGCQGNANRFKTKDECHRTCVG\n>UniRef100_A0A1S3D170\t90\t0.462\t6.
+                   703E-19\t1\t54\t57\t69\t122\t137\n-PDVCLLPPEPGLCRGYFQKFYFNPS
+                   TGQCVQFIYGGCNGNGNRFDSEEDCIRTC--\n>UniRef100_UPI000703D134\t8
+                   9\t0.464\t1.265E-18\...
+    ..................................................
+
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/bioemu/colabfold_inline/model_runner.py", line 274, in get_embeddings
+    245  def get_embeddings(
+    246      sequence: str,
+    247      a3m_string: str,
+    248      data_dir: str | Path = DEFAULT_PARAMS_DIR,
+    249      random_seed: int = 0,
+    250  ) -> tuple[np.ndarray, np.ndarray]:
+ (...)
+    270      # Build features
+    271      feature_dict = build_monomer_feature(sequence, a3m_string)
+    272  
+    273      # Load model
+--> 274      model_runner, _params = _load_model_and_params(data_dir)
+    275  
+    ..................................................
+     sequence = 'RPDFCLEPPYTGPCKARIIRYFYNAKAGLCQTFVYGGCRAKRNNFKSAEDCMRTCGG'
+     a3m_string = '>101\nRPDFCLEPPYTGPCKARIIRYFYNAKAGLCQTFVYGGCRAKRNNFKSAEDCMR
+                   TCGG\n>UniRef100_A0A8D2KZ06\t93\t0.526\t7.259E-20\t0\t56\t57
+                   \t28\t84\t224\nRPDICDLPVDPGHCKAYIVRYYYNRATNRCQKFIYGGCKGNGNNF
+                   KTLEQCQKTCVG\n>UniRef100_UPI000EAA2393\t90\t0.438\t4.879E-19
+                   \t0\t56\t57\t26\t82\t98\nRPKYCYLPPDPGRCKGYFPRFYYNPASNQCLVFIY
+                   GGCQGNANRFKTKDECHRTCVG\n>UniRef100_A0A1S3D170\t90\t0.462\t6.
+                   703E-19\t1\t54\t57\t69\t122\t137\n-PDVCLLPPEPGLCRGYFQKFYFNPS
+                   TGQCVQFIYGGCNGNGNRFDSEEDCIRTC--\n>UniRef100_UPI000703D134\t8
+                   9\t0.464\t1.265E-18\...
+     data_dir = PosixPath('/home/rag88/.cache/colabfold')
+     DEFAULT_PARAMS_DIR = PosixPath('/home/rag88/.cache/colabfold')
+     random_seed = 0
+     feature_dict = {'aatype': 57x21 array([[0...]]),
+                     'between_segment_residues': 57x array([0 0 ... 0 0]),
+                     'domain_name': 1x array([b'none']),
+                     'residue_index': 57x array([ 0  1 ... 55 56]),
+                     'seq_length': 57x array([57 57 ... 57 57]),
+                     'sequence': 1x array([b'RPDFCLEPPYTGPCKARIIRYFYNAKAGLCQTFVY
+                     GGCRAKRNNFKSAEDCMRTCGG'...]),
+                     'deletion_matrix_int': 14527x57 array([[0...]]),
+                     'msa': 14527x57 array([[14...]]),
+                     'num_alignments': 57x array([14527 14527 ... 14527 14527]),
+                     'msa_species_identifiers': 14527x array([b''...
+    ..................................................
+
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/bioemu/colabfold_inline/model_runner.py", line 103, in _load_model_and_params
+    96   def _load_model_and_params(
+    97       data_dir: Path = DEFAULT_PARAMS_DIR,
+    98   ) -> tuple[Any, Any]:
+    99       """Load model_3 runner and its parameters.
+    100  
+    101      Returns ``(model_runner, params)`` — both are JAX/Haiku objects.
+    102      """
+--> 103      from alphafold.model import config, model, utils
+    104  
+    ..................................................
+     data_dir = PosixPath('/home/rag88/.cache/colabfold')
+     DEFAULT_PARAMS_DIR = PosixPath('/home/rag88/.cache/colabfold')
+    ..................................................
+
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/_vendor/alphafold/model/model.py", line 23, in <module>
+    19   """Code for constructing the model."""
+    20   from typing import Any, Mapping, Optional, Union
+    21   
+    22   from absl import logging
+--> 23   from alphafold.model import features
+    24   from alphafold.model import modules
+    ..................................................
+     logging = <module 'absl.logging' from '/home/rag88/.conda/envs/env-bio
+                emu/lib/python3.10/site-packages/absl/logging/__init__.py'>
+    ..................................................
+
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/_vendor/alphafold/model/features.py", line 19, in <module>
+    15   """Code to generate processed features."""
+    16   import copy
+    17   from typing import List, Mapping, Tuple
+    18   
+--> 19   from alphafold.model.tf import input_pipeline
+    20   from alphafold.model.tf import proteins_dataset
+    ..................................................
+     copy = <module 'copy' from '/home/rag88/.conda/envs/env-bioemu/lib/
+             python3.10/copy.py'>
+    ..................................................
+
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/_vendor/alphafold/model/tf/input_pipeline.py", line 17, in <module>
+    13   # limitations under the License.
+    14   
+    15   """Feature pre-processing input pipeline for AlphaFold."""
+    16   
+--> 17   from alphafold.model.tf import data_transforms
+    18   from alphafold.model.tf import shape_placeholders
+
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/_vendor/alphafold/model/tf/data_transforms.py", line 18, in <module>
+    14   
+    15   """Data for AlphaFold."""
+    16   
+    17   from alphafold.common import residue_constants
+--> 18   from alphafold.model.tf import shape_helpers
+    19   from alphafold.model.tf import shape_placeholders
+    ..................................................
+     residue_constants = <module 'alphafold.common.residue_constants' from '/home/rag
+                          88/.conda/envs/env-bioemu/lib/python3.10/site-packages/_vend
+                          or/alphafold/common/residue_constants.py'>
+    ..................................................
+
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/_vendor/alphafold/model/tf/shape_helpers.py", line 16, in <module>
+    12   # See the License for the specific language governing permissions and
+    13   # limitations under the License.
+    14   
+    15   """Utilities for dealing with shapes of TensorFlow tensors."""
+--> 16   import tensorflow.compat.v1 as tf
+    17   
+
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/tensorflow/__init__.py", line 49, in <module>
+    45   _os.environ["TF2_BEHAVIOR"] = "1"
+    46   from tensorflow.python import tf2 as _tf2
+    47   _tf2.enable()
+    48   
+--> 49   from tensorflow._api.v2 import __internal__
+    50   from tensorflow._api.v2 import __operators__
+    ..................................................
+     _os.environ = environ({'HYDRA_LAUNCHER_EXTRA_ARGS': '--external-launcher',
+                     'NoDefaultCurrentDirectoryInExePath': '1', 'CONDA_SHLVL': '
+                    1', 'CONDA_EXE': '/apps/software/system/software/miniconda/2
+                    4.11.3/bin/conda', 'HF_HOME': '/nfs/roberts/scratch/pi_mg269
+                    /rag88/.hf_cache', 'SLURM_NODEID': '0', 'SLURM_TASK_PID': '4
+                    057842', '__LMOD_REF_COUNT_PATH': '/apps/software/system/sof
+                    tware/miniconda/24.11.3:1;/apps/software/system/software/min
+                    iconda/24.11.3/sbin:1;/apps/software/system/software/minicon
+                    da/24.11.3/bin:1;/ap...
+     _tf2 = <module 'tensorflow.python.tf2' from '/home/rag88/.conda/env
+             s/env-bioemu/lib/python3.10/site-packages/tensorflow/python/
+             tf2.py'>
+     _tf2.enable = <function 'enable' tf2.py:25>
+    ..................................................
+
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/tensorflow/_api/v2/__internal__/__init__.py", line 8, in <module>
+    4    """
+    5    
+    6    import sys as _sys
+    7    
+--> 8    from tensorflow._api.v2.__internal__ import autograph
+    9    from tensorflow._api.v2.__internal__ import decorator
+    ..................................................
+     _sys = <module 'sys' (built-in)>
+    ..................................................
+
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/tensorflow/_api/v2/__internal__/autograph/__init__.py", line 8, in <module>
+    4    """
+    5    
+    6    import sys as _sys
+    7    
+--> 8    from tensorflow.python.autograph.core.ag_ctx import control_status_ctx # line: 34
+    9    from tensorflow.python.autograph.impl.api import tf_convert # line: 493
+    ..................................................
+     _sys = <module 'sys' (built-in)>
+    ..................................................
+
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/tensorflow/python/autograph/core/ag_ctx.py", line 21, in <module>
+    17   import enum
+    18   import inspect
+    19   import threading
+    20   
+--> 21   from tensorflow.python.autograph.utils import ag_logging
+    22   from tensorflow.python.util.tf_export import tf_export
+    ..................................................
+     enum = <module 'enum' from '/home/rag88/.conda/envs/env-bioemu/lib/
+             python3.10/enum.py'>
+     inspect = <module 'inspect' from '/home/rag88/.conda/envs/env-bioemu/l
+                ib/python3.10/inspect.py'>
+     threading = <module 'threading' from '/home/rag88/.conda/envs/env-bioemu
+                  /lib/python3.10/threading.py'>
+    ..................................................
+
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/tensorflow/python/autograph/utils/__init__.py", line 17, in <module>
+    13   # limitations under the License.
+    14   # ==============================================================================
+    15   """Utility module that contains APIs usable in the generated code."""
+    16   
+--> 17   from tensorflow.python.autograph.utils.context_managers import control_dependency_on_returns
+    18   from tensorflow.python.autograph.utils.misc import alias_tensors
+
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/tensorflow/python/autograph/utils/context_managers.py", line 19, in <module>
+    15   """Various context managers."""
+    16   
+    17   import contextlib
+    18   
+--> 19   from tensorflow.python.framework import ops
+    20   from tensorflow.python.ops import tensor_array_ops
+    ..................................................
+     contextlib = <module 'contextlib' from '/home/rag88/.conda/envs/env-bioem
+                   u/lib/python3.10/contextlib.py'>
+    ..................................................
+
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/tensorflow/python/framework/ops.py", line 33, in <module>
+    29   import numpy as np
+    30   from numpy import typing as npt
+    31   
+    32   from google.protobuf import message
+--> 33   from tensorflow.core.framework import attr_value_pb2
+    34   from tensorflow.core.framework import full_type_pb2
+    ..................................................
+     np = <module 'numpy' from '/home/rag88/.conda/envs/env-bioemu/lib
+           /python3.10/site-packages/numpy/__init__.py'>
+     npt = <module 'numpy.typing' from '/home/rag88/.conda/envs/env-bio
+            emu/lib/python3.10/site-packages/numpy/typing/__init__.py'>
+     message = <module 'google.protobuf.message' from '/home/rag88/.conda/e
+                nvs/env-bioemu/lib/python3.10/site-packages/google/protobuf/
+                message.py'>
+    ..................................................
+
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/tensorflow/core/framework/attr_value_pb2.py", line 9, in <module>
+    5    # Protobuf Python Version: 6.31.1
+    6    """Generated protocol buffer code."""
+    7    from google.protobuf import descriptor as _descriptor
+    8    from google.protobuf import descriptor_pool as _descriptor_pool
+--> 9    from google.protobuf import runtime_version as _runtime_version
+    10   from google.protobuf import symbol_database as _symbol_database
+    ..................................................
+     _descriptor = <module 'google.protobuf.descriptor' from '/home/rag88/.cond
+                    a/envs/env-bioemu/lib/python3.10/site-packages/google/protob
+                    uf/descriptor.py'>
+     _descriptor_pool = <module 'google.protobuf.descriptor_pool' from '/home/rag88/
+                         .conda/envs/env-bioemu/lib/python3.10/site-packages/google/p
+                         rotobuf/descriptor_pool.py'>
+    ..................................................
+
+---- (full traceback above) ----
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/bioemu/utils.py", line 59, in with_stackprint
+    return func(*args, **kwargs)
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/bioemu/sample.py", line 258, in main
+    batch = generate_batch(
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/bioemu/sample.py", line 371, in generate_batch
+    context_chemgraph = get_context_chemgraph(
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/bioemu/sample.py", line 305, in get_context_chemgraph
+    single_embeds_file, pair_embeds_file = get_colabfold_embeds(
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/bioemu/get_embeds.py", line 130, in get_colabfold_embeds
+    single_repr, pair_repr = get_embeddings(seq, a3m_string)
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/bioemu/colabfold_inline/model_runner.py", line 274, in get_embeddings
+    model_runner, _params = _load_model_and_params(data_dir)
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/bioemu/colabfold_inline/model_runner.py", line 103, in _load_model_and_params
+    from alphafold.model import config, model, utils
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/_vendor/alphafold/model/model.py", line 23, in <module>
+    from alphafold.model import features
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/_vendor/alphafold/model/features.py", line 19, in <module>
+    from alphafold.model.tf import input_pipeline
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/_vendor/alphafold/model/tf/input_pipeline.py", line 17, in <module>
+    from alphafold.model.tf import data_transforms
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/_vendor/alphafold/model/tf/data_transforms.py", line 18, in <module>
+    from alphafold.model.tf import shape_helpers
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/_vendor/alphafold/model/tf/shape_helpers.py", line 16, in <module>
+    import tensorflow.compat.v1 as tf
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/tensorflow/__init__.py", line 49, in <module>
+    from tensorflow._api.v2 import __internal__
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/tensorflow/_api/v2/__internal__/__init__.py", line 8, in <module>
+    from tensorflow._api.v2.__internal__ import autograph
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/tensorflow/_api/v2/__internal__/autograph/__init__.py", line 8, in <module>
+    from tensorflow.python.autograph.core.ag_ctx import control_status_ctx # line: 34
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/tensorflow/python/autograph/core/ag_ctx.py", line 21, in <module>
+    from tensorflow.python.autograph.utils import ag_logging
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/tensorflow/python/autograph/utils/__init__.py", line 17, in <module>
+    from tensorflow.python.autograph.utils.context_managers import control_dependency_on_returns
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/tensorflow/python/autograph/utils/context_managers.py", line 19, in <module>
+    from tensorflow.python.framework import ops
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/tensorflow/python/framework/ops.py", line 33, in <module>
+    from tensorflow.core.framework import attr_value_pb2
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/tensorflow/core/framework/attr_value_pb2.py", line 9, in <module>
+    from google.protobuf import runtime_version as _runtime_version
+
+ImportError: cannot import name 'runtime_version' from 'google.protobuf' (/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/google/protobuf/__init__.py)
+Traceback (most recent call last):
+  File "/home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/output/task-004-bioemu-analysis.py", line 572, in <module>
+    main()
+  File "/home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/output/task-004-bioemu-analysis.py", line 477, in main
+    bpti_dir, bpti_time = generate_conformations(
+  File "/home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/output/task-004-bioemu-analysis.py", line 120, in generate_conformations
+    bioemu_main(
+  File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/bioemu/utils.py", line 59, in with_stackprint
+    return func(*args, **kwargs)
+  File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/bioemu/sample.py", line 258, in main
+    batch = generate_batch(
+  File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/bioemu/sample.py", line 371, in generate_batch
+    context_chemgraph = get_context_chemgraph(
+  File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/bioemu/sample.py", line 305, in get_context_chemgraph
+    single_embeds_file, pair_embeds_file = get_colabfold_embeds(
+  File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/bioemu/get_embeds.py", line 130, in get_colabfold_embeds
+    single_repr, pair_repr = get_embeddings(seq, a3m_string)
+  File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/bioemu/colabfold_inline/model_runner.py", line 274, in get_embeddings
+    model_runner, _params = _load_model_and_params(data_dir)
+  File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/bioemu/colabfold_inline/model_runner.py", line 103, in _load_model_and_params
+    from alphafold.model import config, model, utils
+  File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/_vendor/alphafold/model/model.py", line 23, in <module>
+    from alphafold.model import features
+  File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/_vendor/alphafold/model/features.py", line 19, in <module>
+    from alphafold.model.tf import input_pipeline
+  File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/_vendor/alphafold/model/tf/input_pipeline.py", line 17, in <module>
+    from alphafold.model.tf import data_transforms
+  File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/_vendor/alphafold/model/tf/data_transforms.py", line 18, in <module>
+    from alphafold.model.tf import shape_helpers
+  File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/_vendor/alphafold/model/tf/shape_helpers.py", line 16, in <module>
+    import tensorflow.compat.v1 as tf
+  File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/tensorflow/__init__.py", line 49, in <module>
+    from tensorflow._api.v2 import __internal__
+  File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/tensorflow/_api/v2/__internal__/__init__.py", line 8, in <module>
+    from tensorflow._api.v2.__internal__ import autograph
+  File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/tensorflow/_api/v2/__internal__/autograph/__init__.py", line 8, in <module>
+    from tensorflow.python.autograph.core.ag_ctx import control_status_ctx # line: 34
+  File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/tensorflow/python/autograph/core/ag_ctx.py", line 21, in <module>
+    from tensorflow.python.autograph.utils import ag_logging
+  File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/tensorflow/python/autograph/utils/__init__.py", line 17, in <module>
+    from tensorflow.python.autograph.utils.context_managers import control_dependency_on_returns
+  File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/tensorflow/python/autograph/utils/context_managers.py", line 19, in <module>
+    from tensorflow.python.framework import ops
+  File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/tensorflow/python/framework/ops.py", line 33, in <module>
+    from tensorflow.core.framework import attr_value_pb2
+  File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/tensorflow/core/framework/attr_value_pb2.py", line 9, in <module>
+    from google.protobuf import runtime_version as _runtime_version
+ImportError: cannot import name 'runtime_version' from 'google.protobuf' (/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/google/protobuf/__init__.py)

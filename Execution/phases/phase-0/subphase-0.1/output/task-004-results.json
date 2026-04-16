@@ -1,0 +1,109 @@
+{
+  "timestamp": "2026-04-16T02:30:00Z",
+  "model": "bioemu-v1.1",
+  "bioemu_version": "1.3.1",
+  "num_samples": 100,
+  "distance_metric": "CB-CB",
+  "distance_note": "BioEmu outputs 5 atoms/residue (N, CA, C, CB, O). No SG atoms. CB-CB used as proxy.",
+  "slurm_job": 8371740,
+  "gpu": "RTX 5000 Ada (33.8 GB VRAM)",
+  "bpti": {
+    "protein": "BPTI",
+    "sequence_length": 57,
+    "n_ss_bonds": 3,
+    "n_conformations": 98,
+    "per_bond": {
+      "Cys5-Cys55": {
+        "mean": 6.367,
+        "std": 8.01,
+        "min": 2.978,
+        "max": 44.47,
+        "integrity_4.5A": {"pct": 86.7, "intact": 85, "total": 98},
+        "integrity_5.0A": {"pct": 88.8, "intact": 87, "total": 98},
+        "integrity_5.5A": {"pct": 88.8, "intact": 87, "total": 98}
+      },
+      "Cys14-Cys38": {
+        "mean": 6.439,
+        "std": 4.65,
+        "min": 3.262,
+        "max": 24.587,
+        "integrity_4.5A": {"pct": 57.1, "intact": 56, "total": 98},
+        "integrity_5.0A": {"pct": 67.3, "intact": 66, "total": 98},
+        "integrity_5.5A": {"pct": 72.4, "intact": 71, "total": 98}
+      },
+      "Cys30-Cys51": {
+        "mean": 5.003,
+        "std": 4.39,
+        "min": 3.127,
+        "max": 29.495,
+        "integrity_4.5A": {"pct": 90.8, "intact": 89, "total": 98},
+        "integrity_5.0A": {"pct": 90.8, "intact": 89, "total": 98},
+        "integrity_5.5A": {"pct": 90.8, "intact": 89, "total": 98}
+      }
+    },
+    "overall_integrity": {
+      "4.5A": {"pct": 56.1, "intact": 55, "total": 98},
+      "5.0A": {"pct": 67.3, "intact": 66, "total": 98},
+      "5.5A": {"pct": 72.4, "intact": 71, "total": 98}
+    },
+    "generation_time_sec": 266.17
+  },
+  "hewl": {
+    "protein": "HEWL",
+    "sequence_length": 129,
+    "n_ss_bonds": 4,
+    "n_conformations": 99,
+    "per_bond": {
+      "Cys6-Cys127": {
+        "mean": 4.114,
+        "std": 1.04,
+        "min": 3.035,
+        "max": 12.958,
+        "integrity_4.5A": {"pct": 90.9, "intact": 90, "total": 99},
+        "integrity_5.0A": {"pct": 94.9, "intact": 94, "total": 99},
+        "integrity_5.5A": {"pct": 97.0, "intact": 96, "total": 99}
+      },
+      "Cys30-Cys115": {
+        "mean": 3.900,
+        "std": 1.10,
+        "min": 3.162,
+        "max": 12.915,
+        "integrity_4.5A": {"pct": 97.0, "intact": 96, "total": 99},
+        "integrity_5.0A": {"pct": 98.0, "intact": 97, "total": 99},
+        "integrity_5.5A": {"pct": 98.0, "intact": 97, "total": 99}
+      },
+      "Cys64-Cys80": {
+        "mean": 4.038,
+        "std": 0.33,
+        "min": 3.328,
+        "max": 4.896,
+        "integrity_4.5A": {"pct": 92.9, "intact": 92, "total": 99},
+        "integrity_5.0A": {"pct": 100.0, "intact": 99, "total": 99},
+        "integrity_5.5A": {"pct": 100.0, "intact": 99, "total": 99}
+      },
+      "Cys76-Cys94": {
+        "mean": 4.119,
+        "std": 0.56,
+        "min": 3.315,
+        "max": 8.543,
+        "integrity_4.5A": {"pct": 88.9, "intact": 88, "total": 99},
+        "integrity_5.0A": {"pct": 98.0, "intact": 97, "total": 99},
+        "integrity_5.5A": {"pct": 99.0, "intact": 98, "total": 99}
+      }
+    },
+    "overall_integrity": {
+      "4.5A": {"pct": 70.7, "intact": 70, "total": 99},
+      "5.0A": {"pct": 90.9, "intact": 90, "total": 99},
+      "5.5A": {"pct": 93.9, "intact": 93, "total": 99}
+    },
+    "generation_time_sec": 569.77
+  },
+  "assessment": {
+    "primary_cutoff": "4.5A (CB-CB crystallographic standard)",
+    "bpti_t3": "NOT MET (56.1%)",
+    "hewl_t3": "NOT MET (70.7%)",
+    "bpti_ak3": "TRIGGERED (56.1% < 80%) — recommend drop",
+    "hewl_ak3": "TRIGGERED at 4.5A (70.7%), NOT triggered at 5.0A (90.9%) — cutoff decision required",
+    "recommendation": "Drop BPTI. HEWL cutoff-dependent — decision needed."
+  }
+}

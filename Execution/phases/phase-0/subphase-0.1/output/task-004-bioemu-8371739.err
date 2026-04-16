@@ -1,0 +1,176 @@
+The following modules were not unloaded:
+  (Use "module --force purge" to unload all):
+
+  1) StdEnv
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Sampling batches...:   0%|          | 0/4 [00:00<?, ?it/s]
+  0%|          | 0/150 [elapsed: 00:00 remaining: ?][A
+SUBMIT:   0%|          | 0/150 [elapsed: 00:00 remaining: ?][A
+COMPLETE:   0%|          | 0/150 [elapsed: 00:00 remaining: ?][A
+COMPLETE: 100%|██████████| 150/150 [elapsed: 00:00 remaining: 00:00][ACOMPLETE: 100%|██████████| 150/150 [elapsed: 00:02 remaining: 00:00]
+2026-04-15 21:17:03.673111: I tensorflow/core/util/port.cc:113] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-04-15 21:17:04.052238: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI AVX512_BF16 AVX_VNNI AMX_TILE AMX_INT8 AMX_BF16 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+2026-04-15 21:17:13.416610: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:388] MLIR V1 optimization pass is not enabled
+
+Denoising:   0% 0/49 [00:00<?, ?it/s][A
+Denoising:   2% 1/49 [00:00<00:29,  1.64it/s][A
+Denoising:   6% 3/49 [00:00<00:09,  4.66it/s][A
+Denoising:  10% 5/49 [00:00<00:06,  6.98it/s][A
+Denoising:  14% 7/49 [00:01<00:04,  8.72it/s][A
+Denoising:  18% 9/49 [00:01<00:04,  9.99it/s][A
+Denoising:  22% 11/49 [00:01<00:03, 10.91it/s][A
+Denoising:  27% 13/49 [00:01<00:03, 11.56it/s][A
+Denoising:  31% 15/49 [00:01<00:02, 12.03it/s][A
+Denoising:  35% 17/49 [00:01<00:02, 12.35it/s][A
+Denoising:  39% 19/49 [00:01<00:02, 12.59it/s][A
+Denoising:  43% 21/49 [00:02<00:02, 12.75it/s][A
+Denoising:  47% 23/49 [00:02<00:02, 12.87it/s][A
+Denoising:  51% 25/49 [00:02<00:01, 12.95it/s][A
+Denoising:  55% 27/49 [00:02<00:01, 13.01it/s][A
+Denoising:  59% 29/49 [00:02<00:01, 13.05it/s][A
+Denoising:  63% 31/49 [00:02<00:01, 13.08it/s][A
+Denoising:  67% 33/49 [00:03<00:01, 13.10it/s][A
+Denoising:  71% 35/49 [00:03<00:01, 13.11it/s][A
+Denoising:  76% 37/49 [00:03<00:00, 13.12it/s][A
+Denoising:  80% 39/49 [00:03<00:00, 13.12it/s][A
+Denoising:  84% 41/49 [00:03<00:00, 13.13it/s][A
+Denoising:  88% 43/49 [00:03<00:00, 13.13it/s][A
+Denoising:  92% 45/49 [00:03<00:00, 13.13it/s][A
+Denoising:  96% 47/49 [00:04<00:00, 13.14it/s][A
+Denoising: 100% 49/49 [00:04<00:00, 13.14it/s][A
+                                              [ASampling batches...:  25%|██▌       | 1/4 [03:56<11:48, 236.21s/it]Sampling batches...:  25%|██▌       | 1/4 [03:56<11:48, 236.21s/it]
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/bioemu/utils.py", line 59, in with_stackprint
+    56   @functools.wraps(func)
+    57   def with_stackprint(*args: P.args, **kwargs: P.kwargs) -> T:
+    58       try:
+--> 59           return func(*args, **kwargs)
+    60       except:
+    ..................................................
+     functools.wraps = <function 'wraps' functools.py:65>
+     func = <function 'main' _contextlib.py:113>
+     args = ()
+     P.args = P.args
+     kwargs = {'sequence': 'RPDFCLEPPYTGPCKARIIRYFYNAKAGLCQTFVYGGCRAKRNNFK
+               SAEDCMRTCGG',
+               'num_samples': 100,
+               'output_dir': '/home/rag88/projects/CompBioSummer2026/Execu
+               tion/phases/phase-0/subphase-0.1/output/task-004-bpti',
+               'batch_size_100': 10,
+               'model_name': 'bioemu-v1.1',
+               'base_seed': 42,
+               'cache_embeds_dir': '/nfs/roberts/scratch/pi_mg269/rag88/.b
+               ioemu_embeds_cache'}
+     P.kwargs = P.kwargs
+     T = ~T
+    ..................................................
+
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    113  @functools.wraps(func)
+    114  def decorate_context(*args, **kwargs):
+    115      with ctx_factory():
+--> 116          return func(*args, **kwargs)
+    ..................................................
+     functools.wraps = <function 'wraps' functools.py:65>
+     func = <function 'main' sample.py:70>
+     args = ()
+     kwargs = {'sequence': 'RPDFCLEPPYTGPCKARIIRYFYNAKAGLCQTFVYGGCRAKRNNFK
+               SAEDCMRTCGG',
+               'num_samples': 100,
+               'output_dir': '/home/rag88/projects/CompBioSummer2026/Execu
+               tion/phases/phase-0/subphase-0.1/output/task-004-bpti',
+               'batch_size_100': 10,
+               'model_name': 'bioemu-v1.1',
+               'base_seed': 42,
+               'cache_embeds_dir': '/nfs/roberts/scratch/pi_mg269/rag88/.b
+               ioemu_embeds_cache'}
+     ctx_factory = <method '_DecoratorContextManager.clone' of <torch.autograd.
+                    grad_mode.no_grad object at 0x146541739ed0> _contextlib.py:1
+                    46>
+    ..................................................
+
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/bioemu/sample.py", line 252, in main
+    72   def main(
+    73       sequence: str | Path,
+    74       num_samples: int,
+    75       output_dir: str | Path,
+    76       batch_size_100: int = 10,
+    77       model_name: Literal["bioemu-v1.0", "bioemu-v1.1", "bioemu-v1.2"] | None = "bioemu-v1.1",
+    78       ckpt_path: str | Path | None = None,
+    79       model_config_path: str | Path | None = None,
+    80       denoiser_type: SupportedDenoisersLiteral | None = "dpm",
+    81       denoiser_config: str | Path | dict | None = None,
+    82       cache_embeds_dir: str | Path | None = None,
+    83       cache_so3_dir: str | Path | None = None,
+    84       msa_host_url: str | None = None,
+    85       filter_samples: bool = True,
+    86       steering_config: str | Path | dict | None = None,
+    87       base_seed: int | None = None,
+    88   ) -> None:
+ (...)
+    248      ):
+    249          n = min(batch_size, num_samples - start_idx)
+    250          npz_path = output_dir / format_npz_samples_filename(start_idx, n)
+    251          if npz_path.exists():
+--> 252              raise ValueError(
+    253                  f"Not sure why {npz_path} already exists when so far only "
+    ..................................................
+     sequence = 'RPDFCLEPPYTGPCKARIIRYFYNAKAGLCQTFVYGGCRAKRNNFKSAEDCMRTCGG'
+     num_samples = 100
+     output_dir = PosixPath('/home/rag88/projects/CompBioSummer2026/Execution/
+                   phases/phase-0/subphase-0.1/output/task-004-bpti')
+     batch_size_100 = 10
+     model_name = 'bioemu-v1.1'
+     ckpt_path = '/nfs/roberts/scratch/pi_mg269/rag88/.hf_cache/hub/models--m
+                  icrosoft--bioemu/snapshots/1fec9d4473a9da04f5e60026a70d7a93f
+                  b893e9e/checkpoints/bioemu-v1.1/checkpoint.ckpt'
+     model_config_path = '/nfs/roberts/scratch/pi_mg269/rag88/.hf_cache/hub/models--m
+                          icrosoft--bioemu/snapshots/1fec9d4473a9da04f5e60026a70d7a93f
+                          b893e9e/checkpoints/bioemu-v1.1/config.yaml'
+     denoiser_type = 'dpm'
+     denoiser_config = {'_target_': 'bioemu.shortcuts.dpm_solver',
+                        '_partial_': True,
+                        'eps_t': 0.001,
+                        'max_t': 0.99,
+                        'N': 50,
+                        'noise': 0.0}
+     cache_embeds_dir = '/nfs/roberts/scratch/pi_mg269/rag88/.bioemu_embeds_cache'
+     cache_so3_dir = None
+     msa_host_url = None
+     filter_samples = True
+     steering_config = None
+     base_seed = 42
+     n = 30
+     batch_size = 30
+     start_idx = 30
+     npz_path = PosixPath('/home/rag88/projects/CompBioSummer2026/Execution/
+                 phases/phase-0/subphase-0.1/output/task-004-bpti/batch_00000
+                 30_0000060.npz')
+     npz_path.exists = <method 'Path.exists' of /home/rag88/projects/CompBioSummer2
+                        026/Execution/phases/phase-0/subphase-0.1/output/task-004-bp
+                        ti/batch_0000030_0000060.npz pathlib.py:1285>
+    ..................................................
+
+---- (full traceback above) ----
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/bioemu/utils.py", line 59, in with_stackprint
+    return func(*args, **kwargs)
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/bioemu/sample.py", line 252, in main
+    raise ValueError(
+
+ValueError: Not sure why /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/output/task-004-bpti/batch_0000030_0000060.npz already exists when so far only 0 samples have been generated.
+Traceback (most recent call last):
+  File "/home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/output/task-004-bioemu-analysis.py", line 572, in <module>
+    main()
+  File "/home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/output/task-004-bioemu-analysis.py", line 477, in main
+    bpti_dir, bpti_time = generate_conformations(
+  File "/home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/output/task-004-bioemu-analysis.py", line 120, in generate_conformations
+    bioemu_main(
+  File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/bioemu/utils.py", line 59, in with_stackprint
+    return func(*args, **kwargs)
+  File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 116, in decorate_context
+    return func(*args, **kwargs)
+  File "/home/rag88/.conda/envs/env-bioemu/lib/python3.10/site-packages/bioemu/sample.py", line 252, in main
+    raise ValueError(
+ValueError: Not sure why /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/output/task-004-bpti/batch_0000030_0000060.npz already exists when so far only 0 samples have been generated.

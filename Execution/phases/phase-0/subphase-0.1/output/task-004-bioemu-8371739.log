@@ -1,0 +1,71 @@
+============================================================
+BioEmu Disulfide Bond Test (Task 004)
+  Job ID:    8371739
+  Node:      a1118u01n01.mghpcc.ycrc.yale.edu
+  Start:     2026-04-16T01:16:43Z
+  Partition:  scavenge_gpu
+  GPUs:       1
+============================================================
+Wed Apr 15 21:16:43 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.195.03             Driver Version: 570.195.03     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA L40S                    On  |   00000000:E1:00.0 Off |                    0 |
+| N/A   30C    P8             32W /  350W |       0MiB /  46068MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+
+Environment check:
+Python 3.10.20
+  bioemu: 1.3.1
+  torch: 2.7.1+cu128
+  CUDA available: True
+  mdtraj: 1.10.3
+
+2026-04-15 21:16:51,762 [INFO] ========================================================================
+2026-04-15 21:16:51,762 [INFO] BioEmu Disulfide Bond Integrity Analysis
+2026-04-15 21:16:51,762 [INFO]   Start time: 2026-04-16T01:16:51.762210+00:00
+2026-04-15 21:16:51,762 [INFO] ========================================================================
+2026-04-15 21:16:51,762 [INFO] BPTI: All cysteine positions verified.
+2026-04-15 21:16:51,762 [INFO] HEWL: All cysteine positions verified.
+2026-04-15 21:16:51,762 [INFO] 
+========================================
+2026-04-15 21:16:51,762 [INFO] PHASE 1: BPTI Conformation Generation
+2026-04-15 21:16:51,762 [INFO] ========================================
+2026-04-15 21:16:59,617 [INFO] Generating 100 BioEmu conformations for BPTI (57 residues)...
+2026-04-15 21:16:59,618 [INFO]   Model: bioemu-v1.1
+2026-04-15 21:16:59,618 [INFO]   Output: /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/output/task-004-bpti
+2026-04-15 21:16:59,643 [INFO]   GPU: NVIDIA L40S
+2026-04-15 21:16:59,643 [INFO]   GPU memory: 47.7 GB
+2026-04-15 21:16:59,751 [INFO] HTTP Request: HEAD https://huggingface.co/microsoft/bioemu/resolve/main/checkpoints/bioemu-v1.1/checkpoint.ckpt "HTTP/1.1 302 Found"
+2026-04-15 21:16:59,751 [WARNING] Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+2026-04-15 21:16:59,804 [INFO] HTTP Request: HEAD https://huggingface.co/microsoft/bioemu/resolve/main/checkpoints/bioemu-v1.1/config.yaml "HTTP/1.1 307 Temporary Redirect"
+2026-04-15 21:16:59,817 [INFO] HTTP Request: HEAD https://huggingface.co/api/resolve-cache/models/microsoft/bioemu/1fec9d4473a9da04f5e60026a70d7a93fb893e9e/checkpoints%2Fbioemu-v1.1%2Fconfig.yaml "HTTP/1.1 200 OK"
+2026-04-15 21:17:00,157 [INFO] Data loaded from /home/rag88/sampling_so3_cache/cache_igso3_s0.020-2.330-1000_l2000_o2000-3.npz
+2026-04-15 21:17:00,164 [INFO] Data loaded from /home/rag88/sampling_so3_cache/cache_uso3_s0.020-2.330-1000_o2000-3.npz
+2026-04-15 21:17:00,166 [INFO] Data loaded from /home/rag88/sampling_so3_cache/cache_score-scaling_s0.020-2.330-1000_l2001_o2000-3.npz
+2026-04-15 21:17:00,174 [INFO] Sampling 100 structures for sequence of length 57 residues...
+2026-04-15 21:17:00,174 [INFO] Using batch size 30
+2026-04-15 21:17:00,176 [INFO] Found 0 previous samples in /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/output/task-004-bpti.
+2026-04-15 21:17:00,179 [INFO] Sampling with seed=42 (base_seed=42)
+2026-04-15 21:17:11,775 [INFO] AlphaFold2 params already downloaded at /home/rag88/.cache/colabfold/params
+2026-04-15 21:17:11,809 [INFO] Unable to initialize backend 'cuda': 
+2026-04-15 21:17:11,809 [INFO] Unable to initialize backend 'rocm': module 'jaxlib.xla_extension' has no attribute 'GpuAllocatorConfig'
+2026-04-15 21:17:11,819 [INFO] Unable to initialize backend 'tpu': INTERNAL: Failed to open libtpu.so: libtpu.so: cannot open shared object file: No such file or directory
+2026-04-15 21:17:11,819 [WARNING] An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu.
+2026-04-15 21:17:13,703 [INFO] Padded input to 64 residues
+2026-04-15 21:17:13,704 [INFO] Running predict with shape(feat) = {'aatype': (1, 64), 'residue_index': (1, 64), 'seq_length': (1,), 'is_distillation': (1,), 'seq_mask': (1, 64), 'msa_mask': (1, 512, 64), 'msa_row_mask': (1, 512), 'random_crop_to_size_seed': (1, 2), 'atom14_atom_exists': (1, 64, 14), 'residx_atom14_to_atom37': (1, 64, 14), 'residx_atom37_to_atom14': (1, 64, 37), 'atom37_atom_exists': (1, 64, 37), 'extra_msa': (1, 5120, 64), 'extra_msa_mask': (1, 5120, 64), 'extra_msa_row_mask': (1, 5120), 'bert_mask': (1, 512, 64), 'true_msa': (1, 512, 64), 'extra_has_deletion': (1, 5120, 64), 'extra_deletion_value': (1, 5120, 64), 'msa_feat': (1, 512, 64, 49), 'target_feat': (1, 64, 22)}
+2026-04-15 21:20:51,861 [INFO] Output shape was {'representations_evo': {'msa': (512, 64, 256), 'msa_first_row': (64, 256), 'pair': (64, 64, 128), 'single': (64, 384)}, 'representations': {'pair': (64, 64, 128), 'single': (64, 256)}}
+2026-04-15 21:20:51,868 [INFO] Embeddings computed: single=(57, 384), pair=(57, 57, 128)
