@@ -1,47 +1,38 @@
 ---
-last_updated: 2026-04-16T02:30:00Z
-updated_by: head-0.1
+last_updated: 2026-04-16T18:00:00Z
+updated_by: PlannerAI
 ---
 
 # Active Subphase
 
 | Item | Value |
 |------|-------|
-| Subphase | 0.1 |
-| Title | Environment Setup & Data Verification |
-| HeadAI | head-0.1 |
-| Start date | 2026-04-15 |
-| Completed | 2026-04-16 |
-| Status | **COMPLETE** |
+| Subphase | 1.1 |
+| Title | MLFF Software Validation & Early Setup |
+| HeadAI | head-1.1 |
+| Start date | 2026-04-17 |
+| Target end | 2026-05-02 |
+| Status | **PLANNED** (awaiting HeadAI launch) |
 
 ### Task Status
 
 | Task ID | Title | Wave | Status | Agent |
 |---------|-------|------|--------|-------|
-| task-001 | Create 9 conda environments + export pinned YAMLs | 1 | **completed** | env-builder |
-| task-002 | Download + preprocess Tahoe-100M via scDataset | 1 | **completed** (428.89 GB, 8852 files) | tahoe-loader |
-| task-003 | Verify BMRB S2 data + prepare PDB structures for 14 proteins | 1 | **completed** | alpha-scout |
-| task-004 | BioEmu v1.3.1 disulfide bond test on BPTI + HEWL | 2 | **completed** (SLURM 8371740) | bioemu-test |
+| task-001 | MACE-OFF24 crambin 1 ns NVT | 1 | planned | mace-pilot |
+| task-002 | SO3LR crambin 1 ns NVT | 1 | planned | so3lr-pilot |
+| task-003 | BioEmu batch generation (50 proteins) | 1 | planned | bioemu-gen |
+| task-004 | Delta method setup (GEARS, scGPT, CPA) | 2 | planned | delta-setup |
+| task-005 | Sidechain reconstruction test (HEWL) | 2 | planned | sc-recon |
 
-### Key Findings
+### Key Dependencies
 
-- **D1 gate signal:** env-mace SUCCESS (mace-torch 0.3.15), env-so3lr SUCCESS (SO3LR 0.1.0, JAX 0.5.3). Both MLFF packages installed. Positive D1 signal.
-- **T5 threshold:** 13/14 proteins confirmed with usable S2 data (only Crambin lacks S2). T5 MET.
-- **T3 threshold:** NOT MET. BioEmu SS integrity below 95% for both BPTI and HEWL at all CB-CB cutoffs.
-- **AK3 assessment:** BPTI TRIGGERED (56.1% at 4.5A) — recommend drop. HEWL cutoff-dependent (70.7% at 4.5A, 90.9% at 5.0A).
-- **BioEmu backbone-only output:** No SG atoms generated. CB-CB proxy used. Sidechain reconstruction may improve metrics.
-- **Garnet discovery:** Package name is `garnetff` on PyPI, requires Python 3.12 + conda-forge deps.
-- **GPU naming:** Cluster has RTX 5090 (labeled `rtx_50`), not "RTX 5000 Ada" as in proposals.
-- **BioEmu env pinning:** tensorflow-cpu must be 2.15.x (not 2.16+) to avoid protobuf clash with jaxlib.
+- Wave 2 starts when task-001 AND task-002 complete (partial trigger; task-003 may still run)
+- None of the Wave 2 tasks depend on Wave 1 output (wave ordering for concurrency only)
 
-### Cross-Agent Notes
+### Gate Evidence This Subphase Produces
 
-| Path | Urgency |
-|------|---------|
-| `shared/notes/0.1-env-mace-build.md` | info |
-| `shared/notes/0.1-env-so3lr-build.md` | info |
-| `shared/notes/0.1-bioemu-disulfide.md` | important |
-
-### Completion Report
-
-`phases/phase-0/subphase-0.1/completion-report.md` — written 2026-04-16T02:30:00Z
+| Gate | Evidence |
+|------|----------|
+| D1 (May 9) | MACE + SO3LR crambin NVT results (primary) |
+| D3 (Jun 6) | Early: 3 of 5 Delta methods installed |
+| D6 (Aug 31) | Updated T3: HEWL SG-SG integrity |

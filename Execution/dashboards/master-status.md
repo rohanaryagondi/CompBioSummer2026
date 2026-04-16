@@ -1,6 +1,6 @@
 ---
-last_updated: 2026-04-16T03:00:00Z
-updated_by: head-0.1
+last_updated: 2026-04-16T18:00:00Z
+updated_by: PlannerAI
 ---
 
 # Master Status: CompBioSummer2026 Execution
@@ -9,10 +9,20 @@ updated_by: head-0.1
 
 | Item | Value |
 |------|-------|
-| Current phase | Phase 0: Pre-Project Setup |
-| Current subphase | 0.1: Environment Setup & Data Verification |
-| Subphase status | **FULLY COMPLETE** (all 13/13 criteria MET) |
-| Next action | PlannerAI: plan Phase 1. Decisions needed on BPTI drop and HEWL cutoff. |
+| Current phase | Phase 1: Pilot Studies and Setup |
+| Current subphase | 1.1: MLFF Software Validation & Early Setup |
+| Subphase status | **PLANNED** (ready for HeadAI launch) |
+| Next action | Human: cd into subphase-1.1 and launch HeadAI |
+
+---
+
+## Phase 0 Decision Log
+
+| Decision | Resolution | Date | Impact |
+|----------|-----------|------|--------|
+| BPTI benchmark drop | **DROP.** AK3 triggered at all cutoffs (56.1-72.4%) | 2026-04-16 | 14 -> 13 proteins. T5 still met. |
+| HEWL cutoff interpretation | **CONDITIONAL KEEP.** Sidechain reconstruction test in Sub 1.1 | 2026-04-16 | Final decision after SG-SG data |
+| Phase 1 start date | **IMMEDIATE** (April 17). Extra buffer before D1. | 2026-04-16 | 3 weeks before D1 instead of 1 |
 
 ---
 
@@ -20,10 +30,10 @@ updated_by: head-0.1
 
 | Track | Status | Latest Milestone | Next Milestone |
 |-------|--------|-----------------|----------------|
-| Alpha-M | Phase 0 complete | BMRB verified (13/14), BioEmu SS tested, AK3 triggered for BPTI | Phase 1: MLFF pilot studies (D1 gate May 9) |
-| Gamma | Not started (no Phase 0 tasks) | — | Phase 1: BioEmu ensemble generation |
-| Delta | Phase 0 complete | Tahoe-100M downloaded (428.89 GB, verified) | Phase 1: Delta baselines |
-| Combined | Decision pending (Aug 31) | T3 NOT MET, T5 MET | Depends on Alpha-M + Gamma progress |
+| Alpha-M | Phase 1 ready | Envs built, BMRB verified, BioEmu tested | MACE + SO3LR crambin NVT (D1 gate May 9) |
+| Gamma | Phase 1 ready | env-bioemu working, API characterized | BioEmu batch 1 (50 proteins) |
+| Delta | Phase 1 ready | Tahoe-100M downloaded (428.89 GB) | GEARS + scGPT + CPA setup |
+| Combined | Decision pending (Aug 31) | T3 NOT MET (CB-CB), T5 MET | Depends on Alpha-M + Gamma progress |
 
 ---
 
@@ -32,7 +42,7 @@ updated_by: head-0.1
 | Phase | Planned Start | Planned End | Actual Start | Actual End | Status |
 |-------|-------------|------------|-------------|------------|--------|
 | Phase 0 | Apr 15 | Apr 30 | Apr 15 | Apr 16 | **Complete** |
-| Phase 1 | May 1 | Jun 30 | — | — | Ready to plan |
+| Phase 1 | Apr 17 | Jun 30 | — | — | **Ready to launch** |
 | Phase 2 | Jul 1 | Aug 22 | — | — | Not started |
 | Phase 3 | Aug 23 | Nov 30 | — | — | Not started |
 
@@ -46,9 +56,7 @@ None.
 
 ## Decisions Needed
 
-1. **BPTI benchmark drop:** AK3 triggered (56.1% SS integrity at 4.5A CB-CB). Recommend drop.
-2. **HEWL cutoff interpretation:** AK3 triggered at 4.5A (70.7%), passes at 5.0A (90.9%). Keep or drop?
-3. **Sidechain reconstruction:** Should Phase 1 include a task to test SCWRL4/Rosetta on BioEmu conformations for true SG-SG assessment?
+None currently. BPTI/HEWL/start-date decisions resolved.
 
 ---
 
@@ -57,6 +65,7 @@ None.
 | Date | Milestone | Gate |
 |------|-----------|------|
 | ~~Apr 30~~ | ~~Phase 0 complete~~ | — | **Done (Apr 16)** |
+| May 2 | Subphase 1.1 complete (target) | — |
 | May 9 | MLFF software GO | D1 |
 | May 15 | OSF pre-registration | — |
 | ~~May 31~~ | ~~Tahoe-100M download deadline~~ | ~~DK1~~ | **Done (Apr 16)** |
