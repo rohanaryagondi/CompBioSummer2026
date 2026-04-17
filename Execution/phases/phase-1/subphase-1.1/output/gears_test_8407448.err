@@ -1,0 +1,58 @@
+2026-04-16 04:12:06,387 INFO Building AnnData for drugs=['Rapamycin', 'Mitoxantrone (dihydrochloride)', 'Tucidinostat', 'Resveratrol', 'Lenalidomide (hemihydrate)'], cell_line=CVCL_0546, max_cells=1000
+2026-04-16 04:12:06,419 INFO Loaded 62710 genes from gene_metadata
+2026-04-16 04:12:06,419 INFO Scanning for perturbation cells (drug=Rapamycin)...
+2026-04-16 04:12:22,147 INFO Found 802 cells for drug=Rapamycin, cell_line=CVCL_0546 across 50 parquets
+2026-04-16 04:12:22,151 INFO Collected 802 cells for drug=Rapamycin
+2026-04-16 04:12:22,151 INFO Scanning for perturbation cells (drug=Mitoxantrone (dihydrochloride))...
+2026-04-16 04:12:38,475 INFO Found 492 cells for drug=Mitoxantrone (dihydrochloride), cell_line=CVCL_0546 across 50 parquets
+2026-04-16 04:12:38,485 INFO Collected 492 cells for drug=Mitoxantrone (dihydrochloride)
+2026-04-16 04:12:38,485 INFO Scanning for perturbation cells (drug=Tucidinostat)...
+2026-04-16 04:12:54,921 INFO Found 911 cells for drug=Tucidinostat, cell_line=CVCL_0546 across 50 parquets
+2026-04-16 04:12:54,924 INFO Collected 911 cells for drug=Tucidinostat
+2026-04-16 04:12:54,924 INFO Scanning for perturbation cells (drug=Resveratrol)...
+2026-04-16 04:13:11,626 INFO Found 563 cells for drug=Resveratrol, cell_line=CVCL_0546 across 50 parquets
+2026-04-16 04:13:11,640 INFO Collected 563 cells for drug=Resveratrol
+2026-04-16 04:13:11,640 INFO Scanning for perturbation cells (drug=Lenalidomide (hemihydrate))...
+2026-04-16 04:13:28,275 INFO Found 555 cells for drug=Lenalidomide (hemihydrate), cell_line=CVCL_0546 across 50 parquets
+2026-04-16 04:13:28,278 INFO Collected 555 cells for drug=Lenalidomide (hemihydrate)
+2026-04-16 04:13:28,278 INFO Total perturbation cells collected: 3323
+2026-04-16 04:13:28,278 INFO Scanning for control (DMSO_TF) cells...
+2026-04-16 04:13:37,539 INFO Reached max_cells=1000 after scanning 28 parquets
+2026-04-16 04:13:37,543 INFO Collected 1000 control cells
+2026-04-16 04:13:37,550 INFO Token-to-column mapping: 62710 entries, token range [3, 62712]
+2026-04-16 04:13:37,550 INFO Building expression matrix: 4323 cells x 62710 genes
+2026-04-16 04:13:38,431 INFO Skipped 4323 entries with unmapped token_ids (special tokens)
+2026-04-16 04:13:39,393 INFO Loaded drug targets: 264 of 379 drugs have known targets
+2026-04-16 04:13:39,415 INFO AnnData shape: (4323, 62710)
+2026-04-16 04:13:39,415 INFO Conditions (gene-mapped): {'ctrl': 1000, 'HDAC1+ctrl': 911, 'MTOR+ctrl': 802, 'SIRT1+ctrl': 563, 'CRBN+ctrl': 555, 'TOP2A+ctrl': 492}
+2026-04-16 04:13:39,416 INFO Cell types: {'CVCL_0546': 4323}
+2026-04-16 04:13:40,674 INFO After zero-gene filter: (4323, 28448)
+2026-04-16 04:13:40,697 INFO Perturbation target genes to preserve: 5
+2026-04-16 04:13:41,098 INFO After HVG selection: (4323, 5000)
+... storing 'condition' as categorical
+... storing 'cell_type' as categorical
+... storing 'drug_original' as categorical
+... storing 'sample' as categorical
+... storing 'condition_drug' as categorical
+... storing 'dose_val' as categorical
+... storing 'condition_name' as categorical
+... storing 'condition' as categorical
+... storing 'cell_type' as categorical
+... storing 'drug_original' as categorical
+... storing 'sample' as categorical
+... storing 'condition_drug' as categorical
+... storing 'dose_val' as categorical
+... storing 'condition_name' as categorical
+Creating pyg object for each cell in the data...
+  0%|          | 0/6 [00:00<?, ?it/s] 17%|█▋        | 1/6 [00:01<00:05,  1.06s/it] 33%|███▎      | 2/6 [00:01<00:03,  1.23it/s] 50%|█████     | 3/6 [00:02<00:02,  1.01it/s] 67%|██████▋   | 4/6 [00:03<00:01,  1.13it/s] 83%|████████▎ | 5/6 [00:04<00:00,  1.20it/s]100%|██████████| 6/6 [00:04<00:00,  1.58it/s]100%|██████████| 6/6 [00:04<00:00,  1.30it/s]
+Saving new dataset pyg object at /nfs/roberts/scratch/pi_mg269/rag88/delta/test-outputs/gears/gears_data/tahoe_1000/data_pyg/cell_graphs.pkl
+Done!
+Creating new splits....
+Saving new splits at /nfs/roberts/scratch/pi_mg269/rag88/delta/test-outputs/gears/gears_data/tahoe_1000/splits/tahoe_1000_single_1_0.75.pkl
+Done!
+Traceback (most recent call last):
+  File "/home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/scripts/gears_test.py", line 155, in test_gears_pipeline
+    pert_data.get_dataloader(batch_size=batch_size)
+  File "/home/rag88/.conda/envs/env-delta/lib/python3.10/site-packages/gears/pertdata.py", line 220, in get_dataloader
+    for p in self.set2conditions[i]:
+KeyError: 'val'

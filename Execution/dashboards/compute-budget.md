@@ -1,5 +1,5 @@
 ---
-last_updated: 2026-04-16T15:15:00Z
+last_updated: 2026-04-17T18:00:00Z
 updated_by: head-1.1
 ---
 
@@ -12,11 +12,11 @@ updated_by: head-1.1
 | Alpha-M | Phase 0 | <2 | 0.5 | — | Any |
 | Alpha-M | Phase 1 (pilot) | 3,000 | ~4.3 | ~2,996 | H200 |
 | Alpha-M | Phase 2 (production) | 33,800 | 0 | 33,800 | H200 / any |
-| Alpha-M | Phase 3 (replicas) | 87,792 | 0 | 87,792 | H200 / any |
+| Alpha-M | Phase 3 (replicas) | 87,792 | 0 | 87,792 | H200 |
 | Alpha-M | Contingency (20%) | 22,800 | 0 | 22,800 | H200 |
-| Gamma | All phases | 2,000 | ~15 | ~1,985 | Any |
+| Gamma | All phases | 2,000 | ~107 | ~1,893 | Any |
 | Delta | All phases | 20,000 | ~0.5 | ~19,999 | RTX 5000 Ada |
-| **Total** | | **~169,392** | **~20** | **~169,372** | |
+| **Total** | | **~169,392** | **~112** | **~169,280** | |
 
 ## SU Rate Reference
 
@@ -34,17 +34,22 @@ fit on RTX 5000 Ada.
 
 ---
 
-## Subphase 1.1 Compute Estimates
+## Subphase 1.1 Compute — Final
 
-| Task | Track | Est. GPU-hrs | GPU Type | Notes |
-|------|-------|-------------|----------|-------|
-| task-001 MACE crambin NVT | Alpha-M | 5-20 | H200 | 1 ns NVT, staged approach |
-| task-002 SO3LR crambin NVT | Alpha-M | 5-20 | H200 | 1 ns NVT, JAX JIT overhead |
-| task-003 BioEmu 50 proteins | Gamma | 15-20 | H200/Any | ~20 min/protein x 50 |
-| task-004 GEARS setup | Delta | 1-3 | RTX 5090 | OOM profiling may need multiple runs |
-| task-005 HEWL sidechain recon | Alpha-M | 0 | CPU only | SCWRL4 is CPU |
-| task-006 scGPT + CPA setup | Delta | 1-3 | RTX 5090 | Short test runs only |
-| **Subphase 1.1 total** | | **~27-66** | | |
+| Task | Track | Est. GPU-hrs | Actual GPU-hrs | GPU Type | Notes |
+|------|-------|-------------|----------------|----------|-------|
+| task-001 MACE crambin NVT | Alpha-M | 5-20 | ~2.5 | H200 | OpenCL fallback |
+| task-002 SO3LR crambin NVT | Alpha-M | 5-20 | ~1.8 | RTX 5000 Ada | CLI-based |
+| task-003 BioEmu batch 1 | Gamma | 15-20 | ~107 | Mixed → RTX 5000 Ada | 47 proteins + topup |
+| task-004 GEARS setup | Delta | 1-3 | ~0.5 | H200 | Short test runs |
+| task-005 HEWL sidechain recon | Alpha-M | 0 | 0 | CPU only | PDBFixer |
+| task-006 scGPT + CPA setup | Delta | 1-3 | ~0.01 | H200 | Short test runs |
+| **Subphase 1.1 total** | | **~27-66** | **~112** | | |
+
+**Why actual >> estimate for task-003:** Original estimate assumed 2,000 samples per
+protein with ~90% average pass rate. Actual pass rates ranged 0.7%-99%, requiring
+oversampling up to 16,800 denoised samples (SPG1_STRSG, 14.4% pass rate). The topup
+round added ~75 GPU-hours to reach >= 2,000 physical conformations for all 46 proteins.
 
 ---
 
@@ -53,12 +58,12 @@ fit on RTX 5000 Ada.
 | Data | Allocated | Used | Location |
 |------|-----------|------|----------|
 | Alpha-M trajectories | 8 TB | 0 | HPC scratch |
-| BioEmu/Boltz-2/AlphaFlow ensembles | 5 GB | ~500 MB | HPC scratch |
+| BioEmu/Boltz-2/AlphaFlow ensembles | 5 GB | ~2.5 GB | HPC scratch |
 | Tahoe-100M raw | 630 GB | 428.89 GB | HPC scratch |
 | Tahoe-100M processed | 200 GB | 0 | HPC scratch |
 | DL checkpoints | 100 GB | 0 | HPC scratch |
 | Analysis output | 10 GB | 0 | HPC scratch |
-| **Total** | **~9 TB** | **~429 GB** | |
+| **Total** | **~9 TB** | **~431 GB** | |
 
 ---
 
@@ -67,21 +72,23 @@ fit on RTX 5000 Ada.
 | Period | GPU-hrs Used | SU Consumed | Cumulative GPU-hrs | Notes |
 |--------|-------------|-------------|-------------------|-------|
 | Phase 0 (Apr 15-16) | 0.5 | ~8 | 0.5 | BioEmu SS test only |
-| Sub 1.1 (Apr 16, ongoing) | ~20 | ~3,930 | ~20.5 | MLFF + BioEmu + Delta |
+| Sub 1.1 (Apr 16-17) | ~112 | ~9,900 | ~112 | MLFF + BioEmu + Delta |
 
-### Sub 1.1 SU Breakdown
+### Sub 1.1 SU Breakdown (Final)
 
-| Task | GPU-hrs | GPU Type | SU |
-|------|---------|----------|-----|
+| Task | GPU-hrs | GPU Type | Est. SU |
+|------|---------|----------|---------|
 | MACE crambin NVT | ~2.5 | H200 | ~750 |
 | SO3LR crambin NVT | ~1.8 | RTX 5000 Ada | ~27 |
-| BioEmu batch (ongoing) | ~15 | Mixed gpu/H200 | ~3,000 |
+| BioEmu initial batch | ~32 | Mixed gpu/H200 | ~5,700 |
+| BioEmu topup round | ~75 | RTX 5000 Ada | ~1,125 |
 | GEARS setup | ~0.5 | H200 | ~150 |
 | scGPT+CPA test | ~0.01 | H200 | ~3 |
+| **Total** | **~112** | | **~7,755** |
 
-**Observation:** BioEmu on H200 consumed ~3000 SU for ~15 GPU-hrs. On RTX 5000 Ada
-the same work would have been ~225 SU (13x cheaper). Future BioEmu batches should
-use RTX 5000 Ada.
+**Lesson learned:** BioEmu topup on RTX 5000 Ada cost ~1,125 SU for 75 GPU-hours.
+The same work on H200 would have been ~22,500 SU. The shift to RTX 5000 Ada for all
+BioEmu work saved ~21,000 SU. Future batches must use RTX 5000 Ada exclusively.
 
 ---
 
@@ -89,13 +96,28 @@ use RTX 5000 Ada.
 
 | Partition | SU Consumed | % of Total |
 |-----------|-------------|------------|
-| gpu_h200 | 6,316 | 72.7% |
-| gpu_b200 | 2,118 | 24.4% |
-| gpu_devel | 205 | 2.4% |
-| gpu | 49 | 0.6% |
-| **Total** | **8,689** | **100%** |
+| gpu_h200 | ~6,316 | ~65% |
+| gpu_b200 | ~2,118 | ~22% |
+| gpu (RTX 5000 Ada) | ~1,174 | ~12% |
+| gpu_devel | ~205 | ~2% |
+| **Total** | **~9,813** | **100%** |
 
 All jobs used Standard Tier (`pi_mg269`). No Priority Tier usage to date.
+
+---
+
+## Gamma Budget Detail
+
+| Item | GPU-hrs | Notes |
+|------|---------|-------|
+| Allocated (all phases) | 2,000 | |
+| Batch 1 generation | ~32 | Initial 47 proteins |
+| Batch 1 topup | ~75 | 32 proteins oversampled |
+| **Used** | **~107** | |
+| **Remaining** | **~1,893** | For batch 2 (~100 proteins) + analysis |
+
+Batch 2 estimate: ~100 proteins at ~2.3 GPU-hrs/protein (using pass rate data for
+oversampling) = ~230 GPU-hrs. Budget is sufficient with ~1,600 GPU-hrs margin.
 
 ---
 
@@ -114,20 +136,21 @@ All jobs used Standard Tier (`pi_mg269`). No Priority Tier usage to date.
 user before submitting. Priority and Standard Tier have separate fairshare pools,
 so priority usage does not affect standard queue position.
 
-**Example:** `sbatch -A prio_gerstein -p priority_gpu --gres=gpu:rtx_5000_ada:1 script.sbatch`
-
 ### Money Spent
 
 | Tier | SU Consumed | Cost |
 |------|-------------|------|
-| Standard (pi_mg269) | 8,689 | $0.00 (free) |
+| Standard (pi_mg269) | ~9,813 | $0.00 (free) |
 | Priority (prio_gerstein) | 0 | $0.00 |
-| **Total** | **8,689** | **$0.00** |
+| **Total** | **~9,813** | **$0.00** |
 
 ---
 
 ## Alerts
 
-- **SU efficiency:** BioEmu batch 1 used H200 extensively due to gpu queue congestion.
-  Future batches should prefer RTX 5000 Ada (15 vs 300 SU/hr). Budget in GPU-hours
-  is fine; SU consumption is the concern for fairshare priority.
+- **BioEmu batch 2 planning:** Use oversampling formula from `shared/notes/1.1-bioemu-passrates.md`:
+  `num_samples = ceil(2000 / pass_rate * 1.3)`. Pre-screen for disorder (>60% = exclude).
+- **SPG1-class proteins:** Proteins with <15% pass rate need `--mem=40G` for XTC assembly
+  (>10K NPZ files require ~22 GB RAM).
+- **RTX 5000 Ada is the default GPU** for all BioEmu and Delta workloads. H200/B200 only
+  when justified by memory or queue requirements.

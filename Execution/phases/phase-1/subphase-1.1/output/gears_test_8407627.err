@@ -1,0 +1,20 @@
+2026-04-16 04:16:06,453 INFO Building AnnData for drugs=['Rapamycin', 'Mitoxantrone (dihydrochloride)', 'Tucidinostat', 'Resveratrol', 'Lenalidomide (hemihydrate)', 'Vilanterol', 'Norepinephrine (hydrochloride)', 'Sodium Salicylate', 'Clotrimazole', 'Furosemide', 'Adenosine', 'Larotrectinib', 'Retinoic acid', 'Trimetrexate', 'Gemfibrozil'], cell_line=CVCL_0546, max_cells=1000
+2026-04-16 04:16:06,485 INFO Loaded 62710 genes from gene_metadata
+2026-04-16 04:16:06,485 INFO Scanning for perturbation cells (drug=Rapamycin)...
+2026-04-16 04:16:21,759 INFO Found 802 cells for drug=Rapamycin, cell_line=CVCL_0546 across 50 parquets
+2026-04-16 04:16:21,763 INFO Collected 802 cells for drug=Rapamycin
+2026-04-16 04:16:21,763 INFO Scanning for perturbation cells (drug=Mitoxantrone (dihydrochloride))...
+2026-04-16 04:16:37,551 INFO Found 492 cells for drug=Mitoxantrone (dihydrochloride), cell_line=CVCL_0546 across 50 parquets
+2026-04-16 04:16:37,555 INFO Collected 492 cells for drug=Mitoxantrone (dihydrochloride)
+2026-04-16 04:16:37,555 INFO Scanning for perturbation cells (drug=Tucidinostat)...
+2026-04-16 04:16:53,626 INFO Found 911 cells for drug=Tucidinostat, cell_line=CVCL_0546 across 50 parquets
+2026-04-16 04:16:53,628 INFO Collected 911 cells for drug=Tucidinostat
+2026-04-16 04:16:53,629 INFO Scanning for perturbation cells (drug=Resveratrol)...
+2026-04-16 04:17:09,631 INFO Found 563 cells for drug=Resveratrol, cell_line=CVCL_0546 across 50 parquets
+2026-04-16 04:17:09,634 INFO Collected 563 cells for drug=Resveratrol
+2026-04-16 04:17:09,634 INFO Scanning for perturbation cells (drug=Lenalidomide (hemihydrate))...
+2026-04-16 04:17:25,753 INFO Found 555 cells for drug=Lenalidomide (hemihydrate), cell_line=CVCL_0546 across 50 parquets
+2026-04-16 04:17:25,756 INFO Collected 555 cells for drug=Lenalidomide (hemihydrate)
+2026-04-16 04:17:25,756 INFO Scanning for perturbation cells (drug=Vilanterol)...
+/var/spool/slurmd/job8407627/slurm_script: line 22: 3587471 Killed                  $PYTHON gears_test.py
+slurmstepd: error: Detected 1 oom_kill event in StepId=8407627.batch. Some of the step tasks have been OOM Killed.

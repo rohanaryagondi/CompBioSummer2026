@@ -1,0 +1,14 @@
+/apps/custom/lmod/8.7.48/init/bash: line 149: conda: command not found
+Traceback (most recent call last):
+  File "/home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/scripts/scgpt_test.py", line 272, in <module>
+    main()
+  File "/home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/scripts/scgpt_test.py", line 64, in main
+    print(f"GPU Memory: {torch.cuda.get_device_properties(0).total_mem / 1e9:.1f} GB")
+AttributeError: 'torch._C._CudaDeviceProperties' object has no attribute 'total_mem'. Did you mean: 'total_memory'?
+[rank: 0] Global seed set to 0
+Traceback (most recent call last):
+  File "/home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/scripts/cpa_test.py", line 249, in <module>
+    main()
+  File "/home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/scripts/cpa_test.py", line 56, in main
+    f"GPU Memory: {torch.cuda.get_device_properties(0).total_mem / 1e9:.1f} GB"
+AttributeError: 'torch._C._CudaDeviceProperties' object has no attribute 'total_mem'. Did you mean: 'total_memory'?

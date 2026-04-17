@@ -1,0 +1,11 @@
+/var/spool/slurmd/job8392193/slurm_script: line 19: conda: command not found
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'jax'
+Traceback (most recent call last):
+  File "<string>", line 2, in <module>
+ModuleNotFoundError: No module named 'ase'
+Traceback (most recent call last):
+  File "/home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/scripts/so3lr_crambin_nvt.py", line 25, in <module>
+    import numpy as np
+ModuleNotFoundError: No module named 'numpy'

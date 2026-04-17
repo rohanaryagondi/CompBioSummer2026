@@ -1,0 +1,16 @@
+MACE CUDA Test on RTX 5000 Ada
+Node: a1128u17n01.mghpcc.ycrc.yale.edu
+GPU: NVIDIA RTX 5000 Ada Generation, 8.9, 32760 MiB
+Date: 2026-04-16T15:14:36Z
+PyTorch: 2.5.1+cu121, CUDA: True
+  GPU: NVIDIA RTX 5000 Ada Generation
+  Compute capability: 8.9
+OpenMM: 8.5.1
+CUDA platform found (speed: 100.0)
+Crambin: 642 atoms
+cuequivariance or cuequivariance_torch is not available. Cuequivariance acceleration will be disabled.
+Using MACE-OFF23 MODEL for MACECalculator with /home/rag88/.cache/mace/MACE-OFF24_medium.model
+MACE system created
+CUDA simulation FAILED: Error loading CUDA module: CUDA_ERROR_UNSUPPORTED_PTX_VERSION (222)
+RESULT: CUDA BROKEN on RTX 5000 Ada
+Test complete at 2026-04-16T15:14:55Z

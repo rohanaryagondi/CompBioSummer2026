@@ -1,0 +1,36 @@
+==============================
+SO3LR Crambin NVT - Job 8392730
+Node: a1124u11n01.mghpcc.ycrc.yale.edu
+Date: 2026-04-16T05:44:51Z
+Partition: scavenge_gpu
+==============================
+Python: /home/rag88/.conda/envs/env-so3lr/bin/python
+Python version: Python 3.12.13
+numpy: 2.4.4 /home/rag88/.local/lib/python3.12/site-packages/numpy/__init__.py
+SO3LR: 0.1.0
+JAX: 0.5.3
+Thu Apr 16 01:45:09 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.195.03             Driver Version: 570.195.03     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA H200                    On  |   00000000:9B:00.0 Off |                    0 |
+| N/A   46C    P0            138W /  700W |       0MiB / 143771MiB |    100%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+JAX devices: [CudaDevice(id=0)]
+Backend: gpu
+
+=== Preparing input structure ===
+ERROR: Failed to prepare input structure

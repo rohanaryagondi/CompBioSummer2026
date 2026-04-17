@@ -1,0 +1,10 @@
+==========================================
+MACE-OFF24 Crambin NVT -- SLURM Job 8395203
+Node: a1124u11n01.mghpcc.ycrc.yale.edu
+GPU: NVIDIA H200, 143771 MiB
+Date: 2026-04-16T06:10:33Z
+==========================================
+
+=== Step 1: Environment Verification ===
+torch: 2.5.1+cu121 | CUDA: True
+  GPU: NVIDIA H200

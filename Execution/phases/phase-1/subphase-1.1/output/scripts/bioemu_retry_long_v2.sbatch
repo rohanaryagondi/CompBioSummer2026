@@ -2,8 +2,8 @@
 #SBATCH --job-name=q7k-r4
 #SBATCH --partition=gpu,gpu_rtx6000
 #SBATCH --time=04:00:00
-#SBATCH --cpus-per-task=4
-#SBATCH --mem=40G
+#SBATCH --cpus-per-task=2
+#SBATCH --mem=10G
 #SBATCH --gres=gpu:1
 #SBATCH --output=/nfs/roberts/scratch/pi_mg269/rag88/gamma/bioemu-ensembles/batch1/logs/q7k-r4-%A_%a.log
 #SBATCH --error=/nfs/roberts/scratch/pi_mg269/rag88/gamma/bioemu-ensembles/batch1/logs/q7k-r4-%A_%a.err

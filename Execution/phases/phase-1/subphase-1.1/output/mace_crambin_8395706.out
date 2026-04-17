@@ -1,0 +1,61 @@
+==========================================
+MACE-OFF24 Crambin NVT -- SLURM Job 8395706
+Node: a1116u17n01.mghpcc.ycrc.yale.edu
+GPU: NVIDIA B200, 183359 MiB
+Date: 2026-04-16T06:15:42Z
+==========================================
+
+=== Step 1: Environment Verification ===
+torch: 2.5.1+cu121 | CUDA: True
+  GPU: NVIDIA B200
+  VRAM: 191.51388672 GB
+openmm: 8.5.1
+  Platform 0: Reference (speed: 1.0)
+  Platform 1: CPU (speed: 10.0)
+  Platform 2: CUDA (speed: 100.0)
+  Platform 3: OpenCL (speed: 50.0)
+openmmml: OK
+mace: 0.3.15
+
+=== Step 2: Running MACE-OFF24 Crambin NVT ===
+[2026-04-16T06:15:47Z] MACE-OFF24 Crambin NVT -- D1 Gate Validation
+[2026-04-16T06:15:47Z] PDB: /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/proteins/crambin.pdb
+[2026-04-16T06:15:47Z] Output: /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output
+[2026-04-16T06:15:47Z] Scratch: /nfs/roberts/scratch/pi_mg269/rag88/mace-crambin
+[2026-04-16T06:15:49Z] PyTorch: 2.5.1+cu121, CUDA: True
+[2026-04-16T06:15:49Z]   GPU: NVIDIA B200
+[2026-04-16T06:15:49Z] OpenMM: 8.5.1
+[2026-04-16T06:15:49Z] === STAGE A: Vacuum NVT ===
+[2026-04-16T06:15:49Z] Loading PDB from /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/proteins/crambin.pdb
+[2026-04-16T06:15:49Z] Topology: 327 atoms, 46 residues
+[2026-04-16T06:15:49Z] Adding hydrogens...
+[2026-04-16T06:15:51Z] After hydrogens: 642 atoms
+[2026-04-16T06:15:51Z] Creating MACE-OFF24-medium ML potential...
+cuequivariance or cuequivariance_torch is not available. Cuequivariance acceleration will be disabled.
+Using MACE-OFF23 MODEL for MACECalculator with /home/rag88/.cache/mace/MACE-OFF24_medium.model
+[2026-04-16T06:15:59Z] Stage A EXCEPTION: CUDA error: no kernel image is available for execution on the device
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+[2026-04-16T06:15:59Z] Stage A failed or incomplete, skipping Stages B and C
+[2026-04-16T06:15:59Z] Attempting Stage B anyway for additional data...
+[2026-04-16T06:15:59Z] === STAGE B: Explicit Solvent NVT ===
+[2026-04-16T06:16:00Z] Adding solvent (1.0 nm padding)...
+[2026-04-16T06:16:00Z] After solvation: 7803 atoms
+[2026-04-16T06:16:00Z] Creating MACE-OFF24 ML potential for solvated system...
+Using MACE-OFF23 MODEL for MACECalculator with /home/rag88/.cache/mace/MACE-OFF24_medium.model
+[2026-04-16T06:16:00Z] MACE solvated system creation failed: CUDA error: no kernel image is available for execution on the device
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+[2026-04-16T06:16:00Z] === ANALYSIS ===
+[2026-04-16T06:16:00Z] D1 VERDICT: FAIL (max stable: 0 ps in none)
+[2026-04-16T06:16:00Z] Results saved to /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/task-001-results.json
+
+==========================================
+Simulation exit code: 1
+D1 verdict: FAIL
+Completed: 2026-04-16T06:16:01Z
+==========================================

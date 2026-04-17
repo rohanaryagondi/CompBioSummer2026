@@ -1,0 +1,125 @@
+The following modules were not unloaded:
+  (Use "module --force purge" to unload all):
+
+  1) StdEnv
+WARNING:absl:Tensorflow library not found, tensorflow.io.gfile operations will use native shim calls. GCS paths (i.e. 'gs://...') cannot be accessed.
+WARNING:root:For using QCMLDataLoader please install tensorflow.
+WARNING:root:For using QCMLDataLoader please install tensorflow_datasets.
+2026-04-16 01:47:35 INFO ============================================================
+2026-04-16 01:47:35 INFO SO3LR Crambin NVT Simulation - Task 002
+2026-04-16 01:47:35 INFO ============================================================
+2026-04-16 01:47:35 INFO JAX version: 0.5.3
+INFO:2026-04-16 01:47:35,930:jax._src.xla_bridge:925: Unable to initialize backend 'rocm': module 'jaxlib.xla_extension' has no attribute 'GpuAllocatorConfig'
+2026-04-16 01:47:35 INFO Unable to initialize backend 'rocm': module 'jaxlib.xla_extension' has no attribute 'GpuAllocatorConfig'
+INFO:2026-04-16 01:47:35,931:jax._src.xla_bridge:925: Unable to initialize backend 'tpu': INTERNAL: Failed to open libtpu.so: libtpu.so: cannot open shared object file: No such file or directory
+2026-04-16 01:47:35 INFO Unable to initialize backend 'tpu': INTERNAL: Failed to open libtpu.so: libtpu.so: cannot open shared object file: No such file or directory
+2026-04-16 01:47:35 INFO JAX backend: gpu
+2026-04-16 01:47:35 INFO JAX devices: [CudaDevice(id=0)]
+2026-04-16 01:47:35 INFO   Device: cuda:0
+2026-04-16 01:47:35 INFO   GPU memory: 0.0 GB
+2026-04-16 01:47:40 WARNING Tensorflow library not found, tensorflow.io.gfile operations will use native shim calls. GCS paths (i.e. 'gs://...') cannot be accessed.
+2026-04-16 01:47:40 WARNING For using QCMLDataLoader please install tensorflow.
+2026-04-16 01:47:40 WARNING For using QCMLDataLoader please install tensorflow_datasets.
+2026-04-16 01:47:40 INFO SO3LR version: 0.1.0
+2026-04-16 01:47:40 INFO jax_md imported successfully
+2026-04-16 01:47:40 INFO Loading structure from: /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/crambin_h_vacuum.xyz
+2026-04-16 01:47:40 INFO Number of atoms: 640
+2026-04-16 01:47:40 INFO Formula: C202H313N55O64S6
+2026-04-16 01:47:40 INFO Atomic numbers present: [1, 6, 7, 8, 16]
+2026-04-16 01:47:40 INFO Cell: Cell([0.0, 0.0, 0.0])
+2026-04-16 01:47:40 INFO PBC: [False False False]
+2026-04-16 01:47:40 INFO All elements supported by SO3LR.
+2026-04-16 01:47:40 INFO Positions shape: (640, 3)
+2026-04-16 01:47:40 INFO Species shape: (640,)
+2026-04-16 01:47:40 INFO Creating SO3LR potential...
+2026-04-16 01:47:40 INFO Potential created in 0.08 s
+2026-04-16 01:47:40 INFO Short-range cutoff: 4.5
+2026-04-16 01:47:40 INFO Long-range cutoff: 12.0
+2026-04-16 01:47:40 INFO Setting up neighbor lists...
+2026-04-16 01:47:40 INFO Neighbor list setup in 0.02 s
+2026-04-16 01:47:40 INFO Allocating neighbor lists...
+2026-04-16 01:47:41 INFO Neighbor lists allocated.
+2026-04-16 01:47:41 INFO Stage A: 200000 steps = 100.0 ps
+2026-04-16 01:47:41 INFO Creating NVT Nose-Hoover chain integrator...
+2026-04-16 01:47:41 INFO Initializing simulation state...
+2026-04-16 01:47:55 INFO State initialized.
+2026-04-16 01:47:55 INFO ============================================================
+2026-04-16 01:47:55 INFO Starting NVT MD simulation: 200 cycles x 1000 steps
+2026-04-16 01:47:55 INFO dt = 0.5 fs, T = 300.0 K, total = 100.0 ps
+2026-04-16 01:47:55 INFO ============================================================
+Traceback (most recent call last):
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/jax/_src/lax/lax.py", line 218, in _broadcast_shapes_uncached
+    return _try_broadcast_shapes(*rank_promoted_shapes, name='broadcast_shapes')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/jax/_src/lax/lax.py", line 135, in _try_broadcast_shapes
+    raise TypeError(f'{name} got incompatible shapes for broadcasting: '
+TypeError: broadcast_shapes got incompatible shapes for broadcasting: (640, 3), (1, 640).
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/jax/_src/lax/lax.py", line 196, in broadcast_shapes
+    return _broadcast_shapes_cached(*shapes)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/jax/_src/util.py", line 337, in wrapper
+    return cached(config.trace_context() if trace_context_in_key else _ignore(),
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/jax/_src/util.py", line 331, in cached
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/jax/_src/lax/lax.py", line 202, in _broadcast_shapes_cached
+    return _broadcast_shapes_uncached(*shapes)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/jax/_src/lax/lax.py", line 221, in _broadcast_shapes_uncached
+    raise ValueError(f"Incompatible shapes for broadcasting: shapes={list(shapes)}") from err
+ValueError: Incompatible shapes for broadcasting: shapes=[(640, 3), (640,)]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/jax/_src/lax/lax.py", line 218, in _broadcast_shapes_uncached
+    return _try_broadcast_shapes(*rank_promoted_shapes, name='broadcast_shapes')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/jax/_src/lax/lax.py", line 135, in _try_broadcast_shapes
+    raise TypeError(f'{name} got incompatible shapes for broadcasting: '
+TypeError: broadcast_shapes got incompatible shapes for broadcasting: (640, 3), (1, 640).
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/scripts/so3lr_crambin_nvt.py", line 268, in <module>
+    ke0, temp0 = compute_temp(state)
+                 ^^^^^^^^^^^^^^^^^^^
+  File "/home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/scripts/so3lr_crambin_nvt.py", line 254, in compute_temp
+    ke = quantity.kinetic_energy(
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/jax_md/quantity.py", line 157, in kinetic_energy
+    ke = tree_map(lambda m, q: 0.5 * util.high_precision_sum(k(q, m)), mass, q)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/jax/_src/tree_util.py", line 358, in tree_map
+    return treedef.unflatten(f(*xs) for xs in zip(*all_leaves))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/jax/_src/tree_util.py", line 358, in <genexpr>
+    return treedef.unflatten(f(*xs) for xs in zip(*all_leaves))
+                             ^^^^^^
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/jax_md/quantity.py", line 157, in <lambda>
+    ke = tree_map(lambda m, q: 0.5 * util.high_precision_sum(k(q, m)), mass, q)
+                                                             ^^^^^^^
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/jax_md/quantity.py", line 153, in <lambda>
+    k = (lambda v, m: v**2 * m) if momentum is None else (lambda p, m: p**2 / m)
+                                                                       ~~~~~^~~
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/jax/_src/numpy/array_methods.py", line 579, in deferring_binary_op
+    return binary_op(*args)
+           ^^^^^^^^^^^^^^^^
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/jax/_src/numpy/ufuncs.py", line 2445, in true_divide
+    x1, x2 = promote_args_inexact("true_divide", x1, x2)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/jax/_src/numpy/util.py", line 244, in promote_args_inexact
+    return promote_shapes(fun_name, *promote_dtypes_inexact(*args))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/jax/_src/numpy/util.py", line 63, in promote_shapes
+    result_rank = len(lax.broadcast_shapes(*shapes))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: Incompatible shapes for broadcasting: shapes=[(640, 3), (640,)]
+--------------------
+For simplicity, JAX has removed its internal frames from the traceback of the following exception. Set JAX_TRACEBACK_FILTERING=off to include these.

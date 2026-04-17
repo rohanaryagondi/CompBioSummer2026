@@ -43,8 +43,16 @@ def parse_fasta(fasta_path):
     return entries
 
 
-def validate_output(output_dir, num_samples, seq_len):
-    """Validate BioEmu output directory."""
+def validate_output(output_dir, num_samples, seq_len, sequence=None):
+    """Validate BioEmu output directory.
+
+    Args:
+        output_dir: Path to protein output directory.
+        num_samples: Number of samples requested.
+        seq_len: Sequence length.
+        sequence: Amino acid sequence string. If provided, used to compute
+            correct expected atom count (glycine lacks CB).
+    """
     output_dir = Path(output_dir)
     issues = []
 
@@ -85,16 +93,20 @@ def validate_output(output_dir, num_samples, seq_len):
             traj = mdtraj.load(str(xtc), top=str(topo))
             conformation_count = traj.n_frames
             atoms_per_frame = traj.n_atoms
-            expected_atoms = 5 * seq_len  # N, CA, C, CB, O per residue
+            # BioEmu writes 5 backbone atoms per residue (N, CA, C, CB, O),
+            # but glycine residues lack CB, so subtract glycine count.
+            num_glycines = sequence.count('G') if sequence else 0
+            expected_atoms = 5 * seq_len - num_glycines
             if atoms_per_frame != expected_atoms:
                 issues.append(
                     f"Atom count mismatch: got {atoms_per_frame}, "
-                    f"expected {expected_atoms} (5 * {seq_len})"
+                    f"expected {expected_atoms} "
+                    f"(5*{seq_len} - {num_glycines} glycines)"
                 )
             if conformation_count < num_samples * 0.9:
                 issues.append(
                     f"Low conformation count: {conformation_count} "
-                    f"(expected ~{num_samples})"
+                    f"(expected ~{num_samples}, after physicality filtering)"
                 )
         except Exception as e:
             issues.append(f"mdtraj validation failed: {e}")
@@ -222,7 +234,8 @@ def main():
         status["end_time"] = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
 
         # Validate output
-        validation = validate_output(args.output_dir, args.num_samples, seq_len)
+        validation = validate_output(args.output_dir, args.num_samples, seq_len,
+                                     sequence=sequence)
         status["validation"] = validation
         status["status"] = "success" if validation["valid"] else "partial"
 

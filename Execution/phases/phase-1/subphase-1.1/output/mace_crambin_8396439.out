@@ -1,0 +1,48 @@
+==========================================
+MACE-OFF24 Crambin NVT -- SLURM Job 8396439
+Node: a1126u19n01.mghpcc.ycrc.yale.edu
+GPU: NVIDIA H200, 143771 MiB
+Date: 2026-04-16T06:23:24Z
+==========================================
+
+=== Step 1: Environment Verification ===
+torch: 2.5.1+cu121 | CUDA: True
+  GPU: NVIDIA H200
+  VRAM: 150.120759296 GB
+openmm: 8.5.1
+  Platform 0: Reference (speed: 1.0)
+  Platform 1: CPU (speed: 10.0)
+  Platform 2: CUDA (speed: 100.0)
+  Platform 3: OpenCL (speed: 50.0)
+openmmml: OK
+mace: 0.3.15
+
+=== Step 2: Running MACE-OFF24 Crambin NVT ===
+[2026-04-16T06:23:26Z] MACE-OFF24 Crambin NVT -- D1 Gate Validation
+[2026-04-16T06:23:26Z] PDB: /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/proteins/crambin.pdb
+[2026-04-16T06:23:26Z] Output: /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output
+[2026-04-16T06:23:26Z] Scratch: /nfs/roberts/scratch/pi_mg269/rag88/mace-crambin
+[2026-04-16T06:23:28Z] PyTorch: 2.5.1+cu121, CUDA: True
+[2026-04-16T06:23:28Z]   GPU: NVIDIA H200
+[2026-04-16T06:23:28Z] OpenMM: 8.5.1
+[2026-04-16T06:23:28Z] === STAGE A: Vacuum NVT ===
+[2026-04-16T06:23:28Z] Loading PDB from /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/proteins/crambin.pdb
+[2026-04-16T06:23:28Z] Topology: 327 atoms, 46 residues
+[2026-04-16T06:23:28Z] Adding hydrogens...
+[2026-04-16T06:23:29Z] After hydrogens: 642 atoms
+[2026-04-16T06:23:29Z] Creating MACE-OFF24-medium ML potential...
+cuequivariance or cuequivariance_torch is not available. Cuequivariance acceleration will be disabled.
+Using MACE-OFF23 MODEL for MACECalculator with /home/rag88/.cache/mace/MACE-OFF24_medium.model
+[2026-04-16T06:23:32Z] System created in 3.6s: 642 particles, 2 forces
+[2026-04-16T06:23:32Z] Platform CUDA failed: Error loading CUDA module: CUDA_ERROR_UNSUPPORTED_PTX_VERSION (222)
+[2026-04-16T06:23:33Z] Using platform: OpenCL
+[2026-04-16T06:23:33Z] Minimizing energy (max 2000 iterations)...
+[2026-04-16T06:23:56Z] Minimization complete in 23.0s. PE = -281976.2 kJ/mol
+[2026-04-16T06:23:56Z] Minimized structure saved to /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/crambin_minimized_vacuum.pdb
+[2026-04-16T06:23:56Z] --- vacuum: 1 ps total (1000 new steps) ---
+[2026-04-16T06:24:54Z]   STABLE: 1.0 ps total in 57.0s (1.516 ns/day). PE = -279995.7 kJ/mol
+[2026-04-16T06:24:54Z] --- vacuum: 10 ps total (9000 new steps) ---
+[2026-04-16T06:33:28Z]   STABLE: 10.0 ps total in 513.9s (1.513 ns/day). PE = -279716.2 kJ/mol
+[2026-04-16T06:33:28Z] --- vacuum: 100 ps total (90000 new steps) ---
+[2026-04-16T08:01:51Z]   STABLE: 100.0 ps total in 5303.4s (1.466 ns/day). PE = -280020.3 kJ/mol
+[2026-04-16T08:01:51Z] --- vacuum: 1000 ps total (900000 new steps) ---

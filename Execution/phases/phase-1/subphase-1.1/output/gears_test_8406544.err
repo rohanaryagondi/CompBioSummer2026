@@ -1,0 +1,45 @@
+2026-04-16 04:06:06,467 INFO Building AnnData for drug=Rapamycin, cell_line=CVCL_0546, max_cells=1000
+2026-04-16 04:06:06,502 INFO Loaded 62710 genes from gene_metadata
+2026-04-16 04:06:06,502 INFO Scanning for perturbation cells...
+2026-04-16 04:06:23,932 INFO Found 802 cells for drug=Rapamycin, cell_line=CVCL_0546 across 50 parquets
+2026-04-16 04:06:23,937 INFO Collected 802 perturbation cells
+2026-04-16 04:06:23,937 INFO Scanning for control (DMSO_TF) cells...
+2026-04-16 04:06:33,177 INFO Reached max_cells=1000 after scanning 28 parquets
+2026-04-16 04:06:33,180 INFO Collected 1000 control cells
+2026-04-16 04:06:33,187 INFO Token-to-column mapping: 62710 entries, token range [3, 62712]
+2026-04-16 04:06:33,187 INFO Building expression matrix: 1802 cells x 62710 genes
+2026-04-16 04:06:33,562 INFO Skipped 1802 entries with unmapped token_ids (special tokens)
+2026-04-16 04:06:33,986 INFO Loaded drug targets: 264 of 379 drugs have known targets
+2026-04-16 04:06:33,999 INFO AnnData shape: (1802, 62710)
+2026-04-16 04:06:33,999 INFO Conditions (gene-mapped): {'ctrl': 1000, 'MTOR': 802}
+2026-04-16 04:06:34,000 INFO Cell types: {'CVCL_0546': 1802}
+2026-04-16 04:06:35,328 INFO After zero-gene filter: (1802, 24618)
+2026-04-16 04:06:35,339 INFO Perturbation target genes to preserve: 1
+2026-04-16 04:06:37,259 INFO After HVG selection: (1802, 5000)
+... storing 'condition' as categorical
+... storing 'cell_type' as categorical
+... storing 'drug_original' as categorical
+... storing 'sample' as categorical
+... storing 'condition_drug' as categorical
+... storing 'dose_val' as categorical
+... storing 'condition_name' as categorical
+... storing 'condition' as categorical
+... storing 'cell_type' as categorical
+... storing 'drug_original' as categorical
+... storing 'sample' as categorical
+... storing 'condition_drug' as categorical
+... storing 'dose_val' as categorical
+... storing 'condition_name' as categorical
+Creating pyg object for each cell in the data...
+  0%|          | 0/2 [00:00<?, ?it/s] 50%|█████     | 1/2 [00:01<00:01,  1.09s/it]100%|██████████| 2/2 [00:01<00:00,  1.72it/s]
+Saving new dataset pyg object at /nfs/roberts/scratch/pi_mg269/rag88/delta/test-outputs/gears/gears_data/tahoe_1000/data_pyg/cell_graphs.pkl
+Done!
+Creating new splits....
+Saving new splits at /nfs/roberts/scratch/pi_mg269/rag88/delta/test-outputs/gears/gears_data/tahoe_1000/splits/tahoe_1000_single_1_0.75.pkl
+Done!
+Traceback (most recent call last):
+  File "/home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/scripts/gears_test.py", line 140, in test_gears_pipeline
+    pert_data.get_dataloader(batch_size=batch_size)
+  File "/home/rag88/.conda/envs/env-delta/lib/python3.10/site-packages/gears/pertdata.py", line 220, in get_dataloader
+    for p in self.set2conditions[i]:
+KeyError: 'val'

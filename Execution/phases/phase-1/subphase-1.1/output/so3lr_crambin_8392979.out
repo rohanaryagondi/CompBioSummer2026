@@ -1,0 +1,9 @@
+==============================
+SO3LR Crambin NVT - Job 8392979
+Node: a1112u05n01.mghpcc.ycrc.yale.edu
+Date: 2026-04-16T05:47:25Z
+Partition: gpu_rtx6000
+==============================
+Python: /home/rag88/.conda/envs/env-so3lr/bin/python
+Python version: Python 3.12.13
+numpy: 2.4.4

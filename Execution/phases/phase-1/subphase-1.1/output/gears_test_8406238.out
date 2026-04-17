@@ -1,0 +1,12 @@
+=== Environment ===
+torch: 2.11.0+cu128 CUDA: True NVIDIA H200
+GEARS: OK
+===================
+============================================================
+GEARS Test on Tahoe-100M
+torch: 2.11.0+cu128
+CUDA available: True
+GPU: NVIDIA H200
+
+=== Job completed ===
+Exit code: 0

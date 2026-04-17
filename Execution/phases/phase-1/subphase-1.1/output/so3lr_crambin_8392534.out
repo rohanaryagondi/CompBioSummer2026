@@ -1,0 +1,57 @@
+==============================
+SO3LR Crambin NVT - Job 8392534
+Node: a1128u44n01.mghpcc.ycrc.yale.edu
+Date: 2026-04-16T05:42:16Z
+Partition: gpu_devel
+==============================
+Python: /home/rag88/.conda/envs/env-so3lr/bin/python
+Python version: Python 3.12.13
+SO3LR: Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/so3lr/__init__.py", line 3, in <module>
+    from .ase_utils import make_ase_calculator as So3lrCalculator
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/so3lr/ase_utils.py", line 1, in <module>
+    import numpy as np
+ModuleNotFoundError: No module named 'numpy'
+JAX: ModuleNotFoundError: No module named 'numpy'
+ImportError: _multiarray_umath failed to import
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/jax/__init__.py", line 25, in <module>
+    from jax._src.cloud_tpu_init import cloud_tpu_init as _cloud_tpu_init
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/jax/_src/cloud_tpu_init.py", line 20, in <module>
+    from jax._src import config
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/jax/_src/config.py", line 27, in <module>
+    from jax._src.lib import guard_lib
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/jax/_src/lib/__init__.py", line 87, in <module>
+    import jaxlib.xla_client as xla_client
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/jaxlib/xla_client.py", line 30, in <module>
+    import ml_dtypes
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/ml_dtypes/__init__.py", line 40, in <module>
+    from ml_dtypes._finfo import finfo
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/ml_dtypes/_finfo.py", line 17, in <module>
+    from ml_dtypes._ml_dtypes_ext import bfloat16
+ImportError: numpy._core.umath failed to import
+Thu Apr 16 01:42:17 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.195.03             Driver Version: 570.195.03     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX 5000 Ada Gene...    On  |   00000000:AB:00.0 Off |                  Off |
+| 30%   36C    P8             17W /  250W |       2MiB /  32760MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+
+=== Preparing input structure ===
+ERROR: Failed to prepare input structure

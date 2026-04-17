@@ -1,0 +1,39 @@
+==============================
+SO3LR Crambin NVT - Job 8392889
+Node: a1116u13n01.mghpcc.ycrc.yale.edu
+Date: 2026-04-16T05:47:25Z
+Partition: gpu_b200
+==============================
+Python: /home/rag88/.conda/envs/env-so3lr/bin/python
+Python version: Python 3.12.13
+numpy: 2.4.4
+SO3LR: 0.1.0
+JAX: 0.5.3
+Thu Apr 16 01:47:33 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.195.03             Driver Version: 570.195.03     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA B200                    On  |   00000000:5D:00.0 Off |                    0 |
+| N/A   23C    P0            200W / 1000W |       0MiB / 183359MiB |      0%      Default |
+|                                         |                        |             Disabled |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+JAX devices: [CudaDevice(id=0)]
+Backend: gpu
+Input file: crambin_h_vacuum.xyz
+640 atoms, C202H313N55O64S6
+
+=== Stage A: 100 ps NVT ===
+Stage A exit code: 1
+Stage A FAILED (exit=1)

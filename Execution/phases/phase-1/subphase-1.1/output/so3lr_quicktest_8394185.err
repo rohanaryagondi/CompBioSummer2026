@@ -1,0 +1,62 @@
+The following modules were not unloaded:
+  (Use "module --force purge" to unload all):
+
+  1) StdEnv
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/so3lr/__init__.py", line 3, in <module>
+    from .ase_utils import make_ase_calculator as So3lrCalculator
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/so3lr/ase_utils.py", line 1, in <module>
+    import numpy as np
+ModuleNotFoundError: No module named 'numpy'
+ModuleNotFoundError: No module named 'numpy'
+ImportError: _multiarray_umath failed to import
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/jax/__init__.py", line 25, in <module>
+    from jax._src.cloud_tpu_init import cloud_tpu_init as _cloud_tpu_init
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/jax/_src/cloud_tpu_init.py", line 20, in <module>
+    from jax._src import config
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/jax/_src/config.py", line 27, in <module>
+    from jax._src.lib import guard_lib
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/jax/_src/lib/__init__.py", line 87, in <module>
+    import jaxlib.xla_client as xla_client
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/jaxlib/xla_client.py", line 30, in <module>
+    import ml_dtypes
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/ml_dtypes/__init__.py", line 40, in <module>
+    from ml_dtypes._finfo import finfo
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/ml_dtypes/_finfo.py", line 17, in <module>
+    from ml_dtypes._ml_dtypes_ext import bfloat16
+ImportError: numpy._core.umath failed to import
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/ase/__init__.py", line 8, in <module>
+    import ase.parallel  # noqa
+    ^^^^^^^^^^^^^^^^^^^
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/ase/parallel.py", line 11, in <module>
+    import numpy as np
+ModuleNotFoundError: No module named 'numpy'
+Traceback (most recent call last):
+  File "/home/rag88/.conda/envs/env-so3lr/bin/so3lr", line 3, in <module>
+    from so3lr.cli.so3lr_cli import main
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/so3lr/__init__.py", line 3, in <module>
+    from .ase_utils import make_ase_calculator as So3lrCalculator
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/so3lr/ase_utils.py", line 1, in <module>
+    import numpy as np
+ModuleNotFoundError: No module named 'numpy'
+Traceback (most recent call last):
+  File "/home/rag88/.conda/envs/env-so3lr/bin/so3lr", line 3, in <module>
+    from so3lr.cli.so3lr_cli import main
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/so3lr/__init__.py", line 3, in <module>
+    from .ase_utils import make_ase_calculator as So3lrCalculator
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/so3lr/ase_utils.py", line 1, in <module>
+    import numpy as np
+ModuleNotFoundError: No module named 'numpy'
+Traceback (most recent call last):
+  File "/home/rag88/.conda/envs/env-so3lr/bin/so3lr", line 3, in <module>
+    from so3lr.cli.so3lr_cli import main
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/so3lr/__init__.py", line 3, in <module>
+    from .ase_utils import make_ase_calculator as So3lrCalculator
+  File "/home/rag88/.conda/envs/env-so3lr/lib/python3.12/site-packages/so3lr/ase_utils.py", line 1, in <module>
+    import numpy as np
+ModuleNotFoundError: No module named 'numpy'

@@ -1,0 +1,22 @@
+Lmod has detected the following error: Cannot load module "miniconda/24.11.3"
+because these module(s) are loaded:
+   Python
+
+While processing the following module(s):
+    Module fullname    Module Filename
+    ---------------    ---------------
+    miniconda/24.11.3  /apps/software/system/modules/all/miniconda/24.11.3.lua
+
+/var/spool/slurmd/job8392461/slurm_script: line 20: conda: command not found
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'so3lr'
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'jax'
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'jax'
+Traceback (most recent call last):
+  File "<string>", line 2, in <module>
+ModuleNotFoundError: No module named 'ase'

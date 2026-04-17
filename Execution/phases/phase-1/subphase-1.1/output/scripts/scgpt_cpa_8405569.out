@@ -1,0 +1,114 @@
+=== SLURM Job Info ===
+Job ID: 8405569
+Node: a1122u02n01
+GPU: NVIDIA H200
+Date: Thu Apr 16 07:53:14 UTC 2026
+
+==========================================
+     PART 1: scGPT Test
+==========================================
+============================================================
+scGPT Perturbation Test on Tahoe-100M
+============================================================
+Device: cuda
+GPU: NVIDIA H200
+GPU Memory: 150.1 GB
+
+[1/5] Loading scGPT vocabulary...
+  Vocabulary size: 60697
+
+[2/5] Loading pretrained model...
+  Loaded 129/163 pretrained weight tensors
+  Model parameters: 51,859,459
+
+[3/5] Loading Tahoe-100M test condition...
+  Loaded 32 cells, 62710 genes
+  Drug: Goserelin (acetate)
+  Cell lines: 25
+
+[4/5] Running forward pass...
+  Input gene IDs shape: torch.Size([32, 1200])
+  Input values shape: torch.Size([32, 1200])
+  Forward pass completed in 0.38s
+  MLM output shape: torch.Size([32, 1200])
+  MLM output range: [-0.6871, -0.0906]
+
+[5/5] GPU Memory Profile:
+  Peak GPU memory: 6.78 GB
+  Current GPU memory: 0.32 GB
+
+============================================================
+SUMMARY
+============================================================
+  scGPT version: 0.2.4
+  Model: whole-human pretrained (scGPT_human)
+  Model params: 51,859,459
+  Pretrained weights loaded: 129/163
+  Tahoe genes matched to vocab: 38913/62710
+  Test drug: Goserelin (acetate)
+  Test cells: 32
+  Sequence length: 1200
+  Forward pass: PASSED
+  Inference time: 0.38s
+  Peak GPU memory: 6.78 GB
+  Device: cuda
+
+Results saved to /nfs/roberts/scratch/pi_mg269/rag88/delta/test-outputs/scgpt/scgpt_test_results.json
+
+scGPT exit code: 0
+
+==========================================
+     PART 2: CPA Test
+==========================================
+============================================================
+CPA Perturbation Test on Tahoe-100M
+============================================================
+Device: cuda
+GPU: NVIDIA H200
+GPU Memory: 150.1 GB
+
+[1/5] Loading Tahoe-100M test data...
+  Combined AnnData: (400, 62710)
+  Treated cells: 200
+  Control cells: 200
+  Perturbations: 2
+  Cell types: 46
+
+[2/5] Reducing gene set for test...
+  Subset AnnData: (400, 2000)
+
+[3/5] Setting up CPA model...
+[34mINFO    [0m Generating sequential column names                                     
+[34mINFO    [0m Generating sequential column names                                     
+  CPA model created successfully
+  Model parameters: 2,394,824
+
+[4/5] Running training loop (3 epochs)...
+Training:   0%|          | 0/3 [00:00<?, ?it/s]Epoch 1/3:   0%|          | 0/3 [00:00<?, ?it/s]Epoch 1/3:  33%|███▎      | 1/3 [00:02<00:05,  2.78s/it]Epoch 1/3:  33%|███▎      | 1/3 [00:02<00:05,  2.78s/it, v_num=1, val_recon=1.85e+3, disnt_basal=0.507, disnt_after=0.653, val_r2_mean=-0.15, val_KL=nan, recon=1.74e+3, r2_mean=-0.192, adv_loss=4.67, acc_pert=0.485, acc_cell_type=0.0425]Epoch 2/3:  33%|███▎      | 1/3 [00:02<00:05,  2.78s/it, v_num=1, val_recon=1.85e+3, disnt_basal=0.507, disnt_after=0.653, val_r2_mean=-0.15, val_KL=nan, recon=1.74e+3, r2_mean=-0.192, adv_loss=4.67, acc_pert=0.485, acc_cell_type=0.0425]Epoch 2/3:  67%|██████▋   | 2/3 [00:03<00:01,  1.39s/it, v_num=1, val_recon=1.85e+3, disnt_basal=0.507, disnt_after=0.653, val_r2_mean=-0.15, val_KL=nan, recon=1.74e+3, r2_mean=-0.192, adv_loss=4.67, acc_pert=0.485, acc_cell_type=0.0425]Epoch 2/3:  67%|██████▋   | 2/3 [00:03<00:01,  1.39s/it, v_num=1, val_recon=1.84e+3, disnt_basal=0.517, disnt_after=0.653, val_r2_mean=-0.141, val_KL=nan, recon=1.67e+3, r2_mean=-0.125, adv_loss=4.65, acc_pert=0.488, acc_cell_type=0.043]Epoch 3/3:  67%|██████▋   | 2/3 [00:03<00:01,  1.39s/it, v_num=1, val_recon=1.84e+3, disnt_basal=0.517, disnt_after=0.653, val_r2_mean=-0.141, val_KL=nan, recon=1.67e+3, r2_mean=-0.125, adv_loss=4.65, acc_pert=0.488, acc_cell_type=0.043]Epoch 3/3: 100%|██████████| 3/3 [00:03<00:00,  1.09it/s, v_num=1, val_recon=1.84e+3, disnt_basal=0.517, disnt_after=0.653, val_r2_mean=-0.141, val_KL=nan, recon=1.67e+3, r2_mean=-0.125, adv_loss=4.65, acc_pert=0.488, acc_cell_type=0.043]Epoch 3/3: 100%|██████████| 3/3 [00:03<00:00,  1.09it/s, v_num=1, val_recon=1.83e+3, disnt_basal=0.523, disnt_after=0.653, val_r2_mean=-0.133, val_KL=nan, recon=1.64e+3, r2_mean=-0.0723, adv_loss=4.68, acc_pert=0.485, acc_cell_type=0.0206]Epoch 3/3: 100%|██████████| 3/3 [00:03<00:00,  1.18s/it, v_num=1, val_recon=1.83e+3, disnt_basal=0.523, disnt_after=0.653, val_r2_mean=-0.133, val_KL=nan, recon=1.64e+3, r2_mean=-0.0723, adv_loss=4.68, acc_pert=0.485, acc_cell_type=0.0206]
+  Training completed in 5.22s
+
+[5/5] GPU Memory Profile:
+  Peak GPU memory: 0.11 GB
+  Current GPU memory: 0.02 GB
+
+============================================================
+SUMMARY
+============================================================
+  CPA version: 0.8.8
+  Model params: 2,394,824
+  Test drugs: Goserelin (acetate), Fusidic acid
+  Test cells: 400
+  Gene subset: 2000
+  Training: PASSED
+  Training time: 5.22s
+  Peak GPU memory: 0.11 GB
+  Device: cuda
+
+Results saved to /nfs/roberts/scratch/pi_mg269/rag88/delta/test-outputs/cpa/cpa_test_results.json
+
+CPA exit code: 0
+
+=== Job Complete ===
+scGPT: 0
+CPA: 0
+Date: Thu Apr 16 07:53:44 UTC 2026

@@ -1,0 +1,56 @@
+==========================================
+MACE-OFF24 Crambin NVT -- SLURM Job 8395988
+Node: a1126u19n01.mghpcc.ycrc.yale.edu
+GPU: NVIDIA H200, 143771 MiB
+Date: 2026-04-16T06:20:51Z
+==========================================
+
+=== Step 1: Environment Verification ===
+torch: 2.5.1+cu121 | CUDA: True
+  GPU: NVIDIA H200
+  VRAM: 150.120759296 GB
+openmm: 8.5.1
+  Platform 0: Reference (speed: 1.0)
+  Platform 1: CPU (speed: 10.0)
+  Platform 2: CUDA (speed: 100.0)
+  Platform 3: OpenCL (speed: 50.0)
+openmmml: OK
+mace: 0.3.15
+
+=== Step 2: Running MACE-OFF24 Crambin NVT ===
+[2026-04-16T06:20:56Z] MACE-OFF24 Crambin NVT -- D1 Gate Validation
+[2026-04-16T06:20:56Z] PDB: /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/proteins/crambin.pdb
+[2026-04-16T06:20:56Z] Output: /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output
+[2026-04-16T06:20:56Z] Scratch: /nfs/roberts/scratch/pi_mg269/rag88/mace-crambin
+[2026-04-16T06:20:57Z] PyTorch: 2.5.1+cu121, CUDA: True
+[2026-04-16T06:20:57Z]   GPU: NVIDIA H200
+[2026-04-16T06:20:58Z] OpenMM: 8.5.1
+[2026-04-16T06:20:58Z] === STAGE A: Vacuum NVT ===
+[2026-04-16T06:20:58Z] Loading PDB from /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/proteins/crambin.pdb
+[2026-04-16T06:20:58Z] Topology: 327 atoms, 46 residues
+[2026-04-16T06:20:58Z] Adding hydrogens...
+[2026-04-16T06:21:02Z] After hydrogens: 642 atoms
+[2026-04-16T06:21:02Z] Creating MACE-OFF24-medium ML potential...
+cuequivariance or cuequivariance_torch is not available. Cuequivariance acceleration will be disabled.
+Using MACE-OFF23 MODEL for MACECalculator with /home/rag88/.cache/mace/MACE-OFF24_medium.model
+[2026-04-16T06:21:10Z] System created in 8.1s: 642 particles, 2 forces
+[2026-04-16T06:21:10Z] Using platform: CUDA
+[2026-04-16T06:21:10Z] Stage A EXCEPTION: Error loading CUDA module: CUDA_ERROR_UNSUPPORTED_PTX_VERSION (222)
+[2026-04-16T06:21:10Z] Stage A failed or incomplete, skipping Stages B and C
+[2026-04-16T06:21:10Z] Attempting Stage B anyway for additional data...
+[2026-04-16T06:21:10Z] === STAGE B: Explicit Solvent NVT ===
+[2026-04-16T06:21:11Z] Adding solvent (1.0 nm padding)...
+[2026-04-16T06:21:11Z] After solvation: 7836 atoms
+[2026-04-16T06:21:11Z] Creating MACE-OFF24 ML potential for solvated system...
+Using MACE-OFF23 MODEL for MACECalculator with /home/rag88/.cache/mace/MACE-OFF24_medium.model
+[2026-04-16T06:21:12Z] Solvated system created in 0.2s: 7836 particles
+[2026-04-16T06:21:12Z] Stage B EXCEPTION: Error loading CUDA module: CUDA_ERROR_UNSUPPORTED_PTX_VERSION (222)
+[2026-04-16T06:21:12Z] === ANALYSIS ===
+[2026-04-16T06:21:12Z] D1 VERDICT: FAIL (max stable: 0 ps in none)
+[2026-04-16T06:21:12Z] Results saved to /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/task-001-results.json
+
+==========================================
+Simulation exit code: 1
+D1 verdict: FAIL
+Completed: 2026-04-16T06:21:13Z
+==========================================

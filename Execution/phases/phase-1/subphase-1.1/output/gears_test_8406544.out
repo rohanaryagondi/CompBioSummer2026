@@ -1,0 +1,30 @@
+=== Environment ===
+torch: 2.11.0+cu128 CUDA: True NVIDIA H200
+GEARS: OK
+===================
+============================================================
+GEARS Test on Tahoe-100M
+torch: 2.11.0+cu128
+CUDA available: True
+GPU: NVIDIA H200
+GPU memory: 150.1 GB
+============================================================
+
+### BASIC TEST (1000 cells) ###
+GPU: NVIDIA H200 (150.1 GB)
+[baseline] GPU mem: allocated=0.000 GB, peak=0.000 GB
+
+--- Stage 1: Build AnnData (max_cells=1000) ---
+AnnData: (1802, 5000), 2 conditions
+[after_data_load] GPU mem: allocated=0.000 GB, peak=0.000 GB
+
+--- Stage 2: GEARS data processing ---
+ERROR: Data processing failed: 'val'
+
+Basic test result saved to: /nfs/roberts/scratch/pi_mg269/rag88/delta/test-outputs/gears/gears_basic_test.json
+
+Basic test FAILED: Data processing failed: 'val'
+Check the error details and retry.
+
+=== Job completed ===
+Exit code: 0

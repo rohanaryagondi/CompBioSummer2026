@@ -1,0 +1,106 @@
+The following modules were not unloaded:
+  (Use "module --force purge" to unload all):
+
+  1) StdEnv
+WARNING:absl:Tensorflow library not found, tensorflow.io.gfile operations will use native shim calls. GCS paths (i.e. 'gs://...') cannot be accessed.
+WARNING:root:For using QCMLDataLoader please install tensorflow.
+WARNING:root:For using QCMLDataLoader please install tensorflow_datasets.
+WARNING:absl:Tensorflow library not found, tensorflow.io.gfile operations will use native shim calls. GCS paths (i.e. 'gs://...') cannot be accessed.
+WARNING:root:For using QCMLDataLoader please install tensorflow.
+WARNING:root:For using QCMLDataLoader please install tensorflow_datasets.
+
+  ███████╗ ██████╗ ██████╗ ██╗     ██████╗ 
+  ██╔════╝██╔═══██╗╚════██╗██║     ██╔══██╗
+  ███████╗██║   ██║ █████╔╝██║     ██████╔╝
+  ╚════██║██║   ██║ ╚═══██╗██║     ██╔══██╗
+  ███████║╚██████╔╝██████╔╝███████╗██║  ██║
+  ╚══════╝ ╚═════╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝
+
+============================================================
+SO3LR NVT Molecular Dynamics Simulation (v0.1.0)
+============================================================
+Initial geometry:          /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/crambin_h_vacuum.xyz
+Output file:               /nfs/roberts/scratch/pi_mg269/rag88/alpha-m/so3lr-crambin/quicktest_relax.hdf5
+Log file:                  /nfs/roberts/scratch/pi_mg269/rag88/alpha-m/so3lr-crambin/quicktest_relax.log
+Force field:               SO3LR
+Precision:                 float32
+Long-range cutoff:         12.0 Å
+Dispersion damping:        2.0 Å
+Short-range buffer:        1.25
+Long-range buffer:         1.25
+Total charge:              0
+Temperature:               300.0 K
+Ensemble:                  NVT
+Simulation length:         20000 steps (10.00 ps)
+MD cycles:                 20
+Steps per cycle:           1000
+Timestep:                  0.5 fs
+Saving buffer size:        10
+NHC chain length:          3
+Nose-Hoover steps:         2
+Nose-Hoover Tdamp:         50.0 fs
+Random seed:               42
+Geometry relaxation:       Enabled
+Force convergence:         0.05 eV/Å
+============================================================
+JAX default backend:       gpu
+Number of devices:         1
+Device 0:                  cuda:0
+Memory usage:              unknown
+============================================================
+Box for SO3LR: [0.]
+Using default SO3LR potential.
+Starting minimization...
+Step	E [eV]	F_max [eV/Å]
+0	 -1135.579	 11.184
+10	 -1148.413	 2.031
+20	 -1149.509	 1.291
+30	 -1151.496	 0.851
+40	 -1152.571	 0.469
+50	 -1153.164	 0.348
+60	 -1153.560	 0.280
+70	 -1153.868	 0.186
+80	 -1154.146	 0.157
+90	 -1154.370	 0.101
+100	 -1154.613	 0.123
+110	 -1154.859	 0.090
+120	 -1155.023	 0.075
+130	 -1155.157	 0.066
+140	 -1155.262	 0.044
+Convergence criterion met at step 140: Fmax = 0.044 eV/Å
+Output format is 'hdf5', changing output file extension to 'xyz' for minimization.
+Optimization trajectory with 15 frames saved to /nfs/roberts/scratch/pi_mg269/rag88/alpha-m/so3lr-crambin/quicktest_relax_opt.xyz
+============================================================
+Box for SO3LR: [0.]
+Using default SO3LR potential.
+Starting MD simulation...
+Step	E [eV]	KE	PE	H	Temp [K]	time/step [s]
+0	-1130.932	24.335	-1155.267	-1130.928	294.2	0.00e+00
+1000	-1106.387	25.022	-1131.409	-1130.841	302.5	9.54e-03
+2000	-1108.036	24.402	-1132.438	-1130.850	295.0	2.88e-03
+3000	-1105.378	25.732	-1131.110	-1130.829	311.1	2.89e-03
+4000	-1106.839	24.740	-1131.579	-1130.828	299.1	2.90e-03
+5000	-1106.254	25.198	-1131.452	-1130.817	304.6	2.90e-03
+6000	-1106.391	25.989	-1132.379	-1130.822	314.2	2.90e-03
+7000	-1109.056	23.946	-1133.002	-1130.815	289.5	2.91e-03
+8000	-1108.961	25.258	-1134.219	-1130.807	305.3	2.91e-03
+9000	-1109.382	24.966	-1134.347	-1130.826	301.8	2.91e-03
+10000	-1108.562	25.349	-1133.911	-1130.814	306.4	2.89e-03
+11000	-1110.162	23.545	-1133.707	-1130.797	284.6	2.89e-03
+12000	-1106.920	26.360	-1133.280	-1130.786	318.6	2.90e-03
+13000	-1107.145	25.456	-1132.601	-1130.761	307.7	2.89e-03
+14000	-1107.602	25.226	-1132.828	-1130.760	304.9	2.89e-03
+15000	-1107.942	25.732	-1133.674	-1130.770	311.0	2.91e-03
+16000	-1108.422	26.032	-1134.453	-1130.762	314.7	2.92e-03
+17000	-1109.847	24.753	-1134.599	-1130.737	299.2	2.92e-03
+18000	-1110.269	23.844	-1134.113	-1130.746	288.2	2.92e-03
+19000	-1108.068	25.673	-1133.742	-1130.730	310.3	2.90e-03
+20000	-1110.225	24.410	-1134.635	-1130.736	295.1	2.90e-03
+Results saved to: /nfs/roberts/scratch/pi_mg269/rag88/alpha-m/so3lr-crambin/quicktest_relax.hdf5
+Average time per step: 2.90e-03 seconds
+Ideally, the average time per step should be close to 2.08e-03 seconds (measured on an A100 GPU)
+Consider decreasing the buffer sizes if the system has equilibrated (--buffer-sr 1.15, --buffer-lr 1.1)
+and/or increasing the number of steps in each jax.lax.fori_loop (--steps 1000)
+============================================================
+Simulation completed successfully!
+Total runtime: 120.30 seconds (0.03 hours)

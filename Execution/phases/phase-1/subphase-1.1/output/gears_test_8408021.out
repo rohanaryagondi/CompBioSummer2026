@@ -1,0 +1,28 @@
+=== Environment ===
+torch: 2.11.0+cu128 CUDA: True NVIDIA H200
+GEARS: OK
+===================
+============================================================
+GEARS Test on Tahoe-100M
+torch: 2.11.0+cu128
+CUDA available: True
+GPU: NVIDIA H200
+GPU memory: 150.1 GB
+============================================================
+
+### BASIC TEST (1000 cells per drug, 15 drugs) ###
+GPU: NVIDIA H200 (150.1 GB)
+[baseline] GPU mem: allocated=0.000 GB, peak=0.000 GB
+
+--- Stage 1: Build AnnData (max_cells=200, drugs=15) ---
+AnnData: (3149, 4997), 16 conditions
+[after_data_load] GPU mem: allocated=0.000 GB, peak=0.000 GB
+
+--- Stage 2: GEARS data processing ---
+  n_perts=15, test_frac=0.13
+[after_data_process] GPU mem: allocated=0.000 GB, peak=0.000 GB
+
+--- Stage 3: Model initialization ---
+
+=== Job completed ===
+Exit code: 0

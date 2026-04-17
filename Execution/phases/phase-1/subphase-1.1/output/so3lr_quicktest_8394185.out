@@ -1,0 +1,48 @@
+==============================
+SO3LR Quick Test - Job 8394185
+Node: a1128u44n01.mghpcc.ycrc.yale.edu
+Date: 2026-04-16T05:59:45Z
+==============================
+Python: /home/rag88/.conda/envs/env-so3lr/bin/python
+Python version: Python 3.12.13
+Thu Apr 16 01:59:46 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.195.03             Driver Version: 570.195.03     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA RTX 5000 Ada Gene...    On  |   00000000:AB:00.0 Off |                  Off |
+| 30%   35C    P8             18W /  250W |       2MiB /  32760MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+                                                                                         
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+
+Input: /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/crambin_h_vacuum.xyz
+
+=== Test 1: 10 ps NVT with --relax ===
+Start: 2026-04-16T05:59:46Z
+Test 1 exit: 1
+End: 2026-04-16T05:59:46Z
+>>> Test 1 FAILED. Trying without --relax...
+
+=== Test 2: 10 ps NVT with --no-relax ===
+Test 2 exit: 1
+>>> Test 2 also FAILED. Trying float64 + smaller dt...
+
+=== Test 3: 10 ps NVT float64 dt=0.25 ===
+Test 3 exit: 1
+>>> ALL TESTS FAILED.
+
+=== Scratch contents ===
+total 0
+
+Job completed: 2026-04-16T05:59:46Z
