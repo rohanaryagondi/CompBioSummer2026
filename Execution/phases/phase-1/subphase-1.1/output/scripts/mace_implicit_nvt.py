@@ -115,6 +115,39 @@ def setup_dirs() -> None:
     os.makedirs(os.path.join(SCRATCH_DIR, "trajectories"), exist_ok=True)
 
 
+# ---------------------------------------------------------------------------
+# GPU keepalive — prevents YCRC 1-hr-idle auto-cancel during CPU-heavy phases
+# (PDBFixer, system build) or any mid-run stall. Same pattern as
+# mace_hybrid_nvt.py. Runs a tiny matmul every 5 min.
+# ---------------------------------------------------------------------------
+
+import threading as _threading
+_keepalive_stop = _threading.Event()
+
+def _gpu_keepalive_loop() -> None:
+    try:
+        import torch
+        if not torch.cuda.is_available():
+            return
+        dev = torch.device('cuda:0')
+        x = torch.randn(64, 64, device=dev)
+        while not _keepalive_stop.is_set():
+            _ = torch.matmul(x, x).sum().item()
+            torch.cuda.synchronize()
+            _keepalive_stop.wait(300)
+    except Exception:
+        pass
+
+def start_gpu_keepalive() -> _threading.Thread:
+    t = _threading.Thread(target=_gpu_keepalive_loop, daemon=True, name='gpu-keepalive')
+    t.start()
+    log("Started GPU keepalive thread (5-min cadence)")
+    return t
+
+def stop_gpu_keepalive() -> None:
+    _keepalive_stop.set()
+
+
 def load_and_crop_pdb():
     """Load PDB and optionally crop to chain A residue range."""
     from openmm.app import PDBFile, Modeller
@@ -239,6 +272,10 @@ def main() -> int:
         HAS_PDBFIXER = False
 
     setup_dirs()
+
+    # Start GPU keepalive thread BEFORE CPU-heavy work (PDBFixer) to prevent
+    # YCRC 1-hr idle auto-cancel. Same pattern as mace_hybrid_nvt.py.
+    start_gpu_keepalive()
 
     results: dict = {
         "task": "mace-implicit-pilot",
