@@ -102,6 +102,23 @@ one-at-a-time after their predecessor completes (the "Only Plan Next" rule).
 - Phase 0: Tahoe-100M downloaded at `/nfs/roberts/scratch/pi_mg269/rag88/tahoe-100m/`
 - Phase 0: env-mace and env-so3lr build notes (D1 early signal: both positive)
 
+### Updated after Sub 1.1 closure (2026-04-18)
+
+Current benchmark state for Sub 1.2+ planning:
+- **Proteins:** 18 manifest entries / 16 active (BPTI+HEWL kept as historical
+  records but dropped from benchmark) / 14 S2-counted (Crambin is stability
+  control only, HPr is non-S2 per Option A). See
+  `shared/notes/1.1-protein-count-canonical.md` for authoritative counts.
+- **New proteins added:** NTL9, ACBP, FKBP12, EnHD (all BioEmu-validated).
+- **Envs:** env-delta split into env-delta-v2 (primary) + env-cpa (CPA-only,
+  yml ready) + env-tahoex1 (Tahoe-x1 only). env-mace has pdbfixer==1.12.0
+  added. See `shared/notes/1.1-env-split.md`.
+- **Delta Tier 1:** 5/5 methods installed + GPU-verified (GEARS, scGPT, CPA,
+  scFoundation, Tahoe-x1). D3 gate = GO.
+- **Phase 2 MACE path:** Option 5 (H200 OpenCL) committed. Measured 2.11 ns/day
+  on hybrid WW. Phase 2 MACE budget ~3,300 GPU-hrs. See
+  `shared/help-needed/sub-1.2-phase2-mlff-scope.md` (resolved).
+
 ### For Future Phases
 - Phase 2 requires: MLFF pilot trajectories, established simulation protocols, S2 back-calculation pipeline
 - Phase 2 requires: BioEmu ensembles for >=100 proteins, feature extraction pipeline
