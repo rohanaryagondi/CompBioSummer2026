@@ -26,13 +26,32 @@ split.
 SS integrity). HEWL conditionally retained pending sidechain reconstruction results
 (Subphase 1.1). Benchmark set: 13 proteins (T5 met with margin).
 
+**Subphase 1.1 outcomes (CLOSED 2026-04-18):** HEWL DROPPED (SG-SG integrity 40.2%).
+Benchmark expanded +4 proteins (NTL9, ACBP, FKBP12, EnHD) for T5 margin recovery.
+HPr retained but marked non-S2 (citation found empty). T4L reference locked to
+Mulder 2000 Biochem 39:12614. **Current benchmark: 16 active proteins, T5 counted
+= 14/16 (2-protein margin).** See `shared/notes/1.1-protein-count-canonical.md`
+for authoritative counts.
+
+**Subphase 1.1 MACE Phase 2 scope outcome:** Options 2 (OpenMM CUDA rebuild) and
+4 (implicit solvent MACE) empirically REJECTED. **Option 5 (H200 OpenCL) committed**
+as Phase 2 MACE primary path — measured 2.11 ns/day on hybrid WW = 11.5× RTX 5000
+Ada. Phase 2 MACE compute budget revised 47,300 → ~3,300 GPU-hrs. See
+`shared/help-needed/sub-1.2-phase2-mlff-scope.md` (resolved) and
+`shared/notes/1.1-mace-hybrid-validation.md` §11.
+
+**Subphase 1.1 Delta outcome:** All 5/5 Tier 1 methods installed + GPU-verified
+(GEARS, scGPT, CPA, scFoundation, Tahoe-x1). D3 gate upgraded CONDITIONAL → GO.
+env-delta split into env-delta-v2 + env-cpa + env-tahoex1. See
+`shared/notes/1.1-delta-methods-install.md` and `1.1-env-split.md`.
+
 ---
 
 ## Subphase Breakdown
 
 | Subphase | Title | Date Range | Tracks | Tasks | Key Deliverable |
 |----------|-------|------------|--------|-------|-----------------|
-| 1.1 | MLFF Software Validation & Early Setup | Apr 17 - May 2 | Alpha-M, Gamma, Delta | 5 | MACE+SO3LR crambin NVT, BioEmu batch 1 (50 proteins), Delta 3 methods, HEWL SG-SG |
+| 1.1 | MLFF Software Validation & Early Setup | Apr 17 - May 2 | Alpha-M, Gamma, Delta | 6 + remediation | **COMPLETE 2026-04-18.** MACE+SO3LR D1 PASS, BioEmu batch 1 (46/47), all 5/5 Delta Tier 1, HEWL DROP, benchmark expanded +4 proteins, MACE Option 5 committed. See `subphase-1.1/completion-report.md` + `shared/notes/1.1-robustness-remediation.md`. |
 | 1.2 | Stability Tests & Second Wave Setup | May 3 - May 16 | Alpha-M, Gamma, Delta | 5-7 | NPT stability on 3 proteins, BioEmu batch 2, scFoundation+Tahoe-x1, OSF pre-reg |
 | 1.3 | Remaining Setup, Features, Delta Baselines | May 17 - Jun 6 | Alpha-M, Gamma, Delta | 5-7 | Garnet+a99SB-disp, feature extraction pipeline, Delta baselines+AetherCell |
 | 1.4 | MLFF Pilot Production & Analysis | Jun 7 - Jun 30 | Alpha-M, Gamma, Delta | 6-8 | MLFF 10-50ns on 3 Tier A/B proteins, ML pipeline, pilot analysis, S2 convergence |
