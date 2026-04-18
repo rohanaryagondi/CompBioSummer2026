@@ -1,0 +1,24 @@
+/home/rag88/.conda/envs/env-mace-cuda/lib/python3.10/site-packages/e3nn/o3/_wigner.py:10: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  _Jd, _W3j_flat, _W3j_indices = torch.load(os.path.join(os.path.dirname(__file__), 'constants.pt'))
+/home/rag88/.conda/envs/env-mace-cuda/lib/python3.10/site-packages/mace/calculators/foundations_models.py:272: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  return torch.load(model, map_location=device)
+WARNING:root:The model mace-off24-medium is distributed under the restrictive ASL license.  Commercial use is not permitted.
+1 warning generated.
+Traceback (most recent call last):
+  File "/home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/scripts/mace_cuda_hybrid_ww.py", line 296, in main
+    StateDataReporter(
+  File "/home/rag88/.conda/envs/env-mace-cuda/lib/python3.10/site-packages/openmm/app/statedatareporter.py", line 135, in __init__
+LookupError: unknown encoding: ANSI_X3.4-1968
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/scripts/mace_cuda_hybrid_ww.py", line 380, in <module>
+    sys.exit(main())
+  File "/home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/scripts/mace_cuda_hybrid_ww.py", line 374, in main
+    with open(results_path, 'w') as fh:
+LookupError: unknown encoding: ANSI_X3.4-1968
+Exception ignored in: <function StateDataReporter.__del__ at 0x14a487028a60>
+Traceback (most recent call last):
+  File "/home/rag88/.conda/envs/env-mace-cuda/lib/python3.10/site-packages/openmm/app/statedatareporter.py", line 367, in __del__
+AttributeError: 'StateDataReporter' object has no attribute '_out'

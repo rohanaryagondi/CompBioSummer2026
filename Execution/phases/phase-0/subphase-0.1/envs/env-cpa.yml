@@ -1,0 +1,58 @@
+# env-cpa: Isolated environment for CPA (Compositional Perturbation Autoencoder)
+#
+# Purpose: Contains CPA's dependency downgrades (numpy 1.23, anndata 0.9, scanpy 1.10)
+# that conflict with modern Delta-benchmark tools (scFoundation, Tahoe-x1).
+# CPA should be run out of this env; GEARS, scGPT, scFoundation, Tahoe-x1 use env-delta-v2.
+#
+# Version pins are derived from observed state of env-delta AFTER CPA install
+# (Sub 1.1 task-006) plus CPA pyproject constraints.
+#
+# Build procedure:
+#   module load miniconda/24.11.3
+#   conda env create -n env-cpa -f env-cpa.yml
+#   conda activate env-cpa
+#   # CPA install order matters — do cpa-tools LAST so it does not try to downgrade torch
+#   pip install torch==2.0.1+cu121 --index-url https://download.pytorch.org/whl/cu121
+#   pip install cpa-tools==0.8.8 --no-deps
+#   pip install "numpy==1.23.5" "anndata==0.9.2" "scanpy==1.10.2"
+#   pip install pyarrow==14.0.2 ray==2.9.3 pytorch-lightning==1.9.5
+#
+# Usage: activate env-cpa for any CPA training/inference job.
+name: env-cpa
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.10.20
+  - pip=26.0.1
+  - setuptools
+  - wheel
+  - pip:
+      # CPA core (install last or with --no-deps)
+      - cpa-tools==0.8.8
+      # CPA hard pins (these are the downgrades that caused the env-delta split)
+      - numpy==1.23.5
+      - anndata==0.9.2
+      - scanpy==1.10.2
+      # Support packages at versions compatible with the CPA downgrade stack
+      - scipy==1.15.3
+      - pandas==2.2.2
+      - scikit-learn==1.5.1
+      - scikit-misc==0.5.2
+      - pyarrow==14.0.2
+      - ray==2.9.3
+      - pytorch-lightning==1.9.5
+      - lightning==2.2.5
+      - torchmetrics==1.9.0
+      - h5py==3.16.0
+      - matplotlib==3.10.8
+      - numba==0.58.1
+      - llvmlite==0.41.1
+      - pynndescent==0.6.0
+      - umap-learn==0.5.7
+      - tqdm
+      - pyyaml
+      - joblib
+      # Tahoe-100M data access (streaming loader + parquet)
+      - scdataset==0.3.0
+      - datasets==2.21.0

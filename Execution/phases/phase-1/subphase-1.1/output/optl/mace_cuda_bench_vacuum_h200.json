@@ -1,0 +1,21 @@
+{
+  "task": "mace_cuda_bench",
+  "mode": "vacuum",
+  "tag": "vacuum_h200",
+  "started": "2026-04-18T19:59:52.620095+00:00",
+  "env": {
+    "openmm_version": "8.5.1",
+    "torch_version": "2.5.1+cu121",
+    "cuda_device_name": "NVIDIA H200",
+    "cuda_capability": [
+      9,
+      0
+    ]
+  },
+  "n_atoms": 642,
+  "system_build_s": 7.454568147659302,
+  "verdict": "FAIL",
+  "error": "OpenMMException: The following operation failed in the TorchScript interpreter.\nTraceback of TorchScript (most recent call last):\nRuntimeError: The following operation failed in the TorchScript interpreter.\nTraceback of TorchScript (most recent call last):\nRuntimeError: CUDA driver error: invalid resource handle\n\n",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/scripts/mace_cuda_bench.py\", line 365, in main\n    run_result = run_benchmark(modeller, system,\n  File \"/home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/scripts/mace_cuda_bench.py\", line 259, in run_benchmark\n    state = sim.context.getState(getEnergy=True, getForces=True)\n  File \"/home/rag88/.conda/envs/env-mace-cuda/lib/python3.10/site-packages/openmm/openmm.py\", line 6157, in getState\n    state = _openmm.Context_getState(self, types, enforcePeriodicBox, groups_mask)\nopenmm.OpenMMException: The following operation failed in the TorchScript interpreter.\nTraceback of TorchScript (most recent call last):\nRuntimeError: The following operation failed in the TorchScript interpreter.\nTraceback of TorchScript (most recent call last):\nRuntimeError: CUDA driver error: invalid resource handle\n\n\n",
+  "completed": "2026-04-18T20:00:16.205407+00:00"
+}

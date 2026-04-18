@@ -1,0 +1,24 @@
+==========================================
+MACE CUDA test RTX  |  SLURM 8771022
+Node: a1128u08n01.mghpcc.ycrc.yale.edu
+GPU: NVIDIA RTX 5000 Ada Generation, 32760 MiB
+Date: 2026-04-18T15:32:45Z
+==========================================
+
+=== Env verification ===
+WARNING: env verification issues, continuing anyway...
+
+=== Running MACE CUDA test on crambin vacuum ===
+[2026-04-18T15:32:49Z] FATAL: /home/rag88/.conda/envs/env-mace-cuda/lib/python3.10/site-packages/torch/lib/libc10_cuda.so: undefined symbol: _ZN3c106detail14torchCheckFailEPKcS2_jRKSs
+[2026-04-18T15:32:49Z] Traceback (most recent call last):
+  File "/home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/scripts/mace_cuda_crambin.py", line 77, in main
+    import torch
+  File "/home/rag88/.conda/envs/env-mace-cuda/lib/python3.10/site-packages/torch/__init__.py", line 367, in <module>
+    from torch._C import *  # noqa: F403
+ImportError: /home/rag88/.conda/envs/env-mace-cuda/lib/python3.10/site-packages/torch/lib/libc10_cuda.so: undefined symbol: _ZN3c106detail14torchCheckFailEPKcS2_jRKSs
+
+
+==========================================
+Exit: 1
+Completed: 2026-04-18T15:32:49Z
+==========================================

@@ -1,0 +1,20 @@
+{
+  "short_name": "ntl9",
+  "sequence": "MKVIFLKDVKGKGKKGEIKNVADGYANNFLFKQGLAIEATPANLKALEAQK",
+  "sequence_length": 51,
+  "num_samples_requested": 100,
+  "model_name": "bioemu-v1.1",
+  "seed": 42,
+  "start_time": "2026-04-17T21:57:44Z",
+  "elapsed_seconds": 289.0,
+  "elapsed_minutes": 4.82,
+  "end_time": "2026-04-17T22:02:33Z",
+  "validation": {
+    "valid": true,
+    "issues": [],
+    "npz_count": 3,
+    "conformation_count": 96,
+    "pass_rate": 0.96
+  },
+  "status": "success"
+}

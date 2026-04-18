@@ -1,0 +1,7 @@
+=== SLURM Job Info ===
+Job ID: 8701848
+Node: a1128u44n01
+Partition: gpu_devel
+GPU: NVIDIA RTX 5000 Ada Generation
+Date: Sat Apr 18 00:03:36 UTC 2026
+

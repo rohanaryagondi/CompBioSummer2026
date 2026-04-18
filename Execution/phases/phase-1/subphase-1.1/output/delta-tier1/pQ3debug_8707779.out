@@ -1,0 +1,10 @@
+loaded
+
+--- ComposerTX.forward (batch dict) ---
+  FAIL ValueError: too many values to unpack (expected 4)
+
+--- model.model (TXModel) positional ---
+  FAIL ValueError: too many values to unpack (expected 4)
+
+--- model.model kwargs (like emb_extractor) ---
+  FAIL ValueError: too many values to unpack (expected 4)

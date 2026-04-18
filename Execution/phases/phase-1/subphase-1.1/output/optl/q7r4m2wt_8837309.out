@@ -1,0 +1,33 @@
+==========================================
+CUDA interop probe  |  SLURM 8837309  |  MODE=fixAB
+Node: a1128u08n01.mghpcc.ycrc.yale.edu
+GPU: NVIDIA RTX 5000 Ada Generation, 32760 MiB
+Date: 2026-04-18T19:24:50Z
+==========================================
+[2026-04-18T19:24:52Z] MODE: fixab
+[2026-04-18T19:24:52Z] Torch 2.5.1+cu121, OpenMM 8.5.1
+[2026-04-18T19:24:52Z] CUDA_VISIBLE_DEVICES=0
+[2026-04-18T19:24:52Z] torch.cuda.is_available(): True
+[2026-04-18T19:24:52Z] torch.cuda.set_device(0) -> current_device=0, name=NVIDIA RTX 5000 Ada Generation
+[2026-04-18T19:24:52Z] Fix B applied: _computeMACE now wraps torch.cuda.synchronize().
+[2026-04-18T19:24:52Z] Loading PDB /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/proteins/crambin.pdb
+[2026-04-18T19:24:53Z] Topology: 642 atoms (vacuum)
+[2026-04-18T19:24:53Z] MM system built: 5 forces
+cuequivariance or cuequivariance_torch is not available. Cuequivariance acceleration will be disabled.
+Using MACE-OFF23 MODEL for MACECalculator with /home/rag88/.cache/mace/MACE-OFF24_medium.model
+[2026-04-18T19:24:56Z] Hybrid system built in 2.9s: 642 particles, 6 forces
+[2026-04-18T19:24:56Z] torch.cuda.synchronize() after hybrid build OK
+[2026-04-18T19:24:57Z] Simulation (CUDA, hybrid) created OK
+[2026-04-18T19:24:58Z] Probe getState(getEnergy): 983.3 ms, PE=-269132.3 kJ/mol
+[2026-04-18T19:24:58Z] Probe step(1) in 882.9 ms
+[2026-04-18T19:24:58Z] Entering minimizeEnergy(maxIterations=10) — this is where SubJ crashed
+[2026-04-18T19:25:00Z] minimizeEnergy(10 iter): 1.42 s — NO CRASH!
+[2026-04-18T19:25:01Z] PE after min: -272271.2 kJ/mol
+[2026-04-18T19:25:08Z] 10 steps dynamics: 6595.9 ms
+[2026-04-18T19:25:08Z] PE after dynamics: -273716.8 kJ/mol
+[2026-04-18T19:25:08Z] Verdict: PASS. Results -> /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/optl/cuda_interop_probe_fixAB.json
+
+==========================================
+Exit: 0
+Completed: 2026-04-18T19:25:09Z
+==========================================

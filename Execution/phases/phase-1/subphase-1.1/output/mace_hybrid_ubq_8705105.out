@@ -1,0 +1,33 @@
+==========================================
+MACE hybrid UBQ  |  SLURM 8705105
+Node: a1128u44n01.mghpcc.ycrc.yale.edu
+GPU: NVIDIA RTX 5000 Ada Generation, 32760 MiB
+Date: 2026-04-18T00:56:37Z
+==========================================
+
+=== Env verification ===
+torch: 2.5.1+cu121 | cuda_avail: True
+openmm: 8.5.1
+  Platform 0: Reference (speed 1.0)
+  Platform 1: CPU (speed 10.0)
+  Platform 2: CUDA (speed 100.0)
+  Platform 3: OpenCL (speed 50.0)
+
+=== Running MACE hybrid NVT on ubiquitin (1UBQ, 76 aa) ===
+[2026-04-18T00:56:42Z] torch 2.5.1+cu121 | cuda avail: True
+[2026-04-18T00:56:42Z] OpenMM 8.5.1
+[2026-04-18T00:56:42Z] Loading PDB: /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/proteins/ubq.pdb
+[2026-04-18T00:56:42Z]   Raw topology: 660 atoms, 134 residues, 2 chains
+[2026-04-18T00:56:42Z]   Deleting 58 non-protein residues (waters/ions/ligands from PDB)
+[2026-04-18T00:56:42Z]   After protein extraction: 602 atoms, 76 residues
+[2026-04-18T00:56:42Z] Running PDBFixer (fill missing heavy atoms, add hydrogens)...
+[2026-04-18T00:56:45Z]   After PDBFixer: 1231 atoms, 76 residues
+[2026-04-18T00:56:45Z] Adding TIP3P-FB solvent (padding=1.0 nm, ionic strength=0.15 M)...
+[2026-04-18T00:56:47Z]   After solvation: 17051 atoms (protein=1231, water+ions=15820)
+[2026-04-18T00:56:47Z] Building classical AMBER14 + TIP3P-FB system (PME, 1.0 nm cutoff)...
+[2026-04-18T00:56:47Z] Creating hybrid MACE-OFF24-medium system (1231 MACE atoms / 17051 total)...
+cuequivariance or cuequivariance_torch is not available. Cuequivariance acceleration will be disabled.
+Using MACE-OFF23 MODEL for MACECalculator with /home/rag88/.cache/mace/MACE-OFF24_medium.model
+[2026-04-18T00:56:55Z]   Hybrid system built in 7.5s: 17051 particles, 6 forces
+[2026-04-18T00:56:55Z] Selecting OpenCL platform (CUDA disabled by Sub 1.1 policy)...
+[2026-04-18T00:56:57Z] Minimizing hybrid system (max 2000 iter)...

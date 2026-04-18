@@ -1,0 +1,35 @@
+==========================================
+MACE hybrid UBQ  |  SLURM 8725694
+Node: a1128u38n01.mghpcc.ycrc.yale.edu
+GPU: NVIDIA RTX 5000 Ada Generation, 32760 MiB
+Date: 2026-04-18T06:07:54Z
+==========================================
+
+=== Env verification ===
+torch: 2.5.1+cu121 | cuda_avail: True
+openmm: 8.5.1
+  Platform 0: Reference (speed 1.0)
+  Platform 1: CPU (speed 10.0)
+  Platform 2: CUDA (speed 100.0)
+  Platform 3: OpenCL (speed 50.0)
+
+=== Running MACE hybrid NVT on ubiquitin (1UBQ, 76 aa) ===
+[2026-04-18T06:08:01Z] torch 2.5.1+cu121 | cuda avail: True
+[2026-04-18T06:08:01Z] OpenMM 8.5.1
+[2026-04-18T06:08:01Z] Loading PDB: /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/proteins/ubq.pdb
+[2026-04-18T06:08:01Z]   Raw topology: 660 atoms, 134 residues, 2 chains
+[2026-04-18T06:08:01Z]   Deleting 58 non-protein residues (waters/ions/ligands from PDB)
+[2026-04-18T06:08:01Z]   After protein extraction: 602 atoms, 76 residues
+[2026-04-18T06:08:01Z] Running PDBFixer (fill missing heavy atoms, add hydrogens)...
+[2026-04-18T06:08:02Z]   After PDBFixer: 1231 atoms, 76 residues
+[2026-04-18T06:08:02Z] Adding TIP3P-FB solvent (padding=1.0 nm, ionic strength=0.15 M)...
+[2026-04-18T06:08:04Z]   After solvation: 17084 atoms (protein=1231, water+ions=15853)
+[2026-04-18T06:08:04Z] Building classical AMBER14 + TIP3P-FB system (PME, 1.0 nm cutoff)...
+[2026-04-18T06:08:04Z] Creating hybrid MACE-OFF24-medium system (1231 MACE atoms / 17084 total)...
+cuequivariance or cuequivariance_torch is not available. Cuequivariance acceleration will be disabled.
+Using MACE-OFF23 MODEL for MACECalculator with /home/rag88/.cache/mace/MACE-OFF24_medium.model
+[2026-04-18T06:08:13Z]   Hybrid system built in 8.9s: 17084 particles, 6 forces
+[2026-04-18T06:08:13Z] Selecting OpenCL platform (CUDA disabled by Sub 1.1 policy)...
+[2026-04-18T06:08:15Z] Minimizing hybrid system (max 200 iter, tol 10 kJ/mol/nm)...
+[2026-04-18T06:22:38Z]   Minimization: 862.0s, PE = -824871.7 kJ/mol
+[2026-04-18T06:22:41Z] --- Equilibration: 20.0 ps (20000 steps) ---

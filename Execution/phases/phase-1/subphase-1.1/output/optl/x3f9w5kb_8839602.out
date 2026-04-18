@@ -1,0 +1,42 @@
+==========================================
+MACE CUDA bench H200  |  MODE=vacuum  |  SLURM 8839602
+Node: a1122u02n01.mghpcc.ycrc.yale.edu
+GPU: NVIDIA H200, 143771 MiB
+Date: 2026-04-18T19:59:52Z
+==========================================
+[2026-04-18T19:59:56Z] Fix A: torch.cuda.set_device(0) -> NVIDIA H200
+[2026-04-18T19:59:56Z] Fix B: _computeMACE now wraps torch.cuda.synchronize()
+[2026-04-18T19:59:56Z] Mode: vacuum
+[2026-04-18T19:59:56Z] Loading /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/proteins/crambin.pdb
+[2026-04-18T19:59:57Z] Vacuum crambin topology: 642 atoms
+cuequivariance or cuequivariance_torch is not available. Cuequivariance acceleration will be disabled.
+Using MACE-OFF23 MODEL for MACECalculator with /home/rag88/.cache/mace/MACE-OFF24_medium.model
+[2026-04-18T20:00:05Z] MACE system built in 7.5s: 2 forces
+[2026-04-18T20:00:06Z] Minimizing (max 2000 iter, tol 10 kJ/mol/nm)...
+[2026-04-18T20:00:16Z] FATAL: OpenMMException: The following operation failed in the TorchScript interpreter.
+Traceback of TorchScript (most recent call last):
+RuntimeError: The following operation failed in the TorchScript interpreter.
+Traceback of TorchScript (most recent call last):
+RuntimeError: CUDA driver error: invalid resource handle
+
+
+[2026-04-18T20:00:16Z] Traceback (most recent call last):
+  File "/home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/scripts/mace_cuda_bench.py", line 365, in main
+    run_result = run_benchmark(modeller, system,
+  File "/home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/scripts/mace_cuda_bench.py", line 259, in run_benchmark
+    state = sim.context.getState(getEnergy=True, getForces=True)
+  File "/home/rag88/.conda/envs/env-mace-cuda/lib/python3.10/site-packages/openmm/openmm.py", line 6157, in getState
+    state = _openmm.Context_getState(self, types, enforcePeriodicBox, groups_mask)
+openmm.OpenMMException: The following operation failed in the TorchScript interpreter.
+Traceback of TorchScript (most recent call last):
+RuntimeError: The following operation failed in the TorchScript interpreter.
+Traceback of TorchScript (most recent call last):
+RuntimeError: CUDA driver error: invalid resource handle
+
+
+
+
+==========================================
+Exit: 1
+Completed: 2026-04-18T20:00:17Z
+==========================================

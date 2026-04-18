@@ -1,0 +1,25 @@
+{
+  "task": "mace-cuda-vacuum-crambin",
+  "env": "env-mace-cuda",
+  "started": "2026-04-18T15:43:58.154852+00:00",
+  "parameters": {
+    "duration_ps": 5.0,
+    "timestep_fs": 1.0,
+    "temperature_K": 300.0
+  },
+  "platforms_tried": [],
+  "openmm_version": "8.4",
+  "torch_version": "2.5.1+cu121",
+  "torch_cuda_available": true,
+  "gpu_name": "NVIDIA H200",
+  "gpu_capability": [
+    9,
+    0
+  ],
+  "fatal_exception": {
+    "error": "No module named 'openmmtorch'",
+    "traceback": "Traceback (most recent call last):\n  File \"/home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/scripts/mace_cuda_crambin.py\", line 108, in main\n    system = potential.createSystem(modeller.topology)\n  File \"/home/rag88/.conda/envs/env-mace-cuda/lib/python3.10/site-packages/openmmml/mlpotential.py\", line 189, in createSystem\n    self._impl.addForces(topology, system, None, 0, **args)\n  File \"/home/rag88/.conda/envs/env-mace-cuda/lib/python3.10/site-packages/openmmml/models/macepotential.py\", line 135, in addForces\n    import openmmtorch\nModuleNotFoundError: No module named 'openmmtorch'\n"
+  },
+  "verdict": "FAIL",
+  "completed": "2026-04-18T15:44:01.701742+00:00"
+}

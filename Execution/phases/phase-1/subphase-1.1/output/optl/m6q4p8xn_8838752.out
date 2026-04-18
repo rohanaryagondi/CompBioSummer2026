@@ -1,0 +1,19 @@
+==========================================
+MACE CUDA bench hybrid (BLOCKING)  |  SLURM 8838752
+Node: a1128u08n01.mghpcc.ycrc.yale.edu
+Date: 2026-04-18T19:47:49Z
+==========================================
+[2026-04-18T19:47:50Z] Fix A: torch.cuda.set_device(0) -> NVIDIA RTX 5000 Ada Generation
+[2026-04-18T19:47:50Z] Fix B: _computeMACE now wraps torch.cuda.synchronize()
+[2026-04-18T19:47:50Z] Mode: hybrid
+[2026-04-18T19:47:50Z] Loading /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/proteins/ww.pdb
+[2026-04-18T19:47:50Z] After WW extraction: 274 atoms, 33 residues
+[2026-04-18T19:47:50Z] Running PDBFixer...
+[2026-04-18T19:47:52Z] Adding TIP3P-FB solvent...
+[2026-04-18T19:47:53Z] After solvation: 7541 atoms (protein=534, water+ions=7007)
+[2026-04-18T19:47:53Z] Building classical AMBER14+TIP3P-FB MM system...
+[2026-04-18T19:47:53Z] Creating hybrid MACE system (protein 534 / total 7541)...
+cuequivariance or cuequivariance_torch is not available. Cuequivariance acceleration will be disabled.
+Using MACE-OFF23 MODEL for MACECalculator with /home/rag88/.cache/mace/MACE-OFF24_medium.model
+[2026-04-18T19:47:56Z] Hybrid system built in 3.0s, 6 forces
+[2026-04-18T19:47:57Z] Minimizing (max 2000 iter, tol 10 kJ/mol/nm)...

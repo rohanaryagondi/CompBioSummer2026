@@ -1,0 +1,60 @@
+==========================================
+MACE hybrid WW  |  SLURM 8725506
+Node: a1128u05n01.mghpcc.ycrc.yale.edu
+GPU: NVIDIA RTX 5000 Ada Generation, 32760 MiB
+Date: 2026-04-18T05:09:40Z
+==========================================
+
+=== Env verification ===
+torch: 2.5.1+cu121 | cuda_avail: True
+openmm: 8.5.1
+  Platform 0: Reference (speed 1.0)
+  Platform 1: CPU (speed 10.0)
+  Platform 2: CUDA (speed 100.0)
+  Platform 3: OpenCL (speed 50.0)
+createMixedSystem attr present: True
+pdbfixer: OK
+
+=== Running MACE hybrid NVT on WW domain (residues 6-39 of 2F21) ===
+[2026-04-18T05:09:43Z] torch 2.5.1+cu121 | cuda avail: True
+[2026-04-18T05:09:43Z] OpenMM 8.5.1
+[2026-04-18T05:09:43Z] Loading PDB: /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/proteins/ww.pdb
+[2026-04-18T05:09:43Z]   Raw topology: 1403 atoms, 324 residues, 2 chains
+[2026-04-18T05:09:43Z]   Deleting 171 non-protein residues (waters/ions/ligands from PDB)
+[2026-04-18T05:09:43Z]   Cropping to residue range 6-39 (inclusive)
+[2026-04-18T05:09:43Z]   After protein extraction: 274 atoms, 33 residues
+[2026-04-18T05:09:43Z] Running PDBFixer (fill missing heavy atoms, add hydrogens)...
+[2026-04-18T05:09:44Z]   After PDBFixer: 534 atoms, 33 residues
+[2026-04-18T05:09:44Z] Adding TIP3P-FB solvent (padding=1.0 nm, ionic strength=0.15 M)...
+[2026-04-18T05:09:45Z]   After solvation: 7493 atoms (protein=534, water+ions=6959)
+[2026-04-18T05:09:45Z] Building classical AMBER14 + TIP3P-FB system (PME, 1.0 nm cutoff)...
+[2026-04-18T05:09:45Z] Creating hybrid MACE-OFF24-medium system (534 MACE atoms / 7493 total)...
+cuequivariance or cuequivariance_torch is not available. Cuequivariance acceleration will be disabled.
+Using MACE-OFF23 MODEL for MACECalculator with /home/rag88/.cache/mace/MACE-OFF24_medium.model
+[2026-04-18T05:09:48Z]   Hybrid system built in 3.1s: 7493 particles, 6 forces
+[2026-04-18T05:09:48Z] Selecting OpenCL platform (CUDA disabled by Sub 1.1 policy)...
+[2026-04-18T05:09:49Z] Minimizing hybrid system (max 200 iter, tol 10 kJ/mol/nm)...
+[2026-04-18T05:16:34Z]   Minimization: 404.8s, PE = -363399.8 kJ/mol
+[2026-04-18T05:16:35Z] --- Equilibration: 50.0 ps (50000 steps) ---
+[2026-04-18T07:26:25Z] FATAL EXCEPTION: Particle position is NaN.  For more information, see https://github.com/openmm/openmm/wiki/Frequently-Asked-Questions#nan
+[2026-04-18T07:26:25Z] Traceback (most recent call last):
+  File "/home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/scripts/mace_hybrid_nvt.py", line 415, in main
+    simulation.step(chunk)
+  File "/home/rag88/.conda/envs/env-mace/lib/python3.10/site-packages/openmm/app/simulation.py", line 149, in step
+    self._simulate(endStep=self.currentStep+steps)
+  File "/home/rag88/.conda/envs/env-mace/lib/python3.10/site-packages/openmm/app/simulation.py", line 260, in _simulate
+    self._generate_reports(wrapped, True)
+  File "/home/rag88/.conda/envs/env-mace/lib/python3.10/site-packages/openmm/app/simulation.py", line 281, in _generate_reports
+    reporter.report(self, state)
+  File "/home/rag88/.conda/envs/env-mace/lib/python3.10/site-packages/openmm/app/dcdreporter.py", line 116, in report
+    self._dcd.writeModel(positions, periodicBoxVectors=state.getPeriodicBoxVectors())
+  File "/home/rag88/.conda/envs/env-mace/lib/python3.10/site-packages/openmm/app/dcdfile.py", line 130, in writeModel
+    raise ValueError('Particle position is NaN.  For more information, see https://github.com/openmm/openmm/wiki/Frequently-Asked-Questions#nan')
+ValueError: Particle position is NaN.  For more information, see https://github.com/openmm/openmm/wiki/Frequently-Asked-Questions#nan
+
+
+==========================================
+Exit: 1
+Verdict: FAIL
+Completed: 2026-04-18T07:26:26Z
+==========================================

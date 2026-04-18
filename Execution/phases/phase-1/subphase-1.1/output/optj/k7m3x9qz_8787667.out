@@ -1,0 +1,29 @@
+==========================================
+MACE CUDA test RTX  |  SLURM 8787667
+Node: a1128u08n01.mghpcc.ycrc.yale.edu
+GPU: NVIDIA RTX 5000 Ada Generation, 32760 MiB
+Date: 2026-04-18T15:58:45Z
+==========================================
+
+=== Env verification ===
+torch: 2.9.1 | cuda_avail: False
+openmm: 8.5.1 at /home/rag88/.conda/envs/env-mace-cuda/lib/python3.10/site-packages/openmm/__init__.py
+  Platform 0: Reference (speed 1.0)
+  Platform 1: CPU (speed 10.0)
+  Platform 2: CUDA (speed 100.0)
+  Platform 3: OpenCL (speed 50.0)
+
+=== Running MACE CUDA test on crambin vacuum ===
+[2026-04-18T15:58:50Z] OpenMM 8.5.1
+[2026-04-18T15:58:50Z] PyTorch 2.9.1
+[2026-04-18T15:58:50Z] CUDA available (torch): False
+[2026-04-18T15:58:50Z] Platforms registered in OpenMM:
+[2026-04-18T15:58:50Z]   [0] Reference speed=1.0
+[2026-04-18T15:58:50Z]   [1] CPU speed=10.0
+[2026-04-18T15:58:50Z]   [2] CUDA speed=100.0
+[2026-04-18T15:58:50Z]   [3] OpenCL speed=50.0
+[2026-04-18T15:58:50Z] Loading /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/proteins/crambin.pdb
+[2026-04-18T15:58:52Z] Topology: 642 atoms
+cuequivariance or cuequivariance_torch is not available. Cuequivariance acceleration will be disabled.
+Using MACE-OFF23 MODEL for MACECalculator with /home/rag88/.cache/mace/MACE-OFF24_medium.model
+[2026-04-18T15:59:01Z] MACE system built in 8.6s

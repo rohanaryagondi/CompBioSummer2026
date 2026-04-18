@@ -1,0 +1,24 @@
+==========================================
+MACE CUDA test H200  |  SLURM 8771337
+Node: a1126u11n01.mghpcc.ycrc.yale.edu
+GPU: NVIDIA H200, 143771 MiB
+Date: 2026-04-18T15:36:09Z
+==========================================
+
+=== Env verification ===
+WARNING: env verification issues, continuing anyway...
+
+=== Running MACE CUDA test on H200 ===
+[2026-04-18T15:36:13Z] FATAL: /home/rag88/.conda/envs/env-mace-cuda/lib/python3.10/site-packages/torch/lib/libc10_cuda.so: undefined symbol: _ZN3c106detail14torchCheckFailEPKcS2_jRKSs
+[2026-04-18T15:36:13Z] Traceback (most recent call last):
+  File "/home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/scripts/mace_cuda_crambin.py", line 77, in main
+    import torch
+  File "/home/rag88/.conda/envs/env-mace-cuda/lib/python3.10/site-packages/torch/__init__.py", line 367, in <module>
+    from torch._C import *  # noqa: F403
+ImportError: /home/rag88/.conda/envs/env-mace-cuda/lib/python3.10/site-packages/torch/lib/libc10_cuda.so: undefined symbol: _ZN3c106detail14torchCheckFailEPKcS2_jRKSs
+
+
+==========================================
+Exit: 1
+Completed: 2026-04-18T15:36:13Z
+==========================================

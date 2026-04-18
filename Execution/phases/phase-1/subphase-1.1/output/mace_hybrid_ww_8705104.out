@@ -1,0 +1,38 @@
+==========================================
+MACE hybrid WW  |  SLURM 8705104
+Node: a1128u05n01.mghpcc.ycrc.yale.edu
+GPU: NVIDIA RTX 5000 Ada Generation, 32760 MiB
+Date: 2026-04-18T00:56:37Z
+==========================================
+
+=== Env verification ===
+torch: 2.5.1+cu121 | cuda_avail: True
+openmm: 8.5.1
+  Platform 0: Reference (speed 1.0)
+  Platform 1: CPU (speed 10.0)
+  Platform 2: CUDA (speed 100.0)
+  Platform 3: OpenCL (speed 50.0)
+createMixedSystem attr present: True
+pdbfixer: OK
+
+=== Running MACE hybrid NVT on WW domain (residues 6-39 of 2F21) ===
+[2026-04-18T00:56:42Z] torch 2.5.1+cu121 | cuda avail: True
+[2026-04-18T00:56:42Z] OpenMM 8.5.1
+[2026-04-18T00:56:42Z] Loading PDB: /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/proteins/ww.pdb
+[2026-04-18T00:56:43Z]   Raw topology: 1403 atoms, 324 residues, 2 chains
+[2026-04-18T00:56:43Z]   Deleting 171 non-protein residues (waters/ions/ligands from PDB)
+[2026-04-18T00:56:43Z]   Cropping to residue range 6-39 (inclusive)
+[2026-04-18T00:56:43Z]   After protein extraction: 274 atoms, 33 residues
+[2026-04-18T00:56:43Z] Running PDBFixer (fill missing heavy atoms, add hydrogens)...
+[2026-04-18T00:56:46Z]   After PDBFixer: 534 atoms, 33 residues
+[2026-04-18T00:56:46Z] Adding TIP3P-FB solvent (padding=1.0 nm, ionic strength=0.15 M)...
+[2026-04-18T00:56:47Z]   After solvation: 7460 atoms (protein=534, water+ions=6926)
+[2026-04-18T00:56:47Z] Building classical AMBER14 + TIP3P-FB system (PME, 1.0 nm cutoff)...
+[2026-04-18T00:56:47Z] Creating hybrid MACE-OFF24-medium system (534 MACE atoms / 7460 total)...
+cuequivariance or cuequivariance_torch is not available. Cuequivariance acceleration will be disabled.
+Using MACE-OFF23 MODEL for MACECalculator with /home/rag88/.cache/mace/MACE-OFF24_medium.model
+[2026-04-18T00:56:55Z]   Hybrid system built in 7.7s: 7460 particles, 6 forces
+[2026-04-18T00:56:55Z] Selecting OpenCL platform (CUDA disabled by Sub 1.1 policy)...
+[2026-04-18T00:56:56Z] Minimizing hybrid system (max 2000 iter)...
+[2026-04-18T01:23:17Z]   Minimization: 1579.8s, PE = -375333.7 kJ/mol
+[2026-04-18T01:23:18Z] --- Equilibration: 50.0 ps (50000 steps) ---

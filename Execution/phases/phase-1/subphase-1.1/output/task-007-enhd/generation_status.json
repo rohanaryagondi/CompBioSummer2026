@@ -1,0 +1,20 @@
+{
+  "short_name": "enhd",
+  "sequence": "RPRTAFSSEQLARLKREFNENRYLTERRRQQLSSELGLNEAQIKIWFQNKRAKI",
+  "sequence_length": 54,
+  "num_samples_requested": 100,
+  "model_name": "bioemu-v1.1",
+  "seed": 42,
+  "start_time": "2026-04-17T22:12:42Z",
+  "elapsed_seconds": 249.8,
+  "elapsed_minutes": 4.16,
+  "end_time": "2026-04-17T22:16:52Z",
+  "validation": {
+    "valid": true,
+    "issues": [],
+    "npz_count": 3,
+    "conformation_count": 99,
+    "pass_rate": 0.99
+  },
+  "status": "success"
+}

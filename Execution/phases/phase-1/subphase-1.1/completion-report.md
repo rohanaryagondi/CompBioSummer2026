@@ -325,3 +325,31 @@ RTX 5000 Ada exclusively.
 
 7. **env-delta triage:** Assess whether CPA's package downgrades broke anything.
    Create separate env-cpa if needed.
+
+---
+
+## Post-subphase remediation pass (2026-04-17 → 2026-04-18)
+
+This completion report reflects the state as of initial subphase completion
+(2026-04-17 18:00 UTC). Extensive follow-up work was done in the ~30 hours
+after that, tracked in a separate authoritative document:
+
+**See `shared/notes/1.1-robustness-remediation.md`** for the post-subphase
+pass, which covers:
+
+- All 10 YELLOW audit items resolved
+- 4 proteins added to benchmark (NTL9, ACBP, FKBP12, EnHD) with BioEmu validation
+- 5/5 Delta Tier 1 methods installed (D3 upgraded CONDITIONAL → GO)
+- Formal D1 + D3 gate assessments written (`phases/phase-1/gate-D1-assessment.md`, `gate-D3-assessment.md`)
+- Methods-section text pre-registered for 4 known caveats (`shared/notes/1.1-methods-section-drafts.md`)
+- Competition scan infrastructure built (`shared/competition-scans/`)
+- env-delta → env-delta-v2 + env-cpa split; env-tahoex1 added (Tahoe-x1)
+- Crambin BioEmu SS-integrity sanity (14.2% — stability-control-only caveat documented)
+- T4L citation corrected (Mulder 2000 has WT+L99A; no reference-state mismatch)
+- HPr S2 citation invalidated, Option A implemented (non-S2 disposition)
+- MACE hybrid empirical validation + Phase 2 MACE scope investigation (Options 2, 4, 5)
+- **Option 5 (H200 OpenCL) committed as Phase 2 MACE primary path** — measured 2.11 ns/day on hybrid WW (11.5× RTX 5000 Ada)
+- GPU keepalive + jobstats auto-monitor added as operational safeguards
+- Compute budget revised: MACE Phase 2 from 47,300 → ~3,300 GPU-hrs (releases ~44K to contingency)
+
+**Phase 1.1 CLOSED 2026-04-18.** Ready for Subphase 1.2 planning.

@@ -1,6 +1,6 @@
 ---
-last_updated: 2026-04-17T18:00:00Z
-updated_by: head-1.1
+last_updated: 2026-04-17T23:30:00Z
+updated_by: planner
 ---
 
 # Compute Budget Tracker
@@ -11,12 +11,12 @@ updated_by: head-1.1
 |-------|-------|-------------------|-------------|-----------|----------|
 | Alpha-M | Phase 0 | <2 | 0.5 | — | Any |
 | Alpha-M | Phase 1 (pilot) | 3,000 | ~4.3 | ~2,996 | H200 |
-| Alpha-M | Phase 2 (production) | 33,800 | 0 | 33,800 | H200 / any |
-| Alpha-M | Phase 3 (replicas) | 87,792 | 0 | 87,792 | H200 |
-| Alpha-M | Contingency (20%) | 22,800 | 0 | 22,800 | H200 |
+| Alpha-M | Phase 2 (production) | 47,300 | 0 | 47,300 | H200 / any (revised 1.40× for OpenCL) |
+| Alpha-M | Phase 3 (replicas) | 122,900 | 0 | 122,900 | H200 (revised 1.40× for OpenCL) |
+| Alpha-M | Contingency (20%) | 34,050 | 0 | 34,050 | H200 (revised 1.50×) |
 | Gamma | All phases | 2,000 | ~107 | ~1,893 | Any |
 | Delta | All phases | 20,000 | ~0.5 | ~19,999 | RTX 5000 Ada |
-| **Total** | | **~169,392** | **~112** | **~169,280** | |
+| **Total** | | **~229,650** | **~112.5** | **~229,537** | (revised 2026-04-17; see `shared/notes/1.1-mace-phase2-feasibility.md`) |
 
 ## SU Rate Reference
 
@@ -44,7 +44,11 @@ fit on RTX 5000 Ada.
 | task-004 GEARS setup | Delta | 1-3 | ~0.5 | H200 | Short test runs |
 | task-005 HEWL sidechain recon | Alpha-M | 0 | 0 | CPU only | PDBFixer |
 | task-006 scGPT + CPA setup | Delta | 1-3 | ~0.01 | H200 | Short test runs |
-| **Subphase 1.1 total** | | **~27-66** | **~112** | | |
+| task-007 Benchmark expansion (post-subphase) | Alpha-M | - | ~0.45 | RTX 5000 Ada | 5 BioEmu jobs (NTL9/ACBP/FKBP12/EnHD/Crambin) + Crambin SG-SG recon |
+| MACE hybrid empirical validation (task-007 follow-up) | Alpha-M | - | ~17 | RTX 5000 Ada | 3 rounds of WW/UBQ/GB3 hybrid tests; 2 rounds failed (scavenge preemption, NaN), 1 round TIMEOUT with throughput measured. 2026-04-17/18. |
+| Delta Tier 1 completion (task-007 follow-up) | Delta | - | ~0.8 | RTX 5000 Ada | scFoundation + Tahoe-x1 3B GPU smoke tests |
+| MACE Option investigation (task-007 follow-up) | Alpha-M | - | ~4 | Mixed (RTX 5000 Ada + H200) | Subagent K implicit (~0.4), Subagent J rebuild probe (~0.8), Subagent L CUDA fix+bench (~0.4), H200 hybrid benchmark (~2.5) |
+| **Subphase 1.1 total** | | **~27-66** | **~134** | | |
 
 **Why actual >> estimate for task-003:** Original estimate assumed 2,000 samples per
 protein with ~90% average pass rate. Actual pass rates ranged 0.7%-99%, requiring
@@ -84,7 +88,11 @@ round added ~75 GPU-hours to reach >= 2,000 physical conformations for all 46 pr
 | BioEmu topup round | ~75 | RTX 5000 Ada | ~1,125 |
 | GEARS setup | ~0.5 | H200 | ~150 |
 | scGPT+CPA test | ~0.01 | H200 | ~3 |
-| **Total** | **~112** | | **~7,755** |
+| Benchmark expansion (task-007) | ~0.45 | RTX 5000 Ada | ~6.72 |
+| MACE hybrid empirical (task-007 follow-up) | ~17 | RTX 5000 Ada | ~256 |
+| Delta Tier 1 completion (task-007 follow-up) | ~0.8 | RTX 5000 Ada | ~12 |
+| Option 2/4/5 MACE investigation | ~4 | Mixed | ~770 (Subagent K 6 + Subagent J 45 + Subagent L 11 + H200 benchmark ~750 via gpu_h200) |
+| **Total** | **~134** | | **~8,807** |
 
 **Lesson learned:** BioEmu topup on RTX 5000 Ada cost ~1,125 SU for 75 GPU-hours.
 The same work on H200 would have been ~22,500 SU. The shift to RTX 5000 Ada for all

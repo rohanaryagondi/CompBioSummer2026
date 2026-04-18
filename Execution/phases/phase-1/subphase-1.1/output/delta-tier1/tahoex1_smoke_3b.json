@@ -1,0 +1,30 @@
+{
+  "env": "env-tahoex1",
+  "torch": "2.5.1+cu121",
+  "cuda_available": true,
+  "model_size": "3b",
+  "gpu_name": "NVIDIA RTX 5000 Ada Generation",
+  "gpu_total_gb": 31.5,
+  "load_time_s": 85.6,
+  "n_params": 2704463361,
+  "vocab_size": 62721,
+  "memory_gb": {
+    "after_load_model": {
+      "alloc": 10.141,
+      "peak": 10.141
+    },
+    "after_forward": {
+      "alloc": 10.198,
+      "peak": 16.726
+    }
+  },
+  "vocab_hit_rate": 1.0,
+  "inference_path": "get_batch_embeddings",
+  "cell_embedding_shape": [
+    100,
+    2560
+  ],
+  "cell_embedding_dtype": "float32",
+  "forward_time_s": 8.5,
+  "status": "PASS"
+}

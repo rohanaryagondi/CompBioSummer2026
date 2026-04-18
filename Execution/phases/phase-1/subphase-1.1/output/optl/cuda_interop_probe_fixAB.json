@@ -1,0 +1,22 @@
+{
+  "task": "cuda_interop_probe",
+  "mode": "fixab",
+  "started": "2026-04-18T19:24:50.699654+00:00",
+  "env": {
+    "CUDA_VISIBLE_DEVICES": "0",
+    "torch_version": "2.5.1+cu121",
+    "openmm_version": "8.5.1",
+    "torch_cuda_available": true,
+    "torch_cuda_device": 0,
+    "torch_cuda_name": "NVIDIA RTX 5000 Ada Generation"
+  },
+  "hybrid_build_s": 2.8802096843719482,
+  "probe_getstate_pe_kJ_mol": -269132.3021345624,
+  "probe_step_ok": true,
+  "minimize_s": 1.42030668258667,
+  "pe_after_min_kJ_mol": -272271.1503411317,
+  "pe_after_dynamics_kJ_mol": -273716.7967645862,
+  "verdict": "PASS",
+  "verdict_reason": "Probe + minimization + dynamics all succeeded in mode fixab",
+  "completed": "2026-04-18T19:25:08.616436+00:00"
+}

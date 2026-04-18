@@ -1,0 +1,20 @@
+{
+  "short_name": "fkbp12",
+  "sequence": "GVQVETISPGDGRTFPKRGQTCVVHYTGMLEDGKKFDSSRDRNKPFKFMLGKQEVIRGWEEGVAQMSVGQRAKLTISPDYAYGATGHPGIIPPHATLVFDVELLKLE",
+  "sequence_length": 107,
+  "num_samples_requested": 100,
+  "model_name": "bioemu-v1.1",
+  "seed": 42,
+  "start_time": "2026-04-17T22:31:46Z",
+  "elapsed_seconds": 458.3,
+  "elapsed_minutes": 7.64,
+  "end_time": "2026-04-17T22:39:24Z",
+  "validation": {
+    "valid": true,
+    "issues": [],
+    "npz_count": 13,
+    "conformation_count": 100,
+    "pass_rate": 1.0
+  },
+  "status": "success"
+}

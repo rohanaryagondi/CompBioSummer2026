@@ -1,0 +1,87 @@
+# env-tahoex1: Isolated environment for Tahoe-x1 (3B foundation model)
+#
+# Why a separate env? Tahoe-x1 requires `llm-foundry[gpu]>=0.17.1,<1.0` which
+# hard-pins `flash-attn==2.7.4.post1`. flash-attn 2.7.4.post1 ships prebuilt
+# wheels only for torch 2.2-2.7 + cu12 (cu121 binary). Our primary env-delta-v2
+# uses torch 2.11.0+cu128 and is outside this compatibility matrix. Forcing
+# flash-attn compile against torch 2.11 risks ABI breakage and costs
+# multi-hour nvcc compile. Separate env avoids contaminating env-delta-v2.
+#
+# Stack choice: torch 2.5.1 + cu121 (flash-attn prebuilt wheel available).
+# McCleary driver 570.195 (CUDA 12.8) is forward-compatible with cu121 binaries.
+#
+# Build procedure (verified 2026-04-17 on McCleary, RHEL 8.10 / GLIBC 2.28):
+#   module purge
+#   module load miniconda/24.11.3
+#   conda env create -n env-tahoex1 -f env-tahoex1.yml
+#   source activate env-tahoex1
+#   export PYTHONNOUSERSITE=1
+#
+#   # (1) torch 2.5.1 + cu121 (needed for flash-attn prebuilt wheel compat).
+#   pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 \
+#       --index-url https://download.pytorch.org/whl/cu121
+#
+#   # (2) flash-attn 2.7.4.post1 prebuilt wheel — cu12torch2.5 cxx11abiFALSE.
+#   # The torch 2.7 / torch 2.6 wheels require GLIBC_2.32 (not on McCleary RHEL 8);
+#   # the torch 2.5 wheel needs only GLIBC_2.14 (OK).
+#   pip install https://github.com/Dao-AILab/flash-attention/releases/download/v2.7.4.post1/flash_attn-2.7.4.post1+cu12torch2.5cxx11abiFALSE-cp310-cp310-linux_x86_64.whl
+#
+#   # (3) llm-foundry 0.17.1 — pinned to keep torch 2.5.1 stable.
+#   # Installing with a looser pip call would let llm-foundry 0.22 upgrade torch to 2.7,
+#   # which would also force flash-attn to a wheel that needs GLIBC_2.32 -> breaks.
+#   # --no-deps isolates the package first; a second pass with --only-binary=flash-attn
+#   # pulls remaining deps without trying to source-build flash-attn 2.6.3.
+#   pip install "llm-foundry==0.17.1" --no-build-isolation --no-deps
+#   pip install "llm-foundry==0.17.1" --no-build-isolation --only-binary=flash-attn
+#
+#   # (4) tahoe-x1 last. --no-deps avoids re-resolving the stack.
+#   pip install tahoe-x1 --no-build-isolation --no-deps
+#
+#   # (5) Tahoe-x1 setup.py requires scanpy and awscli (both compatible with our pins).
+#   pip install "scanpy>=1.9,<2.0" "awscli>=1.32,<2.0"
+#
+# Smoke test (GPU node):
+#   python -c "import torch, flash_attn, scanpy, tahoe_x1; \
+#              from tahoe_x1.model import ComposerTX; \
+#              print('OK', torch.cuda.is_available())"
+#
+# NOTE: llm-foundry 0.17.1 vs 0.22.0 — tahoe-x1 1.0.0 setup.py says llm-foundry>=0.17.1,<1.0.
+# 0.22 requires torch 2.7, which requires a flash-attn wheel that needs GLIBC_2.32 (breaks on RHEL 8).
+# 0.17.1 requires torch 2.5.1 and keeps flash-attn torch2.5 wheel (GLIBC_2.14, OK on RHEL 8).
+#
+# NOTE: tahoe-x1 also pulls mosaicml-streaming, composer (via llm-foundry). These are needed
+# for HuggingFace checkpoint loading via ComposerTX.from_hf('tahoebio/Tahoe-x1', model_size='3b').
+
+name: env-tahoex1
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - _openmp_mutex=4.5
+  - bzip2=1.0.8
+  - ca-certificates
+  - ld_impl_linux-64
+  - libexpat
+  - libffi
+  - libgcc
+  - libgcc-ng
+  - libgomp
+  - liblzma
+  - libnsl
+  - libsqlite
+  - libstdcxx
+  - libuuid
+  - libxcrypt
+  - libzlib
+  - ncurses
+  - openssl
+  - packaging
+  - pip>=24.0
+  - python=3.10
+  - readline
+  - setuptools<81.0.0  # pyproject.toml build_requires constraint from tahoe-x1
+  - tk
+  - tzdata
+  - wheel
+  - zstd
+  # tahoe-x1 and llm-foundry pull most deps via pip, so we let pip resolve them.

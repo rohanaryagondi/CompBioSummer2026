@@ -1,0 +1,43 @@
+==========================================
+MACE CUDA test RTX  |  SLURM 8772125
+Node: a1128u08n01.mghpcc.ycrc.yale.edu
+GPU: NVIDIA RTX 5000 Ada Generation, 32760 MiB
+Date: 2026-04-18T15:42:46Z
+==========================================
+
+=== Env verification ===
+torch: 2.5.1+cu121 | cuda_avail: True
+openmm: 8.4
+  Platform 0: Reference (speed 1.0)
+  Platform 1: CPU (speed 10.0)
+  Platform 2: CUDA (speed 100.0)
+  Platform 3: OpenCL (speed 50.0)
+
+=== Running MACE CUDA test on crambin vacuum ===
+[2026-04-18T15:42:51Z] OpenMM 8.4
+[2026-04-18T15:42:51Z] PyTorch 2.5.1+cu121
+[2026-04-18T15:42:51Z] CUDA available (torch): True
+[2026-04-18T15:42:51Z]   GPU: NVIDIA RTX 5000 Ada Generation
+[2026-04-18T15:42:51Z]   Capability: (8, 9)
+[2026-04-18T15:42:51Z] Platforms registered in OpenMM:
+[2026-04-18T15:42:51Z]   [0] Reference speed=1.0
+[2026-04-18T15:42:51Z]   [1] CPU speed=10.0
+[2026-04-18T15:42:51Z]   [2] CUDA speed=100.0
+[2026-04-18T15:42:51Z]   [3] OpenCL speed=50.0
+[2026-04-18T15:42:51Z] Loading /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/proteins/crambin.pdb
+[2026-04-18T15:42:53Z] Topology: 642 atoms
+[2026-04-18T15:42:53Z] FATAL: No module named 'openmmtorch'
+[2026-04-18T15:42:53Z] Traceback (most recent call last):
+  File "/home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/scripts/mace_cuda_crambin.py", line 108, in main
+    system = potential.createSystem(modeller.topology)
+  File "/home/rag88/.conda/envs/env-mace-cuda/lib/python3.10/site-packages/openmmml/mlpotential.py", line 189, in createSystem
+    self._impl.addForces(topology, system, None, 0, **args)
+  File "/home/rag88/.conda/envs/env-mace-cuda/lib/python3.10/site-packages/openmmml/models/macepotential.py", line 135, in addForces
+    import openmmtorch
+ModuleNotFoundError: No module named 'openmmtorch'
+
+
+==========================================
+Exit: 1
+Completed: 2026-04-18T15:42:53Z
+==========================================

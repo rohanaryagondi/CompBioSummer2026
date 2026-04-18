@@ -1,0 +1,20 @@
+{
+  "task": "cuda_interop_probe",
+  "mode": "fixa",
+  "started": "2026-04-18T19:25:51.412999+00:00",
+  "env": {
+    "CUDA_VISIBLE_DEVICES": "0",
+    "torch_version": "2.5.1+cu121",
+    "openmm_version": "8.5.1",
+    "torch_cuda_available": true,
+    "torch_cuda_device": 0,
+    "torch_cuda_name": "NVIDIA RTX 5000 Ada Generation"
+  },
+  "hybrid_build_s": 2.9414217472076416,
+  "probe_getstate_pe_kJ_mol": -268831.9051837364,
+  "probe_step_ok": true,
+  "verdict": "FAIL",
+  "error": "OpenMMException: The following operation failed in the TorchScript interpreter.\nTraceback of TorchScript (most recent call last):\nRuntimeError: The following operation failed in the TorchScript interpreter.\nTraceback of TorchScript (most recent call last):\nRuntimeError: CUDA driver error: invalid resource handle\n\n",
+  "traceback": "Traceback (most recent call last):\n  File \"/home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/scripts/cuda_interop_probe.py\", line 211, in main\n    state = sim.context.getState(getEnergy=True)\n  File \"/home/rag88/.conda/envs/env-mace-cuda/lib/python3.10/site-packages/openmm/openmm.py\", line 6157, in getState\n    state = _openmm.Context_getState(self, types, enforcePeriodicBox, groups_mask)\nopenmm.OpenMMException: The following operation failed in the TorchScript interpreter.\nTraceback of TorchScript (most recent call last):\nRuntimeError: The following operation failed in the TorchScript interpreter.\nTraceback of TorchScript (most recent call last):\nRuntimeError: CUDA driver error: invalid resource handle\n\n\n",
+  "completed": "2026-04-18T19:26:27.741366+00:00"
+}

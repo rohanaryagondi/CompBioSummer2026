@@ -1,0 +1,47 @@
+==========================================
+MACE hybrid CUDA WW  |  SLURM 8761950
+Node: a1128u08n01.mghpcc.ycrc.yale.edu
+GPU: NVIDIA RTX 5000 Ada Generation, 32760 MiB
+Date: 2026-04-18T14:46:46Z
+==========================================
+
+=== Env verification ===
+torch: 2.5.1+cu121 | cuda_avail: True
+openmm: 8.5.1
+  Platform 0: Reference (speed 1.0)
+  Platform 1: CPU (speed 10.0)
+  Platform 2: CUDA (speed 100.0)
+  Platform 3: OpenCL (speed 50.0)
+
+=== Running MACE CUDA hybrid on WW domain ===
+[2026-04-18T14:46:52Z] OpenMM 8.5.1  PyTorch 2.5.1+cu121
+[2026-04-18T14:46:52Z] CUDA avail: True
+[2026-04-18T14:46:52Z]   GPU: NVIDIA RTX 5000 Ada Generation  cap=(8, 9)
+[2026-04-18T14:46:52Z] Loading PDB: /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/proteins/ww.pdb
+[2026-04-18T14:46:52Z]   raw: 1403 atoms, 324 residues
+[2026-04-18T14:46:52Z]   after crop: 274 atoms, 33 residues
+[2026-04-18T14:46:52Z] Running PDBFixer...
+[2026-04-18T14:46:53Z]   after PDBFixer: 534 atoms
+[2026-04-18T14:46:53Z] Adding TIP3P-FB solvent, padding 1.0 nm, 0.15 M NaCl
+[2026-04-18T14:46:54Z]   after solvate: 7613 atoms (534 MACE + 7079 classical)
+[2026-04-18T14:46:54Z] Building classical AMBER14 + TIP3P-FB system (PME, 1.0 nm)
+[2026-04-18T14:46:54Z] Creating hybrid MACE-OFF24-medium system (534 MACE atoms)
+cuequivariance or cuequivariance_torch is not available. Cuequivariance acceleration will be disabled.
+Using MACE-OFF23 MODEL for MACECalculator with /home/rag88/.cache/mace/MACE-OFF24_medium.model
+[2026-04-18T14:47:02Z]   hybrid built in 8.5s
+[2026-04-18T14:47:02Z] Platform CUDA FAILED: OpenMMException: Error loading CUDA module: CUDA_ERROR_UNSUPPORTED_PTX_VERSION (222)
+[2026-04-18T14:47:07Z] Platform OpenCL ACTIVE: probe step 2375.0ms, PE=-287735.9
+[2026-04-18T14:47:07Z] Minimizing energy (max 2000 iter, tol 10 kJ/mol/nm)...
+[2026-04-18T15:12:11Z]   min: 1503.3s, PE=-377605.6, max_force=2.42e+03 kJ/mol/nm
+[2026-04-18T15:12:12Z] FATAL: unknown encoding: ANSI_X3.4-1968
+[2026-04-18T15:12:12Z] Traceback (most recent call last):
+  File "/home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/scripts/mace_cuda_hybrid_ww.py", line 296, in main
+    StateDataReporter(
+  File "/home/rag88/.conda/envs/env-mace-cuda/lib/python3.10/site-packages/openmm/app/statedatareporter.py", line 135, in __init__
+LookupError: unknown encoding: ANSI_X3.4-1968
+
+
+==========================================
+Exit: 1
+Completed: 2026-04-18T15:12:13Z
+==========================================

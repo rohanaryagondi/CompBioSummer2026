@@ -1,0 +1,245 @@
+The following modules were not unloaded:
+  (Use "module --force purge" to unload all):
+
+  1) StdEnv
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Sampling batches...:   0%|          | 0/8 [00:00<?, ?it/s]
+  0%|          | 0/150 [elapsed: 00:00 remaining: ?][A
+SUBMIT:   0%|          | 0/150 [elapsed: 00:00 remaining: ?][A
+PENDING:   0%|          | 0/150 [elapsed: 00:00 remaining: ?][ASleeping for 6s. Reason: PENDING
+
+PENDING:   0%|          | 0/150 [elapsed: 00:07 remaining: ?][ASleeping for 10s. Reason: PENDING
+
+RUNNING:   0%|          | 0/150 [elapsed: 00:17 remaining: ?][A
+RUNNING:   7%|▋         | 10/150 [elapsed: 00:17 remaining: 04:11][ASleeping for 6s. Reason: RUNNING
+
+RUNNING:   7%|▋         | 10/150 [elapsed: 00:24 remaining: 04:11][A
+RUNNING:  11%|█         | 16/150 [elapsed: 00:24 remaining: 03:18][ASleeping for 10s. Reason: RUNNING
+
+RUNNING:  11%|█         | 16/150 [elapsed: 00:35 remaining: 03:18][A
+RUNNING:  17%|█▋        | 26/150 [elapsed: 00:35 remaining: 02:36][ASleeping for 9s. Reason: RUNNING
+
+COMPLETE:  17%|█▋        | 26/150 [elapsed: 00:44 remaining: 02:36][A
+COMPLETE: 100%|██████████| 150/150 [elapsed: 00:44 remaining: 00:00][ACOMPLETE: 100%|██████████| 150/150 [elapsed: 00:46 remaining: 00:00]
+2026-04-17 18:05:27.938950: I tensorflow/core/util/port.cc:113] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-04-17 18:05:27.974550: I tensorflow/core/platform/cpu_feature_guard.cc:182] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: AVX2 AVX512F AVX512_VNNI AVX512_BF16 AVX_VNNI AMX_TILE AMX_INT8 AMX_BF16 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+An NVIDIA GPU may be present on this machine, but a CUDA-enabled jaxlib is not installed. Falling back to cpu.
+2026-04-17 18:05:31.644079: I tensorflow/compiler/mlir/mlir_graph_optimization_pass.cc:388] MLIR V1 optimization pass is not enabled
+
+Denoising:   0% 0/49 [00:00<?, ?it/s][A
+Denoising:   2% 1/49 [00:00<00:12,  3.88it/s][A
+Denoising:   6% 3/49 [00:00<00:05,  7.83it/s][A
+Denoising:  10% 5/49 [00:00<00:04,  9.60it/s][A
+Denoising:  14% 7/49 [00:00<00:03, 10.55it/s][A
+Denoising:  18% 9/49 [00:00<00:03, 11.12it/s][A
+Denoising:  22% 11/49 [00:01<00:03, 11.48it/s][A
+Denoising:  27% 13/49 [00:01<00:03, 11.71it/s][A
+Denoising:  31% 15/49 [00:01<00:02, 11.87it/s][A
+Denoising:  35% 17/49 [00:01<00:02, 11.97it/s][A
+Denoising:  39% 19/49 [00:01<00:02, 12.03it/s][A
+Denoising:  43% 21/49 [00:01<00:02, 12.08it/s][A
+Denoising:  47% 23/49 [00:02<00:02, 12.11it/s][A
+Denoising:  51% 25/49 [00:02<00:01, 12.13it/s][A
+Denoising:  55% 27/49 [00:02<00:01, 12.15it/s][A
+Denoising:  59% 29/49 [00:02<00:01, 12.15it/s][A
+Denoising:  63% 31/49 [00:02<00:01, 12.17it/s][A
+Denoising:  67% 33/49 [00:02<00:01, 12.17it/s][A
+Denoising:  71% 35/49 [00:03<00:01, 12.17it/s][A
+Denoising:  76% 37/49 [00:03<00:00, 12.17it/s][A
+Denoising:  80% 39/49 [00:03<00:00, 12.17it/s][A
+Denoising:  84% 41/49 [00:03<00:00, 12.19it/s][A
+Denoising:  88% 43/49 [00:03<00:00, 12.18it/s][A
+Denoising:  92% 45/49 [00:03<00:00, 12.18it/s][A
+Denoising:  96% 47/49 [00:04<00:00, 12.17it/s][A
+Denoising: 100% 49/49 [00:04<00:00, 12.18it/s][A
+                                              [ASampling batches...:  12%|█▎        | 1/8 [06:36<46:17, 396.77s/it]INFO:bioemu.get_embeds:Using cached embeddings in /nfs/roberts/scratch/pi_mg269/rag88/.bioemu_embeds_cache.
+
+Denoising:   0% 0/49 [00:00<?, ?it/s][A
+Denoising:   4% 2/49 [00:00<00:03, 12.20it/s][A
+Denoising:   8% 4/49 [00:00<00:03, 12.18it/s][A
+Denoising:  12% 6/49 [00:00<00:03, 12.18it/s][A
+Denoising:  16% 8/49 [00:00<00:03, 12.17it/s][A
+Denoising:  20% 10/49 [00:00<00:03, 12.16it/s][A
+Denoising:  24% 12/49 [00:00<00:03, 12.16it/s][A
+Denoising:  29% 14/49 [00:01<00:02, 12.16it/s][A
+Denoising:  33% 16/49 [00:01<00:02, 12.17it/s][A
+Denoising:  37% 18/49 [00:01<00:02, 12.16it/s][A
+Denoising:  41% 20/49 [00:01<00:02, 12.16it/s][A
+Denoising:  45% 22/49 [00:01<00:02, 12.16it/s][A
+Denoising:  49% 24/49 [00:01<00:02, 12.16it/s][A
+Denoising:  53% 26/49 [00:02<00:01, 12.15it/s][A
+Denoising:  57% 28/49 [00:02<00:01, 12.16it/s][A
+Denoising:  61% 30/49 [00:02<00:01, 12.15it/s][A
+Denoising:  65% 32/49 [00:02<00:01, 12.16it/s][A
+Denoising:  69% 34/49 [00:02<00:01, 12.16it/s][A
+Denoising:  73% 36/49 [00:02<00:01, 12.17it/s][A
+Denoising:  78% 38/49 [00:03<00:00, 12.16it/s][A
+Denoising:  82% 40/49 [00:03<00:00, 12.16it/s][A
+Denoising:  86% 42/49 [00:03<00:00, 12.16it/s][A
+Denoising:  90% 44/49 [00:03<00:00, 12.15it/s][A
+Denoising:  94% 46/49 [00:03<00:00, 12.15it/s][A
+Denoising:  98% 48/49 [00:03<00:00, 12.15it/s][A
+                                              [ASampling batches...:  25%|██▌       | 2/8 [06:40<16:34, 165.76s/it]INFO:bioemu.get_embeds:Using cached embeddings in /nfs/roberts/scratch/pi_mg269/rag88/.bioemu_embeds_cache.
+
+Denoising:   0% 0/49 [00:00<?, ?it/s][A
+Denoising:   4% 2/49 [00:00<00:03, 12.17it/s][A
+Denoising:   8% 4/49 [00:00<00:03, 12.15it/s][A
+Denoising:  12% 6/49 [00:00<00:03, 12.14it/s][A
+Denoising:  16% 8/49 [00:00<00:03, 12.13it/s][A
+Denoising:  20% 10/49 [00:00<00:03, 12.13it/s][A
+Denoising:  24% 12/49 [00:00<00:03, 12.14it/s][A
+Denoising:  29% 14/49 [00:01<00:02, 12.14it/s][A
+Denoising:  33% 16/49 [00:01<00:02, 12.14it/s][A
+Denoising:  37% 18/49 [00:01<00:02, 12.14it/s][A
+Denoising:  41% 20/49 [00:01<00:02, 12.14it/s][A
+Denoising:  45% 22/49 [00:01<00:02, 12.13it/s][A
+Denoising:  49% 24/49 [00:01<00:02, 12.12it/s][A
+Denoising:  53% 26/49 [00:02<00:01, 12.11it/s][A
+Denoising:  57% 28/49 [00:02<00:01, 12.12it/s][A
+Denoising:  61% 30/49 [00:02<00:01, 12.11it/s][A
+Denoising:  65% 32/49 [00:02<00:01, 12.12it/s][A
+Denoising:  69% 34/49 [00:02<00:01, 12.12it/s][A
+Denoising:  73% 36/49 [00:02<00:01, 12.12it/s][A
+Denoising:  78% 38/49 [00:03<00:00, 12.12it/s][A
+Denoising:  82% 40/49 [00:03<00:00, 12.12it/s][A
+Denoising:  86% 42/49 [00:03<00:00, 12.12it/s][A
+Denoising:  90% 44/49 [00:03<00:00, 12.12it/s][A
+Denoising:  94% 46/49 [00:03<00:00, 12.12it/s][A
+Denoising:  98% 48/49 [00:03<00:00, 12.11it/s][A
+                                              [ASampling batches...:  38%|███▊      | 3/8 [06:44<07:39, 91.92s/it] INFO:bioemu.get_embeds:Using cached embeddings in /nfs/roberts/scratch/pi_mg269/rag88/.bioemu_embeds_cache.
+
+Denoising:   0% 0/49 [00:00<?, ?it/s][A
+Denoising:   4% 2/49 [00:00<00:03, 12.13it/s][A
+Denoising:   8% 4/49 [00:00<00:03, 12.11it/s][A
+Denoising:  12% 6/49 [00:00<00:03, 12.11it/s][A
+Denoising:  16% 8/49 [00:00<00:03, 12.10it/s][A
+Denoising:  20% 10/49 [00:00<00:03, 12.11it/s][A
+Denoising:  24% 12/49 [00:00<00:03, 12.11it/s][A
+Denoising:  29% 14/49 [00:01<00:02, 12.11it/s][A
+Denoising:  33% 16/49 [00:01<00:02, 12.11it/s][A
+Denoising:  37% 18/49 [00:01<00:02, 12.12it/s][A
+Denoising:  41% 20/49 [00:01<00:02, 12.11it/s][A
+Denoising:  45% 22/49 [00:01<00:02, 12.11it/s][A
+Denoising:  49% 24/49 [00:01<00:02, 12.11it/s][A
+Denoising:  53% 26/49 [00:02<00:01, 12.12it/s][A
+Denoising:  57% 28/49 [00:02<00:01, 12.12it/s][A
+Denoising:  61% 30/49 [00:02<00:01, 12.12it/s][A
+Denoising:  65% 32/49 [00:02<00:01, 12.11it/s][A
+Denoising:  69% 34/49 [00:02<00:01, 12.11it/s][A
+Denoising:  73% 36/49 [00:02<00:01, 12.11it/s][A
+Denoising:  78% 38/49 [00:03<00:00, 12.11it/s][A
+Denoising:  82% 40/49 [00:03<00:00, 12.11it/s][A
+Denoising:  86% 42/49 [00:03<00:00, 12.11it/s][A
+Denoising:  90% 44/49 [00:03<00:00, 12.11it/s][A
+Denoising:  94% 46/49 [00:03<00:00, 12.11it/s][A
+Denoising:  98% 48/49 [00:03<00:00, 12.11it/s][A
+                                              [ASampling batches...:  50%|█████     | 4/8 [06:48<03:48, 57.24s/it]INFO:bioemu.get_embeds:Using cached embeddings in /nfs/roberts/scratch/pi_mg269/rag88/.bioemu_embeds_cache.
+
+Denoising:   0% 0/49 [00:00<?, ?it/s][A
+Denoising:   4% 2/49 [00:00<00:03, 12.14it/s][A
+Denoising:   8% 4/49 [00:00<00:03, 12.12it/s][A
+Denoising:  12% 6/49 [00:00<00:03, 12.11it/s][A
+Denoising:  16% 8/49 [00:00<00:03, 12.13it/s][A
+Denoising:  20% 10/49 [00:00<00:03, 12.12it/s][A
+Denoising:  24% 12/49 [00:00<00:03, 12.11it/s][A
+Denoising:  29% 14/49 [00:01<00:02, 12.11it/s][A
+Denoising:  33% 16/49 [00:01<00:02, 12.11it/s][A
+Denoising:  37% 18/49 [00:01<00:02, 12.10it/s][A
+Denoising:  41% 20/49 [00:01<00:02, 12.11it/s][A
+Denoising:  45% 22/49 [00:01<00:02, 12.11it/s][A
+Denoising:  49% 24/49 [00:01<00:02, 12.10it/s][A
+Denoising:  53% 26/49 [00:02<00:01, 12.10it/s][A
+Denoising:  57% 28/49 [00:02<00:01, 12.10it/s][A
+Denoising:  61% 30/49 [00:02<00:01, 12.11it/s][A
+Denoising:  65% 32/49 [00:02<00:01, 12.11it/s][A
+Denoising:  69% 34/49 [00:02<00:01, 12.10it/s][A
+Denoising:  73% 36/49 [00:02<00:01, 12.10it/s][A
+Denoising:  78% 38/49 [00:03<00:00, 12.10it/s][A
+Denoising:  82% 40/49 [00:03<00:00, 12.09it/s][A
+Denoising:  86% 42/49 [00:03<00:00, 12.09it/s][A
+Denoising:  90% 44/49 [00:03<00:00, 12.09it/s][A
+Denoising:  94% 46/49 [00:03<00:00, 12.10it/s][A
+Denoising:  98% 48/49 [00:03<00:00, 12.09it/s][A
+                                              [ASampling batches...:  62%|██████▎   | 5/8 [06:53<01:54, 38.06s/it]INFO:bioemu.get_embeds:Using cached embeddings in /nfs/roberts/scratch/pi_mg269/rag88/.bioemu_embeds_cache.
+
+Denoising:   0% 0/49 [00:00<?, ?it/s][A
+Denoising:   4% 2/49 [00:00<00:03, 12.12it/s][A
+Denoising:   8% 4/49 [00:00<00:03, 12.11it/s][A
+Denoising:  12% 6/49 [00:00<00:03, 12.11it/s][A
+Denoising:  16% 8/49 [00:00<00:03, 12.10it/s][A
+Denoising:  20% 10/49 [00:00<00:03, 12.10it/s][A
+Denoising:  24% 12/49 [00:00<00:03, 12.09it/s][A
+Denoising:  29% 14/49 [00:01<00:02, 12.10it/s][A
+Denoising:  33% 16/49 [00:01<00:02, 12.10it/s][A
+Denoising:  37% 18/49 [00:01<00:02, 12.10it/s][A
+Denoising:  41% 20/49 [00:01<00:02, 12.10it/s][A
+Denoising:  45% 22/49 [00:01<00:02, 12.09it/s][A
+Denoising:  49% 24/49 [00:01<00:02, 12.09it/s][A
+Denoising:  53% 26/49 [00:02<00:01, 12.10it/s][A
+Denoising:  57% 28/49 [00:02<00:01, 12.10it/s][A
+Denoising:  61% 30/49 [00:02<00:01, 12.09it/s][A
+Denoising:  65% 32/49 [00:02<00:01, 12.09it/s][A
+Denoising:  69% 34/49 [00:02<00:01, 12.09it/s][A
+Denoising:  73% 36/49 [00:02<00:01, 12.09it/s][A
+Denoising:  78% 38/49 [00:03<00:00, 12.09it/s][A
+Denoising:  82% 40/49 [00:03<00:00, 12.09it/s][A
+Denoising:  86% 42/49 [00:03<00:00, 12.09it/s][A
+Denoising:  90% 44/49 [00:03<00:00, 12.09it/s][A
+Denoising:  94% 46/49 [00:03<00:00, 12.09it/s][A
+Denoising:  98% 48/49 [00:03<00:00, 12.10it/s][A
+                                              [ASampling batches...:  75%|███████▌  | 6/8 [06:57<00:53, 26.51s/it]INFO:bioemu.get_embeds:Using cached embeddings in /nfs/roberts/scratch/pi_mg269/rag88/.bioemu_embeds_cache.
+
+Denoising:   0% 0/49 [00:00<?, ?it/s][A
+Denoising:   4% 2/49 [00:00<00:03, 12.11it/s][A
+Denoising:   8% 4/49 [00:00<00:03, 12.09it/s][A
+Denoising:  12% 6/49 [00:00<00:03, 12.08it/s][A
+Denoising:  16% 8/49 [00:00<00:03, 12.08it/s][A
+Denoising:  20% 10/49 [00:00<00:03, 12.07it/s][A
+Denoising:  24% 12/49 [00:00<00:03, 12.07it/s][A
+Denoising:  29% 14/49 [00:01<00:02, 12.07it/s][A
+Denoising:  33% 16/49 [00:01<00:02, 12.07it/s][A
+Denoising:  37% 18/49 [00:01<00:02, 12.07it/s][A
+Denoising:  41% 20/49 [00:01<00:02, 12.07it/s][A
+Denoising:  45% 22/49 [00:01<00:02, 12.07it/s][A
+Denoising:  49% 24/49 [00:01<00:02, 12.07it/s][A
+Denoising:  53% 26/49 [00:02<00:01, 12.07it/s][A
+Denoising:  57% 28/49 [00:02<00:01, 12.07it/s][A
+Denoising:  61% 30/49 [00:02<00:01, 12.06it/s][A
+Denoising:  65% 32/49 [00:02<00:01, 12.07it/s][A
+Denoising:  69% 34/49 [00:02<00:01, 12.07it/s][A
+Denoising:  73% 36/49 [00:02<00:01, 12.07it/s][A
+Denoising:  78% 38/49 [00:03<00:00, 12.07it/s][A
+Denoising:  82% 40/49 [00:03<00:00, 12.07it/s][A
+Denoising:  86% 42/49 [00:03<00:00, 12.07it/s][A
+Denoising:  90% 44/49 [00:03<00:00, 12.07it/s][A
+Denoising:  94% 46/49 [00:03<00:00, 12.07it/s][A
+Denoising:  98% 48/49 [00:03<00:00, 12.07it/s][A
+                                              [ASampling batches...:  88%|████████▊ | 7/8 [07:01<00:19, 19.18s/it]INFO:bioemu.get_embeds:Using cached embeddings in /nfs/roberts/scratch/pi_mg269/rag88/.bioemu_embeds_cache.
+
+Denoising:   0% 0/49 [00:00<?, ?it/s][A
+Denoising:   4% 2/49 [00:00<00:02, 16.93it/s][A
+Denoising:   8% 4/49 [00:00<00:02, 16.91it/s][A
+Denoising:  12% 6/49 [00:00<00:02, 16.88it/s][A
+Denoising:  16% 8/49 [00:00<00:02, 16.86it/s][A
+Denoising:  20% 10/49 [00:00<00:02, 16.85it/s][A
+Denoising:  24% 12/49 [00:00<00:02, 16.84it/s][A
+Denoising:  29% 14/49 [00:00<00:02, 16.84it/s][A
+Denoising:  33% 16/49 [00:00<00:01, 16.85it/s][A
+Denoising:  37% 18/49 [00:01<00:01, 16.86it/s][A
+Denoising:  41% 20/49 [00:01<00:01, 16.86it/s][A
+Denoising:  45% 22/49 [00:01<00:01, 16.85it/s][A
+Denoising:  49% 24/49 [00:01<00:01, 16.82it/s][A
+Denoising:  53% 26/49 [00:01<00:01, 16.83it/s][A
+Denoising:  57% 28/49 [00:01<00:01, 16.83it/s][A
+Denoising:  61% 30/49 [00:01<00:01, 16.82it/s][A
+Denoising:  65% 32/49 [00:01<00:01, 16.82it/s][A
+Denoising:  69% 34/49 [00:02<00:00, 16.84it/s][A
+Denoising:  73% 36/49 [00:02<00:00, 16.86it/s][A
+Denoising:  78% 38/49 [00:02<00:00, 16.86it/s][A
+Denoising:  82% 40/49 [00:02<00:00, 16.85it/s][A
+Denoising:  86% 42/49 [00:02<00:00, 16.84it/s][A
+Denoising:  90% 44/49 [00:02<00:00, 16.83it/s][A
+Denoising:  94% 46/49 [00:02<00:00, 16.83it/s][A
+Denoising:  98% 48/49 [00:02<00:00, 16.83it/s][A
+                                              [ASampling batches...: 100%|██████████| 8/8 [07:04<00:00, 14.00s/it]Sampling batches...: 100%|██████████| 8/8 [07:04<00:00, 53.01s/it]

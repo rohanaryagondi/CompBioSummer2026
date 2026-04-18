@@ -1,0 +1,58 @@
+==========================================
+MACE CUDA test RTX  |  SLURM 8789011
+Node: a1128u08n01.mghpcc.ycrc.yale.edu
+GPU: NVIDIA RTX 5000 Ada Generation, 32760 MiB
+Date: 2026-04-18T16:05:46Z
+==========================================
+
+=== Env verification ===
+torch: 2.5.1+cu121 | cuda_avail: True
+openmm: 8.5.1 at /home/rag88/.conda/envs/env-mace-cuda/lib/python3.10/site-packages/openmm/__init__.py
+  Platform 0: Reference (speed 1.0)
+  Platform 1: CPU (speed 10.0)
+  Platform 2: CUDA (speed 100.0)
+  Platform 3: OpenCL (speed 50.0)
+
+=== Running MACE CUDA test on crambin vacuum ===
+[2026-04-18T16:05:51Z] OpenMM 8.5.1
+[2026-04-18T16:05:51Z] PyTorch 2.5.1+cu121
+[2026-04-18T16:05:51Z] CUDA available (torch): True
+[2026-04-18T16:05:51Z]   GPU: NVIDIA RTX 5000 Ada Generation
+[2026-04-18T16:05:51Z]   Capability: (8, 9)
+[2026-04-18T16:05:51Z] Platforms registered in OpenMM:
+[2026-04-18T16:05:51Z]   [0] Reference speed=1.0
+[2026-04-18T16:05:51Z]   [1] CPU speed=10.0
+[2026-04-18T16:05:51Z]   [2] CUDA speed=100.0
+[2026-04-18T16:05:51Z]   [3] OpenCL speed=50.0
+[2026-04-18T16:05:51Z] Loading /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/proteins/crambin.pdb
+[2026-04-18T16:05:52Z] Topology: 642 atoms
+cuequivariance or cuequivariance_torch is not available. Cuequivariance acceleration will be disabled.
+Using MACE-OFF23 MODEL for MACECalculator with /home/rag88/.cache/mace/MACE-OFF24_medium.model
+[2026-04-18T16:05:56Z] MACE system built in 3.7s
+[2026-04-18T16:05:58Z] Platform CUDA ACTIVE: probe step in 1000.2ms, PE=-272269.7
+[2026-04-18T16:05:58Z] Minimizing energy (max 2000 iter)...
+[2026-04-18T16:06:30Z] FATAL: The following operation failed in the TorchScript interpreter.
+Traceback of TorchScript (most recent call last):
+RuntimeError: The following operation failed in the TorchScript interpreter.
+Traceback of TorchScript (most recent call last):
+RuntimeError: CUDA driver error: invalid resource handle
+
+
+[2026-04-18T16:06:30Z] Traceback (most recent call last):
+  File "/home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/scripts/mace_cuda_crambin.py", line 168, in main
+    state = simulation.context.getState(getEnergy=True)
+  File "/home/rag88/.conda/envs/env-mace-cuda/lib/python3.10/site-packages/openmm/openmm.py", line 6157, in getState
+    state = _openmm.Context_getState(self, types, enforcePeriodicBox, groups_mask)
+openmm.OpenMMException: The following operation failed in the TorchScript interpreter.
+Traceback of TorchScript (most recent call last):
+RuntimeError: The following operation failed in the TorchScript interpreter.
+Traceback of TorchScript (most recent call last):
+RuntimeError: CUDA driver error: invalid resource handle
+
+
+
+
+==========================================
+Exit: 1
+Completed: 2026-04-18T16:06:31Z
+==========================================

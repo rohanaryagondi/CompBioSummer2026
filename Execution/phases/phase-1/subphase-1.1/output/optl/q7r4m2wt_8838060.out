@@ -1,0 +1,28 @@
+==========================================
+CUDA interop probe  |  SLURM 8838060  |  MODE=fixAB
+Node: a1128u08n01.mghpcc.ycrc.yale.edu
+GPU: NVIDIA RTX 5000 Ada Generation, 32760 MiB
+Date: 2026-04-18T19:33:51Z
+==========================================
+[2026-04-18T19:33:53Z] MODE: fixab
+[2026-04-18T19:33:53Z] Torch 2.5.1+cu121, OpenMM 8.5.1
+[2026-04-18T19:33:53Z] CUDA_VISIBLE_DEVICES=0
+[2026-04-18T19:33:53Z] torch.cuda.is_available(): True
+[2026-04-18T19:33:53Z] torch.cuda.set_device(0) -> current_device=0, name=NVIDIA RTX 5000 Ada Generation
+[2026-04-18T19:33:53Z] Fix B applied: _computeMACE now wraps torch.cuda.synchronize().
+[2026-04-18T19:33:53Z] Loading PDB /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/proteins/crambin.pdb
+[2026-04-18T19:33:54Z] Topology: 642 atoms (vacuum)
+[2026-04-18T19:33:54Z] MM system built: 5 forces
+cuequivariance or cuequivariance_torch is not available. Cuequivariance acceleration will be disabled.
+Using MACE-OFF23 MODEL for MACECalculator with /home/rag88/.cache/mace/MACE-OFF24_medium.model
+[2026-04-18T19:33:57Z] Hybrid system built in 2.9s: 642 particles, 6 forces
+[2026-04-18T19:33:57Z] torch.cuda.synchronize() after hybrid build OK
+[2026-04-18T19:33:58Z] Simulation (CUDA, hybrid) created OK
+[2026-04-18T19:33:59Z] Probe getState(getEnergy): 920.1 ms, PE=-269131.6 kJ/mol
+[2026-04-18T19:34:00Z] Probe step(1) in 828.1 ms
+[2026-04-18T19:34:00Z] Entering minimizeEnergy(maxIterations=10) — this is where SubJ crashed
+[2026-04-18T19:34:01Z] minimizeEnergy(10 iter): 1.37 s — NO CRASH!
+[2026-04-18T19:34:02Z] PE after min: -272276.2 kJ/mol
+[2026-04-18T19:34:09Z]   +10 steps OK (total 10): 6.61s (130.693 ns/day)
+[2026-04-18T19:35:09Z]   +100 steps OK (total 110): 60.31s (143.263 ns/day)
+[2026-04-18T19:40:12Z]   +500 steps OK (total 610): 303.35s (142.410 ns/day)

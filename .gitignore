@@ -1,0 +1,23 @@
+# Python
+**/__pycache__/
+**/*.pyc
+**/*.pyo
+
+# Model weights / large binaries (download or regenerate on demand)
+**/*.pt
+**/*.ckpt
+**/*.h5ad
+**/*.safetensors
+
+# Claude Code session data
+**/.claude/
+
+# Raw PDB downloads (processed versions in proteins/*.pdb are what's used)
+Execution/phases/phase-0/subphase-0.1/proteins/raw/
+
+# Scratch outputs (actual experiment data lives on HPC scratch)
+**/trajectories/
+
+# OS
+.DS_Store
+Thumbs.db

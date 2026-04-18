@@ -44,6 +44,7 @@ dependencies:
       - markupsafe==3.0.3
       - matscipy==1.2.0
       - numpy==2.2.6
+      - pdbfixer==1.12.0
       - opt-einsum==3.4.0
       - opt-einsum-fx==0.1.4
       - orjson==3.11.8

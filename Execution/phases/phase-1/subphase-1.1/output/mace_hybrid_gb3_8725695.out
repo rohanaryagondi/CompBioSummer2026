@@ -1,0 +1,26 @@
+==========================================
+MACE hybrid GB3  |  SLURM 8725695
+Node: a1128u29n01.mghpcc.ycrc.yale.edu
+GPU: NVIDIA RTX 5000 Ada Generation, 32760 MiB
+Date: 2026-04-18T06:13:22Z
+==========================================
+
+=== Running MACE hybrid NVT on GB3 (PDB 1P7E, 56 aa) ===
+[2026-04-18T06:13:25Z] torch 2.5.1+cu121 | cuda avail: True
+[2026-04-18T06:13:26Z] OpenMM 8.5.1
+[2026-04-18T06:13:26Z] Loading PDB: /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/proteins/gb3.pdb
+[2026-04-18T06:13:26Z]   Raw topology: 862 atoms, 56 residues, 1 chains
+[2026-04-18T06:13:26Z]   After protein extraction: 862 atoms, 56 residues
+[2026-04-18T06:13:26Z] Running PDBFixer (fill missing heavy atoms, add hydrogens)...
+[2026-04-18T06:13:29Z]   After PDBFixer: 862 atoms, 56 residues
+[2026-04-18T06:13:29Z] Adding TIP3P-FB solvent (padding=1.0 nm, ionic strength=0.15 M)...
+[2026-04-18T06:13:30Z]   After solvation: 9874 atoms (protein=862, water+ions=9012)
+[2026-04-18T06:13:30Z] Building classical AMBER14 + TIP3P-FB system (PME, 1.0 nm cutoff)...
+[2026-04-18T06:13:30Z] Creating hybrid MACE-OFF24-medium system (862 MACE atoms / 9874 total)...
+cuequivariance or cuequivariance_torch is not available. Cuequivariance acceleration will be disabled.
+Using MACE-OFF23 MODEL for MACECalculator with /home/rag88/.cache/mace/MACE-OFF24_medium.model
+[2026-04-18T06:13:38Z]   Hybrid system built in 7.9s: 9874 particles, 6 forces
+[2026-04-18T06:13:38Z] Selecting OpenCL platform (CUDA disabled by Sub 1.1 policy)...
+[2026-04-18T06:13:40Z] Minimizing hybrid system (max 200 iter, tol 10 kJ/mol/nm)...
+[2026-04-18T06:23:59Z]   Minimization: 618.4s, PE = -543673.4 kJ/mol
+[2026-04-18T06:24:01Z] --- Equilibration: 30.0 ps (30000 steps) ---

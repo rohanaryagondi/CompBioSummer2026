@@ -1,0 +1,55 @@
+#!/bin/bash
+#SBATCH --job-name=p4j8w2vz
+#SBATCH --partition=gpu_h200
+#SBATCH --gres=gpu:h200:1
+#SBATCH --time=00:30:00
+#SBATCH --mem=16G
+#SBATCH --cpus-per-task=2
+#SBATCH --output=/home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/optj/%x_%j.out
+#SBATCH --error=/home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/optj/%x_%j.err
+
+echo "=========================================="
+echo "MACE CUDA test H200  |  SLURM ${SLURM_JOB_ID}"
+echo "Node: $(hostname)"
+echo "GPU: $(nvidia-smi --query-gpu=name,memory.total --format=csv,noheader 2>/dev/null || echo unknown)"
+echo "Date: $(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+echo "=========================================="
+
+ENV_DIR=/home/rag88/.conda/envs/env-mace-cuda
+OPENMM_DIR=/home/rag88/opt/openmm-cuda128
+ENV_PYTHON=${ENV_DIR}/bin/python
+SCRIPT_DIR=/home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/scripts
+
+unset LD_LIBRARY_PATH LIBRARY_PATH CPATH 2>/dev/null || true
+export LD_LIBRARY_PATH=${ENV_DIR}/lib:${OPENMM_DIR}/lib
+export OPENMM_LIB_PATH=${OPENMM_DIR}/lib
+export OPENMM_PLUGIN_DIR=${OPENMM_DIR}/lib/plugins
+export PYTHONNOUSERSITE=1
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export MACE_DURATION_PS=5
+export MACE_TAG="h200_cuda"
+
+echo ""
+echo "=== Env verification ==="
+${ENV_PYTHON} -c "
+import openmm, torch
+print('torch:', torch.__version__, '| cuda_avail:', torch.cuda.is_available())
+print('openmm:', openmm.__version__, 'at', openmm.__file__)
+for i in range(openmm.Platform.getNumPlatforms()):
+    p = openmm.Platform.getPlatform(i)
+    print(f'  Platform {i}: {p.getName()} (speed {p.getSpeed()})')
+" || echo "WARNING: env verification issues, continuing anyway..."
+
+echo ""
+echo "=== Running MACE CUDA test on H200 ==="
+set -uo pipefail
+${ENV_PYTHON} ${SCRIPT_DIR}/mace_cuda_crambin.py
+EXIT_CODE=$?
+
+echo ""
+echo "=========================================="
+echo "Exit: $EXIT_CODE"
+echo "Completed: $(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+echo "=========================================="
+exit $EXIT_CODE

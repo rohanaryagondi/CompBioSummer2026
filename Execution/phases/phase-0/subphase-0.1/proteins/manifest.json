@@ -15,9 +15,9 @@
       "bmrb_temperature_k": 278,
       "bmrb_s2_residue_count": 28,
       "bmrb_quality": "Good",
-      "pdb_resolution_a": null,
-      "pdb_method": "NMR",
-      "notes": "Pin1 WW domain; NMR ensemble; S2 from backbone 15N relaxation"
+      "pdb_resolution_a": 1.5,
+      "pdb_method": "X-ray",
+      "notes": "Pin1 WW domain extracted from full-length Pin1 X-ray (2F21, 1.50 A, Fip loop-1 mutant). Residues 6-39 extracted. Seewald 2007 S2 is on WT Pin1-WW; Fip mutations are in loop 1 (distant from most backbone amides). Methods-section caveat required. See shared/notes/1.1-pin1ww-extraction.md."
     },
     {
       "name": "Crambin",
@@ -105,14 +105,14 @@
       "residue_range": "1-64",
       "disulfide_bonds": [],
       "bmrb_accession": "bmr51234",
-      "bmrb_reference": "Shaw et al., 1995; BMRB 51234/51235 have T1/T2/NOE; 300 K, 600 MHz",
+      "bmrb_reference": "Shaw et al., 1995, Biochemistry 34:2225-2233 (primary, WT CI2 15N relaxation). BMRB 51234 (Gavrilov & Teilum 2022, Biochemistry) contains I57V mutant T1/T2/NOE relaxation data as secondary cross-check; point-mutant distant from most backbone amides.",
       "bmrb_field_mhz": 600,
       "bmrb_temperature_k": 300,
       "bmrb_s2_residue_count": 50,
       "bmrb_quality": "Good",
       "pdb_resolution_a": 2.0,
       "pdb_method": "X-ray",
-      "notes": "Relaxation data in BMRB, S2 derivable from model-free analysis"
+      "notes": "Primary S2 reference is Shaw 1995 (WT CI2) to match PDB 2CI2 (WT). BMRB 51234 is the I57V mutant and serves as secondary cross-check only. Residue 57 is internal; expect small (<0.05) S2 perturbations at most sites. See shared/notes/1.1-audit-remediation.md."
     },
     {
       "name": "CspA (Cold Shock Protein A)",
@@ -129,9 +129,9 @@
       "bmrb_temperature_k": 300,
       "bmrb_s2_residue_count": 55,
       "bmrb_quality": "Good",
-      "pdb_resolution_a": null,
-      "pdb_method": "NMR",
-      "notes": "E. coli cold shock protein A. NMR structure."
+      "pdb_resolution_a": 2.0,
+      "pdb_method": "X-ray",
+      "notes": "E. coli cold shock protein A. PDB 1MJC is X-ray at 2.00 A (69 modeled residues; N-terminal Met may be trimmed in crystal, manifest residue_count 70 reflects the full-construct sequence used for BMRB S2)."
     },
     {
       "name": "alpha-3D",
@@ -162,14 +162,14 @@
       "residue_range": "1-75",
       "disulfide_bonds": [],
       "bmrb_accession": "literature",
-      "bmrb_reference": "Kordel et al., 1992, Biochemistry 31:4856; Akke et al., 1993; 300 K, 500 MHz",
+      "bmrb_reference": "Akke et al., 1993, Biochemistry 32:9832-9844 (apo-calbindin D9k, primary apo S2 reference). Kordel et al. 1992 Biochemistry 31:4856 is the holo S2 reference and must NOT be used for apo comparison.",
       "bmrb_field_mhz": 500,
       "bmrb_temperature_k": 300,
       "bmrb_s2_residue_count": 60,
       "bmrb_quality": "Good",
       "pdb_resolution_a": 2.3,
       "pdb_method": "X-ray",
-      "notes": "Calcium-binding protein. Apo form in 3ICB. S2 data from Akke/Kordel labs."
+      "notes": "APO state locked. PDB 3ICB is the Ca2+-bound crystal structure; Ca2+ ions and sulfate must be STRIPPED before MD preparation. Use Akke et al. 1993 Biochemistry 32:9832-9844 as the primary apo S2 reference. Kordel et al. 1992 Biochemistry 31:4856 is the holo S2 reference and must NOT be used for apo comparison. See shared/notes/1.1-calbindin-state-lock.md for the Ca-stripping preparation protocol."
     },
     {
       "name": "Ubiquitin",
@@ -200,14 +200,14 @@
       "residue_range": "1-85",
       "disulfide_bonds": [],
       "bmrb_accession": "literature",
-      "bmrb_reference": "van Nuland et al., 1995, JMB 246:180; 300 K, 500 MHz",
-      "bmrb_field_mhz": 500,
-      "bmrb_temperature_k": 300,
-      "bmrb_s2_residue_count": 55,
-      "bmrb_quality": "Moderate",
-      "pdb_resolution_a": 1.5,
-      "pdb_method": "X-ray",
-      "notes": "Histidine-containing phosphocarrier protein. Older data (1995), lower spectrometer field. Moderate coverage."
+      "bmrb_reference": "None. van Nuland et al. 1995 JMB 246:180 was the prior cited source but is a structure-determination paper (NOE restraints) with no 15N T1/T2/NOE relaxation data and no S2 order parameters. See shared/notes/1.1-hpr-s2-verification.md for full verification.",
+      "bmrb_field_mhz": null,
+      "bmrb_temperature_k": null,
+      "bmrb_s2_residue_count": 0,
+      "bmrb_quality": "None (S2 unavailable)",
+      "pdb_resolution_a": null,
+      "pdb_method": "NMR",
+      "notes": "Retained for structural and stability comparison only. Excluded from quantitative S2 analysis: van Nuland 1995 JMB 246:180 cited as S2 source but confirmed to contain only NOE structural data; no alternative 15N relaxation S2 source identified in public literature/BMRB as of 2026-04-17. User-approved Option A disposition. Histidine-containing phosphocarrier protein. PDB 1HDN is solution NMR, 30 conformers. Higher-resolution X-ray alternative: 1POH (2.00 A)."
     },
     {
       "name": "Barnase",
@@ -224,9 +224,9 @@
       "bmrb_temperature_k": 300,
       "bmrb_s2_residue_count": 90,
       "bmrb_quality": "Excellent",
-      "pdb_resolution_a": 1.5,
-      "pdb_method": "X-ray",
-      "notes": "RNase from B. amyloliquefaciens. S2 directly in BMRB entries."
+      "pdb_resolution_a": null,
+      "pdb_method": "NMR",
+      "notes": "RNase from B. amyloliquefaciens. PDB 1BNR is solution NMR, 20 conformers (not X-ray as previously mislabeled). X-ray alternatives available: 1A2P (1.5 A) or 1BNI (2.1 A). Primary S2: Caro, Valentine, Wand 2017 PNAS (BMRB 26619, 157 order parameters, 308 K, Bruker 500/600/750 MHz). Secondary: Sahu et al. 2000 J Biomol NMR 18:107 (free barnase, 14.1 T, mean S2 = 0.80). Garnet validation-set contamination: barnase-barstar complex (not free barnase) — see shared/notes/1.1-garnet-contamination-plan.md."
     },
     {
       "name": "HEWL (Hen Egg-White Lysozyme)",
@@ -257,21 +257,102 @@
       "residue_range": "1-164",
       "disulfide_bonds": [],
       "bmrb_accession": "literature",
-      "bmrb_reference": "Mulder et al., 2001, Biochemistry 40:4458; 300 K, 500/600 MHz",
-      "bmrb_field_mhz": 600,
-      "bmrb_temperature_k": 300,
+      "bmrb_reference": "Mulder, Hon, Muhandiram, Dahlquist, Kay, 2000, Biochemistry 39(41):12614-12622 (PMID 11027141, DOI 10.1021/bi001351t). Contains side-by-side WT T4L and L99A backbone 15N T1/T2/NOE at 11.7 T and 18.8 T (500, 800 MHz), 298 K. WT subset is the primary S2 reference for PDB 3LZM. Secondary: Meirovitch 2012 J Phys Chem B 116:6118 (SRLS re-analysis, S0^2 = 0.910 +/- 0.046). Methods precedent: Hoffmann et al. 2018 PCCP 20:24577 (MD/NMR comparison).",
+      "bmrb_field_mhz": 800,
+      "bmrb_temperature_k": 298,
       "bmrb_s2_residue_count": 130,
       "bmrb_quality": "Good",
       "pdb_resolution_a": 1.7,
       "pdb_method": "X-ray",
-      "notes": "Bacteriophage T4 lysozyme. Wild-type structure."
+      "notes": "Bacteriophage T4 lysozyme WT structure (3LZM). Primary S2 reference locked to Mulder 2000 Biochemistry 39:12614-12622 (WT subset of a paired WT/L99A study, 500 and 800 MHz, 298 K). Earlier manifest citation \"Mulder 2001 Biochemistry 40:4458\" was a transcription error for the same paper (correct is Biochemistry 39:12614-12622, 2000) and did contain WT data all along; the L99A reference in the same paper is for cavity-mutant comparison only, not primary. Cavity-region residues (~29 of 164) can be stratified in Phase 2 if needed. T4L is Garnet-CLEAN (HEWL is different lysozyme fold family). See shared/notes/1.1-t4l-s2-candidates.md for the full candidate list and reconciliation; supersedes the earlier shared/notes/1.1-t4l-citation-verification.md for the WT-data-presence question."
+    },
+    {
+      "name": "NTL9 (N-terminal domain of ribosomal protein L9)",
+      "short_name": "ntl9",
+      "residue_count": 51,
+      "tier": "B",
+      "pdb_id": "2HBB",
+      "pdb_chain": "A",
+      "residue_range": "1-51",
+      "disulfide_bonds": [],
+      "bmrb_accession": "literature",
+      "bmrb_reference": "Lillemoen & Hoffman, 1998, J Mol Biol 281:539-551 (PubMed 9698568); S2 from 15N T1/T2/NOE Lipari-Szabo model-free. BMRB 17675 contains NTL9 V3A/I4A chemical shifts only (no S2).",
+      "bmrb_field_mhz": 600,
+      "bmrb_temperature_k": 298,
+      "bmrb_s2_residue_count": 45,
+      "bmrb_quality": "Good",
+      "pdb_resolution_a": 1.9,
+      "pdb_method": "X-ray",
+      "notes": "Added 2026-04-17 for T5 margin expansion. Scout report: shared/notes/1.1-t5-margin-candidates.md. 2HBB is 1.90 A X-ray of G. stearothermophilus NTL9; chain A resolved residues 1-51 (functional construct is 1-56 but C-terminal tail residues 52-56 are disordered in the crystal). Zn ions in chains B-E of asymmetric unit; chain A is Zn-free. 3 beta + 2 alpha fold, canonical protein-folding benchmark (Raleigh lab, Shaw lab Anton 2.9 ms trajectory)."
+    },
+    {
+      "name": "ACBP (bovine Acyl-CoA Binding Protein)",
+      "short_name": "acbp",
+      "residue_count": 86,
+      "tier": "B",
+      "pdb_id": "2ABD",
+      "pdb_chain": "A",
+      "residue_range": "1-86",
+      "disulfide_bonds": [],
+      "bmrb_accession": "literature",
+      "bmrb_reference": "Rischel et al., 1994, Biochemistry 33:13997-14002 (PubMed 7947808); 15N T1/T2/NOE for apo- and holo-ACBP. Follow-up: Kragelund et al. 1995 J Mol Biol 250:448-460 and Rogne et al. 2009 BBA 1794:1239-1247 (dispersion and slow dynamics).",
+      "bmrb_field_mhz": 600,
+      "bmrb_temperature_k": 298,
+      "bmrb_s2_residue_count": 77,
+      "bmrb_quality": "Good",
+      "pdb_resolution_a": null,
+      "pdb_method": "NMR",
+      "notes": "Added 2026-04-17 for T5 margin expansion. Scout report: shared/notes/1.1-t5-margin-candidates.md. 2ABD is the solution NMR apo structure of bovine ACBP (UniProt P07107); model 1 extracted as canonical starting structure, 86 residues, 0 Cys. Four-alpha-helix bundle topology extends fold coverage of benchmark (currently mostly alpha/beta or mostly-beta). Classic Kragelund/Poulsen lab characterization."
+    },
+    {
+      "name": "FKBP12 (human FK506-binding protein)",
+      "short_name": "fkbp12",
+      "residue_count": 107,
+      "tier": "C",
+      "pdb_id": "2PPN",
+      "pdb_chain": "A",
+      "residue_range": "1-107",
+      "disulfide_bonds": [],
+      "bmrb_accession": "literature",
+      "bmrb_reference": "Cheng et al., 1993, Biochemistry 32:9000-9010 (PubMed 7690248); 15N T1/T2/NOE for uncomplexed FKBP12, mean S2 ~= 0.88. Follow-up: Sapienza et al., 2011, J Mol Biol 405:378-394 (higher field); Sapienza & Lee, 2018, Biochemistry 57:6482-6495 (side-chain dynamics).",
+      "bmrb_field_mhz": 600,
+      "bmrb_temperature_k": 298,
+      "bmrb_s2_residue_count": 94,
+      "bmrb_quality": "Good",
+      "pdb_resolution_a": 0.92,
+      "pdb_method": "X-ray",
+      "notes": "Added 2026-04-17 for T5 margin expansion. Scout report: shared/notes/1.1-t5-margin-candidates.md. Starting PDB changed from 1FKF (FK506-bound) to 2PPN (0.92 A apo) for consistency with apo-state S2 reference data. 107 aa, 1 Cys at residue 22 (NOT a disulfide bond - single free thiol in core). FKBP fold (alpha/beta with dynamic '80s loop'); tests loop-motion capture by force fields."
+    },
+    {
+      "name": "Engrailed homeodomain (EnHD)",
+      "short_name": "enhd",
+      "residue_count": 54,
+      "tier": "A",
+      "pdb_id": "1ENH",
+      "pdb_chain": "A",
+      "residue_range": "3-56",
+      "disulfide_bonds": [],
+      "bmrb_accession": "bmr15536",
+      "bmrb_reference": "Religa et al., 2008, J Biomol NMR 40:189-202 (PubMed 18320310); BMRB 15536 contains 58 S2 order parameter entries. 500 MHz (Bruker DRX500), 298 K, pH 5.7.",
+      "bmrb_field_mhz": 500,
+      "bmrb_temperature_k": 298,
+      "bmrb_s2_residue_count": 58,
+      "bmrb_quality": "Excellent",
+      "pdb_resolution_a": 2.1,
+      "pdb_method": "X-ray",
+      "notes": "Added 2026-04-17 for T5 margin expansion. Scout report: shared/notes/1.1-t5-margin-candidates.md. Only one of the 4 additions with S2 data directly deposited in BMRB (15536). 1ENH is 2.10 A X-ray Drosophila engrailed homeodomain; chain A modeled residues 3-56 (full construct is 1-61 but residues 1-2 and 57-61 are disordered). Three-alpha-helix bundle, DNA-binding protein. Loop 1-2 shows us-ms motion per Religa 2008."
     }
   ],
   "summary": {
-    "total_proteins": 14,
-    "confirmed_s2": 13,
+    "total_proteins": 16,
+    "confirmed_s2": 14,
     "t5_threshold_met": true,
-    "proteins_without_s2": ["Crambin"],
-    "notes": "13 of 14 proteins have confirmed BMRB or published 15N relaxation S2 data. Crambin has no S2 data but serves as a stability control. T5 threshold (>=12) is met."
+    "proteins_without_s2": ["Crambin", "HPr"],
+    "notes": "Expanded 2026-04-17: added NTL9, ACBP, FKBP12, EnHD to restore T5 margin after Phase 0 BPTI drop and Subphase 1.1 HEWL drop. Effective benchmark = 16 active proteins (manifest has 18 entries: 14 original minus BPTI (6PTI) and HEWL (1AKI) dropped on AK3 triggers, plus 4 new additions). 14 of 16 active proteins have confirmed BMRB or published 15N relaxation S2 data (Crambin and HPr are retained for structural/stability comparison only: Crambin is the classical stability control; HPr per Option A after van Nuland 1995 JMB 246:180 citation was verified to contain no relaxation data and no alternative WT HPr S2 source was located). T4L S2 reference locked 2026-04-17 to Mulder 2000 Biochemistry 39:12614-12622 (WT + L99A paired data at 500/800 MHz, 298 K). T5 threshold (>=12 of 14 per combined-paper criterion) is met with 2-protein margin: 14 S2-bearing / 16 active. See shared/notes/1.1-protein-count-canonical.md for the authoritative protein-count reconciliation.",
+    "dropped_proteins": [
+      {"short_name": "bpti", "reason": "Phase 0 task-004 BioEmu CB-CB SS integrity 56.1% at 4.5 A (AK3 triggered)"},
+      {"short_name": "hewl", "reason": "Subphase 1.1 task-005 BioEmu SG-SG integrity 40.2% even with PDBFixer sidechain reconstruction (AK3 triggered)"}
+    ],
+    "additions_2026_04_17": ["ntl9", "acbp", "fkbp12", "enhd"]
   }
 }

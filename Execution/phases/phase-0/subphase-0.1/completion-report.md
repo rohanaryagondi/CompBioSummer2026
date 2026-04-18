@@ -84,20 +84,22 @@ Implementation Plan estimated 15-20% failure probability for env-mace and env-so
 
 | Protein | BMRB | S2 Quality | Confirmed |
 |---------|------|------------|-----------|
-| Ubiquitin | 6457 | High | Yes |
-| GB3 | 7280 | High | Yes |
-| GB1 | 15598 | High | Yes |
-| BPTI | 4968 | High | Yes |
-| HEWL | 5531 | High | Yes |
-| Barnase | 19090 | High | Yes |
-| Calmodulin (apo) | 6541 | High | Yes |
-| CI2 | 4775 | High | Yes |
-| CspA | 6342 | High | Yes |
-| T4 Lysozyme | 4355 | High | Yes |
-| A3D | 5766 | Good | Yes |
-| WW domain | 5852 | Good | Yes |
-| HPr | 4265 | Moderate | Yes |
+| Ubiquitin | 6470 | High | Yes |
+| GB3 | 5839 | High | Yes |
+| GB1 | literature | High | Yes |
+| BPTI | literature | High | Yes |
+| HEWL | 18304 | High | Yes |
+| Barnase | 26619 | High | Yes |
+| Calbindin D9k | literature | High | Yes |
+| CI2 | 51234 | High | Yes |
+| CspA | literature | High | Yes |
+| T4 Lysozyme | literature | High | Yes |
+| A3D | literature | Good | Yes |
+| WW domain | literature | Good | Yes |
+| HPr | literature | Moderate | Yes |
 | Crambin | — | None | No |
+
+*Note: This table was corrected on 2026-04-17 after the 12-protein verification audit (`shared/notes/1.1-protein-verification.md`). Original version had BMRB-ID copy errors — the 4-digit numbers (4355, 4265, 5852, 4968, 5531, 6342, 6457, 6541) cited in the prior revision were unrelated entries (Mnt Repressor, Dynein light chain 1, RNA ribozyme hairpin, etc.). The authoritative source is `proteins/manifest.json`; this table is the human-readable summary and should match it. "literature" here means the S2 data come from published papers, not a deposited BMRB entry.*
 
 **Result: 13/14 proteins confirmed with usable S2 data. T5 threshold (>=12) MET.**
 

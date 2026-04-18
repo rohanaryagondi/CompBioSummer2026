@@ -1,0 +1,99 @@
+# env-delta-clean: Post-split Delta environment for GEARS, scGPT, scFoundation, Tahoe-x1
+#
+# Purpose: Modern numpy/anndata/scanpy/torch stack. CPA is NOT in this env — it
+# lives in env-cpa because of irreconcilable pins (numpy 1.23, anndata 0.9, scanpy 1.10).
+#
+# Compatibility targets:
+#   - GEARS       (numpy 1.26+, scipy 1.13+, networkx 3.2+, torch 2.5+)
+#   - scGPT 0.2.4 (torch 2.x, anndata 0.11)
+#   - scFoundation (torch 2.x, scanpy >=1.9, einops, local_attention — no pins)
+#   - Tahoe-x1    (torch>=2.5,<3.0; scanpy>=1.9,<2.0; Python>=3.10; llm-foundry>=0.17)
+#
+# Build procedure:
+#   module load miniconda/24.11.3
+#   conda env create -n env-delta-v2 -f env-delta-clean.yml
+#   conda activate env-delta-v2
+#   export PYTHONNOUSERSITE=1
+#   # CRITICAL: Install torch with cu128 wheel FIRST — default pip gives cu130 which is
+#   # incompatible with McCleary driver 570.195 (CUDA 12.8). Use the pytorch index:
+#   pip install torch==2.11.0 --index-url https://download.pytorch.org/whl/cu128
+#   # Then install GEARS from source. It forces numpy->1.26.4, scanpy->1.10.2,
+#   # scipy->1.14.1, networkx->3.3 (acceptable — still modern, and NOT CPA's 1.23/0.9).
+#   pip install torch_geometric==2.5.3 git+https://github.com/snap-stanford/GEARS.git
+#   # NOTE: GEARS will upgrade networkx to 3.4.2 transitively; pin it back to 3.3:
+#   pip install 'networkx==3.3'
+#   # scGPT (optional, if Sub 1.2 needs it re-installed separately here):
+#   pip install scgpt==0.2.4
+#
+# Smoke test (GPU node):
+#   python -c "import numpy, anndata, scanpy, torch, gears; assert torch.cuda.is_available(); print('OK')"
+#
+# NOTE on scFoundation: pip installable from source; no hard pins. Should work
+# alongside Tahoe-x1 in this env.
+# NOTE on Tahoe-x1 llm-foundry[gpu]: this pulls flash-attn, composer. Flash-attn
+# may require Python wheel matching torch ABI. If llm-foundry install is fragile,
+# consider a separate env-tahoex1 — but try in env-delta-v2 first.
+name: env-delta
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - _openmp_mutex=4.5
+  - bzip2=1.0.8
+  - ca-certificates
+  - ld_impl_linux-64
+  - libexpat
+  - libffi
+  - libgcc
+  - libgcc-ng
+  - libgomp
+  - liblzma
+  - libnsl
+  - libsqlite
+  - libstdcxx
+  - libuuid
+  - libxcrypt
+  - libzlib
+  - ncurses
+  - openssl
+  - packaging
+  - pip=26.0.1
+  - python=3.10.20
+  - readline
+  - setuptools
+  - tk
+  - tzdata
+  - wheel
+  - zstd
+  - pip:
+      # Core scientific stack (modern versions — NOT CPA-downgraded)
+      - numpy>=2.0,<3.0
+      - scipy>=1.13
+      - pandas>=2.2
+      - scikit-learn>=1.5
+      - matplotlib>=3.10
+      # Single-cell (modern AnnData 0.11, scanpy 1.11)
+      - anndata>=0.11
+      - scanpy>=1.11
+      - pynndescent
+      - umap-learn
+      - numba
+      - llvmlite
+      # Delta benchmark method backbone deps
+      - networkx>=3.2
+      - pyarrow>=14
+      - h5py
+      - tqdm
+      - pyyaml
+      - joblib
+      - legacy-api-wrap
+      - natsort
+      - patsy
+      - session-info2
+      - statsmodels
+      - array-api-compat
+      - filelock
+      - fsspec
+      # Tahoe-100M streaming loader
+      - scdataset==0.3.0
+      - datasets>=2.21

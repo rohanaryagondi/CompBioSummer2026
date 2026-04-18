@@ -1,0 +1,48 @@
+==========================================
+MACE CUDA test H200  |  SLURM 8761949
+Node: a1124u11n01.mghpcc.ycrc.yale.edu
+GPU: NVIDIA H200, 143771 MiB
+Date: 2026-04-18T14:47:08Z
+==========================================
+
+=== Env verification ===
+torch: 2.5.1+cu121 | cuda_avail: True
+openmm: 8.5.1
+  Platform 0: Reference (speed 1.0)
+  Platform 1: CPU (speed 10.0)
+  Platform 2: CUDA (speed 100.0)
+  Platform 3: OpenCL (speed 50.0)
+
+=== Running MACE CUDA test on H200 ===
+[2026-04-18T14:47:14Z] OpenMM 8.5.1
+[2026-04-18T14:47:14Z] PyTorch 2.5.1+cu121
+[2026-04-18T14:47:14Z] CUDA available (torch): True
+[2026-04-18T14:47:14Z]   GPU: NVIDIA H200
+[2026-04-18T14:47:14Z]   Capability: (9, 0)
+[2026-04-18T14:47:14Z] Platforms registered in OpenMM:
+[2026-04-18T14:47:14Z]   [0] Reference speed=1.0
+[2026-04-18T14:47:14Z]   [1] CPU speed=10.0
+[2026-04-18T14:47:14Z]   [2] CUDA speed=100.0
+[2026-04-18T14:47:14Z]   [3] OpenCL speed=50.0
+[2026-04-18T14:47:14Z] Loading /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/proteins/crambin.pdb
+[2026-04-18T14:47:15Z] Topology: 642 atoms
+cuequivariance or cuequivariance_torch is not available. Cuequivariance acceleration will be disabled.
+Using MACE-OFF23 MODEL for MACECalculator with /home/rag88/.cache/mace/MACE-OFF24_medium.model
+[2026-04-18T14:47:23Z] MACE system built in 7.6s
+[2026-04-18T14:47:23Z] Platform CUDA FAILED: OpenMMException: Error loading CUDA module: CUDA_ERROR_UNSUPPORTED_PTX_VERSION (222)
+[2026-04-18T14:47:25Z] Platform OpenCL ACTIVE: probe step in 887.2ms, PE=-272027.3
+[2026-04-18T14:47:25Z] Minimizing energy (max 2000 iter)...
+[2026-04-18T14:47:44Z] Minimization: 18.7s, PE = -281988.1 kJ/mol
+[2026-04-18T14:47:44Z] Running NVT: 5.0 ps (5000 steps) on OpenCL...
+[2026-04-18T14:52:22Z] NVT done: 278.4s (1.552 ns/day)
+[2026-04-18T14:52:22Z] =========================================================
+[2026-04-18T14:52:22Z] VERDICT: PASS
+[2026-04-18T14:52:22Z] Platform: OpenCL
+[2026-04-18T14:52:22Z] Throughput: 1.552 ns/day  (crambin vacuum, 642 atoms)
+[2026-04-18T14:52:22Z] Results JSON: /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/optj/mace_h200_cuda_results.json
+[2026-04-18T14:52:22Z] =========================================================
+
+==========================================
+Exit: 0
+Completed: 2026-04-18T14:52:23Z
+==========================================

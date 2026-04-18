@@ -1,6 +1,6 @@
 ---
-last_updated: 2026-04-16T15:15:00Z
-updated_by: head-1.1
+last_updated: 2026-04-17T23:59:00Z
+updated_by: subagent-h (pre-Sub-1.2 flag closure)
 ---
 
 # Gate Tracker
@@ -9,9 +9,9 @@ updated_by: head-1.1
 
 | Gate | Date | Decision | Status | Assessment |
 |------|------|----------|--------|------------|
-| D1 | May 9 | MLFF software GO | EVIDENCE AVAILABLE | Both MACE + SO3LR pass crambin NVT |
-| D2 | June 30 | MLFF pilot GO (G1-G6) | PENDING | -- |
-| D3 | June 6 | Delta scope lock | EVIDENCE AVAILABLE | 3/5 methods working (GEARS, scGPT, CPA) |
+| D1 | May 9 | MLFF software GO | ASSESSED: GO | Both MACE + SO3LR pass; MACE via OpenCL (CUDA broken on all GPUs); Phase 2 via hybrid mode, 1.40× compute multiplier |
+| D2 | June 30 | MLFF pilot GO (G1-G6) | ON TRACK | G1 achievable on H200 OpenCL. Empirical H200 hybrid WW = 2.11 ns/day measured (SLURM 8789805, 2026-04-18) → 11.5× RTX 5000 Ada speedup. Phase 2 MACE committed to Option 5 (gpu_h200 partition). UBQ extrapolated ~0.85 ns/day → 10 ns in ~12 days, feasible. |
+| D3 | June 6 | Delta scope lock | ASSESSED: GO | 5/5 Tier 1 installed + GPU-verified (GEARS, scGPT, CPA, scFoundation, Tahoe-x1). Baselines owed in Sub 1.2. Amended 2026-04-17 from CONDITIONAL. |
 | D4 | July 31 | Integration signal | PENDING | -- |
 | D5 | Aug 15 | Delta preprint ready | PENDING | -- |
 | **D6** | **Aug 31** | **COMBINED PAPER GO/NO-GO** | **PENDING** | -- |
@@ -85,22 +85,43 @@ SEPARATE if ANY of S1-S5:
 Both MLFFs pass. MACE has CUDA incompatibility on H200/B200 (uses OpenCL at ~2x slower).
 RTX 5000 Ada CUDA test pending (job 8398672).
 
-### D3 Early Evidence (formal assessment at June 6)
+### D3 Evidence — FULLY MET (upgraded 2026-04-17)
 
-3/5 Tier 1 methods installed and GPU-verified:
-- GEARS: Working, peak 7.73 GB, no OOM risk
-- scGPT: Working, peak 6.78 GB, pretrained model loaded
-- CPA: Working, peak 0.11 GB, dependency downgrades noted
+All 5 Tier 1 methods installed and GPU-verified on RTX 5000 Ada:
+- GEARS: Working, peak 7.73 GB, no OOM risk (env-delta-v2)
+- scGPT: Working, peak 6.78 GB, pretrained model loaded (env-delta-v2)
+- CPA: Working, peak 0.11 GB, isolated in env-cpa (yml ready)
+- **scFoundation: Working, 119M params, peak 22.2 GB, 99.4% Tahoe gene coverage (env-delta-v2, SLURM 8705048)**
+- **Tahoe-x1 3B: Working, 2.7B params, peak 16.7 GB, 100% Tahoe gene coverage (env-tahoex1, SLURM 8709432)**
 
-2 remaining methods (scFoundation, Tahoe-x1) planned for subphase 1.2.
+Baselines (linear, mean, PCA, random, persistence) still owed — scheduled for Sub 1.2.
+Detailed install log: `shared/notes/1.1-delta-methods-install.md`.
 
-### T3 Evidence (HEWL dropped)
+### T3 Evidence (effectively retired)
 
-HEWL SG-SG integrity = 40.2% at 2.5A cutoff (AK3 triggered at ALL cutoffs).
-Benchmark reduced to 12 proteins. T5 (>=12 of 14) met at boundary.
+HEWL SG-SG integrity = 40.2% at 2.5A cutoff (AK3 triggered at ALL cutoffs). BPTI
+dropped earlier (56.1% CB-CB). Crambin (stability control only) also triggers
+AK3 at 14.2% SG-SG. With all 3 SS-bearing proteins either dropped or
+stability-control-only, T3 has no benchmark subjects — criterion effectively
+retired. Methods section should note this explicitly.
+
+### T5 Evidence (post-expansion, 2026-04-17)
+
+Benchmark expanded from 12 to 16 proteins (added NTL9, ACBP, FKBP12, EnHD; all 0
+SS bonds, Garnet-clean). BioEmu v1.1 pass rates: NTL9 96%, ACBP 98%, FKBP12
+100%, EnHD 99%. All viable. S2 provenance: EnHD has BMRB-confirmed 58 S2 entries
+(BMRB 15536); NTL9/ACBP/FKBP12 have paper-supplement S2.
+
+Concurrent HPr S2 verification found the cited paper (van Nuland 1995 JMB
+246:180) contains no relaxation data. Post-expansion T5 survives HPr exclusion
+with margin: 14/16 PASS (HPr excluded) or 15/16 PASS (HPr retained
+non-quantitatively). Previous boundary (12/12) eliminated.
+
+T5 **status: MET with 2-3 protein margin.**
 
 ## Gate Assessments
 
-| Gate | Assessment File | Date |
-|------|----------------|------|
-| (none yet) | -- | -- |
+| Gate | Assessment File | Date | Verdict |
+|------|----------------|------|---------|
+| D3 (early + amended) | [phases/phase-1/gate-D3-assessment.md](../phases/phase-1/gate-D3-assessment.md) | 2026-04-17 | GO (upgraded from CONDITIONAL same-day after scFoundation + Tahoe-x1 installs) |
+| D1 (early) | [phases/phase-1/gate-D1-assessment.md](../phases/phase-1/gate-D1-assessment.md) | 2026-04-17 | GO |

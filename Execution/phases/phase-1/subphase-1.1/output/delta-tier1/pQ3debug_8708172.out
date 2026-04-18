@@ -1,0 +1,10 @@
+loaded
+
+--- ComposerTX.forward (batch dict) ---
+  FAIL RuntimeError: FlashAttention only support fp16 and bf16 data type
+
+--- model.model (TXModel) positional ---
+  FAIL RuntimeError: FlashAttention only support fp16 and bf16 data type
+
+--- model.model kwargs (like emb_extractor) ---
+  FAIL RuntimeError: FlashAttention only support fp16 and bf16 data type

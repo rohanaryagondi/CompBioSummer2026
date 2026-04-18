@@ -1,0 +1,35 @@
+{
+  "task": "mace-cuda-vacuum-crambin",
+  "env": "env-mace-cuda",
+  "started": "2026-04-18T16:05:50.165528+00:00",
+  "parameters": {
+    "duration_ps": 10.0,
+    "timestep_fs": 1.0,
+    "temperature_K": 300.0
+  },
+  "platforms_tried": [
+    {
+      "name": "CUDA",
+      "status": "OK",
+      "probe_step_ms": 1000.2295970916748,
+      "probe_pe_kJ_mol": -272269.7245359494
+    }
+  ],
+  "openmm_version": "8.5.1",
+  "torch_version": "2.5.1+cu121",
+  "torch_cuda_available": true,
+  "gpu_name": "NVIDIA RTX 5000 Ada Generation",
+  "gpu_capability": [
+    8,
+    9
+  ],
+  "n_atoms": 642,
+  "system_build_time_s": 3.680070161819458,
+  "platform_selected": "CUDA",
+  "fatal_exception": {
+    "error": "The following operation failed in the TorchScript interpreter.\nTraceback of TorchScript (most recent call last):\nRuntimeError: The following operation failed in the TorchScript interpreter.\nTraceback of TorchScript (most recent call last):\nRuntimeError: CUDA driver error: invalid resource handle\n\n",
+    "traceback": "Traceback (most recent call last):\n  File \"/home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/scripts/mace_cuda_crambin.py\", line 168, in main\n    state = simulation.context.getState(getEnergy=True)\n  File \"/home/rag88/.conda/envs/env-mace-cuda/lib/python3.10/site-packages/openmm/openmm.py\", line 6157, in getState\n    state = _openmm.Context_getState(self, types, enforcePeriodicBox, groups_mask)\nopenmm.OpenMMException: The following operation failed in the TorchScript interpreter.\nTraceback of TorchScript (most recent call last):\nRuntimeError: The following operation failed in the TorchScript interpreter.\nTraceback of TorchScript (most recent call last):\nRuntimeError: CUDA driver error: invalid resource handle\n\n\n"
+  },
+  "verdict": "FAIL",
+  "completed": "2026-04-18T16:06:30.588015+00:00"
+}

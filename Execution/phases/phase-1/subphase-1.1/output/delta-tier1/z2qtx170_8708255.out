@@ -1,0 +1,49 @@
+GPU: NVIDIA RTX 5000 Ada Generation  VRAM: 31.5 GB
+
+=== Loading Tahoe-x1 70m from HuggingFace ===
+Model loaded: 70,996,993 params in 1.1s
+  vocab size: 62720
+  model_cfg keys: ['mvc', 'name', 'd_model', 'n_heads', 'use_glu', 'n_layers', 'attn_config', 'init_device', 'norm_config', 'norm_scheme']
+[mem after_load_model] alloc=0.266 GB  peak=0.266 GB
+
+=== Running inference on 100 Tahoe-100M cells ===
+Loaded Tahoe-100M: (100, 62710) cells x genes, mean nonzero per cell 1195.6
+Wrote sample to /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/delta-tier1/tahoex1_sample_100.h5ad
+  gene vocab mapping: 62710/62710 ensembl IDs resolve (vocab size 62720)
+  adata after vocab filter: (100, 62710)
+Using device cuda:0 for inference.
+  Cell embeddings: shape=(100, 512) dtype=float32
+  forward pass time: 0.9s
+[mem after_forward] alloc=0.284 GB  peak=0.723 GB
+
+=== TAHOE-X1 70M SMOKE PASS ===
+{
+  "env": "env-tahoex1",
+  "torch": "2.5.1+cu121",
+  "cuda_available": true,
+  "model_size": "70m",
+  "gpu_name": "NVIDIA RTX 5000 Ada Generation",
+  "gpu_total_gb": 31.5,
+  "load_time_s": 1.1,
+  "n_params": 70996993,
+  "vocab_size": 62720,
+  "memory_gb": {
+    "after_load_model": {
+      "alloc": 0.266,
+      "peak": 0.266
+    },
+    "after_forward": {
+      "alloc": 0.284,
+      "peak": 0.723
+    }
+  },
+  "vocab_hit_rate": 1.0,
+  "inference_path": "get_batch_embeddings",
+  "cell_embedding_shape": [
+    100,
+    512
+  ],
+  "cell_embedding_dtype": "float32",
+  "forward_time_s": 0.9,
+  "status": "PASS"
+}

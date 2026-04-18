@@ -1,0 +1,20 @@
+{
+  "short_name": "acbp",
+  "sequence": "SQAEFDKAAEEVKHLKTKPADEEMLFIYSHYKQATVGDINTERPGMLDFKGKAKWDAWNELKGTSKEDAMKAYIDKVEELKKKYGI",
+  "sequence_length": 86,
+  "num_samples_requested": 100,
+  "model_name": "bioemu-v1.1",
+  "seed": 42,
+  "start_time": "2026-04-17T22:04:38Z",
+  "elapsed_seconds": 427.1,
+  "elapsed_minutes": 7.12,
+  "end_time": "2026-04-17T22:11:45Z",
+  "validation": {
+    "valid": true,
+    "issues": [],
+    "npz_count": 8,
+    "conformation_count": 98,
+    "pass_rate": 0.98
+  },
+  "status": "success"
+}

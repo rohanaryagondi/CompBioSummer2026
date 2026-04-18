@@ -1,0 +1,7 @@
+The following modules were not unloaded:
+  (Use "module --force purge" to unload all):
+
+  1) StdEnv
+/home/rag88/.conda/envs/env-tahoex1/lib/python3.10/site-packages/llmfoundry/callbacks/env_logging_callback.py:10: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+Embedding cells:   0%|          | 0/13 [00:00<?, ?it/s]Embedding cells:  62%|██████▏   | 8/13 [00:00<00:00, 13.88it/s]Embedding cells: 48it [00:00, 89.46it/s]                       Embedding cells: 88it [00:00, 157.38it/s]Embedding cells: 100it [00:00, 120.93it/s]

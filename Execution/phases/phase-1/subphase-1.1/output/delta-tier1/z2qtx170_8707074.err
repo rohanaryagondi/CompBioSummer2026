@@ -1,0 +1,18 @@
+The following modules were not unloaded:
+  (Use "module --force purge" to unload all):
+
+  1) StdEnv
+The cache for model files in Transformers v4.22.0 has been updated. Migrating your old cache. This is a one-time only operation. You can interrupt this and resume the migration later on by calling `transformers.utils.move_cache()`.
+0it [00:00, ?it/s]0it [00:00, ?it/s]
+/home/rag88/.conda/envs/env-tahoex1/lib/python3.10/site-packages/llmfoundry/callbacks/env_logging_callback.py:10: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources
+Traceback (most recent call last):
+  File "/home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/delta-tier1/tahoex1_smoketest.py", line 146, in smoke_test
+    emb = get_batch_embeddings(
+  File "/home/rag88/.conda/envs/env-tahoex1/lib/python3.10/site-packages/tahoe_x1/tasks/emb_extractor.py", line 57, in get_batch_embeddings
+    data_loader = loader_from_adata(
+  File "/home/rag88/.conda/envs/env-tahoex1/lib/python3.10/site-packages/tahoe_x1/utils/util.py", line 124, in loader_from_adata
+    data_loader = torch.utils.data.DataLoader(
+  File "/home/rag88/.conda/envs/env-tahoex1/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 264, in __init__
+    raise ValueError(
+ValueError: prefetch_factor option could only be specified in multiprocessing.let num_workers > 0 to enable multiprocessing, otherwise set prefetch_factor to None.

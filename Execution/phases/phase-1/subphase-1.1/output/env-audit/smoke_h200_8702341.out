@@ -1,0 +1,25 @@
+=== SLURM Job Info ===
+Job ID: 8702341
+Node: a1122u02n01
+Partition: gpu_devel
+GPU: NVIDIA H200
+Driver: 570.195.03
+Date: Sat Apr 18 00:12:37 UTC 2026
+
+=== env-delta-v2 smoke test ===
+Python: 3.10.20
+numpy    1.26.4
+scipy    1.14.1
+pandas   2.2.2
+anndata  0.11.4
+scanpy   1.10.2
+torch    2.11.0+cu128
+networkx 3.3
+torch.cuda.is_available: True
+device name: NVIDIA H200
+device count: 1
+GEARS import OK
+GPU matmul OK, result shape: (32, 32)
+gears_adapter load_drug_targets: 264/379
+=== SMOKE TEST PASS ===
+=== Job Complete ===

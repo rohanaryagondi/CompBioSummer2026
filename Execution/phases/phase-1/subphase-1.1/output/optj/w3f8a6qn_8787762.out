@@ -1,0 +1,30 @@
+==========================================
+MACE hybrid CUDA WW  |  SLURM 8787762
+Node: a1128u08n01.mghpcc.ycrc.yale.edu
+GPU: NVIDIA RTX 5000 Ada Generation, 32760 MiB
+Date: 2026-04-18T15:58:45Z
+==========================================
+
+=== Env verification ===
+torch: 2.9.1 | cuda_avail: False
+openmm: 8.5.1 at /home/rag88/.conda/envs/env-mace-cuda/lib/python3.10/site-packages/openmm/__init__.py
+  Platform 0: Reference (speed 1.0)
+  Platform 1: CPU (speed 10.0)
+  Platform 2: CUDA (speed 100.0)
+  Platform 3: OpenCL (speed 50.0)
+
+=== Running MACE CUDA hybrid on WW domain ===
+[2026-04-18T15:58:50Z] OpenMM 8.5.1  PyTorch 2.9.1
+[2026-04-18T15:58:50Z] CUDA avail: False
+[2026-04-18T15:58:50Z] Loading PDB: /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/proteins/ww.pdb
+[2026-04-18T15:58:51Z]   raw: 1403 atoms, 324 residues
+[2026-04-18T15:58:51Z]   after crop: 274 atoms, 33 residues
+[2026-04-18T15:58:51Z] Running PDBFixer...
+[2026-04-18T15:58:53Z]   after PDBFixer: 534 atoms
+[2026-04-18T15:58:53Z] Adding TIP3P-FB solvent, padding 1.0 nm, 0.15 M NaCl
+[2026-04-18T15:58:54Z]   after solvate: 7664 atoms (534 MACE + 7130 classical)
+[2026-04-18T15:58:54Z] Building classical AMBER14 + TIP3P-FB system (PME, 1.0 nm)
+[2026-04-18T15:58:54Z] Creating hybrid MACE-OFF24-medium system (534 MACE atoms)
+cuequivariance or cuequivariance_torch is not available. Cuequivariance acceleration will be disabled.
+Using MACE-OFF23 MODEL for MACECalculator with /home/rag88/.cache/mace/MACE-OFF24_medium.model
+[2026-04-18T15:59:00Z]   hybrid built in 6.7s

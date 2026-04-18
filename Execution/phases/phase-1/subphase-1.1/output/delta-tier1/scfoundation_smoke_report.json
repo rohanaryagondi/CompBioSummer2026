@@ -1,0 +1,71 @@
+{
+  "env": "env-delta-v2",
+  "torch": "2.11.0+cu128",
+  "cuda_available": true,
+  "gpu_name": "NVIDIA RTX 5000 Ada Generation",
+  "gpu_total_gb": 31.5,
+  "load_time_s": 0.71,
+  "config": {
+    "n_class": 103,
+    "seq_len": 19266,
+    "encoder_hidden_dim": 768,
+    "encoder_depth": 12,
+    "decoder_hidden_dim": 512,
+    "pad_token_id": 103
+  },
+  "n_params": 119252285,
+  "memory_gb": {
+    "after_load_model": {
+      "alloc": 0.445,
+      "peak": 0.445
+    },
+    "after_forward": {
+      "alloc": 1.662,
+      "peak": 22.163
+    },
+    "final": {
+      "alloc": 1.663,
+      "peak": 22.163
+    }
+  },
+  "forward_time_s": 0.478,
+  "encoder_output_shape": [
+    100,
+    1047,
+    768
+  ],
+  "cell_embedding_shape": [
+    100,
+    1536
+  ],
+  "tahoe_probe": {
+    "cells_loaded": 1000,
+    "parquet_columns": [
+      "genes",
+      "expressions",
+      "drug",
+      "sample",
+      "BARCODE_SUB_LIB_ID",
+      "cell_line_id",
+      "moa-fine",
+      "canonical_smiles",
+      "pubchem_cid",
+      "plate"
+    ],
+    "gene_metadata_rows": 62710,
+    "gene_metadata_columns": [
+      "gene_symbol",
+      "ensembl_id",
+      "token_id"
+    ],
+    "first_cell_n_genes": 1879,
+    "scf_gene_list_size": 19264,
+    "gene_overlap": {
+      "tahoe_unique_genes": 62710,
+      "scf_genes": 19264,
+      "intersection": 19151,
+      "coverage_pct": 99.4
+    }
+  },
+  "status": "PASS"
+}

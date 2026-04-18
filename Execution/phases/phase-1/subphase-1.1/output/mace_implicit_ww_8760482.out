@@ -1,0 +1,37 @@
+==========================================
+MACE implicit WW  |  SLURM 8760482
+Node: a1128u08n01.mghpcc.ycrc.yale.edu
+GPU: NVIDIA RTX 5000 Ada Generation, 32760 MiB
+Date: 2026-04-18T14:30:46Z
+==========================================
+
+=== Env verification ===
+torch: 2.5.1+cu121 | cuda_avail: True
+openmm: 8.5.1 | PythonForce: True
+  Platform 0: Reference (speed 1.0)
+  Platform 1: CPU (speed 10.0)
+  Platform 2: CUDA (speed 100.0)
+  Platform 3: OpenCL (speed 50.0)
+ForceField amber14-all + implicit/gbn2.xml: OK
+
+=== Running MACE + GBn2 implicit on WW domain (residues 6-39 of 2F21) ===
+[2026-04-18T14:30:49Z] torch 2.5.1+cu121 | cuda avail: True
+[2026-04-18T14:30:49Z] OpenMM 8.5.1
+[2026-04-18T14:30:49Z] Loading PDB: /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/proteins/ww.pdb
+[2026-04-18T14:30:50Z]   Raw topology: 1403 atoms, 324 residues, 2 chains
+[2026-04-18T14:30:50Z]   Deleting 171 non-protein residues
+[2026-04-18T14:30:50Z]   Cropping to residue range 6-39 (inclusive)
+[2026-04-18T14:30:50Z]   After protein extraction: 274 atoms, 33 residues
+[2026-04-18T14:30:50Z] Running PDBFixer (fill missing heavy atoms, add hydrogens)...
+[2026-04-18T14:30:50Z]   After PDBFixer: 534 atoms, 33 residues
+[2026-04-18T14:30:50Z] Building classical AMBER14 + GBN2 implicit system (NoCutoff)...
+[2026-04-18T14:30:51Z]   Classical system: 534 particles, 6 forces
+[2026-04-18T14:30:51Z] Creating hybrid MACE-OFF24-medium system (534 MACE atoms / 534 total atoms)...
+cuequivariance or cuequivariance_torch is not available. Cuequivariance acceleration will be disabled.
+Using MACE-OFF23 MODEL for MACECalculator with /home/rag88/.cache/mace/MACE-OFF24_medium.model
+[2026-04-18T14:30:54Z]   Hybrid system built in 3.2s: 534 particles, 7 forces
+[2026-04-18T14:30:54Z] Selecting OpenCL platform (CUDA disabled by Sub 1.1 policy)...
+[2026-04-18T14:30:54Z] Minimizing hybrid system (max 2000 iter, tol 10 kJ/mol/nm)...
+[2026-04-18T14:40:02Z]   Post-min max |force|: 2.87e+01 kJ/mol/nm
+[2026-04-18T14:40:03Z]   Minimization: 547.1s, PE = -243083.5 kJ/mol
+[2026-04-18T14:40:04Z] --- Equilibration: 30.0 ps (30000 steps) ---

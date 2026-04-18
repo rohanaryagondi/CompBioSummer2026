@@ -1,0 +1,41 @@
+{
+  "task": "mace-hybrid-validation",
+  "protein": "ww",
+  "pdb_path": "/home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/proteins/ww.pdb",
+  "resrange": "6-39",
+  "started": "2026-04-18T05:09:43.270719+00:00",
+  "parameters": {
+    "temperature_K": 300.0,
+    "friction_ps": 1.0,
+    "timestep_fs": 1.0,
+    "equil_ps": 50.0,
+    "prod_ps": 100.0,
+    "solvent_padding_nm": 1.0,
+    "nonbonded_cutoff_nm": 1.0,
+    "ionic_strength_M": 0.15,
+    "water_model": "tip3pfb",
+    "ml_model": "mace-off24-medium",
+    "force_field": "amber14-all + tip3pfb"
+  },
+  "stages": {},
+  "hybrid_createMixedSystem": {
+    "status": "OK",
+    "build_time_s": 3.1101677417755127,
+    "protein_atom_count": 534,
+    "protein_residue_count": 33,
+    "water_ion_atom_count": 6959,
+    "total_atom_count": 7493,
+    "n_forces": 6
+  },
+  "minimization": {
+    "wall_time_s": 404.76074028015137,
+    "pe_minimized_kJ_mol": -363399.81451559416
+  },
+  "fatal_exception": {
+    "error": "Particle position is NaN.  For more information, see https://github.com/openmm/openmm/wiki/Frequently-Asked-Questions#nan",
+    "traceback": "Traceback (most recent call last):\n  File \"/home/rag88/projects/CompBioSummer2026/Execution/phases/phase-1/subphase-1.1/output/scripts/mace_hybrid_nvt.py\", line 415, in main\n    simulation.step(chunk)\n  File \"/home/rag88/.conda/envs/env-mace/lib/python3.10/site-packages/openmm/app/simulation.py\", line 149, in step\n    self._simulate(endStep=self.currentStep+steps)\n  File \"/home/rag88/.conda/envs/env-mace/lib/python3.10/site-packages/openmm/app/simulation.py\", line 260, in _simulate\n    self._generate_reports(wrapped, True)\n  File \"/home/rag88/.conda/envs/env-mace/lib/python3.10/site-packages/openmm/app/simulation.py\", line 281, in _generate_reports\n    reporter.report(self, state)\n  File \"/home/rag88/.conda/envs/env-mace/lib/python3.10/site-packages/openmm/app/dcdreporter.py\", line 116, in report\n    self._dcd.writeModel(positions, periodicBoxVectors=state.getPeriodicBoxVectors())\n  File \"/home/rag88/.conda/envs/env-mace/lib/python3.10/site-packages/openmm/app/dcdfile.py\", line 130, in writeModel\n    raise ValueError('Particle position is NaN.  For more information, see https://github.com/openmm/openmm/wiki/Frequently-Asked-Questions#nan')\nValueError: Particle position is NaN.  For more information, see https://github.com/openmm/openmm/wiki/Frequently-Asked-Questions#nan\n"
+  },
+  "verdict": "FAIL",
+  "verdict_reason": "Exception: Particle position is NaN.  For more information, see https://github.com/openmm/openmm/wiki/Frequently-Asked-Questions#nan",
+  "completed": "2026-04-18T07:26:25.510295+00:00"
+}

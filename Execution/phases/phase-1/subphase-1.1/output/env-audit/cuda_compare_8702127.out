@@ -1,0 +1,9 @@
+=== original env-delta torch CUDA ===
+torch: 2.11.0+cu128
+cuda available: True
+device name: NVIDIA H200
+GPU matmul shape: (8, 8)
+
+=== env-delta-v2 torch CUDA ===
+torch: 2.11.0+cu130
+cuda available: False

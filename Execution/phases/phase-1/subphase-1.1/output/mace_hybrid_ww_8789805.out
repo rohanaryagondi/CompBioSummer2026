@@ -1,0 +1,39 @@
+==========================================
+MACE hybrid WW  |  SLURM 8789805
+Node: a1124u28n01.mghpcc.ycrc.yale.edu
+GPU: NVIDIA H200, 143771 MiB
+Date: 2026-04-18T17:16:38Z
+==========================================
+
+=== Env verification ===
+torch: 2.5.1+cu121 | cuda_avail: True
+openmm: 8.5.1
+  Platform 0: Reference (speed 1.0)
+  Platform 1: CPU (speed 10.0)
+  Platform 2: CUDA (speed 100.0)
+  Platform 3: OpenCL (speed 50.0)
+createMixedSystem attr present: True
+pdbfixer: OK
+
+=== Running MACE hybrid NVT on WW domain (residues 6-39 of 2F21) ===
+[2026-04-18T17:16:45Z] torch 2.5.1+cu121 | cuda avail: True
+[2026-04-18T17:16:46Z] OpenMM 8.5.1
+[2026-04-18T17:16:46Z] Loading PDB: /home/rag88/projects/CompBioSummer2026/Execution/phases/phase-0/subphase-0.1/proteins/ww.pdb
+[2026-04-18T17:16:46Z]   Raw topology: 1403 atoms, 324 residues, 2 chains
+[2026-04-18T17:16:46Z]   Deleting 171 non-protein residues (waters/ions/ligands from PDB)
+[2026-04-18T17:16:46Z]   Cropping to residue range 6-39 (inclusive)
+[2026-04-18T17:16:46Z]   After protein extraction: 274 atoms, 33 residues
+[2026-04-18T17:16:46Z] Running PDBFixer (fill missing heavy atoms, add hydrogens)...
+[2026-04-18T17:16:50Z]   After PDBFixer: 534 atoms, 33 residues
+[2026-04-18T17:16:50Z] Adding TIP3P-FB solvent (padding=1.0 nm, ionic strength=0.15 M)...
+[2026-04-18T17:16:51Z]   After solvation: 7598 atoms (protein=534, water+ions=7064)
+[2026-04-18T17:16:51Z] Building classical AMBER14 + TIP3P-FB system (PME, 1.0 nm cutoff)...
+[2026-04-18T17:16:51Z] Creating hybrid MACE-OFF24-medium system (534 MACE atoms / 7598 total)...
+cuequivariance or cuequivariance_torch is not available. Cuequivariance acceleration will be disabled.
+Using MACE-OFF23 MODEL for MACECalculator with /home/rag88/.cache/mace/MACE-OFF24_medium.model
+[2026-04-18T17:17:00Z]   Hybrid system built in 9.0s: 7598 particles, 6 forces
+[2026-04-18T17:17:00Z] Selecting OpenCL platform (CUDA disabled by Sub 1.1 policy)...
+[2026-04-18T17:17:02Z] Minimizing hybrid system (max 2000 iter, tol 10 kJ/mol/nm)...
+[2026-04-18T17:19:26Z]   Post-min max |force|: 2.46e+03 kJ/mol/nm
+[2026-04-18T17:19:26Z]   Minimization: 143.7s, PE = -377796.9 kJ/mol
+[2026-04-18T17:19:26Z] --- Equilibration: 50.0 ps (50000 steps) ---
