@@ -2,6 +2,9 @@
 last_updated: 2026-04-18
 ---
 
+<!-- Updated 2026-04-18 (PlannerAI Sub 1.2 planning): added head-1.2 + 6 SubAgents -->
+
+
 # Agent Registry
 
 ## System Agents
@@ -17,6 +20,7 @@ last_updated: 2026-04-18
 |-------|----------|--------|----------|--------|
 | head-0.1 | 0.1 | Alpha-M, Delta, Infrastructure | `Execution/phases/phase-0/subphase-0.1/CLAUDE.md` | Complete |
 | head-1.1 | 1.1 | Alpha-M, Gamma, Delta | `Execution/phases/phase-1/subphase-1.1/CLAUDE.md` | **Complete** (subphase CLOSED 2026-04-18) |
+| head-1.2 | 1.2 | Alpha-M, Gamma, Delta, cross-cutting | `Execution/phases/phase-1/subphase-1.2/CLAUDE.md` | **Planned** (created 2026-04-18, ready for launch) |
 
 ## SubAgents (formal HeadAI-launched, subphase tasks)
 
@@ -32,6 +36,12 @@ last_updated: 2026-04-18
 | gears-setup | task-004 | 1.1 | Delta | `Execution/phases/phase-1/subphase-1.1/agents/gears-setup/CLAUDE.md` | Complete |
 | sc-recon | task-005 | 1.1 | Alpha-M | `Execution/phases/phase-1/subphase-1.1/agents/sc-recon/CLAUDE.md` | Complete |
 | scgpt-cpa-setup | task-006 | 1.1 | Delta | `Execution/phases/phase-1/subphase-1.1/agents/scgpt-cpa-setup/CLAUDE.md` | Complete |
+| mlff-mace-pilot | task-001 | 1.2 | Alpha-M | `Execution/phases/phase-1/subphase-1.2/agents/mlff-mace-pilot/CLAUDE.md` | Planned |
+| mlff-so3lr-pilot | task-002 | 1.2 | Alpha-M | `Execution/phases/phase-1/subphase-1.2/agents/mlff-so3lr-pilot/CLAUDE.md` | Planned |
+| osf-prereg | task-003 | 1.2 | cross-cutting | `Execution/phases/phase-1/subphase-1.2/agents/osf-prereg/CLAUDE.md` | Planned |
+| bioemu-batch2 | task-004 | 1.2 | Gamma | `Execution/phases/phase-1/subphase-1.2/agents/bioemu-batch2/CLAUDE.md` | Planned |
+| delta-baselines | task-005 | 1.2 | Delta | `Execution/phases/phase-1/subphase-1.2/agents/delta-baselines/CLAUDE.md` | Planned |
+| stats-pipeline | task-006 | 1.2 | cross-cutting | `Execution/phases/phase-1/subphase-1.2/agents/stats-pipeline/CLAUDE.md` | Planned |
 
 ## Ad-hoc research/remediation SubAgents (PlannerAI-launched post-subphase 1.1)
 

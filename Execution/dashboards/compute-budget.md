@@ -1,6 +1,6 @@
 ---
-last_updated: 2026-04-17T23:30:00Z
-updated_by: planner
+last_updated: 2026-04-18T21:30:00Z
+updated_by: planner (Sub 1.2 planning)
 ---
 
 # Compute Budget Tracker
@@ -77,6 +77,8 @@ round added ~75 GPU-hours to reach >= 2,000 physical conformations for all 46 pr
 |--------|-------------|-------------|-------------------|-------|
 | Phase 0 (Apr 15-16) | 0.5 | ~8 | 0.5 | BioEmu SS test only |
 | Sub 1.1 (Apr 16-17) | ~112 | ~9,900 | ~112 | MLFF + BioEmu + Delta |
+| Sub 1.1 closure (Apr 17-18) | ~22 | ~1,100 | ~134 | Robustness remediation + MACE Options 2/4/5 investigation |
+| **Sub 1.2 PLANNED (Apr 19 - May 16)** | **~705 (est)** | **~129,300 (est)** | **~839 (projected)** | MACE NPT 3×5ns H200 (97% of Sub 1.2 SU) + SO3LR vacuum + BioEmu batch 2 + Delta baselines + stats pipeline |
 
 ### Sub 1.1 SU Breakdown (Final)
 
@@ -158,7 +160,27 @@ so priority usage does not affect standard queue position.
 
 - **BioEmu batch 2 planning:** Use oversampling formula from `shared/notes/1.1-bioemu-passrates.md`:
   `num_samples = ceil(2000 / pass_rate * 1.3)`. Pre-screen for disorder (>60% = exclude).
+  Sub 1.2 task-004 implements the upstream screen.
 - **SPG1-class proteins:** Proteins with <15% pass rate need `--mem=40G` for XTC assembly
   (>10K NPZ files require ~22 GB RAM).
 - **RTX 5000 Ada is the default GPU** for all BioEmu and Delta workloads. H200/B200 only
   when justified by memory or queue requirements.
+- **Sub 1.2 H200 burn (~125K SU):** task-001 MACE NPT will consume the largest single-task
+  SU outlay so far. This is justified by Option 5 commitment (H200 OpenCL is 11.5× faster
+  than RTX 5000 Ada for MACE hybrid). All MACE Phase 2 production will follow same pattern.
+
+---
+
+## Sub 1.2 Compute — Planned
+
+| Task | Track | Est. GPU-hrs | GPU Type | Notes |
+|------|-------|-------------|----------|-------|
+| task-001 MACE NPT (3 × 5 ns) | Alpha-M | 420 | H200 (gpu_h200) | WW ~95, GB3 ~140, UBQ ~185 GPU-hrs (extrapolated from Sub 1.1 §11). Checkpoint/restart mandatory. |
+| task-002 SO3LR vacuum (5 × 5 ns) | Alpha-M | 3 | RTX 5000 Ada | ~15 ns/day per protein. |
+| task-003 OSF pre-reg | (cross) | 0 | — | Pure writing. |
+| task-004 BioEmu batch 2 | Gamma | 250 | RTX 5000 Ada | ~100 proteins × ~2.5 GPU-hrs avg with oversampling. |
+| task-005 Delta baselines + harness | Delta | 30 | RTX 5000 Ada | Tahoe-100M 1M-cell subsample. |
+| task-006 Stats pipeline | (cross) | <1 | CPU only | Standard Tier per user. |
+| **Sub 1.2 total** | | **~705** | | **~129,300 SU est** |
+
+Phase 1 Alpha-M budget remaining after Sub 1.2 (projected): ~2,580 GPU-hrs (3,000 - 5 used - 423 Sub 1.2 = ~2,572).

@@ -1,65 +1,73 @@
 ---
-last_updated: 2026-04-17T18:00:00Z
-updated_by: head-1.1
+last_updated: 2026-04-18T21:30:00Z
+updated_by: planner
 ---
 
 # Active Subphase
 
 | Item | Value |
 |------|-------|
-| Subphase | 1.1 |
-| Title | MLFF Software Validation & Early Setup |
-| HeadAI | head-1.1 |
-| Start date | 2026-04-16 |
-| Target end | 2026-05-02 |
-| Status | **COMPLETE** |
+| Subphase | 1.2 |
+| Title | MLFF Stability Pilots, BioEmu Batch 2, Delta Baselines, OSF Pre-Registration |
+| HeadAI | head-1.2 |
+| Start date | 2026-04-19 (target) |
+| Target end | 2026-05-16 |
+| **Hard deadline** | **OSF deposit 2026-05-15** |
+| Status | **PLANNED, ready for HeadAI launch** |
 
 ### Task Status
 
 | Task ID | Title | Wave | Status | Agent |
 |---------|-------|------|--------|-------|
-| task-001 | MACE-OFF24 crambin 1 ns NVT | 1 | **COMPLETE (D1 PASS)** | mace-pilot |
-| task-002 | SO3LR crambin 1 ns NVT | 1 | **COMPLETE (D1 PASS)** | so3lr-pilot |
-| task-003 | BioEmu batch generation (50 proteins) | 1 | **COMPLETE** (46/47 proteins, 49/50 assays, YAP1 dropped) | bioemu-gen |
-| task-004 | GEARS setup on Tahoe-100M | 2 | **COMPLETE** | gears-setup |
-| task-005 | Sidechain reconstruction test (HEWL) | 2 | **COMPLETE (DROP)** | sc-recon |
-| task-006 | scGPT and CPA setup on Tahoe-100M | 2 | **COMPLETE** | scgpt-cpa-setup |
+| task-001 | MACE-OFF24 NPT 5 ns × 3 Tier B (WW, GB3, ubiquitin) on H200 OpenCL hybrid | 1 | planned | mlff-mace-pilot |
+| task-002 | SO3LR vacuum NVT 5 ns × 5 Tier A/B (WW, GB3, GB1, NTL9, ubiquitin) on RTX 5000 Ada | 1 | planned | mlff-so3lr-pilot |
+| task-003 | OSF pre-registration drafting + lock | 1 | planned | osf-prereg |
+| task-004 | BioEmu batch 2 (~100 ProteinGym proteins) with disorder pre-screen + oversampling | 2 | planned | bioemu-batch2 |
+| task-005 | Delta 5 baselines + WMSE evaluation harness | 2 | planned | delta-baselines |
+| task-006 | Statistical pipeline core (Friedman/Nemenyi, ICC, bootstrap, JZS BF, T_min) | 2 | planned | stats-pipeline |
 
-### Key Results
+### Wave Protocol Summary
 
-- **D1 gate: BOTH PASS.** MACE stable 37+ ps (OpenCL fallback), SO3LR stable 1 ns.
-- **HEWL: DROP.** SG-SG integrity 40.2%, AK3 triggered at all cutoffs. 12 proteins remain.
-- **Delta: 3/3 methods working.** GEARS, scGPT, CPA all GPU-verified on Tahoe-100M.
-- **BioEmu: 46/47 complete.** 112,351 physical conformations across 46 proteins. All >= 2,000.
-  YAP1_HUMAN dropped (0.7% pass rate, IDP). Cross-agent note with pass rate analysis and
-  batch 2 oversampling formula written.
+**Wave 1 (parallel, 3 agents):** task-001 + task-002 + task-003. Launch immediately.
+**Partial-completion trigger for Wave 2:** ALL THREE of:
+1. task-001 SLURM jobs *submitted* (multi-day run; do NOT wait for completion)
+2. task-002 SLURM jobs *submitted*
+3. task-003 `osf-prereg-v1.md` ≥80% complete
 
-### Gate Evidence Produced
+**Wave 2 (parallel, 3 agents):** task-004 + task-005 + task-006. Independent of Wave 1 results.
 
-| Gate | Evidence | Result |
-|------|----------|--------|
-| D1 (May 9) | MACE + SO3LR crambin NVT | **BOTH PASS** |
-| D3 (Jun 6) | Delta methods installed | 3/5 already (GEARS, scGPT, CPA) |
-| D6 (Aug 31) | HEWL SG-SG integrity | **DROP** (40.2%, benchmark → 12 proteins) |
+### Compute Budget (Sub 1.2 estimate)
 
-### Cross-Agent Notes
+| Task | GPU-hrs | GPU type | Est. SU |
+|------|--------:|----------|--------:|
+| task-001 MACE NPT (3 × 5 ns) | 420 | H200 (gpu_h200) | ~125,000 |
+| task-002 SO3LR vacuum (5 × 5 ns) | 3 | RTX 5000 Ada | ~50 |
+| task-003 OSF pre-reg | 0 | (none) | 0 |
+| task-004 BioEmu batch 2 | 250 | RTX 5000 Ada | ~3,750 |
+| task-005 Delta baselines | 30 | RTX 5000 Ada | ~450 |
+| task-006 Stats pipeline | <1 | CPU | <30 |
+| **Total** | **~705** | | **~129,300** |
 
-| Note | Urgency | Summary |
-|------|---------|---------|
-| `1.1-mace-crambin.md` | important | D1 PASS + CUDA broken on H200/B200/RTX 5000 Ada (all GPUs); OpenCL-only verdict |
-| `1.1-so3lr-crambin.md` | info | D1 PASS + use CLI not programmatic API |
-| `1.1-hewl-sgsg.md` | important | DROP (40.2%), CB-CB proxy unreliable |
-| `1.1-bioemu-passrates.md` | important | Pass rates by protein class, YAP1 drop, batch 2 oversampling formula |
-| `1.1-robustness-remediation.md` | info | **Post-subphase authoritative closure doc.** Covers the 2026-04-17→18 remediation pass: 10 YELLOW fixes, 4 proteins added, 5/5 Delta Tier 1, gate assessments, MACE Options 2/4/5 investigation (Option 5 committed). START HERE for context on Sub 1.1 closure. |
-| `1.1-mace-hybrid-validation.md` | important | MACE hybrid empirical throughput + H200 OpenCL 11.5× speedup (§11) |
-| `1.1-protein-count-canonical.md` | info | Authoritative protein counts (18 manifest / 16 active / 14 S2-counted) |
-| `operational-practices.md` | info | Cross-cutting patterns: jobstats lifecycle, GPU keepalive, env hygiene, cryptic job names, SU policy |
+### Gate Evidence Sub 1.2 Will Produce
 
-### Post-subphase closure (2026-04-18)
+| Gate | Date | Evidence |
+|------|------|----------|
+| D2 (June 30) | preliminary | 5-ns MACE NPT on 3 Tier B + 5-ns SO3LR vacuum on 5 Tier A/B = preliminary G1 path validation. D2 G1 formal evidence (≥10 ns × ≥3 Tier B) is Sub 1.4 scope. |
+| D3 (June 6) | retiring | task-005 baselines complete fully retires the last D3 outstanding criterion. D3 will be ASSESSED: GO with all 5/5 + baselines after Sub 1.2. |
 
-Subphase 1.1 was formally CLOSED on 2026-04-18 after a ~30-hour robustness
-remediation pass (3 subagent waves, 16 ad-hoc subagents). The original
-`completion-report.md` reflects state as of 2026-04-17; the authoritative
-closure doc is `shared/notes/1.1-robustness-remediation.md`. A new PlannerAI
-planning Sub 1.2 should read that file first, then the canonical count doc
-and the Phase 2 MACE scope help-needed (resolved).
+### Cross-Agent Notes Expected from Sub 1.2
+
+| Note | Tracks | Urgency |
+|------|--------|---------|
+| `1.2-mace-npt-stability.md` | alpha-m | important |
+| `1.2-so3lr-pilot-stability.md` | alpha-m | info |
+| `1.2-osf-deposited.md` | alpha-m, gamma, delta, combined | **critical** (locks analysis plan) |
+| `1.2-bioemu-batch2-passrates.md` | gamma | important |
+| `1.2-delta-baselines-results.md` | delta, combined | important |
+| `1.2-stats-pipeline-validation.md` | alpha-m, gamma, delta, combined | important |
+
+### Resolved User Decisions (2026-04-18)
+
+1. **MACE NPT scope: 3 proteins × 5 ns** (highest scope option). Within Phase 1 Alpha-M budget (3,000 GPU-hrs).
+2. **OSF deposit: split.** osf-prereg drafts; user deposits; user provides DOI back.
+3. **stats-pipeline: Standard Tier only.** No Priority Tier escalation.

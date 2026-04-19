@@ -1,6 +1,6 @@
 ---
-last_updated: 2026-04-18T04:00:00Z
-updated_by: planner (post-audit cleanup)
+last_updated: 2026-04-18T21:30:00Z
+updated_by: planner (Sub 1.2 planning)
 ---
 
 # Master Status: CompBioSummer2026 Execution
@@ -10,9 +10,9 @@ updated_by: planner (post-audit cleanup)
 | Item | Value |
 |------|-------|
 | Current phase | Phase 1: Pilot Studies and Setup |
-| Current subphase | 1.1: MLFF Software Validation & Early Setup |
-| Subphase status | **CLOSED 2026-04-18** (complete + post-subphase robustness remediation + Options 2/4/5 MACE investigation) |
-| Next action | Plan subphase 1.2 |
+| Current subphase | **1.2: MLFF Stability Pilots, BioEmu Batch 2, Delta Baselines, OSF Pre-Registration** |
+| Subphase status | **PLANNED 2026-04-18, ready for HeadAI launch** |
+| Next action | Launch head-1.2 to execute Sub 1.2 (target: 2026-04-19 to 2026-05-16; HARD deadline OSF deposit 2026-05-15) |
 
 ---
 
@@ -35,6 +35,7 @@ updated_by: planner (post-audit cleanup)
 | **Option 5 CONFIRMED** | **H200 hybrid WW = 2.11 ns/day measured** (11.5× RTX 5000 Ada, matches extrapolation). Phase 2 IP-scope MACE committed to H200 OpenCL. Job hung post-step-7000 → cancelled proactively (unrelated to throughput result). Hang investigation deferred to Sub 1.2 via openmm-torch migration + GPU keepalive. | 2026-04-18 | Phase 2 MACE compute budget revised down to ~3,300 GPU-hrs baseline (from 47,300) — releases ~44,000 GPU-hrs to contingency. D2 G1 now achievable. |
 | **Option 2 REJECTED** | Subagent L completed the CUDA rebuild investigation. Interop fix (A+B combo) works for narrow cases only. Crambin vacuum CUDA on RTX 5000 Ada = 0.142 ns/day = **1.0× OpenCL baseline — zero speedup**. Hybrid + H200 CUDA failed with interop crash. Root cause: MACE-OFF24 is **inference-bound on PyTorch CUDA**; OpenMM backend choice is irrelevant. | 2026-04-18 | Rebuild not useful. env-mace-cuda + build artifacts deleted. openmm-torch follow-up (originally 1-2 hr) deprioritized — expected speedup is minimal. Phase 2 MACE path unchanged (Option 5). |
 | **Phase 1.1 CLOSED** | All remediation and empirical work complete. Options 2+4 REJECTED, Option 5 committed. 16 active benchmark proteins (T5 margin 2). 5/5 Delta Tier 1 methods. D1+D3 GO. Competition scan infra ready. All 10 YELLOW audit items fixed. | 2026-04-18 | Ready for Sub 1.2 planning. |
+| **Sub 1.2 PLANNED** | 6 tasks across 2 waves. Wave 1: MACE NPT 5ns × 3 Tier B (H200, 3 props × 5 ns per user scope decision), SO3LR vacuum 5 ns × 5 props (RTX 5000 Ada), OSF pre-reg drafting. Wave 2: BioEmu batch 2 (~100 props), Delta 5 baselines + WMSE harness, statistical pipeline core (Friedman/Nemenyi, ICC, bootstrap, JZS BF, T_min). HARD deadline OSF deposit 2026-05-15. Est ~705 GPU-hrs / ~129K SU. | 2026-04-18 | Ready for head-1.2 launch. User approved scope: MACE 3×5 ns, OSF "I draft, you deposit", stats Standard Tier only. |
 
 ---
 
@@ -68,7 +69,12 @@ None.
 
 ## Decisions Needed
 
-1. **Phase 2 MACE scope** (HIGH urgency, 2026-04-18). Empirical OpenCL hybrid throughput 8.7× slower than projected; IP scope infeasible on current hardware. 4 options in `shared/help-needed/sub-1.2-phase2-mlff-scope.md`. Recommended: Option 1 (reduced scope) + Option 4 diagnostic (implicit-solvent pilot). Blocks Sub 1.2 MACE task spec.
+None outstanding. Sub 1.2 user scope decisions resolved 2026-04-18:
+- MACE NPT scope: 3 proteins × 5 ns (~420 GPU-hrs H200, ~125K SU; within Phase 1 Alpha-M budget)
+- OSF deposit: agent drafts, user deposits on OSF account
+- stats-pipeline: Standard Tier only (no Priority Tier)
+
+The previously open "Phase 2 MACE scope" item (2026-04-18) was RESOLVED: Option 5 (H200 OpenCL) committed; see `shared/help-needed/sub-1.2-phase2-mlff-scope.md`.
 
 ---
 
