@@ -1,6 +1,6 @@
 ---
-last_updated: 2026-04-18T21:30:00Z
-updated_by: planner (Sub 1.2 planning)
+last_updated: 2026-05-04T05:00:00Z
+updated_by: head-1.2 (housekeeping subagent; doc-audit batch 2: UBQ option-c+d probes added on scavenge_gpu (free billing); SU tracker unchanged at 231.5/250)
 ---
 
 # Compute Budget Tracker
@@ -10,23 +10,26 @@ updated_by: planner (Sub 1.2 planning)
 | Track | Phase | Allocated GPU-hrs | Used GPU-hrs | Remaining | GPU Type |
 |-------|-------|-------------------|-------------|-----------|----------|
 | Alpha-M | Phase 0 | <2 | 0.5 | — | Any |
-| Alpha-M | Phase 1 (pilot) | 3,000 | ~4.3 | ~2,996 | H200 |
+| Alpha-M | Phase 1 (pilot) | 3,000 | ~152 | ~2,848 | H200 |
 | Alpha-M | Phase 2 (production) | 47,300 | 0 | 47,300 | H200 / any (revised 1.40× for OpenCL) |
 | Alpha-M | Phase 3 (replicas) | 122,900 | 0 | 122,900 | H200 (revised 1.40× for OpenCL) |
 | Alpha-M | Contingency (20%) | 34,050 | 0 | 34,050 | H200 (revised 1.50×) |
-| Gamma | All phases | 2,000 | ~107 | ~1,893 | Any |
-| Delta | All phases | 20,000 | ~0.5 | ~19,999 | RTX 5000 Ada |
-| **Total** | | **~229,650** | **~112.5** | **~229,537** | (revised 2026-04-17; see `shared/notes/1.1-mace-phase2-feasibility.md`) |
+| Gamma | All phases | 2,000 | ~163 | ~1,837 | Any |
+| Delta | All phases | 20,000 | ~2.3 | ~19,998 | RTX 5000 Ada |
+| **Total** | | **~229,650** | **~317** | **~229,333** | (revised 2026-04-17; see `shared/notes/1.1-mace-phase2-feasibility.md`) |
 
 ## SU Rate Reference
 
-| GPU | SU/hr | Relative Cost |
-|-----|-------|--------------|
-| RTX 5000 Ada | 15 | 1x (baseline) |
-| RTX Pro 6000 Blackwell | 65 | 4.3x |
-| A100 | 100 | 6.7x |
-| H200 | 300 | 20x |
-| B200 | 370 | 24.7x |
+| GPU | SU/hr (Standard) | SU/hr (scavenge_gpu) | Relative Cost (vs RTX 5000 Ada Standard) |
+|-----|------------------|----------------------|------------------------------------------|
+| RTX 5000 Ada | 15 | **1.5** (10×↓) | 1× / 0.1× |
+| RTX Pro 6000 Blackwell | 65 | **6.5** (10×↓) | 4.3× / 0.43× |
+| A100 | 100 | (not avail) | 6.7× |
+| H200 | 300 | **30** (10×↓) | 20× / 2× |
+| B200 | 370 | **37** (10×↓) | 24.7× / 2.5× |
+| L40S | (not in standard tiers) | ~1.5 | 0.1× |
+
+**scavenge_gpu policy (added 2026-05-03):** Standard Tier `scavenge_gpu` partition charges **10× lower SU rates** than other Standard partitions. Tradeoff: PreemptMode=REQUEUE (jobs get killed and re-queued when higher-priority work needs the node). Our scripts (mace_hybrid_npt_prod.py, so3lr_rescue_runner.py) have full checkpoint/restart so survive preemption. **All 7 Sub 1.2 closure jobs are on scavenge_gpu** as of 2026-05-03. Per user 3× partition rule, any move OFF scavenge to Standard tier requires explicit user approval.
 
 **Policy:** Prefer RTX 5000 Ada for workloads that fit in 32 GB VRAM. Use H200/B200
 only when queue wait >1h or workload needs >32 GB. BioEmu, GEARS, scGPT, CPA all
@@ -78,7 +81,8 @@ round added ~75 GPU-hours to reach >= 2,000 physical conformations for all 46 pr
 | Phase 0 (Apr 15-16) | 0.5 | ~8 | 0.5 | BioEmu SS test only |
 | Sub 1.1 (Apr 16-17) | ~112 | ~9,900 | ~112 | MLFF + BioEmu + Delta |
 | Sub 1.1 closure (Apr 17-18) | ~22 | ~1,100 | ~134 | Robustness remediation + MACE Options 2/4/5 investigation |
-| **Sub 1.2 PLANNED (Apr 19 - May 16)** | **~705 (est)** | **~129,300 (est)** | **~839 (projected)** | MACE NPT 3×5ns H200 (97% of Sub 1.2 SU) + SO3LR vacuum + BioEmu batch 2 + Delta baselines + stats pipeline |
+| Sub 1.2 actual (Apr 19-25) | ~130 | ~6,630 | ~264 | SO3LR 58h + MACE failed/diag 16h H200 + BioEmu 56h + Delta 1h; MACE production + BioEmu 83 proteins still pending |
+| **Sub 1.2 remaining (est)** | **~575** | **~122,700 (est)** | **~839 (projected)** | MACE NPT 3×5ns H200 (~420h, ~126K SU) + BioEmu 83 remaining (~155h, ~2,300 SU) |
 
 ### Sub 1.1 SU Breakdown (Final)
 
@@ -123,13 +127,26 @@ All jobs used Standard Tier (`pi_mg269`). No Priority Tier usage to date.
 | Allocated (all phases) | 2,000 | |
 | Batch 1 generation | ~32 | Initial 47 proteins |
 | Batch 1 topup | ~75 | 32 proteins oversampled |
-| **Used** | **~107** | |
-| **Remaining** | **~1,893** | For batch 2 (~100 proteins) + analysis |
+| Batch 2 partial (10/93 complete) | ~56 | 10 proteins done; 83 resubmitted (9449458+9449459 PENDING) |
+| **Used** | **~163** | |
+| **Remaining** | **~1,837** | For batch 2 remaining (~83 proteins) + analysis |
 
 Batch 2 estimate: ~100 proteins at ~2.3 GPU-hrs/protein (using pass rate data for
 oversampling) = ~230 GPU-hrs. Budget is sufficient with ~1,600 GPU-hrs margin.
 
 ---
+
+## Sub 1.2 Closure SU Enforcement (2026-05-03)
+
+| Item | Value |
+|------|-------|
+| Priority budget cap | **250 SU** (reduced from 800; further reduced from original 108.5 cap) |
+| Priority used | 231.5 SU (16 jobs incl. UBQ NPT iteration) |
+| Priority remaining | 18.5 SU |
+| Status | WITHIN_BUDGET (projected) |
+| Enforcement script | `output/scripts/prio_su_enforce.sh` — projects in-flight SU + auto-cancels offenders + writes `head-1.2-su-budget-auto-cancel-*.md` notification |
+| Wrappers wired with pre-check | `submit_mace_npt_prod.sh`, `submit_so3lr_rescue_production.sh` (only fires when partition=priority_gpu) |
+| Auto-cancel events | 1 (10463305 WW SO3LR rescue cancelled 2026-05-02 22:58Z when projected exceeded cap; resubmitted on Standard `gpu` then moved to scavenge_gpu) |
 
 ## Priority Tier
 
@@ -183,4 +200,4 @@ so priority usage does not affect standard queue position.
 | task-006 Stats pipeline | (cross) | <1 | CPU only | Standard Tier per user. |
 | **Sub 1.2 total** | | **~705** | | **~129,300 SU est** |
 
-Phase 1 Alpha-M budget remaining after Sub 1.2 (projected): ~2,580 GPU-hrs (3,000 - 5 used - 423 Sub 1.2 = ~2,572).
+Phase 1 Alpha-M budget remaining after Sub 1.2 (projected): ~2,428 GPU-hrs (3,000 - 152 used to date - 420 remaining MACE production est = ~2,428).

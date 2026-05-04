@@ -35,6 +35,12 @@ the completion report when done.
 | `../../../shared/notes/1.1-protein-count-canonical.md` | Single-source canonical protein counts: 18 manifest / 16 active / 14 S2-counted |
 | `../../../shared/notes/1.1-bioemu-passrates.md` | Oversampling formula `num_samples = ceil(2000 / pass_rate * 1.3)` for batch 2 |
 | `../../../shared/notes/1.1-mace-hybrid-validation.md` | §11 H200 OpenCL throughput (2.11 ns/day hybrid WW); reuse keepalive + script structure |
+| `../../../shared/notes/1.2-mace-npt-fixed.md` | **CRITICAL** — Round 3 NPT recipe (sentinel-bond + HBonds + dt=1 fs); validated WW + GB3; UBQ NON-GENERALIZING (escalated) |
+| `../../../shared/notes/1.2-mace-npt-prod-launch.md` | MACE production driver design + probe outcomes (incl. UBQ failure 3-dt sweep) |
+| `../../../shared/notes/1.2-closure-master-plan.md` | **CRITICAL** — Sub 1.2 closure strategy: 9-criterion gap analysis, day-by-day timeline, R1-R8 risk register, D-UBQ-1 + D-OSF-SO3LR decision points |
+| `../../../shared/notes/1.2-so3lr-rescue-results.md` | **CRITICAL** — SO3LR rescue gate verdicts (GB3+NTL9 PASS via neutral-protonation); 5 ns rescue submissions; production-protocol commit for net-charged proteins |
+| `../../../shared/help-needed/head-1.2-mace-ubq-non-generalization.md` | **CRITICAL** — UBQ NPT escalation; 3-dt-sweep evidence; D-UBQ-1 user decision options (a/b/c/d); auditor + reviewer recommend (a) NVT pivot |
+| `../../../shared/notes/1.2-mace-throughput-ceiling.md` | Prior throughput optimization investigation (CUDA platform / cuequivariance / GPU NL / f32 bypass) |
 | `../../../shared/notes/1.1-delta-methods-install.md` | Env mapping: env-delta-v2, env-cpa, env-tahoex1; adapter paths |
 | `../../../shared/notes/operational-practices.md` | Cross-cutting practices: jobstats lifecycle, GPU keepalive, env hygiene, cryptic SLURM job names, SU policy |
 | `../../../shared/registry.md` | Who is who in the project |
@@ -212,6 +218,7 @@ Per `shared/notes/operational-practices.md`:
 3. **Non-destructive env management:** NEVER modify production conda envs in place. Clone to v2 first, test, document.
 4. **Cryptic SLURM job names:** 8-char alphanumeric (e.g., `m4k2pz9q`). NEVER descriptive names.
 5. **SU cost policy:** RTX 5000 Ada (15 SU/hr) is default. H200 (300 SU/hr) only for MACE Option 5 hybrid (justified per Subagent L data: MACE inference-bound; H200 11.5× faster). Standard Tier (`pi_mg269`) only — no Priority Tier without explicit user confirmation (none required for Sub 1.2 per user decision).
+6. **Diagnostic-first (user directive 2026-04-20):** Before submitting any large / expensive SLURM job (>30 min walltime, any `gpu_h200`, any >100 SU, any first-run of a modified script, or any resubmit after env changes), run a small 1-5 min diagnostic on `gpu` partition with the smallest plausible target. Wait for Exit:0 with sensible numeric output before committing to production. See `shared/notes/operational-practices.md` §Diagnostic-first rule for the full pattern and precedent list.
 
 ---
 

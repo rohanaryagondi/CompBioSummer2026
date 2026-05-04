@@ -1,6 +1,6 @@
 ---
-last_updated: 2026-04-17T23:59:00Z
-updated_by: subagent-h (pre-Sub-1.2 flag closure)
+last_updated: 2026-05-04T05:00:00Z
+updated_by: head-1.2 (housekeeping subagent; doc-audit batch 2: UBQ D-UBQ-1 options c+d probes IN-FLIGHT (10622876 NTL9, 10622885 UBQ_alt 1XQQ); D2 G1 evidence base unchanged from 2026-05-03)
 ---
 
 # Gate Tracker
@@ -10,8 +10,8 @@ updated_by: subagent-h (pre-Sub-1.2 flag closure)
 | Gate | Date | Decision | Status | Assessment |
 |------|------|----------|--------|------------|
 | D1 | May 9 | MLFF software GO | ASSESSED: GO | Both MACE + SO3LR pass; MACE via OpenCL (CUDA broken on all GPUs); Phase 2 via hybrid mode, 1.40× compute multiplier |
-| D2 | June 30 | MLFF pilot GO (G1-G6) | ON TRACK | G1 achievable on H200 OpenCL. Empirical H200 hybrid WW = 2.11 ns/day measured (SLURM 8789805, 2026-04-18) → 11.5× RTX 5000 Ada speedup. Phase 2 MACE committed to Option 5 (gpu_h200 partition). UBQ extrapolated ~0.85 ns/day → 10 ns in ~12 days, feasible. |
-| D3 | June 6 | Delta scope lock | ASSESSED: GO | 5/5 Tier 1 installed + GPU-verified (GEARS, scGPT, CPA, scFoundation, Tahoe-x1). Baselines owed in Sub 1.2. Amended 2026-04-17 from CONDITIONAL. |
+| D2 | June 30 | MLFF pilot GO (G1-G6) | ON TRACK | **MULTI-PATH evidence base** as of 2026-05-03: (1) **SO3LR vacuum NVT v1: 2/5 PASS** (GB1+UBQ stable 5 ns; WW/GB3/NTL9 failed via charge runaway); **rescue chemistry validated**: GB3+NTL9 500-ps gates PASSED with neutral-protonation re-prep (D/E protonated, K/R deprotonated, net charge=0); 5 ns full rescues on `scavenge_gpu` PENDING. (2) **MACE NPT Round 3 recipe FIXED for WW + GB3** — validated 100 ps WW (test_P) + 25 ps GB3 (probe TIMEOUT). Recipe (sentinel-bond + HBonds + dt=1 fs + MCB freq=25) documented in `shared/notes/1.2-mace-npt-fixed.md`. **MACE NPT does NOT generalize to UBQ** — NaN @ 7-9.6 ps regardless of dt halving (1.0/0.5/0.25 fs all fail; pattern asymptotic). Escalated via `head-1.2-mace-ubq-non-generalization.md`; D-UBQ-1 user decision pending. **D2 G1** ("≥1 MLFF stable ≥10 ns on ≥3 Tier B") achievable via either MLFF independently: SO3LR rescue 5/5 OR MACE NPT WW + GB3 + GB1/NTL9 (Tier-B-small, untested at production but recipe is architectural). Sub 1.4 production maps per-protein NPT/NVT decision based on Sub 1.2 outcomes. Stats pipeline (task-006) ready for G2/G3/G6 scoring. |
+| D3 | June 6 | Delta scope lock | **ASSESSED: GO (RETIRED)** | 5/5 Tier 1 installed + GPU-verified (GEARS, scGPT, CPA, scFoundation, Tahoe-x1). Baselines now COMPLETE (Sub 1.2 task-005 2026-04-19): 5/5 baselines (linear, mean, PCA, random, persistence) + WMSE harness + FDR (BH+BY) + calibration (ECE, reliability diagrams) + stratified (per cell×pert×expression) all operational on 100K Tahoe-100M subsample. Random baseline FAILS WMSE gate (metric-gaming check verified). D3 fully retired 2026-04-19. |
 | D4 | July 31 | Integration signal | PENDING | -- |
 | D5 | Aug 15 | Delta preprint ready | PENDING | -- |
 | **D6** | **Aug 31** | **COMBINED PAPER GO/NO-GO** | **PENDING** | -- |
@@ -85,7 +85,7 @@ SEPARATE if ANY of S1-S5:
 Both MLFFs pass. MACE has CUDA incompatibility on H200/B200 (uses OpenCL at ~2x slower).
 RTX 5000 Ada CUDA test pending (job 8398672).
 
-### D3 Evidence — FULLY MET (upgraded 2026-04-17)
+### D3 Evidence — FULLY RETIRED (2026-04-19)
 
 All 5 Tier 1 methods installed and GPU-verified on RTX 5000 Ada:
 - GEARS: Working, peak 7.73 GB, no OOM risk (env-delta-v2)
@@ -94,8 +94,17 @@ All 5 Tier 1 methods installed and GPU-verified on RTX 5000 Ada:
 - **scFoundation: Working, 119M params, peak 22.2 GB, 99.4% Tahoe gene coverage (env-delta-v2, SLURM 8705048)**
 - **Tahoe-x1 3B: Working, 2.7B params, peak 16.7 GB, 100% Tahoe gene coverage (env-tahoex1, SLURM 8709432)**
 
-Baselines (linear, mean, PCA, random, persistence) still owed — scheduled for Sub 1.2.
+**Baselines COMPLETE 2026-04-19** (Sub 1.2 task-005):
+- linear, mean, PCA, random, persistence — all 5 implemented at `phases/phase-1/subphase-1.2/output/scripts/delta/baselines/`
+- WMSE harness at `.../eval/wmse.py` with `hierarchical_wmse_spearman`
+- FDR (`fdr.py`: BH primary, BY sensitivity)
+- Calibration (`calibration.py`: reliability diagram, ECE)
+- Stratified eval (`stratified.py`: per cell×perturbation×expression)
+- Smoke test ran end-to-end on 100K-cell Tahoe-100M subsample (train 72,810 / test 27,190)
+- **Metric-gaming check: random baseline FAILS WMSE gate at top level AND all 48 cell-type strata** (IP §12.4 calibration check is robust)
+
 Detailed install log: `shared/notes/1.1-delta-methods-install.md`.
+Baselines results + D3 retirement note: `shared/notes/1.2-delta-baselines-results.md`.
 
 ### T3 Evidence (effectively retired)
 

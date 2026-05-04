@@ -1,0 +1,5 @@
+{
+  "budget_su": 250.0,
+  "warning_threshold": 0.80,
+  "notes": "Priority queue SU budget for Sub 1.2 closure window — REDUCED from 800 → 250 SU per user directive 2026-05-02 18:30Z. Any job that would push PROJECTED priority consumption over 250 SU is auto-cancelled by prio_su_enforce.sh and head-1.2 is notified via shared/help-needed. Resubmit cancelled work on Standard Tier (gpu / pi_mg269, free). Unit: SU = billing-weight × elapsed-hours (RTX 5000 Ada billing=15). Priority cost at $0.004/SU; max budget cost = $1.00. No compromises: cancelled work is preserved on Standard Tier with longer queue wait acceptable."
+}

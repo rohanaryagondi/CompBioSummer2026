@@ -1,8 +1,9 @@
 ---
-last_updated: 2026-04-18
+last_updated: 2026-04-25
 ---
 
 <!-- Updated 2026-04-18 (PlannerAI Sub 1.2 planning): added head-1.2 + 6 SubAgents -->
+<!-- Updated 2026-04-19 (head-1.2 execution): Sub 1.2 agents launched; status updates; sub-1.2-so3lr-fix remediation added -->
 
 
 # Agent Registry
@@ -20,7 +21,7 @@ last_updated: 2026-04-18
 |-------|----------|--------|----------|--------|
 | head-0.1 | 0.1 | Alpha-M, Delta, Infrastructure | `Execution/phases/phase-0/subphase-0.1/CLAUDE.md` | Complete |
 | head-1.1 | 1.1 | Alpha-M, Gamma, Delta | `Execution/phases/phase-1/subphase-1.1/CLAUDE.md` | **Complete** (subphase CLOSED 2026-04-18) |
-| head-1.2 | 1.2 | Alpha-M, Gamma, Delta, cross-cutting | `Execution/phases/phase-1/subphase-1.2/CLAUDE.md` | **Planned** (created 2026-04-18, ready for launch) |
+| head-1.2 | 1.2 | Alpha-M, Gamma, Delta, cross-cutting | `Execution/phases/phase-1/subphase-1.2/CLAUDE.md` | **Running** (launched 2026-04-19; Waves 1+2 agents returned; SLURM jobs multi-day) |
 
 ## SubAgents (formal HeadAI-launched, subphase tasks)
 
@@ -36,12 +37,12 @@ last_updated: 2026-04-18
 | gears-setup | task-004 | 1.1 | Delta | `Execution/phases/phase-1/subphase-1.1/agents/gears-setup/CLAUDE.md` | Complete |
 | sc-recon | task-005 | 1.1 | Alpha-M | `Execution/phases/phase-1/subphase-1.1/agents/sc-recon/CLAUDE.md` | Complete |
 | scgpt-cpa-setup | task-006 | 1.1 | Delta | `Execution/phases/phase-1/subphase-1.1/agents/scgpt-cpa-setup/CLAUDE.md` | Complete |
-| mlff-mace-pilot | task-001 | 1.2 | Alpha-M | `Execution/phases/phase-1/subphase-1.2/agents/mlff-mace-pilot/CLAUDE.md` | Planned |
-| mlff-so3lr-pilot | task-002 | 1.2 | Alpha-M | `Execution/phases/phase-1/subphase-1.2/agents/mlff-so3lr-pilot/CLAUDE.md` | Planned |
-| osf-prereg | task-003 | 1.2 | cross-cutting | `Execution/phases/phase-1/subphase-1.2/agents/osf-prereg/CLAUDE.md` | Planned |
-| bioemu-batch2 | task-004 | 1.2 | Gamma | `Execution/phases/phase-1/subphase-1.2/agents/bioemu-batch2/CLAUDE.md` | Planned |
-| delta-baselines | task-005 | 1.2 | Delta | `Execution/phases/phase-1/subphase-1.2/agents/delta-baselines/CLAUDE.md` | Planned |
-| stats-pipeline | task-006 | 1.2 | cross-cutting | `Execution/phases/phase-1/subphase-1.2/agents/stats-pipeline/CLAUDE.md` | Planned |
+| mlff-mace-pilot | task-001 | 1.2 | Alpha-M | `Execution/phases/phase-1/subphase-1.2/agents/mlff-mace-pilot/CLAUDE.md` | Running (v5 FAILED: WW chk mismatch, GB3 _dof bug, UBQ NaN; v6 fixes applied — 50ps equil, chk mismatch handler, _dof init; diagnostic 9546808 + resubmit pending fair-share) |
+| mlff-so3lr-pilot | task-002 | 1.2 | Alpha-M | `Execution/phases/phase-1/subphase-1.2/agents/mlff-so3lr-pilot/CLAUDE.md` | **Complete** (2/5 PASS: GB1+UBQ stable 5 ns; GB3 silent structural explosion Rg 10→990Å despite clean logs; NTL9 explosion@100ps+NaN@4.4ns; WW NaN@0.7ns. CRITICAL: SO3LR exit 0 + clean energy logs do NOT guarantee structural stability — HDF5 Rg check mandatory) |
+| osf-prereg | task-003 | 1.2 | cross-cutting | `Execution/phases/phase-1/subphase-1.2/agents/osf-prereg/CLAUDE.md` | v2 drafted (power analysis populated from validated stats pipeline); user deposits by 2026-05-15 |
+| bioemu-batch2 | task-004 | 1.2 | Gamma | `Execution/phases/phase-1/subphase-1.2/agents/bioemu-batch2/CLAUDE.md` | Running (10/93 success, 1 partial, 82 pending; resubmitted 9449458+9449459 on gpu; fair-share blocked) |
+| delta-baselines | task-005 | 1.2 | Delta | `Execution/phases/phase-1/subphase-1.2/agents/delta-baselines/CLAUDE.md` | **Complete** (5 baselines + WMSE/FDR/calibration/stratified all implemented; random FAILS gate as required; D3 fully retired) |
+| stats-pipeline | task-006 | 1.2 | cross-cutting | `Execution/phases/phase-1/subphase-1.2/agents/stats-pipeline/CLAUDE.md` | **Complete** (Friedman/Nemenyi, ICC, 2-level bootstrap, JZS BF matches R to 0.0001%, T_min; new env-stats created) |
 
 ## Ad-hoc research/remediation SubAgents (PlannerAI-launched post-subphase 1.1)
 
@@ -67,6 +68,7 @@ one-off research or execution tasks driven by inline prompts). All complete.
 | subagent-J | OpenMM CUDA rebuild from source | `shared/notes/1.1-openmm-cuda-rebuild.md` | Complete |
 | subagent-K | Implicit-solvent MACE pilot | `shared/notes/1.1-mace-implicit-pilot.md` | Complete |
 | subagent-L | CUDA interop fix + hybrid CUDA benchmark | `shared/notes/1.1-mace-cuda-benchmark.md` | Complete |
+| sub-1.2-so3lr-fix | SO3LR sbatch PYTHONNOUSERSITE regression fix + resubmit (2026-04-19) | `shared/notes/1.2-env-so3lr-typing-extensions-fix.md` | Complete |
 
 ---
 
