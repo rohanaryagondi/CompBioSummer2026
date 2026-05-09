@@ -253,3 +253,48 @@ documented above. Proceeding as planned.
 ### Script Fixes Applied
 
 - `bioemu_batch2.sbatch`: Length-aware `batch_size_100 = max(10, ceil(3 * (L/100)²))` + walltime 4h→12h (short array) / 24h (long array). Eliminates batch_size=0 bug for L>316 aa and prevents TIMEOUTs.
+
+---
+
+## Update 2026-05-05: Round-4 BioEmu reorganization (3-tier walltime split + Standard `gpu` for L<200)
+
+**Trigger.** Arrays 9449458 + 9449459 had been PENDING-Priority on `scavenge_gpu`
+for 10+ days due to depressed `pi_mg269` LevelFS (0.27) + the 24h-blanket walltime
+hurting backfill. Round-4 BioEmu optimization study identified a 3-tier walltime
+split + L<200 cohort move to Standard `gpu` as the highest-value queue-time win.
+User approved Round-4 recommendations #1, #2, #6, #7.
+
+**Action.** Reorg subagent (this update) executed the following — order strictly
+preserved (submit new arrays FIRST, verify, then cancel old):
+
+1. **Classified 82 PENDING proteins** (from `scontrol show job 9449458/9449459 ArrayTaskId`) into 3 cohorts using `batch2_manifest.csv` length column: 53 short (L<200), 18 medium (L=200-499), 11 long (L≥500). Sums to 82 ✓.
+
+2. **Wrote 3 new sbatch files** in `output/scripts/`, each forked from `bioemu_batch2_24h.sbatch` with knobs adjusted; ALL locked logic preserved verbatim (env-bioemu, GPU keepalive, length-aware batch_size_100, oversampling formula, NPZ cleanup, RTX 5000 Ada assertion, OSF v3 §7 invariants):
+   - `bioemu_batch2_short_6h_std.sbatch` — `--partition=gpu --time=06:00:00 --cpus-per-task=4 --mem=24G --gres=gpu:rtx_5000_ada:1`
+   - `bioemu_batch2_med_12h_scav.sbatch` — `--partition=scavenge_gpu --time=12:00:00 --cpus-per-task=4 --mem=40G --gres=gpu:rtx_5000_ada:1`
+   - `bioemu_batch2_long_24h_scav.sbatch` — `--partition=scavenge_gpu --time=23:59:00 --cpus-per-task=4 --mem=40G --gres=gpu:rtx_5000_ada:1`
+
+3. **Submitted 3 new array jobs** with cryptic 8-char names:
+   - **10730244 q6sht3az** — short (L<200), array `[20-23,44-92]` (53 idx), Standard `gpu`, 6h
+   - **10730245 q6med7kp** — medium (L=200-499), array `[11,18-19,24-38]` (18 idx), scavenge_gpu, 12h
+   - **10730246 q6lng5wm** — long (L≥500), array `[12-17,39-43]` (11 idx), scavenge_gpu, 24h
+
+4. **Verified queue state** via `squeue -u rag88` — all 3 arrays present, PENDING-Priority.
+
+5. **Cancelled old arrays** `scancel 9449458 9449459` (`exit=0`).
+
+6. **Re-verified queue** — 9449458 and 9449459 gone; 3 new arrays remain PENDING-Priority.
+
+**Expected impact.**
+- L<200 cohort (53 proteins, 65% of PENDING) moves to Standard `gpu` partition where the LevelFS bottleneck doesn't apply; 6h walltime + reduced 24G mem improves backfill chance dramatically. Expected dispatch within hours-to-days.
+- L=200-499 cohort (18 proteins) keeps scavenge_gpu but with shorter 12h walltime ceiling → improved backfill.
+- L≥500 cohort (11 proteins) unchanged 24h on scavenge_gpu (expected runtime ≈ 13-17h per round-4 timing model).
+- Net SU change: ~+205 SU (Standard `gpu` charges full RTX 5000 Ada rate for the short cohort vs scavenge's 10× discount). Acceptable per user approval.
+
+**No physics or output-distribution change.** Locked invariants per OSF v3 §7
+(denoising_steps, batch_size_100 formula, num_samples oversampling formula,
+disorder pre-screen, GPU type, env-bioemu version) all preserved verbatim.
+
+**Files now superseded.** `9449458` and `9449459` are gone; `bioemu_batch2_24h.sbatch`
+and `bioemu_batch2.sbatch` retained as historical reference but NOT used for current
+PENDING work.

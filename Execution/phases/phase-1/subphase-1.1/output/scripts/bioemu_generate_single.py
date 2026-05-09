@@ -103,10 +103,10 @@ def validate_output(output_dir, num_samples, seq_len, sequence=None):
                     f"expected {expected_atoms} "
                     f"(5*{seq_len} - {num_glycines} glycines)"
                 )
-            if conformation_count < num_samples * 0.9:
+            if conformation_count < 2000:
                 issues.append(
                     f"Low conformation count: {conformation_count} "
-                    f"(expected ~{num_samples}, after physicality filtering)"
+                    f"(below OSF v3 >=2000 floor, after physicality filtering)"
                 )
         except Exception as e:
             issues.append(f"mdtraj validation failed: {e}")

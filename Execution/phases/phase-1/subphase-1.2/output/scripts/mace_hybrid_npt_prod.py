@@ -171,7 +171,7 @@ PRESSURE_ATM = 1.0
 BAROSTAT_FREQ = 25               # MonteCarloBarostat step frequency, ALWAYS-ON
 REPORT_INTERVAL_PS = 5.0         # DCD + CSV stride (5 ps -> 200 frames/ns; 5x smaller DCD; OSF doesn't lock stride)
 NAN_CHECK_INTERVAL_STEPS = 5000  # check for NaN every 5000 steps (Round 3 stable; less getState overhead)
-SOLVENT_PADDING_NM = 1.0
+SOLVENT_PADDING_NM = float(os.environ.get("MACE_HYBRID_PADDING_NM", "1.0"))
 NB_CUTOFF_NM = 1.0
 IONIC_STRENGTH_M = 0.15
 
@@ -341,12 +341,16 @@ def load_and_crop_pdb():
     return modeller
 
 
-def check_nan(simulation, label: str) -> float:
+def check_nan(simulation, label: str, state=None) -> float:
     from openmm import unit
     # Drop getForces=True (deeper-opt-hunter A6): forces transfer is ~50 KB
     # GPU→CPU per call. NaN-on-positions or NaN-on-PE catches >99% of failure
     # modes; PE goes NaN before forces explode. Saves ~0.3-0.6% throughput.
-    state = simulation.context.getState(getPositions=True, getEnergy=True)
+    # R4-2026-05-05: optional pre-fetched state arg for state-reuse callers
+    # (loops that already hold a State with positions+energy can pass it in
+    # to avoid a second GPU→CPU copy; ~0.5-1 ms saved per reused fetch).
+    if state is None:
+        state = simulation.context.getState(getPositions=True, getEnergy=True)
     pos = state.getPositions(asNumpy=True).value_in_unit(unit.nanometer)
     pe = state.getPotentialEnergy().value_in_unit(unit.kilojoules_per_mole)
     if np.any(np.isnan(pos)):
@@ -388,8 +392,11 @@ def build_hybrid_system(modeller, mm_system, protein_atoms):
         modeller.topology, mm_system, protein_atoms, interpolate=False,
     )
 
-    # Step 2: f32 bypass for 1.21x speedup
+    # Step 2: f32 bypass for 1.21x speedup (skip if MACE_HYBRID_F32_BYPASS=0)
     try:
+        if os.environ.get("MACE_HYBRID_F32_BYPASS", "1") != "1":
+            log("  MACE_HYBRID_F32_BYPASS=0; using f64 PythonForce (slower, more precise)")
+            raise RuntimeError("f32_bypass_disabled_by_env")
         _torch.set_default_dtype(_torch.float32)
         from mace.calculators.foundations_models import mace_off as _mace_off
         from mace.tools import utils as _u, to_one_hot as _toh
@@ -600,6 +607,12 @@ def main() -> int:
         log(f"Adding TIP3P-FB solvent (padding={SOLVENT_PADDING_NM} nm, "
             f"ionic strength={IONIC_STRENGTH_M} M)...")
         ff = ForceField('amber14-all.xml', 'amber14/tip3pfb.xml')
+        # Same TAG → same atom count → checkpoint reloads cleanly on restart.
+        import random as _random
+        _solv_seed = abs(hash(TAG)) % (2**32)
+        _random.seed(_solv_seed)
+        np.random.seed(_solv_seed)
+        log(f"  Solvation random seed = {_solv_seed} (deterministic for restart consistency)")
         modeller.addSolvent(
             ff,
             padding=SOLVENT_PADDING_NM * unit.nanometer,
@@ -744,6 +757,27 @@ def main() -> int:
                 )
             log(f"  Topology PDB written: {topology_pdb}")
 
+            # Optional: T-ramp 50K -> 300K (env-controlled, default off).
+            # MCB barostat target T held at 300K during ramp; mismatch is small over short ramps.
+            _tramp_ps = float(os.environ.get("MACE_HYBRID_TRAMP_PS", "0"))
+            if _tramp_ps > 0:
+                _T_start_K = 50.0
+                log(f"--- T-ramp: {_T_start_K:.0f}K -> {TEMPERATURE_K:.0f}K over {_tramp_ps} ps (Langevin) ---")
+                simulation.context.setVelocitiesToTemperature(_T_start_K * unit.kelvin)
+                integrator.setTemperature(_T_start_K * unit.kelvin)
+                _tramp_steps_total = int(_tramp_ps * 1000 / DT_FS)
+                _n_chunks = 50
+                _chunk = max(100, _tramp_steps_total // _n_chunks)
+                _t0 = time.time()
+                for _i in range(_n_chunks):
+                    _T_curr = _T_start_K + (TEMPERATURE_K - _T_start_K) * (_i + 1) / _n_chunks
+                    integrator.setTemperature(_T_curr * unit.kelvin)
+                    simulation.step(_chunk)
+                    if _i % 10 == 0:
+                        log(f"    T-ramp progress: chunk {_i+1}/{_n_chunks}, "
+                            f"T={_T_curr:.0f}K, elapsed {(time.time()-_t0)/60:.1f} min")
+                log(f"  T-ramp complete in {time.time()-_t0:.1f}s; integrator T set to {TEMPERATURE_K:.0f}K")
+
             # Equilibration: 50 ps NPT at dt=1 fs (test_P-validated)
             simulation.context.setVelocitiesToTemperature(TEMPERATURE_K * unit.kelvin)
             equil_steps = int(NPT_EQUIL_PS * 1000 / DT_FS)
@@ -830,23 +864,28 @@ def main() -> int:
         csv_exists = os.path.exists(prod_csv)
         if csv_exists:
             csv_handle = open(prod_csv, 'a', buffering=1)
+            # R4-2026-05-05: drop kineticEnergy + totalEnergy from reporter
+            # (OSF v3 §8 QC requires only PE/T/V/ρ for NPT; KE/TE are
+            # diagnostic-only and trigger an extra getVelocities path).
+            # Saves ~0.5-1.5% throughput.
             sdr = StateDataReporter(
                 csv_handle, report_steps,
                 step=True, time=True,
-                potentialEnergy=True, kineticEnergy=True, totalEnergy=True,
+                potentialEnergy=True,
                 temperature=True, volume=True, density=True,
             )
             sdr._hasInitialized = True
             sdr._initializeConstants(simulation)
             sdr._initialClockTime = time.time()
-            sdr._initialSimulationTime = simulation.context.getState(getTime=True).getTime()
+            sdr._initialSimulationTime = simulation.context.getState().getTime()
             sdr._initialSteps = simulation.currentStep
             simulation.reporters.append(sdr)
         else:
+            # R4-2026-05-05: same KE/TE drop as append branch above.
             sdr = StateDataReporter(
                 prod_csv, report_steps,
                 step=True, time=True,
-                potentialEnergy=True, kineticEnergy=True, totalEnergy=True,
+                potentialEnergy=True,
                 temperature=True, volume=True, density=True,
             )
             simulation.reporters.append(sdr)
@@ -895,13 +934,18 @@ def main() -> int:
                 check_nan(simulation, f"prod {current_step * DT_FS / 1e6:.4f} ns")
                 last_nan_check = current_step
 
-            # Update progress every chunk
-            progress["production_ns_completed"] = current_step * DT_FS / 1e6
-            progress["production_started"] = True
-            progress["last_step"] = current_step
-            progress["n_constraints_at_checkpoint"] = n_constraints_built
-            progress["updated"] = datetime.now(timezone.utc).isoformat()
-            write_progress(progress_path, progress)
+            # R4-2026-05-05: progress JSON now writes only on checkpoint
+            # cadence (every CHECKPOINT_INTERVAL_STEPS, ~25 ps). Per-chunk
+            # writes were redundant — restart granularity is already capped
+            # by CheckpointReporter, and per-chunk fsync added NFS load.
+            # Saves ~0.3-1% throughput; restart correctness unchanged.
+            if current_step % CHECKPOINT_INTERVAL_STEPS == 0:
+                progress["production_ns_completed"] = current_step * DT_FS / 1e6
+                progress["production_started"] = True
+                progress["last_step"] = current_step
+                progress["n_constraints_at_checkpoint"] = n_constraints_built
+                progress["updated"] = datetime.now(timezone.utc).isoformat()
+                write_progress(progress_path, progress)
 
             if steps_done_this_session >= 10000:
                 ns_session = steps_done_this_session * DT_FS / 1e6

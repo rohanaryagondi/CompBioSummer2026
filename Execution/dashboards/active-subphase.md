@@ -1,6 +1,6 @@
 ---
-last_updated: 2026-05-04T05:00:00Z
-updated_by: head-1.2 (housekeeping subagent; doc-audit batch 2: UBQ option-c (NTL9 10622876) + option-d (UBQ_alt 1XQQ 10622885) probes added to live SLURM inventory)
+last_updated: 2026-05-05T18:00:00Z
+updated_by: head-1.2 (bioemu-reorg subagent; Round-4 #1+#2+#6+#7 applied — 3-tier walltime split + L<200→Standard gpu; arrays 9449458/9449459 cancelled, replaced by 10730244/10730245/10730246)
 ---
 
 # Active Subphase
@@ -37,8 +37,9 @@ updated_by: head-1.2 (housekeeping subagent; doc-audit batch 2: UBQ option-c (NT
 | 10567505 | g7p4tv8m | SO3LR GB3 5 ns rescue | 1-00:00:00 | PENDING (Priority) | scavenge_gpu, gpu:1 (RTX 5000 Ada) |
 | 10567506 | n5h6kx9q | SO3LR NTL9 5 ns rescue | 1-00:00:00 | PENDING (Priority) | scavenge_gpu, gpu:1 |
 | 10567507 | w8q4r3xz | SO3LR WW 5 ns rescue (float64+dt=0.25fs+chain=5) | 1-00:00:00 | PENDING (Priority) | scavenge_gpu, gpu:1 |
-| 9449458 | x9sok7yl | BioEmu batch 2 array (41 idx) | 1-00:00:00 | PENDING (Priority) | scontrol-moved to scavenge_gpu |
-| 9449459 | l5uw4lsy | BioEmu batch 2 array (41 idx, CD19_HUMAN excluded) | 23:59:00 | PENDING (Priority) | scontrol-moved to scavenge_gpu |
+| **10730244** | **q6sht3az** | **BioEmu batch 2 SHORT (53 idx, L<200)** | 6:00:00 | PENDING (Priority) | **Standard `gpu`**, gpu:rtx_5000_ada:1; reorg 2026-05-05 (was 9449458/9 part) |
+| **10730245** | **q6med7kp** | **BioEmu batch 2 MEDIUM (18 idx, L=200-499)** | 12:00:00 | PENDING (Priority) | scavenge_gpu, gpu:rtx_5000_ada:1; reorg 2026-05-05 |
+| **10730246** | **q6lng5wm** | **BioEmu batch 2 LONG (11 idx, L≥500)** | 23:59:00 | PENDING (Priority) | scavenge_gpu, gpu:rtx_5000_ada:1; reorg 2026-05-05 |
 | **10622876** | **q6kz3m8x** | **NTL9 50ps probe (UBQ option-c substitute)** | 5:55:00 | PENDING | scavenge_gpu, gpu:h200:1; submitted 2026-05-04 |
 | **10622885** | **q6uadt05** | **UBQ_alt 1XQQ 50ps probe (UBQ option-d alt-starting-structure)** | 5:55:00 | PENDING | scavenge_gpu, gpu:h200:1; submitted 2026-05-04 |
 
@@ -49,6 +50,7 @@ updated_by: head-1.2 (housekeeping subagent; doc-audit batch 2: UBQ option-c (NT
 | R1 (2026-05-03 ~17:00Z) | constant-tensor pre-alloc, NaN/checkpoint cadence, constraint tol 1e-4, drop speed=True | md_steps×5, JAX cache + persistent dir |
 | R2 (2026-05-03 ~17:30Z) | DCD 5ps stride, NPT_EQUIL 50→25 ps, OMP/MKL=4, keepalive 5→10 min | md_steps→10000, save-buffer→5; **audit-revert** buffer-sr/lr to defaults 1.25/1.25 (silent NL underflow risk at t=0) |
 | R3 (2026-05-03 ~19:30Z) | drop forces from check_nan, MAX_MIN_ITER 500, NUMA OMP_PROC_BIND | XLA Triton GEMM flags |
+| R4 (2026-05-05) | check_nan optional-state arg (defensive); progress-JSON write at checkpoint cadence only; drop KE+TE from StateDataReporter | XLA_FLAGS += `--xla_gpu_enable_async_collectives=true`; `XLA_PYTHON_CLIENT_PREALLOCATE=false`; `CUDA_MODULE_LOADING=LAZY` |
 
 **Probe terminal state (2026-05-02 → 2026-05-03):**
 - 10458154 (b8r3kt5x): MACE GB3 probe TIMEOUT at 25 ps clean — recipe generalizes ✓

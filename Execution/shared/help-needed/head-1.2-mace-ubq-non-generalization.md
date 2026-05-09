@@ -206,3 +206,86 @@ MACE_HYBRID_DT_FS=0.5 bash output/scripts/submit_mace_npt_prod.sh \
 ### Status report
 
 - Detailed status: `phases/phase-1/subphase-1.2/status/task-001-ubq-altstruct-status.md`
+
+---
+
+## UPDATE 2026-05-08T05:45Z: Option (d) probe RESULT — NaN at ~12 ps
+
+**Job:** 10622885 q6uadt05 (UBQ_alt 1XQQ, dt=0.5 fs, scavenge_gpu)
+**Dispatched:** 2026-05-08T04:35:06Z (after 5 days queue wait post-2026-05-03 submit)
+**Outcome:** FAILED at equilibration step ~16,500 (8.25 ps simulated time + ~3.7 ps prior built-up = ~12 ps from start)
+**SLURM behavior:** Auto-requeued under Requeue=1 (added 2026-05-07 via Option α). Manually scancelled 2026-05-08T05:48Z to break deterministic NaN loop.
+
+```
+[2026-05-08T05:10:11Z]   equil progress: 15000/50000 (30.0%) | 18.1 min elapsed
+[2026-05-08T05:15:35Z] FATAL EXCEPTION: Particle coordinate is NaN.
+   File "mace_hybrid_npt_prod.py", line 766, in main
+     simulation.step(chunk)
+   openmm.OpenMMException: Particle coordinate is NaN.
+Final exit: 1 after 0 restarts
+```
+
+**Decision-rule mapping (per pre-registered rules at lines 196-204):**
+- 1UBQ dt=1.0 fs: NaN ~7-8 ps
+- 1UBQ dt=0.5 fs: NaN ~8-9 ps
+- 1UBQ dt=0.25 fs: NaN ~9.6 ps
+- **1XQQ dt=0.5 fs: NaN ~12 ps** ← +3 ps over 1UBQ dt=0.5 fs
+
+The 1XQQ structure DID extend the failure horizon by ~3 ps vs the matched 1UBQ probe. Per the pre-registered rules: **NaN at >9.6 ps but <50 ps → "Hypothesis WEAKLY SUPPORTED"** → "discuss with PlannerAI whether to combine with gentler protocol (50→300 K Berendsen ramp + larger padding) or pivot."
+
+**Combined verdict on D-UBQ-1 verdict tree:**
+- (c) NTL9 substitute (10622876 q6kz3m8x): **PASSED** 25 ps NPT clean equilibration + 25 ps clean production (NTL9 51-residue + 12,471-atom system fully clear)
+- (d) UBQ_alt 1XQQ (10622885 q6uadt05): **WEAKLY SUPPORTED** (3-ps extension; failure pattern persists in same architectural window)
+
+**User decision 2026-05-08:** kick off one more probe variant per help-needed doc option (3) — "MACE float64 + gentler initial conditions + 50→300 K Berendsen ramp + larger box padding" — to exhaust the option tree before committing to NVT pivot. Probe to be designed + submitted as next action.
+
+**Pre-committed fallback if option-(3) probe also fails:** option (a) NVT pivot for UBQ specifically. WW + GB3 + NTL9 cover 3 Tier B NPT slots; UBQ gets NVT (Sub 1.1 demonstrated stable). Sub 1.2 success criterion #1 satisfied via the NTL9 substitution.
+
+---
+
+## UPDATE 2026-05-08T05:55Z: Option (3) gentle probe SUBMITTED — 11128672 q6f7n5px
+
+**Job:** 11128672 q6f7n5px (UBQ_alt 1XQQ, gentler NPT protocol, scavenge_gpu, Requeue=1)
+**Submitted:** 2026-05-08T05:55Z
+**Cost:** 0 priority SU (scavenge Standard Tier free)
+**Walltime:** 5:55:00
+
+### Protocol changes vs. all prior UBQ NPT probes
+
+3 env-var-controlled knobs added to `mace_hybrid_npt_prod.py` (defaults preserve existing locked R3 protocol, so PD MACE production jobs 10567503 + 10567504 unaffected):
+
+- `MACE_HYBRID_F32_BYPASS=1` (default) → set to **0** for this probe; uses openmmml f64 PythonForce, drops the f32 speedup. Tests numerical-precision hypothesis.
+- `MACE_HYBRID_PADDING_NM=1.0` (default) → set to **1.5** for this probe; loosens solvent confinement. Tests crystal/start-structure transient hypothesis.
+- `MACE_HYBRID_TRAMP_PS=0` (default) → set to **25** for this probe; prepends a 25 ps Berendsen-style T-ramp 50K→300K via `integrator.setTemperature` chunked steps before main NPT equilibration. Tests early-NPT solvation-startup-transient hypothesis.
+
+### Submission
+
+```
+MACE_HYBRID_F32_BYPASS=0 MACE_HYBRID_PADDING_NM=1.5 MACE_HYBRID_TRAMP_PS=25 \
+    MACE_HYBRID_DT_FS=0.5 \
+    bash output/scripts/submit_mace_npt_prod.sh \
+        ubq_alt q6f7n5px scavenge_gpu 0.05 5:55:00
+```
+
+| Parameter | Value | vs. prior 10622885 (1XQQ, FAILED) |
+|-----------|-------|---|
+| Starting structure | 1XQQ NMR model 1 | (same) |
+| MACE precision | float64 (no f32 bypass) | f32 bypass (different) |
+| Solvent padding | 1.5 nm | 1.0 nm (different) |
+| T-ramp | 50K → 300K over 25 ps | none, 300K from t=0 (different) |
+| dt | 0.5 fs | 0.5 fs (same) |
+| Round 3 patches | sentinel + HBonds + MCB freq=25 | (same) |
+| Target | 50 ps simulated | 50 ps (same) |
+| Partition | scavenge_gpu (h200) | (same) |
+| Cost | 0 priority SU | 0 priority SU (same) |
+
+### Decision rules on probe completion
+
+- **PASS at 50 ps clean (production reaches 50 ps no-NaN):** Option (3) CONFIRMED. Plan UBQ NPT 5 ns production with same protocol on Standard `gpu_h200`. UBQ stays Tier B NPT. No criterion-#1 amendment.
+- **NaN at 12-50 ps (gentler protocol extends past prior 1XQQ failure horizon):** Option (3) PARTIALLY effective. Document as +X-ps gain attributable to the gentler combination; commit to NVT pivot since 50 ps gate not cleared. WW + GB3 + NTL9 cover Tier B NPT; UBQ gets NVT.
+- **NaN at ≤12 ps (no improvement over prior 1XQQ):** Option tree EXHAUSTED. Commit to NVT pivot. Three independent UBQ NPT failure modes (1UBQ all dt; 1XQQ dt=0.5 fs; 1XQQ dt=0.5 fs + f64 + 1.5nm + T-ramp) all converge in the same architectural window.
+
+### Environmental notes
+
+- Probe inherits `--requeue` (added to submit_mace_npt_prod.sh on 2026-05-07 via Option α). On NaN, SLURM auto-requeues; head-1.2 monitors and scancels if deterministic-NaN loop is detected (precedent: scancel of 10622885 post-Restarts=2).
+- `MACE_HYBRID_PADDING_NM=1.5` produces a larger solvated system (~25-30% more water atoms vs 1.0 nm). Per-step throughput drops ~20%; combined with f64 (~17% slower) → expected ~1.0 ns/day at 0.5 fs (vs 1.20 ns/day at f32+1.0nm). Total wall: ~2.5 h for the full probe (T-ramp 25 ps + equil 25 ps + production 50 ps = 100 ps total at ~0.7 ps/min).

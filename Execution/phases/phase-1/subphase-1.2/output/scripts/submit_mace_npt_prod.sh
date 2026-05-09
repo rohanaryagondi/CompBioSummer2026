@@ -154,6 +154,7 @@ sbatch \
     --qos="${QOS}" \
     --gres="${GRES}" \
     --time="${WALLTIME}" \
+    --requeue \
     --cpus-per-task=4 \
     --mem=32G \
     --output="${SLURM_LOG_DIR}/mace_npt_prod_${PROTEIN}_${TAG}_%j.out" \

@@ -29,6 +29,7 @@
 # specification per node-type, while standard `gpu` accepts --gres=gpu:1).
 #SBATCH --cpus-per-task=2
 #SBATCH --mem=16G
+#SBATCH --requeue
 
 # Defaults (can be overridden via --export)
 PROTEIN="${PROTEIN:-ww}"
@@ -91,7 +92,18 @@ mkdir -p "${JAX_COMPILATION_CACHE_DIR}"
 
 # XLA optimizations: Triton GEMM emitter for irregular-shape matmul (SO3LR
 # tensor products) + latency-hiding scheduler. Lossless. Per deeper-opt-hunter A1.
-export XLA_FLAGS="--xla_gpu_triton_gemm_any=true --xla_gpu_enable_latency_hiding_scheduler=true"
+# R4-2026-05-05: append --xla_gpu_enable_async_collectives=true (allows overlap
+# of host-device copies with compute on single-GPU; ≤2% upside, lossless).
+export XLA_FLAGS="--xla_gpu_triton_gemm_any=true --xla_gpu_enable_latency_hiding_scheduler=true --xla_gpu_enable_async_collectives=true"
+
+# R4-2026-05-05: avoid 90% pre-allocation of GPU memory at JAX startup.
+# SO3LR's working set is ≤7K floats (vacuum); preallocation is wasteful and
+# blocks cohabitation. Lossless throughput; cleaner GPU sharing.
+export XLA_PYTHON_CLIENT_PREALLOCATE=false
+
+# R4-2026-05-05: defer CUDA kernel loading until first call. Saves ~5-15 s
+# of init per job. Lossless.
+export CUDA_MODULE_LOADING=LAZY
 
 echo "Python:     $(which python)"
 echo "Python ver: $(python --version 2>&1)"
